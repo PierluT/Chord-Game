@@ -149,6 +149,7 @@ var Player = /*#__PURE__*/function () {
   }, {
     key: "update",
     value: function update() {
+      this.draw();
       this.position.x += this.velocity.x;
       this.position.y += this.velocity.y;
       if (this.position.y + this.height + this.velocity.y < canvas.height) {
@@ -180,29 +181,30 @@ var keys = {
 };
 function animate() {
   //richiama ogni volta la funzione
-  window.requestAnimationFrame(animate);
+
   c.fillStyle = 'white';
   c.fillRect(0, 0, canvas.width, canvas.height);
-  player.draw();
-  player.update();
-  player2.update();
-  player2.draw();
-
+  var image = new Image();
+  image.src = 'B2.png';
+  image.onload = function () {
+    c.drawImage(image, 0, 0);
+  };
   //se tengo premuto continua ad andarea destra,altrimenti si stoppa 
   //perchè la velocità viene risettata a 0
   player.velocity.x = 0;
   if (keys.d.pressed) {
-    player.velocity.x = 4;
+    player.velocity.x = 1;
   } else if (keys.a.pressed) {
-    player.velocity.x = -4;
+    player.velocity.x = -1;
   }
+  player.update();
+  player2.update();
+  window.requestAnimationFrame(animate);
 }
 animate();
 
 //in base a ciò che premo nella tastiera
 window.addEventListener('keydown', function (event) {
-  console.log(event);
-
   //Al posto delle lettere ci andranno le risposte esatte o sbagliate
   switch (event.key) {
     case 'd':
@@ -212,14 +214,13 @@ window.addEventListener('keydown', function (event) {
       keys.a.pressed = true;
       break;
     case 'w':
-      player.velocity.y = -15;
+      player.velocity.y = -20;
       break;
   }
 });
+
 //per aggiornare lo status delle keys
 window.addEventListener('keyup', function (event) {
-  console.log(event);
-
   //Al posto delle lettere ci andranno le risposte esatte o sbagliate
   switch (event.key) {
     case 'd':
@@ -229,7 +230,7 @@ window.addEventListener('keyup', function (event) {
       keys.a.pressed = false;
       break;
     case 'w':
-      player.velocity.y = -15;
+      player.velocity.y = -10;
       break;
   }
 });
@@ -258,7 +259,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49906" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49791" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

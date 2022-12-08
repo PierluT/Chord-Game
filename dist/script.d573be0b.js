@@ -117,62 +117,154 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
+})({"js/script.js":[function(require,module,exports) {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+var canvas = document.querySelector('canvas');
+var c = canvas.getContext('2d');
+canvas.width = 1024;
+canvas.height = 576;
+var gravity = 0.5;
+var Sprite = /*#__PURE__*/function () {
+  function Sprite(_ref) {
+    var position = _ref.position,
+      imageSrc = _ref.imageSrc;
+    _classCallCheck(this, Sprite);
+    this.position = position;
+    this.image = new Image();
+    this.image.src = imageSrc;
   }
-  return bundleURL;
-}
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-    if (matches) {
-      return getBaseURL(matches[0]);
+  _createClass(Sprite, [{
+    key: "draw",
+    value: function draw() {
+      if (!this.image) return;
+      c.drawImage(this.image, this.position.x, this.position.y);
     }
+  }, {
+    key: "update",
+    value: function update() {
+      this.draw();
+    }
+  }]);
+  return Sprite;
+}();
+var Player = /*#__PURE__*/function () {
+  //proprietà del giocatore
+  function Player(position) {
+    _classCallCheck(this, Player);
+    this.position = position;
+    //velocità di caduta per simulazione gravità
+    this.velocity = {
+      x: 0,
+      y: 1
+    };
+    this.height = 100;
   }
-  return '/';
-}
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-function updateLink(link) {
-  var newLink = link.cloneNode();
-  newLink.onload = function () {
-    link.remove();
-  };
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-var cssTimeout = null;
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
+  _createClass(Player, [{
+    key: "draw",
+    value: function draw() {
+      c.fillStyle = 'red';
+      c.fillRect(this.position.x, this.position.y, 100, this.height);
+    }
+
+    //metodo per modificare le coordinate
+  }, {
+    key: "update",
+    value: function update() {
+      this.position.x += this.velocity.x;
+      this.position.y += this.velocity.y;
+      if (this.position.y + this.height + this.velocity.y < canvas.height) {
+        this.velocity.y += gravity;
+      } else {
+        this.velocity.y = 0;
       }
     }
-    cssTimeout = null;
-  }, 50);
+  }]);
+  return Player;
+}();
+var player = new Player({
+  x: 0,
+  y: 0
+});
+var player2 = new Player({
+  x: 300,
+  y: 100
+});
+
+//saranno le nostre giusto e sbagliato
+var keys = {
+  d: {
+    pressed: false
+  },
+  a: {
+    pressed: false
+  }
+};
+var background = new Sprite({
+  position: {
+    x: 0,
+    y: 0
+  },
+  imageSrc: './img/B2.png'
+});
+function animate() {
+  //richiama ogni volta la funzione
+  window.requestAnimationFrame(animate);
+  c.fillStyle = 'white';
+  c.fillRect(0, 0, canvas.width, canvas.height);
+  background.update();
+  //player.draw()
+  player.update();
+  player2.update();
+  player2.draw();
+
+  //se tengo premuto continua ad andarea destra,altrimenti si stoppa 
+  //perchè la velocità viene risettata a 0
+  player.velocity.x = 0;
+  if (keys.d.pressed) {
+    player.velocity.x = 4;
+  } else if (keys.a.pressed) {
+    player.velocity.x = -4;
+  }
 }
-module.exports = reloadCSS;
-},{"./bundle-url":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+animate();
+
+//in base a ciò che premo nella tastiera
+window.addEventListener('keydown', function (event) {
+  console.log(event);
+
+  //Al posto delle lettere ci andranno le risposte esatte o sbagliate
+  switch (event.key) {
+    case 'd':
+      keys.d.pressed = true;
+      break;
+    case 's':
+      keys.a.pressed = true;
+      break;
+    case 'w':
+      player.velocity.y = -15;
+      break;
+  }
+});
+//per aggiornare lo status delle keys
+window.addEventListener('keyup', function (event) {
+  console.log(event);
+
+  //Al posto delle lettere ci andranno le risposte esatte o sbagliate
+  switch (event.key) {
+    case 'd':
+      keys.d.pressed = false;
+      break;
+    case 's':
+      keys.a.pressed = false;
+      break;
+    case 'w':
+      player.velocity.y = -15;
+      break;
+  }
+});
+},{}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -197,7 +289,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49791" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62526" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
@@ -341,5 +433,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/style.e308ff8e.js.map
+},{}]},{},["../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/script.js"], null)
+//# sourceMappingURL=/script.d573be0b.js.map
