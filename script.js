@@ -1,4 +1,3 @@
-
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d')
 
@@ -6,14 +5,21 @@ canvas.width = 1024
 canvas.height = 750
 
 const gravity = 0.5
+
+//const colorGreen = 'rgba(75,192,192,1)';
+c.font = "italic bolder 50px Arial";
+//array provvisorio con elenco sigle accordi
+const chordSignature = "Ab7";
+//larghezza testo
+const textWidth = c.measureText(chordSignature).width;
+
 //blocchi che verranno disegnati dopo 
 const chordBlockArray = [];
 
 let timeToNextBlock = 0;
 //variabile che andremo a modificare con il knob della MIDI, ora è impostato a 4 sceondi
-let blockInterval= 4000;
+let blockInterval= 3000;
 let lastBlockTime = 0;
-
 let primaNota = false
 let gameOver = false
 
@@ -23,7 +29,7 @@ class collisionBlock {
         this.width = 200
         this.height = 60
         this.position = {
-            x: parseInt(( Math.random() * (canvas.width - this.width))),
+            x: ( Math.random() * (canvas.width - this.width)),
             y: 0,
         }
 
@@ -32,33 +38,32 @@ class collisionBlock {
             y:1,
         }
         //booleano per eliminare dall'array i blocchi non più visibili
-        var markedToDelete = false;
+        this.markedToDelete = false;
         
     }
 
     draw(){
         c.beginPath()
-        c.fillStyle = 'black' 
         c.fillRect(this.position.x,this.position.y,this.width,this.height)
-    }
+        c.fillStyle = 'black'
+        //inserico la sigla sopra al blocco 
+        c.fillText(chordSignature,this.position.x + (textWidth /2 ),this.position.y);
 
+    }
 
     update() {
-        this.draw()
         //se io premo sulla tastiera i blocchi cominciano a scendere
-        if(primaNota == true){
+        if(primaNota == true) {
             //comincia a scendere
-            this.position.y += this.velocity.y
-        }
-
-        if(this.position.y > canvas.height ){
-            this.markedToDelete = true;
+            this.position.y += this.velocity.y 
+              if(this.position.y > 750 ) {
+                //this.markedToDelete = true; 
+                chordBlockArray.shift()
+            }  
         }
     }
-         
+   
 }
-
-
 
 class Player {
     //proprietà del giocatore
@@ -110,17 +115,21 @@ const player = new Player({
     x: 450,
     y :0,
 })
-
+/*
 //blocchi di partenza
 const block1 = new collisionBlock();
 block1.position.x = 100;
 block1.position.y = 100;
+chordBlockArray.push(block1)
 const block2 = new collisionBlock();
 block2.position.x = 700;
 block2.position.y = 300
+chordBlockArray.push(block2)
 const block3 = new collisionBlock();
 block3.position.x = 100;
 block3.position.y = 500;
+chordBlockArray.push(block3)
+*/
 
 //saranno le nostre giusto e sbagliato
 const keys = {
@@ -134,32 +143,26 @@ const keys = {
 //il timestamp mi serve per controllare il refresh automatico della animate.
 function animate (timestamp) {
     c.clearRect(0,0,canvas.width,canvas.height)
-
     let deltaTime = timestamp - lastBlockTime;
     lastBlockTime = timestamp;
     timeToNextBlock += deltaTime; 
-
     //giocatore
     player.update()
-    //blocchi iniziali
-    block1.update()
-    block2.update()
-    block3.update()
 
     if((primaNota == true) && (timeToNextBlock > blockInterval )){
        chordBlockArray.push(new collisionBlock());
        timeToNextBlock = 0;
-       
     };
+    [...chordBlockArray].forEach(block => block.draw());
     [...chordBlockArray].forEach(block => block.update());
     //filtro l'array rimpiazzandolo solamente con gli elementi il cui marked
     //è true
-    //chordBlockArray = chordBlockArray.filter(block => !block.markedToDelete);
-
+    //chordBlockArray = chordBlockArray.filter(block => block.markedToDelete == true)
+    //BlocksOnTheScreen = [...chordBlockArray].forEach(block => block.pulisciArray());
+    console.log(chordBlockArray)
     //se tengo premuto continua ad andarea destra,altrimenti si stoppa 
     //perchè la velocità viene risettata a 0
     player.velocity.x = 0
-
     if(keys.d.pressed) {
         player.velocity.x = 1
     }else if (keys.a.pressed) {
