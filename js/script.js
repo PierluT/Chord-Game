@@ -1,5 +1,5 @@
 const canvas = document.querySelector('canvas');
-const c = canvas.getContext('2d')
+const c = canvas.getContext('2d');
 
 canvas.width = 1024
 canvas.height = 750
@@ -12,104 +12,18 @@ c.font = "italic bolder 50px Arial";
 const chordSignature = "Ab7";
 //larghezza testo
 const textWidth = c.measureText(chordSignature).width;
-
+const scrImages = ['img/assets/block1.png','img/assets/block2.png'];
 //blocchi che verranno disegnati dopo 
 const chordBlockArray = [];
 
 let timeToNextBlock = 0;
 //variabile che andremo a modificare con il knob della MIDI, ora è impostato a 4 sceondi
-let blockInterval= 3000;
+let blockInterval= 4000;
 let lastBlockTime = 0;
 let primaNota = false
 let gameOver = false
 
-class collisionBlock {
-    //poi la dovrò settare random
-    constructor() {
-        this.width = 200
-        this.height = 60
-        this.position = {
-            x: ( Math.random() * (canvas.width - this.width)),
-            y: 0,
-        }
-
-        this.velocity= {
-            x:0,
-            y:1,
-        }
-        //booleano per eliminare dall'array i blocchi non più visibili
-        this.markedToDelete = false;
-        
-    }
-
-    draw(){
-        c.beginPath()
-        c.fillRect(this.position.x,this.position.y,this.width,this.height)
-        c.fillStyle = 'black'
-        //inserico la sigla sopra al blocco 
-        c.fillText(chordSignature,this.position.x + (textWidth /2 ),this.position.y);
-
-    }
-
-    update() {
-        //se io premo sulla tastiera i blocchi cominciano a scendere
-        if(primaNota == true) {
-            //comincia a scendere
-            this.position.y += this.velocity.y 
-              if(this.position.y > 750 ) {
-                //this.markedToDelete = true; 
-                chordBlockArray.shift()
-            }  
-        }
-    }
-   
-}
-
-class Player {
-    //proprietà del giocatore
-    constructor(position){
-
-        this.position = position
-        //velocità di caduta per simulazione gravità
-        this.velocity = {
-            x: 0,
-            y: 1,
-        }
-        this.height = 100
-    }
-    
-    draw() {
-        c.fillStyle= 'red'
-        c.fillRect(this.position.x,this.position.y,100,this.height)
-    }
-
-    //metodo per modificare le coordinate
-    update() {
-        this.draw()
-        this.position.x += this.velocity.x
-        this.position.y += this.velocity.y
-
-        if (this.position.y + this.height + this.velocity.y < canvas.height){
-            this.velocity.y += gravity
-        }
-        else {
-            this.velocity.y = 0
-        } 
-    }
-}
-
-//non funziona
-function collisionControl(Player, collisionBlock) {
-    if( Player.position.x > collisionBlock.position.x + collisionBlock.width ||
-        Player.position.x + Player.width < collisionBlock.x ||
-        Player.y > collisionBlock.y + collisionBlock.height ||
-        Player.y + Player.height < collisionBlock.y) {
-            console.log('non si stanno toccando')
-    } else {
-        //no collisione
-        console.log(' si stanno toccando')
-    }
-}
+//funzione di collisione tra èlayer e blocco
 
 const player = new Player({
     x: 450,
@@ -155,11 +69,9 @@ function animate (timestamp) {
     };
     [...chordBlockArray].forEach(block => block.draw());
     [...chordBlockArray].forEach(block => block.update());
-    //filtro l'array rimpiazzandolo solamente con gli elementi il cui marked
-    //è true
-    //chordBlockArray = chordBlockArray.filter(block => block.markedToDelete == true)
-    //BlocksOnTheScreen = [...chordBlockArray].forEach(block => block.pulisciArray());
-    console.log(chordBlockArray)
+    //stampa dell'array aggiornato nel quale ho solamente i blocchi visibili nel canvas.
+    //console.log(chordBlockArray)
+
     //se tengo premuto continua ad andarea destra,altrimenti si stoppa 
     //perchè la velocità viene risettata a 0
     player.velocity.x = 0
