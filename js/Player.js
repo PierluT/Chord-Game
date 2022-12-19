@@ -1,7 +1,8 @@
 class Player {
     //proprietà del giocatore
     constructor(position){
-
+        this.image = new Image();
+        //this.image.src = ...mozart o beethoven
         this.position = position
         //velocità di caduta per simulazione gravità
         this.velocity = {
@@ -38,7 +39,7 @@ class Player {
         for(let i = 0; i < chordBlockArray.length; i++){
             const nextBlock =this.chordBlockArray[i]
 
-            if(  collision({
+            if( collision({
                 object1: this,
                 object2: nextBlock
             })) {

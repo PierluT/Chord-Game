@@ -29,6 +29,7 @@ const player = new Player({
     x: 450,
     y :0,
 })
+
 /*
 //blocchi di partenza
 const block1 = new collisionBlock();
