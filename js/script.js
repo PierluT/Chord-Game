@@ -14,7 +14,7 @@ const chordSignature = "Ab7";
 const textWidth = c.measureText(chordSignature).width;
 const scrImages = ['img/assets/block1.png','img/assets/block2.png'];
 //blocchi che verranno disegnati dopo 
-const chordBlockArray = [];
+var chordBlockArray = [];
 
 let timeToNextBlock = 0;
 //variabile che andremo a modificare con il knob della MIDI, ora è impostato a 4 sceondi
@@ -70,6 +70,7 @@ function animate (timestamp) {
     };
     [...chordBlockArray].forEach(block => block.draw());
     [...chordBlockArray].forEach(block => block.update());
+    player.chechForVerticalCollision(chordBlockArray);
     //stampa dell'array aggiornato nel quale ho solamente i blocchi visibili nel canvas.
     //console.log(chordBlockArray)
 

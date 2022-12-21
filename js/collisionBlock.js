@@ -16,7 +16,6 @@ class collisionBlock {
         this.markedToDelete = false;
         this.image = new Image();
         this.image.src = scrImages[Math.floor(Math.random()*scrImages.length)];
-        
     }
 
     draw(){

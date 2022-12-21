@@ -1,3 +1,4 @@
+//import { chordBlockArray } from "./script";
 class Player {
     //proprietà del giocatore
     constructor(position){
@@ -35,17 +36,17 @@ class Player {
         } 
     }
 
-    chechForVerticalCollision(){
-        for(let i = 0; i < chordBlockArray.length; i++){
-            const nextBlock =this.chordBlockArray[i]
+    chechForVerticalCollision(arrayBlocchi){
+        for (let i = 0; i < arrayBlocchi.length; i++) {
+            const nextBlock = arrayBlocchi[i];
 
-            if( collision({
-                object1: this,
-                object2: nextBlock
-            })) {
-                console.log("tey are colliding")
-            }
-          
+            if (this.position.y + this.height >= nextBlock.position.y ||
+                this.position.y <= nextBlock.position.y + nextBlock.height ||
+                this.position.x <= nextBlock.position.x + nextBlock.width ||
+                this.position.x + this.width >= nextBlock.position.x){
+                console.log("stanno collidendo")
+
+            } else console.log("NO collisione")
         }
     }
 }
