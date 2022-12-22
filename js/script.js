@@ -12,7 +12,7 @@ c.font = "italic bolder 50px Arial";
 const chordSignature = "Ab7";
 //larghezza testo
 const textWidth = c.measureText(chordSignature).width;
-const scrImages = ['img/assets/block1.png','img/assets/block2.png'];
+const scrImages = ['img/assets/block1_cut.png','img/assets/block2_cut.png'];
 //blocchi che verranno disegnati dopo 
 var chordBlockArray = [];
 
@@ -30,7 +30,7 @@ const player = new Player({
     y :0,
 })
 
-/*
+
 //blocchi di partenza
 const block1 = new collisionBlock();
 block1.position.x = 100;
@@ -44,7 +44,7 @@ const block3 = new collisionBlock();
 block3.position.x = 100;
 block3.position.y = 500;
 chordBlockArray.push(block3)
-*/
+
 
 //saranno le nostre giusto e sbagliato
 const keys = {
@@ -102,6 +102,8 @@ window.addEventListener('keydown', (event) =>{
         case 'w':
                 player.velocity.y = -20
                 break
+        //risposta giusta => salto
+        //case 'l':
     }
 })
 
@@ -119,5 +121,6 @@ window.addEventListener('keyup', (event) =>{
         case 'w':
                 player.velocity.y = -10
                 break
+        //case 'l':
     }
 })

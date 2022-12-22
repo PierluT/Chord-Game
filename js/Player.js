@@ -10,12 +10,13 @@ class Player {
             x: 0,
             y: 1,
         }
-        this.height = 100
+        this.height = 100;
+        this.width = 100;
     }
     
     draw() {
         c.fillStyle= 'red'
-        c.fillRect(this.position.x,this.position.y,100,this.height)
+        c.fillRect(this.position.x,this.position.y,this.width,this.height)
     }
 
     //metodo per modificare le coordinate
@@ -42,17 +43,23 @@ class Player {
         for (let i = 0; i < arrayBlocchi.length; i++) {
             nextBlock = arrayBlocchi[i];
 
-            if (this.position.y + this.height >= nextBlock.position.y &&
+            if ( this.position.x >= nextBlock.position.x && this.position.x + this.width <= nextBlock.position.x +nextBlock.width &&
+                this.position.y + this.height >= nextBlock.position.y &&
                 this.position.y < nextBlock.position.y){
                 count = i;
                 break;
             }
         }
 
-        if(count < arrayBlocchi.length-1){
+        if(count < arrayBlocchi.length) {
             console.log("collisione")
-            this.position.y = nextBlock.position.y - nextBlock.height/3;
+            //cade al centro del blocco
+            this.position.y = nextBlock.position.y - nextBlock.height;
+            this.position.x = nextBlock.position.x + nextBlock.width / 2 - this.width/2;
+            
+
         }
     }
-    //togliere
+    
+    
 }
