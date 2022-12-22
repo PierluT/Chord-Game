@@ -13,20 +13,18 @@ class collisionBlock {
             y:1,
         }
         //booleano per eliminare dall'array i blocchi non più visibili
-        this.markedToDelete = false;
+        //this.markedToDelete = false;
         this.image = new Image();
         this.image.src = scrImages[Math.floor(Math.random()*scrImages.length)];
     }
 
     draw(){
         c.beginPath()
-
         //serve?
         //c.strokeRect(this.position.x,this.position.y,this.width,this.height)
         c.drawImage(this.image,this.position.x,this.position.y,this.width,this.height)
         //inserico la sigla sopra al blocco 
         c.fillText(chordSignature,this.position.x + 50 + (textWidth /2 ),this.position.y);
-
     }
 
     update() {
