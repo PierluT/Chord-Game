@@ -40,11 +40,10 @@ class Player {
         for (let i = 0; i < arrayBlocchi.length; i++) {
             const nextBlock = arrayBlocchi[i];
 
-            if (this.position.y + this.height >= nextBlock.position.y ||
-                this.position.y <= nextBlock.position.y + nextBlock.height ||
-                this.position.x <= nextBlock.position.x + nextBlock.width ||
-                this.position.x + this.width >= nextBlock.position.x){
+            if (this.position.y + this.height >= nextBlock.position.y &&
+                this.position.y < nextBlock.position.y){
                 console.log("stanno collidendo")
+                this.position.y = nextBlock.position.y - nextBlock.height/3;
 
             } else console.log("NO collisione")
         }
