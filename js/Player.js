@@ -54,4 +54,5 @@ class Player {
             this.position.y = nextBlock.position.y - nextBlock.height/3;
         }
     }
+    //togliere
 }
