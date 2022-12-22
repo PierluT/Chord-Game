@@ -37,15 +37,21 @@ class Player {
     }
 
     chechForVerticalCollision(arrayBlocchi){
+        var count;
+        var nextBlock;
         for (let i = 0; i < arrayBlocchi.length; i++) {
-            const nextBlock = arrayBlocchi[i];
+            nextBlock = arrayBlocchi[i];
 
             if (this.position.y + this.height >= nextBlock.position.y &&
                 this.position.y < nextBlock.position.y){
-                console.log("stanno collidendo")
-                this.position.y = nextBlock.position.y - nextBlock.height/3;
+                count = i;
+                break;
+            }
+        }
 
-            } else console.log("NO collisione")
+        if(count < arrayBlocchi.length-1){
+            console.log("collisione")
+            this.position.y = nextBlock.position.y - nextBlock.height/3;
         }
     }
 }
