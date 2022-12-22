@@ -57,7 +57,6 @@ class Player {
             this.position.y = nextBlock.position.y - nextBlock.height;
             this.position.x = nextBlock.position.x + nextBlock.width / 2 - this.width/2;
             
-
         }
     }
     

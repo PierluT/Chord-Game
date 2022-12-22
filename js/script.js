@@ -30,20 +30,22 @@ const player = new Player({
     y :0,
 })
 
-
 //blocchi di partenza
 const block1 = new collisionBlock();
 block1.position.x = 100;
 block1.position.y = 100;
-chordBlockArray.push(block1)
+
 const block2 = new collisionBlock();
 block2.position.x = 700;
 block2.position.y = 300
-chordBlockArray.push(block2)
+
 const block3 = new collisionBlock();
 block3.position.x = 100;
 block3.position.y = 500;
+
 chordBlockArray.push(block3)
+chordBlockArray.push(block2)
+chordBlockArray.push(block1)
 
 
 //saranno le nostre giusto e sbagliato
@@ -72,7 +74,7 @@ function animate (timestamp) {
     [...chordBlockArray].forEach(block => block.update());
     player.chechForVerticalCollision(chordBlockArray);
     //stampa dell'array aggiornato nel quale ho solamente i blocchi visibili nel canvas.
-    //console.log(chordBlockArray)
+    console.log(chordBlockArray)
 
     //se tengo premuto continua ad andarea destra,altrimenti si stoppa 
     //perchè la velocità viene risettata a 0
