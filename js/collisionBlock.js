@@ -14,6 +14,7 @@ class collisionBlock {
         }
         //booleano per collisione
         this.markedToCollision = false;
+        this.chord = chordSignature;
         this.image = new Image();
         this.image.src = scrImages[Math.floor(Math.random()*scrImages.length)];
     }
@@ -24,7 +25,7 @@ class collisionBlock {
         c.strokeRect(this.position.x,this.position.y,this.width,this.height)
         c.drawImage(this.image,this.position.x,this.position.y,this.width,this.height)
         //inserico la sigla sopra al blocco 
-        c.fillText(chordSignature,this.position.x + 50 + (textWidth /2 ),this.position.y);
+        c.fillText(this.chord,this.position.x + 50 + (textWidth /2 ),this.position.y);
     }
 
     update() {
@@ -38,5 +39,10 @@ class collisionBlock {
             }  
         }
     }
+
+    disappearChord(){
+        this.chord = "";
+    }
+
    
 }

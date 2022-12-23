@@ -1,4 +1,3 @@
-//import { chordBlockArray } from "./script";
 class Player {
     //proprietà del giocatore
     constructor(position){
@@ -24,7 +23,7 @@ class Player {
         this.draw()
         this.position.x += this.velocity.x
         this.applyGravity()
-        //this.chechForVerticalCollision() 
+
     }
     
     applyGravity(){
@@ -52,13 +51,22 @@ class Player {
         }
 
         if(count < arrayBlocchi.length) {
-            console.log("collisione")
+            //console.log("collisione")
             //cade al centro del blocco
             this.position.y = nextBlock.position.y - nextBlock.height;
             this.position.x = nextBlock.position.x + nextBlock.width / 2 - this.width/2;
+            this.checkedCollision(nextBlock);
+            //console.log("QUAAAA!!!!!!!!!!")
             
         }
     }
+
+    checkedCollision(nextBlock){
+        nextBlock.markedToCollision = true;
+        nextBlock.disappearChord();
+    }
+    
+
     
     
 }

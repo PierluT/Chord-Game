@@ -9,7 +9,7 @@ const gravity = 0.5
 //const colorGreen = 'rgba(75,192,192,1)';
 c.font = "italic bolder 50px Arial";
 //array provvisorio con elenco sigle accordi
-const chordSignature = "Ab7";
+var chordSignature = "Ab7";
 //larghezza testo
 const textWidth = c.measureText(chordSignature).width;
 const scrImages = ['img/assets/block1_cut.png','img/assets/block2_cut.png'];
