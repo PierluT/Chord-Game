@@ -105,7 +105,8 @@ window.addEventListener('keydown', (event) =>{
                 player.velocity.y = -20
                 break
         //risposta giusta => salto
-        //case 'l':
+        case 'l':
+            //player.automaticJump()
     }
 })
 
@@ -123,6 +124,6 @@ window.addEventListener('keyup', (event) =>{
         case 'w':
                 player.velocity.y = -10
                 break
-        //case 'l':
+        case 'l':
     }
 })

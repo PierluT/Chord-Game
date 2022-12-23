@@ -1,3 +1,4 @@
+
 class Player {
     //proprietà del giocatore
     constructor(position){
@@ -51,10 +52,15 @@ class Player {
         }
 
         if(count < arrayBlocchi.length) {
+            let posizionePrimoAtterraggioX;
+            let posizionePrimoAtterraggioY;
+
+            posizionePrimoAtterraggioY = nextBlock.position.y - nextBlock.height;
+            posizionePrimoAtterraggioX = nextBlock.position.x + nextBlock.width / 2 - this.width/2;
             //console.log("collisione")
             //cade al centro del blocco
-            this.position.y = nextBlock.position.y - nextBlock.height;
-            this.position.x = nextBlock.position.x + nextBlock.width / 2 - this.width/2;
+            this.position.y = posizionePrimoAtterraggioY;
+            this.position.x = posizionePrimoAtterraggioX;
             this.checkedCollision(nextBlock);
             //console.log("QUAAAA!!!!!!!!!!")
             
@@ -65,8 +71,30 @@ class Player {
         nextBlock.markedToCollision = true;
         nextBlock.disappearChord();
     }
-    
 
-    
+    //mi restituisce la metà della base inferiore del player
+    calculateBasePlayer(){
+        const x = this.position.x + player.width/2;
+        const y = this.position.y + + player.height;
+    return [x, y];
+    }
+
+    calculatePositionDuringJump(){
+        const x0 = this.calculateBasePlayer.x;
+        const y0 = this.calculateBasePlayer.y;
+
+        xDuringJump = x0 + v0*t;
+        yDuringJump = y0 + v0*t
+    }
+
+
+    automaticJump(){
+        //trova il primo che ha markedtocollision = false (ovvero il prossimo su cui saltare)
+        let nextBlockToJump = chordBlockArray.find(block => block.markedToCollision == false);
+        xDestinationNextBlock = nextBlockToJump.position.x + nextBlockToJump.width / 2 - this.width/2;
+        yDestinationNextBlock = nextBlockToJump.position.y - nextBlockToJump.height;
+
+
+    }    
     
 }
