@@ -22,6 +22,7 @@ let blockInterval= 4000;
 let lastBlockTime = 0;
 let primaNota = false
 let gameOver = false
+let rispostaGiusta = false
 
 //funzione di collisione tra èlayer e blocco
 
@@ -55,7 +56,7 @@ const keys = {
     },
     a:{
         pressed : false
-    },
+    }
 }
 //il timestamp mi serve per controllare il refresh automatico della animate.
 function animate (timestamp) {
@@ -75,7 +76,7 @@ function animate (timestamp) {
     player.chechForVerticalCollision(chordBlockArray);
     //stampa dell'array aggiornato nel quale ho solamente i blocchi visibili nel canvas.
     console.log(chordBlockArray)
-
+    player.automaticJump();
     //se tengo premuto continua ad andarea destra,altrimenti si stoppa 
     //perchè la velocità viene risettata a 0
     player.velocity.x = 0
@@ -106,7 +107,8 @@ window.addEventListener('keydown', (event) =>{
                 break
         //risposta giusta => salto
         case 'l':
-            //player.automaticJump()
+            rispostaGiusta = true
+            
     }
 })
 
@@ -125,5 +127,6 @@ window.addEventListener('keyup', (event) =>{
                 player.velocity.y = -10
                 break
         case 'l':
+            rispostaGiusta = false
     }
 })

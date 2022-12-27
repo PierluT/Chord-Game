@@ -8,7 +8,7 @@ class Player {
         //velocità di caduta per simulazione gravità
         this.velocity = {
             x: 0,
-            y: 1,
+            y: 0.8,
         }
         this.height = 100;
         this.width = 100;
@@ -52,17 +52,12 @@ class Player {
         }
 
         if(count < arrayBlocchi.length) {
-            let posizionePrimoAtterraggioX;
-            let posizionePrimoAtterraggioY;
-
-            posizionePrimoAtterraggioY = nextBlock.position.y - nextBlock.height;
-            posizionePrimoAtterraggioX = nextBlock.position.x + nextBlock.width / 2 - this.width/2;
-            //console.log("collisione")
+            posizioneAtterraggioY = nextBlock.position.y - nextBlock.height;
+            posizioneAtterraggioX = nextBlock.position.x + nextBlock.width / 2 - this.width/2;
             //cade al centro del blocco
-            this.position.y = posizionePrimoAtterraggioY;
-            this.position.x = posizionePrimoAtterraggioX;
+            this.position.y = posizioneAtterraggioY;
+            this.position.x = posizioneAtterraggioX;
             this.checkedCollision(nextBlock);
-            //console.log("QUAAAA!!!!!!!!!!")
             
         }
     }
@@ -72,29 +67,34 @@ class Player {
         nextBlock.disappearChord();
     }
 
-    //mi restituisce la metà della base inferiore del player
-    calculateBasePlayer(){
-        const x = this.position.x + player.width/2;
-        const y = this.position.y + + player.height;
-    return [x, y];
-    }
-
-    calculatePositionDuringJump(){
-        const x0 = this.calculateBasePlayer.x;
-        const y0 = this.calculateBasePlayer.y;
-
-        xDuringJump = x0 + v0*t;
-        yDuringJump = y0 + v0*t
-    }
-
-
     automaticJump(){
+        // Convert angle to radians
+        theta = theta * Math.PI / 180;
+        
+        //se ha dato la risposta giusta (momentaneamente se ha premuto l)
+        if(rispostaGiusta){
         //trova il primo che ha markedtocollision = false (ovvero il prossimo su cui saltare)
         let nextBlockToJump = chordBlockArray.find(block => block.markedToCollision == false);
         xDestinationNextBlock = nextBlockToJump.position.x + nextBlockToJump.width / 2 - this.width/2;
         yDestinationNextBlock = nextBlockToJump.position.y - nextBlockToJump.height;
-
-
+        
+        //equazioni del moto
+        this.position.x = posizioneAtterraggioX + v0 * t * Math.cos(theta);
+        this.position.y = posizioneAtterraggioY + v0 * t * Math.sin(theta) - 0.5 * g * t * t;
+        
+        //calcolo le distanze tra partenza e arrivo
+        xDistance = xDestinationNextBlock - posizioneAtterraggioX;
+        yDistance = yDestinationNextBlock - posizioneAtterraggioY;
+        deltaDistance = Math.sqrt( xDistance * xDistance + yDistance * yDistance);
+        
+        //controllo se è arrivato o meno
+        if (deltaDistance < deltaPixel) {
+            return;
+        }
+        // Increment time
+        t += dt;
+        }
+         
     }    
     
 }
