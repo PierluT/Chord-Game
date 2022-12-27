@@ -1,9 +1,8 @@
 //variabili per gestione salto automatico
-let xDestinationNextBlock;
-let yDestinationNextBlock;
 let posizioneAtterraggioX;
 let posizioneAtterraggioY;
-let v0 = 0.5; // initial velocity (m/s)
+let v0x = 0.5; // initial velocity (m/s)
+let v0y = 0.5;
 const g = 9.81;
 //time steps
 const deltaPixel = 1;

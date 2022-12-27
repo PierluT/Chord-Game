@@ -52,6 +52,7 @@ class Player {
         }
 
         if(count < arrayBlocchi.length) {
+            // TO DO: UNLOCK FROM THE COLLISION
             posizioneAtterraggioY = nextBlock.position.y - nextBlock.height;
             posizioneAtterraggioX = nextBlock.position.x + nextBlock.width / 2 - this.width/2;
             //cade al centro del blocco
@@ -69,32 +70,44 @@ class Player {
 
     automaticJump(){ 
 
-        //trova il primo che ha markedtocollision = false (ovvero il prossimo su cui saltare)
-        let nextBlockToJump = chordBlockArray.find(block => block.markedToCollision == false);
-        xDestinationNextBlock = nextBlockToJump.position.x + nextBlockToJump.width / 2 - this.width/2;
-        yDestinationNextBlock = nextBlockToJump.position.y - nextBlockToJump.height; 
+        let nextBlockPosition = this.computeNextBlockDistance();
+
+        let nextBlockX = nextBlockPosition.xDestinationNextBlock;
+        let nextBlockY = nextBlockPosition.yDestinationNextBlock;
+
+        console.log(deltaX)
         
         //calcolo le distanze tra partenza e arrivo
-        xDistance = xDestinationNextBlock - this.position.x;
-        yDistance = yDestinationNextBlock - this.position.y;
+        xDistance = nextBlockX - this.position.x;
+        yDistance = nextBlockY - this.position.y;
 
         //equazioni del moto
         // deltaTime = 16  
+        // TO DO: v0x dovrebbe dipendere dalla distanza tra player e nextblock
         if(xDistance > move_threshold){
-            this.position.x += v0*deltaTime;
+            this.position.x += v0x*deltaTime;
         } 
         else if(xDistance < -move_threshold){
-            this.position.x -= v0*deltaTime;
+            this.position.x -= v0x*deltaTime;
         }
         else if(Math.abs(xDistance) <= move_threshold){
             this.position.x += 0;
         }
 
-        this.position.y -= v0*deltaTime;
+        this.position.y -= v0y*deltaTime;      
         
-        
-        
-        }  
+    }
+    
+    computeNextBlockDistance(){
+        //trova il primo che ha markedtocollision = false (ovvero il prossimo su cui saltare)
+        let nextBlockToJump = chordBlockArray.find(block => block.markedToCollision == false);
+        let xDestinationNextBlock = nextBlockToJump.position.x + nextBlockToJump.width / 2 - this.width/2;
+        let yDestinationNextBlock = nextBlockToJump.position.y - nextBlockToJump.height; 
+    
+        return {xDestinationNextBlock, yDestinationNextBlock};
+    }
+
+
          
     
 }

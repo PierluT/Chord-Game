@@ -109,7 +109,9 @@ window.addEventListener('keydown', (event) =>{
                 player.velocity.y = -20
                 break
         case 'l':
-                rispostaGiusta = true
+            // TO DO: CALCOLA LA DISTANZA DAL NEXT BLOCK OGNI VOLTA CHE LA RISPOSTA E' ESATTA
+                // player.computeNextBlockDistance
+                rispostaGiusta = !rispostaGiusta
                 console.log(rispostaGiusta)
                 break
             
