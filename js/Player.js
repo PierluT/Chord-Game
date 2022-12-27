@@ -67,31 +67,24 @@ class Player {
         nextBlock.disappearChord();
     }
 
-    automaticJump(){
-        console.log("AUTOMATIC JUMP")
-        // Convert angle to radians
-        theta = theta * Math.PI / 180;
+    automaticJump(){ 
+
         //trova il primo che ha markedtocollision = false (ovvero il prossimo su cui saltare)
         let nextBlockToJump = chordBlockArray.find(block => block.markedToCollision == false);
         xDestinationNextBlock = nextBlockToJump.position.x + nextBlockToJump.width / 2 - this.width/2;
-        yDestinationNextBlock = nextBlockToJump.position.y - nextBlockToJump.height;
-       
+        yDestinationNextBlock = nextBlockToJump.position.y - nextBlockToJump.height; 
         
         //equazioni del moto
-        this.position.x = posizioneAtterraggioX + v0 * t * Math.cos(theta);
-        this.position.y = posizioneAtterraggioY + v0 * t * Math.sin(theta) - 0.5 * g * t * t;
+        this.position.x += v0*deltaTime;
+        this.position.y -= v0*deltaTime;
         
         //calcolo le distanze tra partenza e arrivo
-        xDistance = xDestinationNextBlock - posizioneAtterraggioX;
-        yDistance = yDestinationNextBlock - posizioneAtterraggioY;
-        deltaDistance = Math.sqrt( xDistance * xDistance + yDistance * yDistance);
+        xDistance = xDestinationNextBlock - this.position.x;
+        yDistance = yDestinationNextBlock - this.position.y;
+        deltaDistance = Math.sqrt(xDistance * xDistance + yDistance * yDistance);
         
-        //controllo se è arrivato o meno
-        if (deltaDistance < deltaPixel) {
-            return;
-        }
         // Increment time
-        t += dt;
+        // deltaTime = 16        
         }  
          
     

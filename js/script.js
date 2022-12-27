@@ -61,7 +61,7 @@ const keys = {
 //il timestamp mi serve per controllare il refresh automatico della animate.
 function animate (timestamp) {
     c.clearRect(0,0,canvas.width,canvas.height)
-    let deltaTime = timestamp - lastBlockTime;
+    deltaTime = timestamp - lastBlockTime;
     lastBlockTime = timestamp;
     timeToNextBlock += deltaTime; 
     //giocatore
@@ -76,6 +76,9 @@ function animate (timestamp) {
     player.chechForVerticalCollision(chordBlockArray);
     //stampa dell'array aggiornato nel quale ho solamente i blocchi visibili nel canvas.
     //console.log(chordBlockArray)
+    if(rispostaGiusta){
+        player.automaticJump()
+    }
 
     //se tengo premuto continua ad andarea destra,altrimenti si stoppa 
     //perchè la velocità viene risettata a 0
@@ -106,7 +109,8 @@ window.addEventListener('keydown', (event) =>{
                 player.velocity.y = -20
                 break
         case 'l':
-                player.automaticJump()
+                rispostaGiusta = true
+                console.log(rispostaGiusta)
                 break
             
     }

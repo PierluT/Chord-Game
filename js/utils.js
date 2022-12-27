@@ -3,17 +3,24 @@ let xDestinationNextBlock;
 let yDestinationNextBlock;
 let posizioneAtterraggioX;
 let posizioneAtterraggioY;
-let v0 = 5; // initial velocity (m/s)
-let t = 0;
+let v0 = 0.5; // initial velocity (m/s)
 const g = 9.81;
 //time steps
-const dt = 0.1;
 const deltaPixel = 1;
-// launch angle (degrees)
-let theta = 45; 
+let t;
+let deltaTime;
 let xDistance;
 let yDistance;
 let deltaDistance;
+
+function findNextBlock(){
+    //trova il primo che ha markedtocollision = false (ovvero il prossimo su cui saltare)
+    let nextBlockToJump = chordBlockArray.find(block => block.markedToCollision == false);
+    xDestinationNextBlock = nextBlockToJump.position.x + nextBlockToJump.width / 2 - this.width/2;
+    yDestinationNextBlock = nextBlockToJump.position.y - nextBlockToJump.height; 
+
+    return [xDestinationNextBlock, yDestinationNextBlock]
+}
 
 
 
