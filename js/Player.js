@@ -68,15 +68,14 @@ class Player {
     }
 
     automaticJump(){
+        console.log("AUTOMATIC JUMP")
         // Convert angle to radians
         theta = theta * Math.PI / 180;
-        
-        //se ha dato la risposta giusta (momentaneamente se ha premuto l)
-        if(rispostaGiusta){
         //trova il primo che ha markedtocollision = false (ovvero il prossimo su cui saltare)
         let nextBlockToJump = chordBlockArray.find(block => block.markedToCollision == false);
         xDestinationNextBlock = nextBlockToJump.position.x + nextBlockToJump.width / 2 - this.width/2;
         yDestinationNextBlock = nextBlockToJump.position.y - nextBlockToJump.height;
+       
         
         //equazioni del moto
         this.position.x = posizioneAtterraggioX + v0 * t * Math.cos(theta);
@@ -93,8 +92,7 @@ class Player {
         }
         // Increment time
         t += dt;
-        }
+        }  
          
-    }    
     
 }

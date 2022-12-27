@@ -75,8 +75,8 @@ function animate (timestamp) {
     [...chordBlockArray].forEach(block => block.update());
     player.chechForVerticalCollision(chordBlockArray);
     //stampa dell'array aggiornato nel quale ho solamente i blocchi visibili nel canvas.
-    console.log(chordBlockArray)
-    player.automaticJump();
+    //console.log(chordBlockArray)
+
     //se tengo premuto continua ad andarea destra,altrimenti si stoppa 
     //perchè la velocità viene risettata a 0
     player.velocity.x = 0
@@ -105,9 +105,9 @@ window.addEventListener('keydown', (event) =>{
         case 'w':
                 player.velocity.y = -20
                 break
-        //risposta giusta => salto
         case 'l':
-            rispostaGiusta = true
+                player.automaticJump()
+                break
             
     }
 })
@@ -126,7 +126,7 @@ window.addEventListener('keyup', (event) =>{
         case 'w':
                 player.velocity.y = -10
                 break
-        case 'l':
-            rispostaGiusta = false
+       
+
     }
 })
