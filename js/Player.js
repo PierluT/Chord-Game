@@ -74,17 +74,26 @@ class Player {
         xDestinationNextBlock = nextBlockToJump.position.x + nextBlockToJump.width / 2 - this.width/2;
         yDestinationNextBlock = nextBlockToJump.position.y - nextBlockToJump.height; 
         
-        //equazioni del moto
-        this.position.x += v0*deltaTime;
-        this.position.y -= v0*deltaTime;
-        
         //calcolo le distanze tra partenza e arrivo
         xDistance = xDestinationNextBlock - this.position.x;
         yDistance = yDestinationNextBlock - this.position.y;
-        deltaDistance = Math.sqrt(xDistance * xDistance + yDistance * yDistance);
+
+        //equazioni del moto
+        // deltaTime = 16  
+        if(xDistance > move_threshold){
+            this.position.x += v0*deltaTime;
+        } 
+        else if(xDistance < -move_threshold){
+            this.position.x -= v0*deltaTime;
+        }
+        else if(Math.abs(xDistance) <= move_threshold){
+            this.position.x += 0;
+        }
+
+        this.position.y -= v0*deltaTime;
         
-        // Increment time
-        // deltaTime = 16        
+        
+        
         }  
          
     

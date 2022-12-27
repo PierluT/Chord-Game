@@ -12,15 +12,6 @@ let deltaTime;
 let xDistance;
 let yDistance;
 let deltaDistance;
-
-function findNextBlock(){
-    //trova il primo che ha markedtocollision = false (ovvero il prossimo su cui saltare)
-    let nextBlockToJump = chordBlockArray.find(block => block.markedToCollision == false);
-    xDestinationNextBlock = nextBlockToJump.position.x + nextBlockToJump.width / 2 - this.width/2;
-    yDestinationNextBlock = nextBlockToJump.position.y - nextBlockToJump.height; 
-
-    return [xDestinationNextBlock, yDestinationNextBlock]
-}
-
+let move_threshold = 10;
 
 
