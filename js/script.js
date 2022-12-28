@@ -111,16 +111,15 @@ window.addEventListener('keydown', (event) =>{
                 player.velocity.y = -20
                 break
         case 'l':
-            // TO DO: CALCOLA LA DISTANZA DAL NEXT BLOCK OGNI VOLTA CHE LA RISPOSTA E' ESATTA
                 let nextBlockPosition = player.computeNextBlockDistance();
 
                 let nextBlockX = nextBlockPosition.xDestinationNextBlock;
 
                 let xDistance = nextBlockX - player.position.x;
 
-                vox_MODIFIER = V0X_MAX*xDistance/canvas.width;
+                vox_MODIFIER = V0X_MAX*(xDistance/canvas.width);
 
-                rispostaGiusta = !rispostaGiusta
+                rispostaGiusta = true;
                 console.log(rispostaGiusta)
                 break            
     }

@@ -23,13 +23,14 @@ class Player {
     update() {
         this.draw()
         this.position.x += this.velocity.x
+        this.position.y += this.velocity.y
         this.applyGravity()
 
     }
     
     applyGravity(){
-        this.position.y += this.velocity.y
-        if (this.position.y + this.height + this.velocity.y < canvas.height){
+        // TO DO: SISTEMARE LA GRAVITA' QUANDO RISPOSTA GIUSTA E' TRUE O FALSE
+        if (this.position.y + this.height + this.velocity.y < canvas.height && rispostaGiusta == true){
             this.velocity.y += gravity
         }
         else {
@@ -43,23 +44,22 @@ class Player {
         for (let i = 0; i < arrayBlocchi.length; i++) {
             nextBlock = arrayBlocchi[i];
 
+            // HO ALZATO IL CONTROLLO DELLA COLLISIONE SULLE Y DI 10 PX
             if ( this.position.x >= nextBlock.position.x && this.position.x + this.width <= nextBlock.position.x +nextBlock.width &&
-                this.position.y + this.height >= nextBlock.position.y &&
+                this.position.y + this.height >= nextBlock.position.y - 10 &&
                 this.position.y < nextBlock.position.y){
                 count = i;
                 break;
             }
         }
 
-        if(count < arrayBlocchi.length) {
-            // TO DO: UNLOCK FROM THE COLLISION
+        if(count < arrayBlocchi.length && rispostaGiusta == false) {
             posizioneAtterraggioY = nextBlock.position.y - nextBlock.height;
             posizioneAtterraggioX = nextBlock.position.x + nextBlock.width / 2 - this.width/2;
             //cade al centro del blocco
             this.position.y = posizioneAtterraggioY;
             this.position.x = posizioneAtterraggioX;
-            this.checkedCollision(nextBlock);
-            
+            this.checkedCollision(nextBlock);            
         }
     }
 
@@ -89,7 +89,16 @@ class Player {
             this.position.x += 0;
         }
 
-        this.position.y -= voy*deltaTime;      
+        this.position.y -= voy*deltaTime;  
+        
+        let deltaDistance = Math.sqrt(xDistance*xDistance + yDistance*yDistance);
+        
+        // CONTROLLA CHE LA DISTANZA DEL PLAYER DAL BLOCCO SIA INFERIORE A deltaPixel
+        // e setta rispostaGiusta = false ---> 1 - permette la collisione 2 - ferma la gravità (da sistemare)
+        if (deltaDistance < deltaPixel) {
+            rispostaGiusta = false;
+            console.log(rispostaGiusta)
+        }
         
     }
     

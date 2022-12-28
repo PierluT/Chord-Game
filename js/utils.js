@@ -1,16 +1,17 @@
 //variabili per gestione salto automatico
 let posizioneAtterraggioX;
 let posizioneAtterraggioY;
-const V0X_MAX = 1; // initial velocity (m/s)
+const V0X_MAX = 1.1; // initial velocity (m/s)
 const V0Y_MAX = 1;
 const g = 9.81;
-//time steps
-const deltaPixel = 1;
-let t;
+
+// threshold per la distanza tra il player e il nextblock
+const deltaPixel = 38;
+
 let deltaTime;
 
-let deltaDistance;
-let move_threshold = 10;
+// threshold per i movimenti su asse x in automatic jump
+const move_threshold = 5;
 
 
 
