@@ -24,6 +24,8 @@ let primaNota = false
 let gameOver = false
 let rispostaGiusta = false
 
+let vox_MODIFIER;
+
 //funzione di collisione tra èlayer e blocco
 
 const player = new Player({
@@ -77,7 +79,7 @@ function animate (timestamp) {
     //stampa dell'array aggiornato nel quale ho solamente i blocchi visibili nel canvas.
     //console.log(chordBlockArray)
     if(rispostaGiusta){
-        player.automaticJump()
+        player.automaticJump(vox_MODIFIER, V0Y_MAX)
     }
 
     //se tengo premuto continua ad andarea destra,altrimenti si stoppa 
@@ -110,11 +112,17 @@ window.addEventListener('keydown', (event) =>{
                 break
         case 'l':
             // TO DO: CALCOLA LA DISTANZA DAL NEXT BLOCK OGNI VOLTA CHE LA RISPOSTA E' ESATTA
-                // player.computeNextBlockDistance
+                let nextBlockPosition = player.computeNextBlockDistance();
+
+                let nextBlockX = nextBlockPosition.xDestinationNextBlock;
+
+                let xDistance = nextBlockX - player.position.x;
+
+                vox_MODIFIER = V0X_MAX*xDistance/canvas.width;
+
                 rispostaGiusta = !rispostaGiusta
                 console.log(rispostaGiusta)
-                break
-            
+                break            
     }
 })
 

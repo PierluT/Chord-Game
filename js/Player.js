@@ -68,33 +68,28 @@ class Player {
         nextBlock.disappearChord();
     }
 
-    automaticJump(){ 
+    automaticJump(vox, voy){ 
 
         let nextBlockPosition = this.computeNextBlockDistance();
 
         let nextBlockX = nextBlockPosition.xDestinationNextBlock;
         let nextBlockY = nextBlockPosition.yDestinationNextBlock;
-
-        console.log(deltaX)
         
         //calcolo le distanze tra partenza e arrivo
-        xDistance = nextBlockX - this.position.x;
-        yDistance = nextBlockY - this.position.y;
+        let xDistance = nextBlockX - this.position.x;
+        let yDistance = nextBlockY - this.position.y;
 
-        //equazioni del moto
+        // equazioni del moto
         // deltaTime = 16  
         // TO DO: v0x dovrebbe dipendere dalla distanza tra player e nextblock
-        if(xDistance > move_threshold){
-            this.position.x += v0x*deltaTime;
+        if(Math.abs(xDistance) > move_threshold){
+            this.position.x += vox*deltaTime;
         } 
-        else if(xDistance < -move_threshold){
-            this.position.x -= v0x*deltaTime;
-        }
         else if(Math.abs(xDistance) <= move_threshold){
             this.position.x += 0;
         }
 
-        this.position.y -= v0y*deltaTime;      
+        this.position.y -= voy*deltaTime;      
         
     }
     
