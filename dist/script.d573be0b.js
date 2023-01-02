@@ -118,79 +118,48 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"js/script.js":[function(require,module,exports) {
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-var canvas = document.querySelector('canvas');
+//import { Player } from "player.js";
+var canvas = document.getElementById('gameSet');
 var c = canvas.getContext('2d');
 canvas.width = 1024;
-canvas.height = 576;
+canvas.height = 750;
 var gravity = 0.5;
-var Sprite = /*#__PURE__*/function () {
-  function Sprite(_ref) {
-    var position = _ref.position,
-      imageSrc = _ref.imageSrc;
-    _classCallCheck(this, Sprite);
-    this.position = position;
-    this.image = new Image();
-    this.image.src = imageSrc;
-  }
-  _createClass(Sprite, [{
-    key: "draw",
-    value: function draw() {
-      if (!this.image) return;
-      c.drawImage(this.image, this.position.x, this.position.y);
-    }
-  }, {
-    key: "update",
-    value: function update() {
-      this.draw();
-    }
-  }]);
-  return Sprite;
-}();
-var Player = /*#__PURE__*/function () {
-  //proprietà del giocatore
-  function Player(position) {
-    _classCallCheck(this, Player);
-    this.position = position;
-    //velocità di caduta per simulazione gravità
-    this.velocity = {
-      x: 0,
-      y: 1
-    };
-    this.height = 100;
-  }
-  _createClass(Player, [{
-    key: "draw",
-    value: function draw() {
-      c.fillStyle = 'red';
-      c.fillRect(this.position.x, this.position.y, 100, this.height);
-    }
 
-    //metodo per modificare le coordinate
-  }, {
-    key: "update",
-    value: function update() {
-      this.position.x += this.velocity.x;
-      this.position.y += this.velocity.y;
-      if (this.position.y + this.height + this.velocity.y < canvas.height) {
-        this.velocity.y += gravity;
-      } else {
-        this.velocity.y = 0;
-      }
-    }
-  }]);
-  return Player;
-}();
+//const colorGreen = 'rgba(75,192,192,1)';
+c.font = "italic bolder 50px Arial";
+//array provvisorio con elenco sigle accordi
+var chordSignature = "Ab7";
+//larghezza testo
+var textWidth = c.measureText(chordSignature).width;
+var scrImages = ['img/assets/block1_cut.png', 'img/assets/block2_cut.png'];
+//blocchi che verranno disegnati dopo 
+var chordBlockArray = [];
+var timeToNextBlock = 0;
+//variabile che andremo a modificare con il knob della MIDI, ora è impostato a 4 sceondi
+var blockInterval = 4000;
+var lastBlockTime = 0;
+var primaNota = false;
+var gameOver = false;
+var rispostaGiusta = false;
+var vox_MODIFIER;
 var player = new Player({
-  x: 0,
+  x: 450,
   y: 0
 });
-var player2 = new Player({
-  x: 300,
-  y: 100
-});
+
+//blocchi di partenza
+var block1 = new collisionBlock();
+block1.position.x = 100;
+block1.position.y = 100;
+var block2 = new collisionBlock();
+block2.position.x = 700;
+block2.position.y = 300;
+var block3 = new collisionBlock();
+block3.position.x = 100;
+block3.position.y = 500;
+chordBlockArray.push(block3);
+chordBlockArray.push(block2);
+chordBlockArray.push(block1);
 
 //saranno le nostre giusto e sbagliato
 var keys = {
@@ -201,38 +170,47 @@ var keys = {
     pressed: false
   }
 };
-var background = new Sprite({
-  position: {
-    x: 0,
-    y: 0
-  },
-  imageSrc: './img/B2.png'
-});
-function animate() {
-  //richiama ogni volta la funzione
-  window.requestAnimationFrame(animate);
-  c.fillStyle = 'white';
-  c.fillRect(0, 0, canvas.width, canvas.height);
-  background.update();
-  //player.draw()
+//il timestamp mi serve per controllare il refresh automatico della animate.
+function animate(timestamp) {
+  c.clearRect(0, 0, canvas.width, canvas.height);
+  deltaTime = timestamp - lastBlockTime;
+  lastBlockTime = timestamp;
+  timeToNextBlock += deltaTime;
+  //giocatore
   player.update();
-  player2.update();
-  player2.draw();
+  if (primaNota == true && timeToNextBlock > blockInterval) {
+    chordBlockArray.push(new collisionBlock());
+    timeToNextBlock = 0;
+  }
+  ;
+  [].concat(chordBlockArray).forEach(function (block) {
+    return block.draw();
+  });
+  [].concat(chordBlockArray).forEach(function (block) {
+    return block.update();
+  });
+  player.chechForVerticalCollision(chordBlockArray);
+  //stampa dell'array aggiornato nel quale ho solamente i blocchi visibili nel canvas.
+  //console.log(chordBlockArray)
+  if (rispostaGiusta) {
+    player.automaticJump(vox_MODIFIER, V0Y_MAX);
+  }
 
   //se tengo premuto continua ad andarea destra,altrimenti si stoppa 
   //perchè la velocità viene risettata a 0
   player.velocity.x = 0;
   if (keys.d.pressed) {
-    player.velocity.x = 4;
+    player.velocity.x = 1;
   } else if (keys.a.pressed) {
-    player.velocity.x = -4;
+    player.velocity.x = -1;
   }
+  //richiama ogni volta la funzione
+  window.requestAnimationFrame(animate);
 }
-animate();
-
+animate(0);
 //in base a ciò che premo nella tastiera
 window.addEventListener('keydown', function (event) {
-  console.log(event);
+  primaNota = true;
 
   //Al posto delle lettere ci andranno le risposte esatte o sbagliate
   switch (event.key) {
@@ -243,14 +221,21 @@ window.addEventListener('keydown', function (event) {
       keys.a.pressed = true;
       break;
     case 'w':
-      player.velocity.y = -15;
+      player.velocity.y = -20;
+      break;
+    case 'l':
+      var nextBlockPosition = player.computeNextBlockDistance();
+      var nextBlockX = nextBlockPosition.xDestinationNextBlock;
+      var xDistance = nextBlockX - player.position.x;
+      vox_MODIFIER = V0X_MAX * (xDistance / canvas.width);
+      rispostaGiusta = true;
+      console.log(rispostaGiusta);
       break;
   }
 });
+
 //per aggiornare lo status delle keys
 window.addEventListener('keyup', function (event) {
-  console.log(event);
-
   //Al posto delle lettere ci andranno le risposte esatte o sbagliate
   switch (event.key) {
     case 'd':
@@ -260,7 +245,7 @@ window.addEventListener('keyup', function (event) {
       keys.a.pressed = false;
       break;
     case 'w':
-      player.velocity.y = -15;
+      player.velocity.y = -10;
       break;
   }
 });
@@ -289,7 +274,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62526" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59541" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

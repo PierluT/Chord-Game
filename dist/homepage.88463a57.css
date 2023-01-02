@@ -1,0 +1,156 @@
+
+@import url(https://fonts.googleapis.com/css?family=Bungee+Shade);
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+
+/*-- general settings --*/
+p{
+    font-size: 2em;
+    font-family: "Press Start 2P";
+}
+
+body{
+    background: black;
+}
+
+/*-- header options --*/
+header{
+    text-align: center;
+}
+
+h1{
+    background: wheat;
+    font-size: 6em;
+    padding-top: 10px;
+    color: darkgreen;
+    font-family: "Press Start 2P";
+    text-shadow: 2px 2px 4px black;
+    box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
+    background-image: url("/note.7e3c322c.png");
+    background-repeat: no-repeat;
+    background-size: 10%;
+
+}
+
+
+h2{
+    color: blanchedalmond;
+    font-size: 1.4em;
+    font-family: "Press Start 2P";
+    margin-bottom: 10px;
+    animation-name: selection;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes selection {
+    25%  {color:red; font-size: 1.9em;}
+    50%  {color:blue; fot-size: 2em;  transform: rotate(-5deg);}
+    75%  {color:green; font-size: 2.2em;   transform: rotate(5deg);}
+    100% {color: blanchedalmond; font-size: 1.4em;}
+}
+
+
+/*-- selection section options --*/
+#menu{
+    padding-top: 50px;
+}
+
+
+.player_box{
+    background: darkred;
+    width: 50%;
+    margin-top: 1px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    float: left;
+}
+
+.player_box:hover{
+    box-shadow: rgb(121, 0, 0) 10px 30px 60px -12px inset, rgba(255, 255, 255, 0.94) 0px 18px 36px -18px inset;
+    cursor: pointer;
+}
+
+.right{
+    display: inline-block;
+    left: 50%;
+}
+
+.png{
+    width: 500px;
+    height: 500px;
+    margin-left: 100px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#mozart{
+    background-image: url("/mozart_frontalesx_1.402c2455.png");
+    animation-name: mozart;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes mozart {
+    5% {background-image: url("/mozart_frontalesx_2.1dbc995a.png");}
+    10% {background-image: url("/mozart_frontalesx_3.8f65834a.png");}
+    15% {background-image: url("/mozart_frontalesx_4.aa030403.png");}
+    20% {background-image: url("/mozart_frontalesx_5.ebf01bad.png");}
+    25% {background-image: url("/mozart_frontalesx_6.d227b2eb.png");}
+    30% {background-image: url("/mozart_frontalesx_7.b0c19bc1.png");}
+    35% {background-image: url("/mozart_frontalesx_8.ff41daac.png");}
+    40% {background-image: url("/mozart_frontalesx_9.b27cb1cb.png");}
+    45% {background-image: url("/mozart_frontalesx_10.ea75f38a.png");}
+    50% {background-image: url("/mozart_frontalesx_11.c1aa2875.png"); width: 530px; height: 530px}
+    55% {background-image: url("/mozart_frontalesx_12.4f688b71.png");}
+    60% {background-image: url("/mozart_frontalesx_13.9d87241f.png");}
+    65% {background-image: url("/mozart_frontalesx_14.06bab539.png");}
+    70% {background-image: url("/mozart_frontalesx_15.895b9167.png");}
+
+}
+
+
+#beethoven{
+    background-image: url("/beethoven_front_dx_1.5363839d.png");
+    animation-name: beethoven;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes beethoven {
+    5% {background-image: url("/beethoven_front_dx_2.6e36f50c.png");}
+    10% {background-image: url("/beethoven_front_dx_3.a8613199.png");}
+    15% {background-image: url("/beethoven_front_dx_4.702058e4.png");}
+    20% {background-image: url("/beethoven_front_dx_5.be6d5b78.png");}
+    25% {background-image: url("/beethoven_front_dx_6.84595b7a.png");}
+    30% {background-image: url("/beethoven_front_dx_7.7939e8b7.png");}
+    35% {background-image: url("/beethoven_front_dx_8.d85f1756.png");}
+    40% {background-image: url("/beethoven_front_dx_9.0980b6e2.png");}
+    45% {background-image: url("/beethoven_front_dx_10.a9c8d4e5.png");}
+    50% {background-image: url("/beethoven_front_dx_11.e62776ce.png"); width: 530px; height: 530px}
+    55% {background-image: url("/beethoven_front_dx_12.bc3fb02c.png");}
+    60% {background-image: url("/beethoven_front_dx_13.84f14af4.png");}
+    65% {background-image: url("/beethoven_front_dx_14.d24e2dba.png");}
+    70% {background-image: url("/beethoven_front_dx_15.e667072a.png");}
+    75% {background-image: url("/beethoven_front_dx_16.39276860.png");}
+    80% {background-image: url("/beethoven_front_dx_17.8765a650.png");}
+
+}
+
+/*-- bottom section --*/
+bottom{
+    float:left;
+}
+
+.name{
+    float: left;
+    color: white;
+    font-size: 3em;
+    padding-left: 200px;
+}
+
+.name:hover{
+    cursor: pointer;
+    text-shadow: 2px 2px 2px lightgoldenrodyellow;
+    font-size: 3.1em;
+}
+
+/*# sourceMappingURL=/homepage.88463a57.css.map */

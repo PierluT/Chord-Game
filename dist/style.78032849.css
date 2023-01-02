@@ -1,0 +1,15 @@
+body{
+    background-color: black;
+}
+
+canvas {
+    display: none;
+    position: absolute;
+    top : 0;
+    left: 0;
+    background-color: aliceblue;
+}
+
+
+
+/*# sourceMappingURL=/style.78032849.css.map */
