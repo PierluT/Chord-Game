@@ -1,3 +1,5 @@
+let choosenAvatar = "";
+let choosenMode= "";
 //variabili per gestione salto automatico
 let posizioneAtterraggioX;
 let posizioneAtterraggioY;
