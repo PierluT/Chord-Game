@@ -1,5 +1,6 @@
 let choosenAvatar = "";
 let choosenMode= "";
+let composerToAnimate = "";
 //variabili per gestione salto automatico
 let posizioneAtterraggioX;
 let posizioneAtterraggioY;
