@@ -1,5 +1,5 @@
 
-class Player {
+ class Player {
     //proprietà del giocatore
     constructor(position){
         this.image = new Image();

@@ -1,3 +1,4 @@
+//import { Player } from "player.js";
 const canvas = document.getElementById('gameSet');
 const c = canvas.getContext('2d');
 
@@ -25,8 +26,6 @@ let gameOver = false
 let rispostaGiusta = false
 
 let vox_MODIFIER;
-
-//funzione di collisione tra èlayer e blocco
 
 const player = new Player({
     x: 450,

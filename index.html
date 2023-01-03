@@ -2,37 +2,49 @@
 <html>
     <head> 
           <link rel = "stylesheet" href = "/css/style.css">
-          <link rel = "stylesheet" href = "/css/homepage.css">
+          <link rel = "stylesheet" href = "/css/homepage.css"> 
           <script src="https://cdn.jsdelivr.net/npm/tonal/browser/tonal.min.js"></script>
     </head>
         <body>
-            <!-- marco gestione pagina iniziale -->
            <div id="schermataIniziale">
-
-     
             <header>
                 <h1>THE CHORD GAME</h1>
-                <h2>SELECT YOUR COMPOSER</h2>
-            </header>
-            <section id="menu">
-                <div class="player_box">
-                    <div class='png' id="beethoven"></div>
+                <div id="choices">
+                    <h2 class="avatarChoice">SELECT YOUR AVATAR</h2>
+                    <h2 class="modeChoice">SELECT MODALITY GAME</h2>
                 </div>
-                <div class="player_box right">
-                    <div class='png' id="mozart"></div>
+               
+            </header>
+            <section id="avatarMenu">
+                <div class="player_box_beethoven">
+                    <div class='png' id="beethoven" ></div>
+                    <p class="name" >BEETHOVEN</p>
+                </div>
+                <div class="player_box_mozart">
+                    <div class='png' id="mozart" ></div>
+                    <p class="name" >MOZART</p>
+                </div>
+                <div id="readMode">
+                   <h2 class="earString">READ</h2> 
+                   <h3 class="description">You have to play with the MIDI the chord you listen.</h3>
+                </div>        
+                <div id="listenMode">
+                    <h2 class="earString">LISTEN</h2> 
+                    <h3 class="description">You have to play with the MIDI the chord you read above the block.</h3>
                 </div>
             </section>
-            <bottom>
-                        <p class="name" onclick="replace()">BEETHOVEN</p>
-                        <p class="name" onclick="replace()">MOZART</p>
-            </bottom>
-        </div> 
-              <canvas id="gameSet"></canvas>
+            <button id="playButton" onclick="replace()">PLAY</button>
+         </div> 
+            <div id="schermataGioco">
+                <canvas id="gameSet"></canvas>
+                <img id="avatarScelto">
+            </div>   
         </body>
     
-    <script  src = "js/collisionBlock.js"></script>
-    <script  src = "js/Player.js" ></script>
     <script  src = "js/utils.js" ></script>
-    <script  src = "js/script.js" ></script>
     <script  src = "js/logic.js" ></script>
+    <script  src = "js/Player.js" ></script>
+    <script  src = "js/collisionBlock.js"></script>
+    <script  src = "js/script.js" ></script> 
+    
 </html>

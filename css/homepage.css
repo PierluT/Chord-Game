@@ -9,146 +9,273 @@ p{
 }
 
 body{
-    background: black;
+    background: rgb(39, 38, 38);
 }
 
-/*-- header options --*/
-header{
-    text-align: center;
+#schermataIniziale{
+    justify-content:left;
 }
 
 h1{
-    background: wheat;
-    font-size: 6em;
+    font-size: 4em;
     padding-top: 10px;
-    color: darkgreen;
+    padding: 5px;
+    color: white;
     font-family: "Press Start 2P";
-    text-shadow: 2px 2px 4px black;
-    box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
-    background-image: url("/plot/note.png");
-    background-repeat: no-repeat;
-    background-size: 10%;
-
+    text-align: center;
 }
-
 
 h2{
     color: blanchedalmond;
     font-size: 1.4em;
     font-family: "Press Start 2P";
-    margin-bottom: 10px;
-    animation-name: selection;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
+}
+#choices {
+    margin-bottom: 30px;
+    margin-top: 10px;
+    display: flex;
+
 }
 
-@keyframes selection {
-    25%  {color:red; font-size: 1.9em;}
-    50%  {color:blue; fot-size: 2em;  transform: rotate(-5deg);}
-    75%  {color:green; font-size: 2.2em;   transform: rotate(5deg);}
-    100% {color: blanchedalmond; font-size: 1.4em;}
+.avatarChoice {
+    width: auto;
+    margin-left: 100px;
 }
 
-
-/*-- selection section options --*/
-#menu{
-    padding-top: 50px;
+.modeChoice {
+    width: auto;
+    margin-right: 100px;
+    margin-left: 400px;
 }
 
-
-.player_box{
-    background: darkred;
-    width: 50%;
-    margin-top: 1px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-    float: left;
-}
-
-.player_box:hover{
-    box-shadow: rgb(121, 0, 0) 10px 30px 60px -12px inset, rgba(255, 255, 255, 0.94) 0px 18px 36px -18px inset;
-    cursor: pointer;
-}
-
-.right{
-    display: inline-block;
-    left: 50%;
+#avatarMenu{
+    display: flex;
+    width: fit-content;
 }
 
 .png{
-    width: 500px;
-    height: 500px;
-    margin-left: 100px;
-    background-repeat: no-repeat;
-    background-size: 100%;
+    width: 300px;
+    height: 250px;
+    margin-left: 50px;
+    background-color:  rgb(53, 121, 146);
+    border-radius:50px;
 }
 
 #mozart{
-    background-image: url("/plot/mozart-frontale-sx/mozart_frontalesx_1.png");
     animation-name: mozart;
     animation-duration: 2s;
     animation-iteration-count: infinite;
 }
 
+
 @keyframes mozart {
-    5% {background-image: url("/plot/mozart-frontale-sx/mozart_frontalesx_2.png");}
-    10% {background-image: url("/plot/mozart-frontale-sx/mozart_frontalesx_3.png");}
-    15% {background-image: url("/plot/mozart-frontale-sx/mozart_frontalesx_4.png");}
-    20% {background-image: url("/plot/mozart-frontale-sx/mozart_frontalesx_5.png");}
-    25% {background-image: url("/plot/mozart-frontale-sx/mozart_frontalesx_6.png");}
-    30% {background-image: url("/plot/mozart-frontale-sx/mozart_frontalesx_7.png");}
-    35% {background-image: url("/plot/mozart-frontale-sx/mozart_frontalesx_8.png");}
-    40% {background-image: url("/plot/mozart-frontale-sx/mozart_frontalesx_9.png");}
-    45% {background-image: url("/plot/mozart-frontale-sx/mozart_frontalesx_10.png");}
-    50% {background-image: url("/plot/mozart-frontale-sx/mozart_frontalesx_11.png"); width: 530px; height: 530px}
-    55% {background-image: url("/plot/mozart-frontale-sx/mozart_frontalesx_12.png");}
-    60% {background-image: url("/plot/mozart-frontale-sx/mozart_frontalesx_13.png");}
-    65% {background-image: url("/plot/mozart-frontale-sx/mozart_frontalesx_14.png");}
-    70% {background-image: url("/plot/mozart-frontale-sx/mozart_frontalesx_15.png");}
+    0% {
+      content: url("/plot/mozart-frontale-sx/mozart_frontalesx_1.png");
+    }
+    7.14% {
+      content: url("/plot/mozart-frontale-sx/mozart_frontalesx_2.png");
+    }
+    14.29% {
+      content: url("/plot/mozart-frontale-sx/mozart_frontalesx_3.png");
+    }
+    21.43% {
+      content: url("/plot/mozart-frontale-sx/mozart_frontalesx_4.png");
+    }
+    28.57% {
+      content: url("/plot/mozart-frontale-sx/mozart_frontalesx_5.png");
+    }
+    35.71% {
+      content: url("/plot/mozart-frontale-sx/mozart_frontalesx_6.png");
+    }
+    42.86% {
+      content: url("/plot/mozart-frontale-sx/mozart_frontalesx_7.png");
+    }
+    50% {
+      content: url("/plot/mozart-frontale-sx/mozart_frontalesx_8.png");
+    }
+    57.14% {
+      content: url("/plot/mozart-frontale-sx/mozart_frontalesx_9.png");
+    }
+    64.29% {
+      content: url("/plot/mozart-frontale-sx/mozart_frontalesx_10.png");
+    }
+    71.43% {
+      content: url("/plot/mozart-frontale-sx/mozart_frontalesx_11.png");
+    }
+    78.57% {
+      content: url("/plot/mozart-frontale-sx/mozart_frontalesx_12.png");
+    }
+    85.71% {
+      content: url("/plot/mozart-frontale-sx/mozart_frontalesx_13.png");
+    }
+    92.86% {
+      content: url("/plot/mozart-frontale-sx/mozart_frontalesx_14.png");
+    }
+    100% {
+      content: url("/plot/mozart-frontale-sx/mozart_frontalesx_15.png");
+    }
+  }
+  
+  .player_box_mozart {
+    transform: scale(1);
+  }
+  
+  .player_box_mozart:hover {
+    transform: scale(1.3);
+  }
 
-}
-
+  #mozart:active, #mozart:focus {
+    border:  5px solid rgb(132, 222, 13);
+  }
 
 #beethoven{
-    background-image: url("/plot/beethoven_front_dx_1.png");
     animation-name: beethoven;
     animation-duration: 2s;
     animation-iteration-count: infinite;
 }
 
 @keyframes beethoven {
-    5% {background-image: url("/plot/beethoven-frontale-dx/beethoven_front_dx_2.png");}
-    10% {background-image: url("/plot/beethoven-frontale-dx/beethoven_front_dx_3.png");}
-    15% {background-image: url("/plot/beethoven-frontale-dx/beethoven_front_dx_4.png");}
-    20% {background-image: url("/plot/beethoven-frontale-dx/beethoven_front_dx_5.png");}
-    25% {background-image: url("/plot/beethoven-frontale-dx/beethoven_front_dx_6.png");}
-    30% {background-image: url("/plot/beethoven-frontale-dx/beethoven_front_dx_7.png");}
-    35% {background-image: url("/plot/beethoven-frontale-dx/beethoven_front_dx_8.png");}
-    40% {background-image: url("/plot/beethoven-frontale-dx/beethoven_front_dx_9.png");}
-    45% {background-image: url("/plot/beethoven-frontale-dx/beethoven_front_dx_10.png");}
-    50% {background-image: url("/plot/beethoven-frontale-dx/beethoven_front_dx_11.png"); width: 530px; height: 530px}
-    55% {background-image: url("/plot/beethoven-frontale-dx/beethoven_front_dx_12.png");}
-    60% {background-image: url("/plot/beethoven-frontale-dx/beethoven_front_dx_13.png");}
-    65% {background-image: url("/plot/beethoven-frontale-dx/beethoven_front_dx_14.png");}
-    70% {background-image: url("/plot/beethoven-frontale-dx/beethoven_front_dx_15.png");}
-    75% {background-image: url("/plot/beethoven-frontale-dx/beethoven_front_dx_16.png");}
-    80% {background-image: url("/plot/beethoven-frontale-dx/beethoven_front_dx_17.png");}
-
+    0% {
+      content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_1.png");
+    }
+    5.88% {
+      content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_2.png");
+    }
+    11.76% {
+      content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_3.png");
+    }
+    17.65% {
+      content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_4.png");
+    }
+    23.53% {
+      content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_5.png");
+    }
+    29.41% {
+      content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_6.png");
+    }
+    35.29% {
+      content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_7.png");
+    }
+    41.18% {
+      content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_8.png");
+    }
+    47.06% {
+      content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_9.png");
+    }
+    52.94% {
+      content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_10.png");
+    }
+    58.82% {
+      content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_11.png");
+    }
+    64.71% {
+      content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_12.png");
+      }
+    70.59% {
+      content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_13.png");
+      }
+    76.47% {
+        content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_14.png");
+      }
+    82.35% {
+        content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_15.png");
+      }
+    88.24% {
+        content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_16.png");
+      }
+    100% {
+        content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_17.png");
+      }
 }
 
-/*-- bottom section --*/
-bottom{
-    float:left;
-}
+ .player_box_beethoven {
+    transform: scale(1);
+  }
+  
+  .player_box_beethoven:hover {
+    transform: scale(1.3);
+  }
+
+  #beethoven:active, #beethoven:focus {
+    border:  5px solid rgb(132, 222, 13);
+  }
+
 
 .name{
-    float: left;
+    float: inherit;
     color: white;
-    font-size: 3em;
-    padding-left: 200px;
+    font-size: 1.3em;
+    padding-left: 47px;
+    text-align: center;
 }
 
-.name:hover{
-    cursor: pointer;
-    text-shadow: 2px 2px 2px lightgoldenrodyellow;
-    font-size: 3.1em;
+#readMode{
+    width: 300px;
+    height: 250px;
+    background-color:  rgb(196, 97, 36);
+    margin-left: 150px;
+    border-radius:50px;
+}
+
+#readMode {
+    transform: scale(1);
+  }
+  
+  #readMode:hover {
+    transform: scale(1.3);
+  }
+
+  #readMode:active, #readMode:focus {
+    border:  5px solid rgb(132, 222, 13);
+  }
+
+#listenMode{
+    width: 300px;
+    height: 250px;
+    background-color: rgb(196, 97, 36);
+    margin-left: 50px;
+    border-radius:50px;
+}
+
+#listenMode {
+    transform: scale(1);
+  }
+  
+  #listenMode:hover {
+    transform: scale(1.3);
+  }
+
+  #listenMode:active, #listenMode:focus {
+    border:  5px solid rgb(132, 222, 13);
+  }
+
+
+.earString{
+    font-family: "Press Start 2P";
+    text-align: center;
+    font-size: 1.9em;
+}
+
+.description{
+    font-family: "Press Start 2P";
+    text-align: center;
+    color: blanchedalmond;
+    font-size: 0.9em;
+    line-height: 2.3em;
+}
+
+#playButton{
+    width: 300px;
+    height: 100px;
+    margin-left: 630px;
+    margin-top: 50px;
+    font-size: 2em;
+    font-family: "Press Start 2P";
+    color: white;
+    background-color: rgb(7, 25, 124);
+    border-radius:50px;
+    
+}
+#schermataGioco{
+    display: none;
 }
