@@ -1,0 +1,23 @@
+{
+  "name": "chord-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "/js/script.js",
+  "scripts": {
+    "dev": "index.html",
+    "prod": "index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PierluT/Chord-Game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PierluT/Chord-Game/issues"
+  },
+  "homepage": "https://github.com/PierluT/Chord-Game#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
+}
