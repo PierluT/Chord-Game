@@ -118,19 +118,9 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"js/utils.js":[function(require,module,exports) {
-//variabili per gestione salto automatico
-var posizioneAtterraggioX;
-var posizioneAtterraggioY;
-var V0X_MAX = 1.1; // initial velocity (m/s)
-var V0Y_MAX = 1;
-var g = 9.81;
 
-// threshold per la distanza tra il player e il nextblock
-var deltaPixel = 38;
-var deltaTime;
 
-// threshold per i movimenti su asse x in automatic jump
-var move_threshold = 5;
+//const g = 9.81;
 },{}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -156,7 +146,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59541" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54218" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

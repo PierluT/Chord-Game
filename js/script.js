@@ -1,5 +1,7 @@
-const canvas = document.getElementById('gameSet');
-const c = canvas.getContext('2d');
+import {Player} from './Player.js'
+import { collisionBlock} from './collisionBlock.js'
+export const canvas = document.getElementById('gameSet');
+export const c = canvas.getContext('2d');
 
 canvas.width = 1024
 canvas.height = 750
@@ -7,29 +9,34 @@ canvas.height = 750
 const gravity = 0.5
 
 // TEST TONAL.JS
-//import { Chord } from "tonal";
-//console.log(Chord.get("Cadd9"));
+import { Chord } from "tonal";
+console.log(Chord.get("Cadd9"));
 
 
 //const colorGreen = 'rgba(75,192,192,1)';
 c.font = "italic bolder 50px Arial";
 //array provvisorio con elenco sigle accordi
-var chordSignature = "Ab7";
+export var chordSignature = "C";
 //larghezza testo
-const textWidth = c.measureText(chordSignature).width;
-const scrImages = ['img/assets/block1_cut.png','img/assets/block2_cut.png'];
+export const textWidth = c.measureText(chordSignature).width;
+export const scrImages = ['img/assets/block1_cut.png','img/assets/block2_cut.png'];
+
 //blocchi che verranno disegnati dopo 
-var chordBlockArray = [];
+export var chordBlockArray = [];
 
 let timeToNextBlock = 0;
 //variabile che andremo a modificare con il knob della MIDI, ora è impostato a 4 sceondi
 let blockInterval= 4000;
 let lastBlockTime = 0;
-let primaNota = false
+export let primaNota = false
 let gameOver = false
-let rispostaGiusta = false
+export let rispostaGiusta = false
+
+const V0X_MAX = 1.1; // initial velocity (m/s)
+const V0Y_MAX = 1;
 
 let vox_MODIFIER;
+let deltaTime;
 
 const player = new Player({
     x: 450,
@@ -142,7 +149,5 @@ window.addEventListener('keyup', (event) =>{
         case 'w':
                 player.velocity.y = -10
                 break
-       
-
     }
 })

@@ -118,9 +118,50 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"js/logic.js":[function(require,module,exports) {
+var choosenAvatar = "";
+var choosenMode = "";
+var composerToAnimate = "";
+var clickedButton = document.getElementById('playButton');
+// Seleziona i div
+var mozart = document.querySelector('#mozart');
+var beethoven = document.querySelector('#beethoven');
+// Seleziona l'elemento
+var composerAnimation = document.querySelector('#avatarScelto');
+// Aggiungi l'animation-name 'myAnimation' all'elemento
+composerAnimation.style.animationName = composerToAnimate;
+var readChoosenMode = document.querySelector('#readMode');
+var listenChoosenMode = document.querySelector('#listenMode');
+mozart.addEventListener('click', function () {
+  composerAnimation.style.animationName = 'mozart';
+  choosenAvatar = 'mozart';
+  srcPlayer = 'mozart';
+  console.log(choosenAvatar);
+});
+beethoven.addEventListener('click', function () {
+  composerAnimation.style.animationName = 'beethoven';
+  composerToAnimate = 'beethoven';
+  choosenAvatar = 'beethoven';
+  srcPlayer = 'beethoven';
+  console.log(choosenAvatar);
+});
+readChoosenMode.addEventListener('click', function () {
+  choosenMode = 'read';
+});
+listenChoosenMode.addEventListener('click', function () {
+  choosenMode = 'listen';
+});
+clickedButton.onclick = replace;
 function replace() {
-  document.getElementById("schermataIniziale").style.display = "none";
-  document.getElementById("gameSet").style.display = "inline";
+  if (choosenMode == "" || choosenAvatar == "") {
+    alert("Choose a character and a modality.");
+    choosenMode = "";
+    choosenAvatar = "";
+    composerToAnimate = "";
+    //srcPlayer = "";
+  } else {
+    document.getElementById("schermataIniziale").style.display = "none";
+    document.getElementById("schermataGioco").style.display = "inline";
+  }
 }
 },{}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -147,7 +188,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59541" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55329" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

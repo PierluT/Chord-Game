@@ -1,4 +1,7 @@
-
+let choosenAvatar = "";
+let choosenMode= "";
+let composerToAnimate = "";
+let clickedButton = document.getElementById('playButton');
 // Seleziona i div
 var mozart = document.querySelector('#mozart');
 var beethoven = document.querySelector('#beethoven');
@@ -14,6 +17,7 @@ var listenChoosenMode = document.querySelector('#listenMode');
 mozart.addEventListener('click', function() {
   composerAnimation.style.animationName = 'mozart';
   choosenAvatar = 'mozart';
+  srcPlayer = 'mozart';
   console.log(choosenAvatar)
 });
 
@@ -21,6 +25,7 @@ beethoven.addEventListener('click', function() {
   composerAnimation.style.animationName = 'beethoven'; 
   composerToAnimate ='beethoven';
   choosenAvatar = 'beethoven';
+  srcPlayer = 'beethoven';
   console.log(choosenAvatar)
 });
 
@@ -29,16 +34,19 @@ readChoosenMode.addEventListener('click', function(){
 
 })
 
-listenChoosenMode.addEventListener('click',function(){
+listenChoosenMode.addEventListener('click',function() {
     choosenMode = 'listen';
 })
 
-function replace (){
-    if(choosenMode == "" || choosenAvatar == ""){
+clickedButton.onclick = replace;
+
+ function replace () {
+    if(choosenMode == "" || choosenAvatar == "") {
         alert("Choose a character and a modality.")
         choosenMode = "";
         choosenAvatar= "";
         composerToAnimate= "";
+        //srcPlayer = "";
     }else{
         document.getElementById("schermataIniziale").style.display= "none";
         document.getElementById("schermataGioco").style.display = "inline";

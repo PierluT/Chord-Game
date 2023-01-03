@@ -1,9 +1,13 @@
-
- class Player {
+// threshold per la distanza tra il player e il nextblock
+const deltaPixel = 38;
+// threshold per i movimenti su asse x in automatic jump
+const move_threshold = 5;
+import { c,canvas,rispostaGiusta } from "./script.js";
+export class Player {
     //proprietà del giocatore
     constructor(position){
-        this.image = new Image();
-        //this.image.src = ...mozart o beethoven
+        //this.image = new Image();
+        //this.image.src;
         this.position = position
         //velocità di caduta per simulazione gravità
         this.velocity = {
@@ -54,6 +58,9 @@
         }
 
         if(count < arrayBlocchi.length && rispostaGiusta == false) {
+            //variabili per gestione salto automatico
+            let posizioneAtterraggioX;
+            let posizioneAtterraggioY;
             posizioneAtterraggioY = nextBlock.position.y - nextBlock.height;
             posizioneAtterraggioX = nextBlock.position.x + nextBlock.width / 2 - this.width/2;
             //cade al centro del blocco
@@ -110,8 +117,12 @@
     
         return {xDestinationNextBlock, yDestinationNextBlock};
     }
-
-
-         
-    
+    /*
+    selectPlayerAnimation() {
+        if(srcPlayer == 'mozart'){
+            this.image.src = '/img/Mozart/mozart_spritesheet_completo.png';
+        } else 
+        
+    }   
+    */
 }

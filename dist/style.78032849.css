@@ -1,13 +1,16 @@
-body{
-    background-color: black;
-}
-
 canvas {
-    display: none;
     position: absolute;
     top : 0;
     left: 0;
     background-color: aliceblue;
+}
+
+#avatarScelto{
+    position: absolute;
+    top: 90px;
+    right: 50px;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
 }
 
 

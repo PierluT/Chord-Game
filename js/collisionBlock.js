@@ -1,5 +1,5 @@
-
-class collisionBlock {
+import { c,canvas,chordSignature, scrImages,textWidth,primaNota,chordBlockArray } from "./script.js"
+export class collisionBlock {
     //poi la dovrò settare random
     constructor() {
         this.width = 200
@@ -11,7 +11,7 @@ class collisionBlock {
 
         this.velocity= {
             x:0,
-            y:1,
+            y:2,
         }
         //booleano per collisione
         this.markedToCollision = false;
