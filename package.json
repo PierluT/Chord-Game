@@ -19,5 +19,8 @@
   "homepage": "https://github.com/PierluT/Chord-Game#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "tonal": "^4.8.0"
   }
 }

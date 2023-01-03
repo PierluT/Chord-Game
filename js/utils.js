@@ -1,3 +1,4 @@
+
 let choosenAvatar = "";
 let choosenMode= "";
 let composerToAnimate = "";

@@ -1,3 +1,4 @@
+
 class collisionBlock {
     //poi la dovrò settare random
     constructor() {

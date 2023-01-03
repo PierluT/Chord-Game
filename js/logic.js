@@ -1,3 +1,4 @@
+
 // Seleziona i div
 var mozart = document.querySelector('#mozart');
 var beethoven = document.querySelector('#beethoven');

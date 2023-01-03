@@ -1,4 +1,3 @@
-//import { Player } from "player.js";
 const canvas = document.getElementById('gameSet');
 const c = canvas.getContext('2d');
 
@@ -6,6 +5,11 @@ canvas.width = 1024
 canvas.height = 750
 
 const gravity = 0.5
+
+// TEST TONAL.JS
+//import { Chord } from "tonal";
+//console.log(Chord.get("Cadd9"));
+
 
 //const colorGreen = 'rgba(75,192,192,1)';
 c.font = "italic bolder 50px Arial";
