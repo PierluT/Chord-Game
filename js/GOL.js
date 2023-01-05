@@ -1,8 +1,9 @@
+const w = 8;
 class GOL {
     constructor() {
       // Initialize rows, columns and set-up arrays
-      this.columns = this.width / this.w;
-      this.rows = this.height / this.w;
+      this.columns = Math.floor(canvas.width / w);
+      this.rows = Math.floor(canvas.height / w);
       this.board = new Array(this.columns).fill(null).map(() => new Array(this.rows).fill(null));
       // Call function to fill array with random values 0 or 1
       this.init();
@@ -51,11 +52,10 @@ class GOL {
     display() {
       for (let i = 0; i < this.columns; i++) {
         for (let j = 0; j < this.rows; j++) {
-          if (this.board[i][j] === 1) fill(255);
-          else fill(0);
-          //stroke(0);
-          noStroke();
-          rect(i * this.w, j * this.w, this.w, this.w);
+          if (this.board[i][j] === 1) c.fillStyle='#F0F8FF';
+          else c.fillStyle='#87CEEB';
+          
+          c.fillRect(i * w, j * w, w, w);
         }
       }
     }

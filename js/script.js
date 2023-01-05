@@ -80,8 +80,8 @@ function animate (timestamp) {
     lastBlockTime = timestamp;
     timeToNextBlock += deltaTime; 
     // update the Game of Life matrix for this frame
-    //gol.generate();
-    //gol.display();
+    gol.generate();
+    gol.display();
     //giocatore
     player.update()
 
@@ -143,7 +143,7 @@ window.addEventListener('keydown', (event) =>{
                 console.log(rispostaGiusta)
 
                 // initialize the game of life
-                //gol.init()
+                gol.init()
                 break            
     }
 })

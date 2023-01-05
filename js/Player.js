@@ -10,7 +10,7 @@ let frameY = 0;
 let gameFrame = 0;
 let staggerFrame = 5;
 /*import { c,canvas,rispostaGiusta } from "./script.js";*/
- class Player {
+class Player {
     //proprietà del giocatore
     constructor(position){
         this.playerImage = new Image();
