@@ -1,3 +1,5 @@
+//import { teoria as _teoria } from "teoria";
+
 let choosenAvatar = "";
 let choosenMode= "";
 let composerToAnimate = "";
@@ -5,6 +7,7 @@ let clickedButton = document.getElementById('playButton');
 // Seleziona i div
 var mozart = document.querySelector('#mozart');
 var beethoven = document.querySelector('#beethoven');
+
 // Seleziona l'elemento
 var composerAnimation = document.querySelector('#avatarScelto');
 // Aggiungi l'animation-name 'myAnimation' all'elemento
@@ -54,6 +57,7 @@ clickedButton.onclick = replace;
     
     
 }
+
 
 
 

@@ -1,13 +1,20 @@
+
 // threshold per la distanza tra il player e il nextblock
 const deltaPixel = 38;
 // threshold per i movimenti su asse x in automatic jump
 const move_threshold = 5;
-import { c,canvas,rispostaGiusta } from "./script.js";
-export class Player {
+const spriteWidth = 656;
+const spriteHeight = 640;
+let frameX = 20;
+let frameY = 0;
+let gameFrame = 0;
+let staggerFrame = 5;
+/*import { c,canvas,rispostaGiusta } from "./script.js";*/
+ class Player {
     //proprietà del giocatore
     constructor(position){
-        //this.image = new Image();
-        //this.image.src;
+        this.playerImage = new Image();
+        this.playerImage.src ="";
         this.position = position
         //velocità di caduta per simulazione gravità
         this.velocity = {
@@ -20,15 +27,32 @@ export class Player {
     
     draw() {
         c.fillStyle= 'red'
-        c.fillRect(this.position.x,this.position.y,this.width,this.height)
+  
+        //c.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
+        c.drawImage(this.playerImage, frameX * spriteWidth, frameY* spriteHeight, spriteWidth,spriteHeight, this.position.x, this.position.y, this.width,this.height)
     }
+
+    selectPlayerAnimation() {
+
+        switch (choosenAvatar) {
+            case 'mozart':
+                this.playerImage.src = srcPlayerImages[0];
+                break;
+            case 'beethoven':
+                this.playerImage.src = srcPlayerImages[1];
+                break;
+        }
+       
+    }   
 
     //metodo per modificare le coordinate
     update() {
+        this.selectPlayerAnimation()
         this.draw()
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
         this.applyGravity()
+        
 
     }
     
@@ -117,12 +141,9 @@ export class Player {
     
         return {xDestinationNextBlock, yDestinationNextBlock};
     }
-    /*
-    selectPlayerAnimation() {
-        if(srcPlayer == 'mozart'){
-            this.image.src = '/img/Mozart/mozart_spritesheet_completo.png';
-        } else 
-        
-    }   
-    */
+    
+
+    
+    
 }
+

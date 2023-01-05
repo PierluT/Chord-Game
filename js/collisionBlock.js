@@ -1,5 +1,7 @@
+/*
 import { c,canvas,chordSignature, scrImages,textWidth,primaNota,chordBlockArray } from "./script.js"
-export class collisionBlock {
+export */
+class collisionBlock {
     //poi la dovrò settare random
     constructor() {
         this.width = 200
@@ -13,6 +15,7 @@ export class collisionBlock {
             x:0,
             y:2,
         }
+        
         //booleano per collisione
         this.markedToCollision = false;
         this.chord = chordSignature;
