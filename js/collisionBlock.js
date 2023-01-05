@@ -1,6 +1,3 @@
-/*
-import { c,canvas,chordSignature, scrImages,textWidth,primaNota,chordBlockArray } from "./script.js"
-export */
 class collisionBlock {
     //poi la dovrò settare random
     constructor() {
