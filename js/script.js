@@ -3,6 +3,7 @@ import {Player} from './Player.js'
 import { collisionBlock} from './collisionBlock.js'
 
 */
+
 const canvas = document.getElementById('gameSet');
 const c = canvas.getContext('2d');
 canvas.width = 1024
