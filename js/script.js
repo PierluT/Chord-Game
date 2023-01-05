@@ -29,7 +29,7 @@ let gameOver = false
 let rispostaGiusta = false
 
 const V0X_MAX = 1.1; // initial velocity (m/s)
-const V0Y_MAX = 1;
+const V0Y_MAX = 0.8;
 
 let vox_MODIFIER;
 let deltaTime;

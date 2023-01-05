@@ -10,7 +10,7 @@ class collisionBlock {
 
         this.velocity= {
             x:0,
-            y:2,
+            y:1,
         }
         
         //booleano per collisione
