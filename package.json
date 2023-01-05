@@ -22,6 +22,7 @@
     "parcel-bundler": "^1.12.5"
   },
   "dependencies": {
+    "howler": "^2.2.3",
     "teoria": "^2.5.0",
     "tonal": "^4.8.0"
   }
