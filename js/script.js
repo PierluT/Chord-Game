@@ -11,6 +11,10 @@ canvas.height = 750
 
 const gravity = 0.5
 
+// TEST TONAL.JS
+//import { Chord } from "tonal";
+//console.log(Chord.get("Cadd9"));
+
 //const colorGreen = 'rgba(75,192,192,1)';
 c.font = "italic bolder 50px Arial";
 //array provvisorio con elenco sigle accordi
@@ -43,8 +47,6 @@ const player = new Player({
     x: 450,
     y :0,
 })
-
-const gol = new GOL();
 
 //blocchi di partenza
 const block1 = new collisionBlock();
@@ -79,13 +81,8 @@ function animate (timestamp) {
     deltaTime = timestamp - lastBlockTime;
     lastBlockTime = timestamp;
     timeToNextBlock += deltaTime; 
-    // update the Game of Life matrix for this frame
-    gol.generate();
-    gol.display();
     //giocatore
     player.update()
-
-
 
     if((primaNota == true) && (timeToNextBlock > blockInterval )){
        chordBlockArray.push(new collisionBlock());
@@ -136,14 +133,11 @@ window.addEventListener('keydown', (event) =>{
                 let nextBlockX = nextBlockPosition.xDestinationNextBlock;
 
                 let xDistance = nextBlockX - player.position.x;
-
+                
                 vox_MODIFIER = V0X_MAX*(xDistance/canvas.width);
 
                 rispostaGiusta = true;
                 console.log(rispostaGiusta)
-
-                // initialize the game of life
-                gol.init()
                 break            
     }
 })
@@ -164,5 +158,8 @@ window.addEventListener('keyup', (event) =>{
                 break
     }
 })
+var a4 = teoria.note('a4');       // Scientific notation
+var g5 = teoria.note("g''"); 
+console.log(teoria.interval(a4, g5));
 
-console.log(srcPlayerImages[1])
+console.log(Tonal.Key.minorKey("Ab"));

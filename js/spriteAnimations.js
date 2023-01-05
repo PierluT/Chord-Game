@@ -51,3 +51,44 @@ spriteAnimations = [
 
 ];
 
+const animationStates = [
+    {
+        name: 'mozart-salto-dx',
+        frames: 5,
+
+    },
+    {
+        name: 'mozart-salto-sx',
+        frames: 5,
+    },
+    {
+        name: 'mozart-frontale-sx',
+        frames: 1,
+    },
+    {
+        name: 'mozart-frontale-dx',
+        frames: 1,
+    },
+    {
+        name: 'beethoven-salto-dx',
+        frames: 6,
+    },
+    {
+        name: 'beethoven-salto-sx',
+        frames: 6,
+    },
+    {
+        name: 'beethoven-frontale-dx',
+        frames: 1,
+    },
+    {
+        name: 'beethoven-frontale-sx',
+        frames: 1,
+    }
+];
+
+animationStates.forEach((state,index) => {
+    let frames = {
+        loc: [],
+    }
+})
