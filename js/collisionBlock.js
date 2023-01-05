@@ -15,7 +15,7 @@ class collisionBlock {
         
         //booleano per collisione
         this.markedToCollision = false;
-        this.chord = chordSignature;
+        this.chord = 'chordSignature';//LISTA (o array) di accordi scelti (accordo scelto non dev'essere elemento, ma lista)
         this.image = new Image();
         this.image.src = scrImages[Math.floor(Math.random()*scrImages.length)];
     }

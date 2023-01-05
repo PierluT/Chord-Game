@@ -10,10 +10,10 @@ const gravity = 0.5
 c.font = "italic bolder 50px Arial";
 //array provvisorio con elenco sigle accordi
  
-var chordSignature = "C";
+
 //larghezza testo
 
-const textWidth = c.measureText(chordSignature).width;
+const textWidth = c.measureText(ArrayNoteAccordoScelto).width;
 const scrImages = ['./img/assets/block1_cut.png','./img/assets/block2_cut.png'];
 const srcPlayerImages = ['./img/Mozart/mozart_spritesheet_completo.png','./img/Beethoven/beethoven_spritesheet_completo.png'];
 
