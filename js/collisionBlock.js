@@ -1,6 +1,6 @@
 class collisionBlock {
     //poi la dovrò settare random
-    constructor() {
+    constructor(i) {
         this.width = 200
         this.height = 90
         this.position = {
@@ -15,7 +15,7 @@ class collisionBlock {
         
         //booleano per collisione
         this.markedToCollision = false;
-        this.chord = ArrayAccordiScelti;
+        this.chord = ArrayAccordiScelti[i];
         this.image = new Image();
         this.image.src = scrImages[Math.floor(Math.random()*scrImages.length)];
     }
