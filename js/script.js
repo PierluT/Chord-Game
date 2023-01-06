@@ -19,7 +19,7 @@ const srcPlayerImages = ['./img/Mozart/mozart_spritesheet_completo.png','./img/B
 var chordBlockArray = [];
 
 let timeToNextBlock = 0;
-//variabile che andremo a modificare con il knob della MIDI, ora è impostato a 4 sceondi
+//variabile che andremo a modificare con il knob della MIDI, ora è impostato a 4 secondi
 let blockInterval= 4000;
 let lastBlockTime = 0;
 let primaNota = false
@@ -117,12 +117,14 @@ function animate (timestamp, indexChords) {
 
 animate(0, indexChords)
 //in base a ciò che premo nella tastiera
-window.addEventListener('keydown', (event) =>{
+let keysPressed = {};
+window.addEventListener('keydown', function(event) {
     primaNota = true;
+    keysPressed[event.key] = true;
     
     //Al posto delle lettere ci andranno le risposte esatte o sbagliate
     switch(event.key){
-        case 'd':
+        /*case 'd':
             keys.d.pressed = true
             break
         case 's':
@@ -130,7 +132,7 @@ window.addEventListener('keydown', (event) =>{
                 break
         case 'w':
                 player.velocity.y = -20
-                break
+                break*/
         case 'l':
                 let nextBlockPosition = player.computeNextBlockDistance();
 
@@ -147,9 +149,27 @@ window.addEventListener('keydown', (event) =>{
                 gol.init();
                 break            
     }
+    
+    
+    if (keysPressed["q"] && keysPressed["w"] && keysPressed["r"]) {
+        console.log("ciao");
+        keysPressed[event.key] = false;
+    }
+    
+
+
 })
 
-//per aggiornare lo status delle keys
+
+
+
+
+
+
+
+
+
+/*//per aggiornare lo status delle keys
 window.addEventListener('keyup', (event) =>{
     
     //Al posto delle lettere ci andranno le risposte esatte o sbagliate
@@ -164,9 +184,4 @@ window.addEventListener('keyup', (event) =>{
                 player.velocity.y = -10
                 break
     }
-})
-var a4 = teoria.note('a4');       // Scientific notation
-var g5 = teoria.note("g''"); 
-console.log(teoria.interval(a4, g5));
-
-console.log(Tonal.Key.minorKey("Ab"));
+})*/
