@@ -33,6 +33,7 @@ var Tonalita_scelta;
 
 //
 const ArrayAccordiScelti = [];
+const ArrayAccordiMidiScelti = [];
 
 for (var index=0; index<randomElementDB.length; index++){
     Tonalita_scelta = randomElementDB[index];
@@ -149,10 +150,13 @@ for (var index=0; index<randomElementDB.length; index++){
 
         //push elementi dell'array degli accordi scelti
         ArrayAccordiScelti.push(Accordo_scelto);
+        //push array di MIDI in array totale di accordi scelti
+        ArrayAccordiMidiScelti.push(ArrayMidi);
     }
 }
 
-console.log(ArrayAccordiScelti)
+console.log(ArrayAccordiScelti);
+console.log(ArrayAccordiMidiScelti);
 
 
 
