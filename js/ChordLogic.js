@@ -159,7 +159,6 @@ console.log(ArrayAccordiScelti);
 console.log(ArrayAccordiMidiScelti);
 
 
-
 //DA ASCOLTO MIDI A RIPROODUZIONE
 
 
