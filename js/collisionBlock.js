@@ -15,7 +15,7 @@ class collisionBlock {
         
         //booleano per collisione
         this.markedToCollision = false;
-        this.chord = 'chordSignature';//LISTA (o array) di accordi scelti (accordo scelto non dev'essere elemento, ma lista)
+        this.chord = ArrayAccordiScelti;
         this.image = new Image();
         this.image.src = scrImages[Math.floor(Math.random()*scrImages.length)];
     }
@@ -25,8 +25,8 @@ class collisionBlock {
         //serve?
         c.strokeRect(this.position.x,this.position.y,this.width,this.height)
         c.drawImage(this.image,this.position.x,this.position.y,this.width,this.height)
-        //inserico la sigla sopra al blocco 
-        c.fillText(this.chord,this.position.x + 50 + (textWidth /2 ),this.position.y);
+        //inserico la sigla sopra al blocco
+        c.fillText(this.chord,this.position.x ,this.position.y);
     }
 
     update() {

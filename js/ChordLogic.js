@@ -27,6 +27,10 @@ console.log("CIRCOLO DI TONALITA' SCELTO (o tonalità con diesis o bemolli): ", 
 
 //OGNI TOT ACCORDI, CAMBIARE TONALITA' nel circolo delle quinte scelto random
 var Tonalita_scelta;
+
+//
+const ArrayAccordiScelti = [];
+
 for (var index=0; index<randomElementDB.length; index++){
     Tonalita_scelta = randomElementDB[index];
     console.log("TONALITA': ", Tonalita_scelta);
@@ -117,8 +121,6 @@ for (var index=0; index<randomElementDB.length; index++){
                 }*/
             }
         }
-    
-
         console.log(Accordo_scelto);
 
         //visualizza note dell'accordo in un array
@@ -141,11 +143,13 @@ for (var index=0; index<randomElementDB.length; index++){
             ArrayMidi[k]=Tonal.Midi.toMidi(ArrayNoteAccordoScelto[k]);
         }
         console.log(ArrayMidi);
+
+        //push elementi dell'array degli accordi scelti
+        ArrayAccordiScelti.push(Accordo_scelto);
     }
 }
 
-
-console.log(Tonal.Chord.get("Abmaj7"));
+console.log(ArrayAccordiScelti)
 
 
 

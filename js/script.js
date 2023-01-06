@@ -8,8 +8,6 @@ const gravity = 0.5
 
 //const colorGreen = 'rgba(75,192,192,1)';
 c.font = "italic bolder 50px Arial";
-//array provvisorio con elenco sigle accordi
- 
 
 //larghezza testo
 
@@ -18,7 +16,7 @@ const scrImages = ['./img/assets/block1_cut.png','./img/assets/block2_cut.png'];
 const srcPlayerImages = ['./img/Mozart/mozart_spritesheet_completo.png','./img/Beethoven/beethoven_spritesheet_completo.png'];
 
 //blocchi che verranno disegnati dopo 
- var chordBlockArray = [];
+var chordBlockArray = [];
 
 let timeToNextBlock = 0;
 //variabile che andremo a modificare con il knob della MIDI, ora è impostato a 4 sceondi
@@ -40,6 +38,7 @@ const player = new Player({
 })
 
 const gol = new GOL();
+
 
 //blocchi di partenza
 const block1 = new collisionBlock();
