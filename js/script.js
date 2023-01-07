@@ -177,14 +177,15 @@ window.addEventListener('keydown', function(event) {
             console.log("Vite rimaste: ", 2-window.keyPressCounter);
             window.keyPressCounter++;
             if (window.keyPressCounter >= 3) {
-                alert("MORTO!")
+                alert("MORTO! Torna alla schermata iniziale")
                 console.log("fine vite");
+                document.getElementById("schermataIniziale").style.display= "inline";
+                document.getElementById("schermataGioco").style.display = "none";
                 window.keyPressCounter = 0;
             }
             break;
 
     }
-    
     
     /*if (keysPressed["q"] && keysPressed["e"] && keysPressed["t"]) {
         console.log("ciao");

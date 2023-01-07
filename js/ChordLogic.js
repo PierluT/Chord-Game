@@ -172,7 +172,7 @@ const ArrayText = [];
 switch (choosenMode) {
     case 'read':
         ArrayText = ArrayAccordiScelti;
-        break;
+    
     case 'listen':
         ArrayText = ArrayAccordiScelti_listen;
         break;
