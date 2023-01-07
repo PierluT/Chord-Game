@@ -179,6 +179,17 @@ window.addEventListener('keydown', function(event) {
             console.log("Vite rimaste: ", 2-window.keyPressCounter);
             window.keyPressCounter++;
             if (window.keyPressCounter >= 3) {
+                alert("MORTO! Torna alla schermata iniziale")
+                console.log("fine vite");
+                document.getElementById("schermataIniziale").style.display= "inline";
+                document.getElementById("schermataGioco").style.display = "none";
+
+                primaNota = false;
+                window.keyPressCounter = 0;
+            }
+
+            /*//PROVA CON BOTTONE
+            if (window.keyPressCounter >= 3) {
 
                 //bottone torna a schermata iniziale
                 let button = document.createElement("button");
@@ -188,12 +199,14 @@ window.addEventListener('keydown', function(event) {
                     document.getElementById("schermataGioco").style.display = "none";
                 });
                 let message = "MORTO! Torna alla schermata iniziale";
-                window.alert(message + " " + button);
+                window.alert(message + " " + button.outerHTML);
                 console.log("fine vite");
+                document.getElementById("schermataIniziale").style.display= "inline";
+                document.getElementById("schermataGioco").style.display = "none";
                 
                 primaNota = false;
                 window.keyPressCounter = 0;
-            }
+            }*/
             break;
 
     }
