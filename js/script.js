@@ -77,7 +77,7 @@ const keys = {
     }
 }
 //il timestamp mi serve per controllare il refresh automatico della animate.
-function animate (timestamp, indexChords) {
+function animate (timestamp) {
     c.clearRect(0,0,canvas.width,canvas.height)
     deltaTime = timestamp - lastBlockTime;
     lastBlockTime = timestamp;
@@ -89,8 +89,8 @@ function animate (timestamp, indexChords) {
     player.update();
 
     if((primaNota == true) && (timeToNextBlock > blockInterval )){
-        indexChords++;
         chordBlockArray.push(new collisionBlock(indexChords));
+        indexChords++;
         timeToNextBlock = 0;
     };
     [...chordBlockArray].forEach(block => block.draw());
@@ -118,12 +118,12 @@ function animate (timestamp, indexChords) {
     window.requestAnimationFrame(animate)
 }
 
-animate(0, indexChords)
+animate(0)
 //in base a ciò che premo nella tastiera
-//let keysPressed = {};
+let keysPressed = {};
 window.addEventListener('keydown', function(event) {
     primaNota = true;
-    //keysPressed[event.key] = true;
+    keysPressed[event.key] = true;
     
     //Al posto delle lettere ci andranno le risposte esatte o sbagliate
     switch(event.key){
@@ -170,19 +170,19 @@ window.addEventListener('keydown', function(event) {
                 break           
     }
     
-    /*
+    
     if (keysPressed["q"] && keysPressed["e"] && keysPressed["t"]) {
         console.log("ciao");
         soundEngine.init('24');
+        soundEngine.init('28');
         keysPressed[event.key] = false;
-    }*/
+    }
     
 
 
 })
 
-<<<<<<< Updated upstream
-=======
+
 
 
 
@@ -213,4 +213,4 @@ var g5 = teoria.note("g''");
 console.log(teoria.interval(a4, g5));
 
 console.log(Tonal.Key.minorKey("Ab"));*/
->>>>>>> Stashed changes
+
