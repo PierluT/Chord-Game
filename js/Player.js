@@ -4,8 +4,7 @@ const deltaPixel = 38;
 const move_threshold = 5;
 const spriteWidth = 656;
 const spriteHeight = 640;
-let frameX = 20;
-let frameY = 0;
+let frameX = 0;
 let gameFrame = 0;
 let staggerFrame = 5;
 
@@ -15,6 +14,8 @@ class Player {
     constructor(position){
         this.playerImage = new Image();
         this.playerImage.src ="";
+        this.sx = 0;
+        this.sy = 0;
         this.position = position
         //velocità di caduta per simulazione gravità
         this.velocity = {
@@ -28,7 +29,7 @@ class Player {
     draw() {
         c.fillStyle= 'red'
         //c.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
-        c.drawImage(this.playerImage, this.position.x, this.position.y, this.width,this.height)
+        c.drawImage(this.playerImage,this.sx,this.sy,spriteWidth,spriteHeight, this.position.x, this.position.y, this.width,this.height)
     }
 
     selectPlayerAnimation() {
@@ -36,18 +37,28 @@ class Player {
         switch (choosenAvatar) {
             case 'beethoven':
                 playerNamePlusState = choosenAvatar + playerState;
-                console.log(playerNamePlusState)
-                this.playerImage.src = spriteAnimationsBeethoven.find(animation => animation.name == playerNamePlusState).path;
+                this.playerImage.src = spriteAnimations.find(animation => animation.name == playerNamePlusState).path;
+
                 break;
 
             case 'mozart':
                 playerNamePlusState = choosenAvatar + playerState;
-                console.log(playerNamePlusState)
-                this.playerImage.src = spriteAnimationsMozart.find(animation => animation.name == playerNamePlusState).path;
+                this.playerImage.src = spriteAnimations.find(animation => animation.name == playerNamePlusState).path;
                 break;
         }
        
-    }   
+    }
+
+    updateIndexes(playerNamePlusState){
+        if(!playerNamePlusState.includes("frontale")) {
+            for(let i = 0; i < spriteAnimations[playerNamePlusState].frames; i++){
+                this.sx = spriteAnimations[playerNamePlusState].loc[i].x;
+                this.sy = spriteAnimations[playerNamePlusState].loc[i].y;
+                frameX++;
+            }
+        }
+        
+    }
 
     //metodo per modificare le coordinate
     update() {

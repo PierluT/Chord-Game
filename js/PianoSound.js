@@ -24,4 +24,10 @@ const soundEngine = {
         }    
         sound.play(x);
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+
+//soundEngine.play(chordNotes);
+>>>>>>> Stashed changes

@@ -136,7 +136,7 @@ window.addEventListener('keydown', function(event) {
         case 'w':
                 player.velocity.y = -20
                 break*/
-       /* case 'l':
+        case 'l':
                 let nextBlockPosition = player.computeNextBlockDistance();
 
                 let nextBlockX = nextBlockPosition.xDestinationNextBlock;
@@ -147,13 +147,15 @@ window.addEventListener('keydown', function(event) {
                     case xDistance > 0:
                       playerNamePlusState = "";
                       playerState = "-salto-dx";
-                      playerNamePlusState = choosenAvatar + playerState;                    
+                      playerNamePlusState = choosenAvatar + playerState;
+                      //player.updateIndexes(playerNamePlusState);                    
                       break;
 
                     case xDistance < 0:
                       playerNamePlusState = "";
                       playerState = "-salto-sx";
                       playerNamePlusState = choosenAvatar + playerState;
+                      //player.updateIndexes(playerNamePlusState);
                       break;
 
                   }
@@ -165,7 +167,7 @@ window.addEventListener('keydown', function(event) {
 
                 // initialize the game of life
                 gol.init();
-                break    */        
+                break           
     }
     
     /*
@@ -179,33 +181,3 @@ window.addEventListener('keydown', function(event) {
 
 })
 
-
-
-
-
-
-
-
-
-
-/*//per aggiornare lo status delle keys
-window.addEventListener('keyup', (event) =>{
-    
-    //Al posto delle lettere ci andranno le risposte esatte o sbagliate
-    switch(event.key){
-        case 'd':
-            keys.d.pressed = false
-            break
-        case 's':
-            keys.a.pressed = false
-                break
-        case 'w':
-                player.velocity.y = -10
-                break
-    }
-})
-var a4 = teoria.note('a4');       // Scientific notation
-var g5 = teoria.note("g''"); 
-console.log(teoria.interval(a4, g5));
-
-console.log(Tonal.Key.minorKey("Ab"));

@@ -1,4 +1,4 @@
-const spriteAnimationsMozart = [
+const spriteAnimations = [
     { 
         name: "mozart-salto-dx",
 
@@ -44,10 +44,7 @@ const spriteAnimationsMozart = [
         frames:1,
 
         path: './img/Mozart/mozart-frontale-sx/mozart_frontalesx_1.png'
-    }
-];
-
-const spriteAnimationsBeethoven = [
+    },
     {
         name: "beethoven-salto-dx",
 
@@ -96,3 +93,4 @@ const spriteAnimationsBeethoven = [
         path: './img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_1.png'
     }
 ]
+
