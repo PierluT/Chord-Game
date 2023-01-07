@@ -120,10 +120,10 @@ function animate (timestamp, indexChords) {
 
 animate(0, indexChords)
 //in base a ciò che premo nella tastiera
-let keysPressed = {};
+//let keysPressed = {};
 window.addEventListener('keydown', function(event) {
     primaNota = true;
-    keysPressed[event.key] = true;
+    //keysPressed[event.key] = true;
     
     //Al posto delle lettere ci andranno le risposte esatte o sbagliate
     switch(event.key){
@@ -136,7 +136,7 @@ window.addEventListener('keydown', function(event) {
         case 'w':
                 player.velocity.y = -20
                 break*/
-        case 'l':
+       /* case 'l':
                 let nextBlockPosition = player.computeNextBlockDistance();
 
                 let nextBlockX = nextBlockPosition.xDestinationNextBlock;
@@ -165,14 +165,15 @@ window.addEventListener('keydown', function(event) {
 
                 // initialize the game of life
                 gol.init();
-                break            
+                break    */        
     }
     
-    
-    if (keysPressed["q"] && keysPressed["w"] && keysPressed["r"]) {
+    /*
+    if (keysPressed["q"] && keysPressed["e"] && keysPressed["t"]) {
         console.log("ciao");
+        soundEngine.init('24');
         keysPressed[event.key] = false;
-    }
+    }*/
     
 
 

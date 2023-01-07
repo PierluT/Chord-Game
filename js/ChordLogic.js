@@ -162,6 +162,39 @@ console.log(ArrayAccordiMidiScelti);
 //DA ASCOLTO MIDI A RIPROODUZIONE
 
 
+//let keysPressed = {};
+/*let currentArray = 0;
+//ora uso keyArray, ma dovremo usare ArrayAccordiMidiScelti con i numeri MIDI
+const keyArray = [['q','w','e'], ['r','t','y'], ['r','t','y']];
+window.addEventListener('keydown', (event) => {
+    const key = event.key;
+    if (keyArray[currentArray].includes(key)){
+        console.log('ciao');
+        for(let i=0; i<currentArray.length; i++){
+            console.log(currentArray[i]);
+            soundEngine.init(currentArray[i]);
+        }
+        currentArray++;
+    }
+    if (currentArray >= keyArray.length){
+        console.log("fine gioco");
+    }
+});*/
 
+
+
+
+/*window.addEventListener('keydown', function(event) {
+    keysPressed[event.key] = true;
+
+    if (keysPressed["q"] && keysPressed["e"] && keysPressed["t"]) {
+        console.log("ciao");
+        soundEngine.init('24');
+        keysPressed[event.key] = false;
+    }
+    
+
+
+})*/
 
 
