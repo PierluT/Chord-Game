@@ -181,3 +181,36 @@ window.addEventListener('keydown', function(event) {
 
 })
 
+<<<<<<< Updated upstream
+=======
+
+
+
+
+
+
+
+
+
+/*//per aggiornare lo status delle keys
+window.addEventListener('keyup', (event) =>{
+    
+    //Al posto delle lettere ci andranno le risposte esatte o sbagliate
+    switch(event.key){
+        case 'd':
+            keys.d.pressed = false
+            break
+        case 's':
+            keys.a.pressed = false
+                break
+        case 'w':
+                player.velocity.y = -10
+                break
+    }
+})
+var a4 = teoria.note('a4');       // Scientific notation
+var g5 = teoria.note("g''"); 
+console.log(teoria.interval(a4, g5));
+
+console.log(Tonal.Key.minorKey("Ab"));*/
+>>>>>>> Stashed changes
