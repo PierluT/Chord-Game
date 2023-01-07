@@ -1,4 +1,3 @@
-
 const canvas = document.getElementById('gameSet');
 const c = canvas.getContext('2d');
 canvas.width = 1024
@@ -9,13 +8,11 @@ const gravity = 0.5
 //const colorGreen = 'rgba(75,192,192,1)';
 c.font = "italic bolder 50px Arial";
 //array provvisorio con elenco sigle accordi
- 
 
 //larghezza testo
 
 const textWidth = c.measureText(ArrayNoteAccordoScelto).width;
 const scrImages = ['./img/assets/block1_cut.png','./img/assets/block2_cut.png'];
-const srcPlayerImages = ['./img/Mozart/mozart_spritesheet_completo.png','./img/Beethoven/beethoven_spritesheet_completo.png'];
 
 //blocchi che verranno disegnati dopo 
  var chordBlockArray = [];
@@ -27,6 +24,9 @@ let lastBlockTime = 0;
 let primaNota = false
 let gameOver = false
 let rispostaGiusta = false
+let playerState = "-frontale-sx";
+let playerNamePlusState = choosenAvatar + playerState;
+console.log(playerNamePlusState)
 
 const V0X_MAX = 1.1; // initial velocity (m/s)
 const V0Y_MAX = 0.8;
@@ -129,11 +129,26 @@ window.addEventListener('keydown', (event) =>{
                 let nextBlockX = nextBlockPosition.xDestinationNextBlock;
 
                 let xDistance = nextBlockX - player.position.x;
+
+                switch (true) {
+                    case xDistance > 0:
+                      playerNamePlusState = "";
+                      playerState = "-salto-dx";
+                      playerNamePlusState = choosenAvatar + playerState;                    
+                      break;
+
+                    case xDistance < 0:
+                      playerNamePlusState = "";
+                      playerState = "-salto-sx";
+                      playerNamePlusState = choosenAvatar + playerState;
+                      break;
+
+                  }
+                  
                 
                 vox_MODIFIER = V0X_MAX*(xDistance/canvas.width);
 
                 rispostaGiusta = true;
-                console.log(rispostaGiusta)
 
                 // initialize the game of life
                 gol.init();
@@ -157,8 +172,3 @@ window.addEventListener('keyup', (event) =>{
                 break
     }
 })
-var a4 = teoria.note('a4');       // Scientific notation
-var g5 = teoria.note("g''"); 
-console.log(teoria.interval(a4, g5));
-
-console.log(Tonal.Key.minorKey("Ab"));
