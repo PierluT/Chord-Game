@@ -2,15 +2,10 @@
 import { Chord } from "tonal";
 import { Midi } from "tonal";*/
 
-//scegli READ o LISTEN mode
-const GameMode = ["READ", "LISTEN"];
-const indexGameMode = Math.floor(Math.random() * GameMode.length);
-const GameMode_scelto = GameMode[indexGameMode];
-console.log("MODO DI GIOCO SCELTO (READ o LISTEN): ", GameMode_scelto);
 
 //scegli livello 1 (triadi) o livello 2 (triade e settime) o livello 3 (triadi, settime, none)
 const FacDif = ["level 1", "level 2", "level 3"];
-const indexFacDif = Math.floor(Math.random() * FacDif.length);
+var indexFacDif = Math.floor(Math.random() * FacDif.length);
 const Livello_scelto = FacDif[indexFacDif];
 console.log("LIVELLO SCELTO (da 1 a 3): ", Livello_scelto);
 
@@ -31,11 +26,11 @@ console.log("CIRCOLO DI TONALITA' SCELTO (o tonalità con diesis o bemolli): ", 
 //OGNI TOT ACCORDI, CAMBIARE TONALITA' nel circolo delle quinte scelto random
 var Tonalita_scelta;
 
-//
 const ArrayAccordiScelti = [];
 const ArrayAccordiMidiScelti = [];
+const ArrayAccordiScelti_listen = [];
 
-for (var index=0; index<randomElementDB.length; index++){
+for (let index=0; index<randomElementDB.length; index++){
     Tonalita_scelta = randomElementDB[index];
     console.log("TONALITA': ", Tonalita_scelta);
 
@@ -44,13 +39,13 @@ for (var index=0; index<randomElementDB.length; index++){
     const MajMin = ["major"];
     const indexMajMin = Math.floor(Math.random() * MajMin.length);
     const Modo_scelto = MajMin[indexMajMin];
-    console.log(Modo_scelto);
+    console.log("MODO SCELTO: ", Modo_scelto);
 
     const arrayAccordiPossibili = [];
     const arrayDominantiSecondarie = [];
     const arrayDominantiSub = [];
     if(Modo_scelto == "major"){
-        console.log(Tonal.Key.majorKey(Tonalita_scelta));
+        console.log("TONALITA' SCELTA: ", Tonal.Key.majorKey(Tonalita_scelta));
         for (const element of Tonal.Key.majorKey(Tonalita_scelta).chords) {
             arrayAccordiPossibili.push(element);
         }
@@ -63,24 +58,25 @@ for (var index=0; index<randomElementDB.length; index++){
     } else {
         //scegli naturale, armonica, melodica con bottone
         const NatHarmMel = ["natural", "harmonic", "melodic"];
-        const indexNatHarmMel = Math.floor(Math.random() * NatHarmMel.length);
+        let indexNatHarmMel = Math.floor(Math.random() * NatHarmMel.length);
         const Modo_minore_scelto = NatHarmMel[indexNatHarmMel];
-        console.log(Modo_minore_scelto);
-        console.log(Tonal.Key.minorKey(Tonalita_scelta)[Modo_minore_scelto]);
+        console.log("MODO MINORE SCELTO: ", Modo_minore_scelto);
+        console.log("TONALITA' SCELTA: ", Tonal.Key.minorKey(Tonalita_scelta)[Modo_minore_scelto]);
         for (const element of Tonal.Key.minorKey(Tonalita_scelta)[Modo_minore_scelto].chords) {
             arrayAccordiPossibili.push(element);
         }
     }
 
-    console.log(arrayAccordiPossibili);
+    console.log("ARRAY ACCORDI POSSIBILI:", arrayAccordiPossibili);
     //DA GESTIRE DOMINANTI SECONDAARIE O DOMINANTI SUB
-    console.log(arrayDominantiSecondarie); //solo per maggiori
-    console.log(arrayDominantiSub); //solo per maggiori
+    console.log("ARRAY DOMINANTI SECONDARIE:", arrayDominantiSecondarie); //solo per maggiori
+    console.log("ARRAY DOMINANTI SOSTITUTIVE:", arrayDominantiSub); //solo per maggiori
 
     //visualizza tot accordi random di scala scelta
     for(var i=0; i<10; i++){
-        const indexAccordoScelto = Math.floor(Math.random() * arrayAccordiPossibili.length);
+        let indexAccordoScelto = Math.floor(Math.random() * arrayAccordiPossibili.length);
         var Accordo_scelto = arrayAccordiPossibili[indexAccordoScelto];
+        var Accordo_scelto_ridotto;
 
         //riduzione o ampliamento accordi in base a livello
         if (Livello_scelto == "level 1") {
@@ -125,11 +121,15 @@ for (var index=0; index<randomElementDB.length; index++){
                 }*/
             }
         }
-        console.log(Accordo_scelto);
+        console.log("ACCORDO SCELTO:", Accordo_scelto);
 
         //visualizza note dell'accordo in un array
         var ArrayNoteAccordoScelto = Tonal.Chord.get(Accordo_scelto).notes;
-        console.log(ArrayNoteAccordoScelto);
+        console.log("ARRAY ACCORDO SCELTO:", ArrayNoteAccordoScelto);
+
+        //riduci accordo per modalità LISTEN
+        Accordo_scelto_ridotto = ArrayNoteAccordoScelto[0];
+        console.log("ARRAY ACCORDO SCELTO RIDOTTO:", Accordo_scelto_ridotto);
 
         //aggiungi ottava 4 e 5
         for (var k=0; k<ArrayNoteAccordoScelto.length; k++){
@@ -139,27 +139,46 @@ for (var index=0; index<randomElementDB.length; index++){
                 ArrayNoteAccordoScelto[k]=ArrayNoteAccordoScelto[k]+"4";
             }  
         }
-        console.log(ArrayNoteAccordoScelto);
+        console.log("ARRAY ACCORDO SCELTO con ottava:", ArrayNoteAccordoScelto);
 
         //trasforma note in MIDI
         var ArrayMidi = [];
         for (var k=0; k<ArrayNoteAccordoScelto.length; k++){
             ArrayMidi[k]=Tonal.Midi.toMidi(ArrayNoteAccordoScelto[k]);
         }
-        console.log(ArrayMidi);
+        console.log("ARRAY MIDI: ", ArrayMidi);
 
         //push elementi dell'array degli accordi scelti
         ArrayAccordiScelti.push(Accordo_scelto);
         //push array di MIDI in array totale di accordi scelti
         ArrayAccordiMidiScelti.push(ArrayMidi);
+        //Riduco array accordi per modalità LISTEN
+        ArrayAccordiScelti_listen.push(Accordo_scelto_ridotto);
     }
 }
 
-console.log(ArrayAccordiScelti);
-console.log(ArrayAccordiMidiScelti);
+console.log("ARRAY ACCORDI SCELTI: ", ArrayAccordiScelti);
+console.log("ARRAY ACCORDI MIDI SCELTI: ", ArrayAccordiMidiScelti);
+console.log("ARRAY ACCORDI SCELTI RIDOTTI: ", ArrayAccordiScelti_listen);
 
+//scegli READ o LISTEN mode
+/*const GameMode = ["READ", "LISTEN"];
+const indexGameMode = Math.floor(Math.random() * GameMode.length);
+const GameMode_scelto = GameMode[indexGameMode];
+console.log("MODO DI GIOCO SCELTO (READ o LISTEN): ", GameMode_scelto);*/
 
-//DA ASCOLTO MIDI A RIPROODUZIONE
+const ArrayText = [];
+
+switch (choosenMode) {
+    case 'read':
+        ArrayText = ArrayAccordiScelti;
+        break;
+    case 'listen':
+        ArrayText = ArrayAccordiScelti_listen;
+        break;
+}
+
+console.log("ARRAY TEXT SU BLOCCHI: ", ArrayText);
 
 
 //let keysPressed = {};

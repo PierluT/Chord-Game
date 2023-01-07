@@ -137,46 +137,61 @@ window.addEventListener('keydown', function(event) {
                 player.velocity.y = -20
                 break*/
         case 'l':
-                let nextBlockPosition = player.computeNextBlockDistance();
+            let nextBlockPosition = player.computeNextBlockDistance();
 
-                let nextBlockX = nextBlockPosition.xDestinationNextBlock;
+            let nextBlockX = nextBlockPosition.xDestinationNextBlock;
 
-                let xDistance = nextBlockX - player.position.x;
+            let xDistance = nextBlockX - player.position.x;
 
-                switch (true) {
-                    case xDistance > 0:
-                      playerNamePlusState = "";
-                      playerState = "-salto-dx";
-                      playerNamePlusState = choosenAvatar + playerState;
-                      //player.updateIndexes(playerNamePlusState);                    
-                      break;
+            switch (true) {
+                case xDistance > 0:
+                    playerNamePlusState = "";
+                    playerState = "-salto-dx";
+                    playerNamePlusState = choosenAvatar + playerState;
+                    //player.updateIndexes(playerNamePlusState);                    
+                    break;
 
-                    case xDistance < 0:
-                      playerNamePlusState = "";
-                      playerState = "-salto-sx";
-                      playerNamePlusState = choosenAvatar + playerState;
-                      //player.updateIndexes(playerNamePlusState);
-                      break;
-
-                  }
-                  
+                case xDistance < 0:
+                    playerNamePlusState = "";
+                    playerState = "-salto-sx";
+                    playerNamePlusState = choosenAvatar + playerState;
+                    //player.updateIndexes(playerNamePlusState);
+                    break;
+            }
                 
-                vox_MODIFIER = V0X_MAX*(xDistance/canvas.width);
+            
+            vox_MODIFIER = V0X_MAX*(xDistance/canvas.width);
 
-                rispostaGiusta = true;
+            rispostaGiusta = true;
+            window.keyPressCounter = 0;
+            console.log("Vite rimaste: ", 3-window.keyPressCounter);
 
-                // initialize the game of life
-                gol.init();
-                break           
+            // initialize the game of life
+            gol.init();
+            break;
+        
+        default:
+            if (!window.keyPressCounter) {
+                window.keyPressCounter = 0;
+            }
+            console.log("Vite rimaste: ", 2-window.keyPressCounter);
+            window.keyPressCounter++;
+            if (window.keyPressCounter >= 3) {
+                alert("MORTO!")
+                console.log("fine vite");
+                window.keyPressCounter = 0;
+            }
+            break;
+
     }
     
     
-    if (keysPressed["q"] && keysPressed["e"] && keysPressed["t"]) {
+    /*if (keysPressed["q"] && keysPressed["e"] && keysPressed["t"]) {
         console.log("ciao");
         soundEngine.init('24');
         soundEngine.init('28');
         keysPressed[event.key] = false;
-    }
+    }*/
     
 
 

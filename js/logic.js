@@ -30,7 +30,6 @@ beethoven.addEventListener('click', function() {
 
 readChoosenMode.addEventListener('click', function(){
     choosenMode = 'read';
-
 })
 
 listenChoosenMode.addEventListener('click',function() {
@@ -39,7 +38,7 @@ listenChoosenMode.addEventListener('click',function() {
 
 clickedButton.onclick = replace;
 
- function replace () {
+function replace () {
     if(choosenMode == "" || choosenAvatar == "") {
         alert("Choose a character and a modality.")
         choosenMode = "";
@@ -49,9 +48,7 @@ clickedButton.onclick = replace;
     }else{
         document.getElementById("schermataIniziale").style.display= "none";
         document.getElementById("schermataGioco").style.display = "inline";
-    }
-    
-    
+    } 
 }
 
 
