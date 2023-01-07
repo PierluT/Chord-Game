@@ -167,18 +167,19 @@ const indexGameMode = Math.floor(Math.random() * GameMode.length);
 const GameMode_scelto = GameMode[indexGameMode];
 console.log("MODO DI GIOCO SCELTO (READ o LISTEN): ", GameMode_scelto);*/
 
-const ArrayText = [];
+var ArrayText = {};
 
 switch (choosenMode) {
     case 'read':
-        ArrayText = ArrayAccordiScelti;
+        var ArrayText = ArrayAccordiScelti;
+        break;
     
     case 'listen':
-        ArrayText = ArrayAccordiScelti_listen;
+        var ArrayText = ArrayAccordiScelti_listen;
         break;
 }
 
-console.log("ARRAY TEXT SU BLOCCHI: ", ArrayText);
+//console.log("ARRAY TEXT SU BLOCCHI: ", ArrayText);
 
 
 //let keysPressed = {};

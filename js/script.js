@@ -169,7 +169,9 @@ window.addEventListener('keydown', function(event) {
             // initialize the game of life
             gol.init();
             break;
-        
+
+        //VITE RIMASTE se premo un atro key, invece di l
+        //se perdo 3 vite muoio e torno a home
         default:
             if (!window.keyPressCounter) {
                 window.keyPressCounter = 0;
@@ -177,16 +179,26 @@ window.addEventListener('keydown', function(event) {
             console.log("Vite rimaste: ", 2-window.keyPressCounter);
             window.keyPressCounter++;
             if (window.keyPressCounter >= 3) {
-                alert("MORTO! Torna alla schermata iniziale")
+
+                //bottone torna a schermata iniziale
+                let button = document.createElement("button");
+                button.textContent = "Torna alla schermata iniziale";
+                button.addEventListener("click", function() {
+                    document.getElementById("schermataIniziale").style.display= "inline";
+                    document.getElementById("schermataGioco").style.display = "none";
+                });
+                let message = "MORTO! Torna alla schermata iniziale";
+                window.alert(message + " " + button);
                 console.log("fine vite");
-                document.getElementById("schermataIniziale").style.display= "inline";
-                document.getElementById("schermataGioco").style.display = "none";
+                
+                primaNota = false;
                 window.keyPressCounter = 0;
             }
             break;
 
     }
-    
+
+
     /*if (keysPressed["q"] && keysPressed["e"] && keysPressed["t"]) {
         console.log("ciao");
         soundEngine.init('24');

@@ -30,10 +30,12 @@ beethoven.addEventListener('click', function() {
 
 readChoosenMode.addEventListener('click', function(){
     choosenMode = 'read';
+    console.log("ARRAY TEXT SU BLOCCHI: ", ArrayText);
 })
 
 listenChoosenMode.addEventListener('click',function() {
     choosenMode = 'listen';
+    console.log("ARRAY TEXT SU BLOCCHI: ", ArrayText);
 })
 
 clickedButton.onclick = replace;
