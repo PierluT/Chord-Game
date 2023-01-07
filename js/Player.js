@@ -1,4 +1,3 @@
-
 // threshold per la distanza tra il player e il nextblock
 const deltaPixel = 38;
 // threshold per i movimenti su asse x in automatic jump
@@ -9,7 +8,8 @@ let frameX = 20;
 let frameY = 0;
 let gameFrame = 0;
 let staggerFrame = 5;
-/*import { c,canvas,rispostaGiusta } from "./script.js";*/
+
+
 class Player {
     //proprietà del giocatore
     constructor(position){
@@ -27,19 +27,23 @@ class Player {
     
     draw() {
         c.fillStyle= 'red'
-  
         //c.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
-        c.drawImage(this.playerImage, frameX * spriteWidth, frameY* spriteHeight, spriteWidth,spriteHeight, this.position.x, this.position.y, this.width,this.height)
+        c.drawImage(this.playerImage, this.position.x, this.position.y, this.width,this.height)
     }
 
     selectPlayerAnimation() {
 
         switch (choosenAvatar) {
-            case 'mozart':
-                this.playerImage.src = srcPlayerImages[0];
-                break;
             case 'beethoven':
-                this.playerImage.src = srcPlayerImages[1];
+                playerNamePlusState = choosenAvatar + playerState;
+                console.log(playerNamePlusState)
+                this.playerImage.src = spriteAnimationsBeethoven.find(animation => animation.name == playerNamePlusState).path;
+                break;
+
+            case 'mozart':
+                playerNamePlusState = choosenAvatar + playerState;
+                console.log(playerNamePlusState)
+                this.playerImage.src = spriteAnimationsMozart.find(animation => animation.name == playerNamePlusState).path;
                 break;
         }
        
@@ -52,8 +56,6 @@ class Player {
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
         this.applyGravity()
-        
-
     }
     
     applyGravity(){
@@ -146,4 +148,4 @@ class Player {
     
     
 }
-
+ 

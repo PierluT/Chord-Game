@@ -1,5 +1,3 @@
-//import { teoria as _teoria } from "teoria";
-
 let choosenAvatar = "";
 let choosenMode= "";
 let composerToAnimate = "";
@@ -21,7 +19,6 @@ mozart.addEventListener('click', function() {
   composerAnimation.style.animationName = 'mozart';
   choosenAvatar = 'mozart';
   srcPlayer = 'mozart';
-  console.log(choosenAvatar)
 });
 
 beethoven.addEventListener('click', function() {
@@ -29,7 +26,6 @@ beethoven.addEventListener('click', function() {
   composerToAnimate ='beethoven';
   choosenAvatar = 'beethoven';
   srcPlayer = 'beethoven';
-  console.log(choosenAvatar)
 });
 
 readChoosenMode.addEventListener('click', function(){
