@@ -2,16 +2,19 @@
 import { Chord } from "tonal";
 import { Midi } from "tonal";*/
 
+//scegli READ o LISTEN mode
+const GameMode = ["READ", "LISTEN"];
+const indexGameMode = Math.floor(Math.random() * GameMode.length);
+const GameMode_scelto = GameMode[indexGameMode];
+console.log("MODO DI GIOCO SCELTO (READ o LISTEN): ", GameMode_scelto);
 
 //scegli livello 1 (triadi) o livello 2 (triade e settime) o livello 3 (triadi, settime, none)
 const FacDif = ["level 1", "level 2", "level 3"];
-//const FacDif = ["level 3"];
 const indexFacDif = Math.floor(Math.random() * FacDif.length);
 const Livello_scelto = FacDif[indexFacDif];
 console.log("LIVELLO SCELTO (da 1 a 3): ", Livello_scelto);
 
 //SCEGLI DIREZIONE CIRCOLO DELLE QUINTE PER GENERARE SEQUENZA DI TONALITA'
-//
 const ToneDiesis = ["C", "G", "D", "A", "E", "B", "F#", "C#"];
 const ToneBemolli = ["C", "F", "Bb", "Eb", "Ab", "Db", "Gb", "Cb"];
 
@@ -27,6 +30,11 @@ console.log("CIRCOLO DI TONALITA' SCELTO (o tonalità con diesis o bemolli): ", 
 
 //OGNI TOT ACCORDI, CAMBIARE TONALITA' nel circolo delle quinte scelto random
 var Tonalita_scelta;
+
+//
+const ArrayAccordiScelti = [];
+const ArrayAccordiMidiScelti = [];
+
 for (var index=0; index<randomElementDB.length; index++){
     Tonalita_scelta = randomElementDB[index];
     console.log("TONALITA': ", Tonalita_scelta);
@@ -117,8 +125,6 @@ for (var index=0; index<randomElementDB.length; index++){
                 }*/
             }
         }
-    
-
         console.log(Accordo_scelto);
 
         //visualizza note dell'accordo in un array
@@ -141,12 +147,16 @@ for (var index=0; index<randomElementDB.length; index++){
             ArrayMidi[k]=Tonal.Midi.toMidi(ArrayNoteAccordoScelto[k]);
         }
         console.log(ArrayMidi);
+
+        //push elementi dell'array degli accordi scelti
+        ArrayAccordiScelti.push(Accordo_scelto);
+        //push array di MIDI in array totale di accordi scelti
+        ArrayAccordiMidiScelti.push(ArrayMidi);
     }
 }
 
-
-console.log(Tonal.Chord.get("Abmaj7"));
-
+console.log(ArrayAccordiScelti);
+console.log(ArrayAccordiMidiScelti);
 
 
 //DA ASCOLTO MIDI A RIPROODUZIONE

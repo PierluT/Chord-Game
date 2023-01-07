@@ -8,6 +8,7 @@ const gravity = 0.5
 //const colorGreen = 'rgba(75,192,192,1)';
 c.font = "italic bolder 50px Arial";
 //array provvisorio con elenco sigle accordi
+ 
 
 //larghezza testo
 
@@ -15,10 +16,10 @@ const textWidth = c.measureText(ArrayNoteAccordoScelto).width;
 const scrImages = ['./img/assets/block1_cut.png','./img/assets/block2_cut.png'];
 
 //blocchi che verranno disegnati dopo 
- var chordBlockArray = [];
+var chordBlockArray = [];
 
 let timeToNextBlock = 0;
-//variabile che andremo a modificare con il knob della MIDI, ora è impostato a 4 sceondi
+//variabile che andremo a modificare con il knob della MIDI, ora è impostato a 4 secondi
 let blockInterval= 4000;
 let lastBlockTime = 0;
 let primaNota = false
@@ -41,22 +42,29 @@ const player = new Player({
 
 const gol = new GOL();
 
-//blocchi di partenza
-const block1 = new collisionBlock();
-block1.position.x = 100;
-block1.position.y = 100;
+//index array di accordi
+var indexChords=0;
 
-const block2 = new collisionBlock();
+//blocchi di partenza
+const block1 = new collisionBlock(indexChords);
+indexChords++;
+block1.position.x = 100;
+block1.position.y = 500;
+
+const block2 = new collisionBlock(indexChords);
+indexChords++;
 block2.position.x = 700;
 block2.position.y = 300
 
-const block3 = new collisionBlock();
+const block3 = new collisionBlock(indexChords);
+indexChords++;
 block3.position.x = 100;
-block3.position.y = 500;
+block3.position.y = 100;
 
-chordBlockArray.push(block3)
-chordBlockArray.push(block2)
+
 chordBlockArray.push(block1)
+chordBlockArray.push(block2)
+chordBlockArray.push(block3)
 
 
 //saranno le nostre giusto e sbagliato
@@ -69,7 +77,7 @@ const keys = {
     }
 }
 //il timestamp mi serve per controllare il refresh automatico della animate.
-function animate (timestamp) {
+function animate (timestamp, indexChords) {
     c.clearRect(0,0,canvas.width,canvas.height)
     deltaTime = timestamp - lastBlockTime;
     lastBlockTime = timestamp;
@@ -81,11 +89,14 @@ function animate (timestamp) {
     player.update();
 
     if((primaNota == true) && (timeToNextBlock > blockInterval )){
-       chordBlockArray.push(new collisionBlock());
-       timeToNextBlock = 0;
+        indexChords++;
+        chordBlockArray.push(new collisionBlock(indexChords));
+        timeToNextBlock = 0;
     };
     [...chordBlockArray].forEach(block => block.draw());
+    
     [...chordBlockArray].forEach(block => block.update());
+    
     player.chechForVerticalCollision(chordBlockArray);
     //stampa dell'array aggiornato nel quale ho solamente i blocchi visibili nel canvas.
     //console.log(chordBlockArray)
@@ -107,14 +118,16 @@ function animate (timestamp) {
     window.requestAnimationFrame(animate)
 }
 
-animate(0)
+animate(0, indexChords)
 //in base a ciò che premo nella tastiera
-window.addEventListener('keydown', (event) =>{
+let keysPressed = {};
+window.addEventListener('keydown', function(event) {
     primaNota = true;
+    keysPressed[event.key] = true;
     
     //Al posto delle lettere ci andranno le risposte esatte o sbagliate
     switch(event.key){
-        case 'd':
+        /*case 'd':
             keys.d.pressed = true
             break
         case 's':
@@ -122,7 +135,7 @@ window.addEventListener('keydown', (event) =>{
                 break
         case 'w':
                 player.velocity.y = -20
-                break
+                break*/
         case 'l':
                 let nextBlockPosition = player.computeNextBlockDistance();
 
@@ -154,9 +167,27 @@ window.addEventListener('keydown', (event) =>{
                 gol.init();
                 break            
     }
+    
+    
+    if (keysPressed["q"] && keysPressed["w"] && keysPressed["r"]) {
+        console.log("ciao");
+        keysPressed[event.key] = false;
+    }
+    
+
+
 })
 
-//per aggiornare lo status delle keys
+
+
+
+
+
+
+
+
+
+/*//per aggiornare lo status delle keys
 window.addEventListener('keyup', (event) =>{
     
     //Al posto delle lettere ci andranno le risposte esatte o sbagliate
@@ -172,3 +203,8 @@ window.addEventListener('keyup', (event) =>{
                 break
     }
 })
+var a4 = teoria.note('a4');       // Scientific notation
+var g5 = teoria.note("g''"); 
+console.log(teoria.interval(a4, g5));
+
+console.log(Tonal.Key.minorKey("Ab"));
