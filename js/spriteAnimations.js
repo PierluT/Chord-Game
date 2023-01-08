@@ -3,7 +3,6 @@ const spriteAnimations = [
         name: "mozart-salto-dx",
 
         loc: [ { x: 170, y: 0},
-
                { x: 850, y: 20},
                { x: 1460, y: 0},
                { x: 2130, y: 0},

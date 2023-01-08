@@ -27,7 +27,7 @@ class Player {
     }
     
     draw() {
-        c.fillStyle= 'red'
+        c.fillStyle= 'red';
         //c.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
         c.drawImage(this.playerImage,this.sx,this.sy,spriteWidth,spriteHeight, this.position.x, this.position.y, this.width,this.height)
     }
@@ -38,27 +38,33 @@ class Player {
             case 'beethoven':
                 playerNamePlusState = choosenAvatar + playerState;
                 this.playerImage.src = spriteAnimations.find(animation => animation.name == playerNamePlusState).path;
+                this.updateIndexes();
 
                 break;
 
             case 'mozart':
                 playerNamePlusState = choosenAvatar + playerState;
                 this.playerImage.src = spriteAnimations.find(animation => animation.name == playerNamePlusState).path;
+                this.updateIndexes();
                 break;
         }
        
     }
 
-    updateIndexes(playerNamePlusState){
+    updateIndexes() {
         if(!playerNamePlusState.includes("frontale")) {
-            for(let i = 0; i < spriteAnimations[playerNamePlusState].frames; i++){
-                this.sx = spriteAnimations[playerNamePlusState].loc[i].x;
-                this.sy = spriteAnimations[playerNamePlusState].loc[i].y;
-                frameX++;
-            }
-        }
-        
+            const spriteToUse = spriteAnimations.find(animation => animation.name == playerNamePlusState);
+         if( gameFrame % staggerFrame == 0){
+                if(frameX < spriteToUse.frames) {
+                    this.sx = spriteToUse.loc[frameX].x;
+                    this.sy = spriteToUse.loc[frameX].y;
+                    frameX++
+                } else frameX = 0;
+         }    
+          gameFrame++;  
+        } 
     }
+    
 
     //metodo per modificare le coordinate
     update() {
@@ -79,12 +85,11 @@ class Player {
         } 
     }
 
-    chechForVerticalCollision(arrayBlocchi){
+    chechForVerticalCollision(arrayBlocchi) {
         var count;
         var nextBlock;
         for (let i = 0; i < arrayBlocchi.length; i++) {
             nextBlock = arrayBlocchi[i];
-
             // HO ALZATO IL CONTROLLO DELLA COLLISIONE SULLE Y DI 10 PX
             if ( this.position.x >= nextBlock.position.x && this.position.x + this.width <= nextBlock.position.x +nextBlock.width &&
                 this.position.y + this.height >= nextBlock.position.y - 30 &&
