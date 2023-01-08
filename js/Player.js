@@ -71,8 +71,8 @@ class Player {
     
     applyGravity(){
         // TO DO: SISTEMARE LA GRAVITA' QUANDO RISPOSTA GIUSTA E' TRUE O FALSE
-        if (this.position.y + this.height + this.velocity.y < canvas.height && rispostaGiusta == true){
-            this.velocity.y += gravity
+        if (this.position.y + this.height + this.velocity.y < canvas.height && checkGravity == true){
+            this.velocity.y += gravity;
         }
         else {
             this.velocity.y = 0
@@ -96,6 +96,7 @@ class Player {
 
         if(count < arrayBlocchi.length && rispostaGiusta == false) {
             //variabili per gestione salto automatico
+            checkGravity = false;
             let posizioneAtterraggioX;
             let posizioneAtterraggioY;
             posizioneAtterraggioY = nextBlock.position.y - nextBlock.height;
@@ -104,6 +105,9 @@ class Player {
             this.position.y = posizioneAtterraggioY;
             this.position.x = posizioneAtterraggioX;
             this.checkedCollision(nextBlock);            
+        }
+        else {
+            checkGravity = true;
         }
     }
 
