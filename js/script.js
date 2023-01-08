@@ -30,7 +30,7 @@ let playerNamePlusState = choosenAvatar + playerState;
 console.log(playerNamePlusState)
 
 const V0X_MAX = 1.1; // initial velocity (m/s)
-const V0Y_MAX = 0.8;
+const V0Y_MAX = 1.03;
 
 let vox_MODIFIER;
 let deltaTime;
@@ -84,7 +84,7 @@ function animate (timestamp) {
     timeToNextBlock += deltaTime; 
     // update the Game of Life matrix for this frame
     gol.generate();
-    gol.display();
+    //gol.display();
     //giocatore
     player.update();
 
@@ -164,8 +164,8 @@ window.addEventListener('keydown', function(event) {
 
             rispostaGiusta = true;
             window.keyPressCounter = 0;
-            console.log("Vite rimaste: ", 3-window.keyPressCounter);
-
+            //console.log("Vite rimaste: ", 3-window.keyPressCounter);
+            console.log(rispostaGiusta)
             // initialize the game of life
             gol.init();
             break;

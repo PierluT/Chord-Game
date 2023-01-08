@@ -20,7 +20,7 @@ class Player {
         //velocità di caduta per simulazione gravità
         this.velocity = {
             x: 0,
-            y: 0.8,
+            y: 0,
         }
         this.height = 100;
         this.width = 100;
@@ -87,7 +87,7 @@ class Player {
 
             // HO ALZATO IL CONTROLLO DELLA COLLISIONE SULLE Y DI 10 PX
             if ( this.position.x >= nextBlock.position.x && this.position.x + this.width <= nextBlock.position.x +nextBlock.width &&
-                this.position.y + this.height >= nextBlock.position.y - 10 &&
+                this.position.y + this.height >= nextBlock.position.y - 30 &&
                 this.position.y < nextBlock.position.y){
                 count = i;
                 break;
@@ -139,7 +139,7 @@ class Player {
         
         // CONTROLLA CHE LA DISTANZA DEL PLAYER DAL BLOCCO SIA INFERIORE A deltaPixel
         // e setta rispostaGiusta = false ---> 1 - permette la collisione 2 - ferma la gravità (da sistemare)
-        if (deltaDistance < deltaPixel) {
+        if (deltaDistance < deltaPixel && yDistance > 0) {
             rispostaGiusta = false;
             console.log(rispostaGiusta)
         }
