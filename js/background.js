@@ -10,7 +10,7 @@ var c1 = document.getElementById( 'c1' ),
   opt,
   hue,
   count,
-  numParticles = 5;
+  numParticles = 15;
 
 function rand( min, max ) {
   return Math.random() * ( max - min ) + min;

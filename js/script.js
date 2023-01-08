@@ -9,8 +9,7 @@ let checkGravity = true;
 
 //const colorGreen = 'rgba(75,192,192,1)';
 c.font = "italic bolder 50px Arial";
-//array provvisorio con elenco sigle accordi
- 
+//array provvisorio con elenco sigle accordi 
 
 //larghezza testo
 
@@ -45,7 +44,7 @@ const player = new Player({
     y :0,
 })
 
-const gol = new GOL();
+//const gol = new GOL();
 
 //index array di accordi
 var indexChords=0;
@@ -121,7 +120,7 @@ function animate (timestamp) {
 
     
     //richiama ogni volta la funzione
-    setInterval(window.requestAnimationFrame(animate), 1000);
+   window.requestAnimationFrame(animate)
 }
 
 animate(0)
