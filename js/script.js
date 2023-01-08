@@ -37,6 +37,9 @@ const V0Y_MAX = 1.03;
 let vox_MODIFIER;
 let deltaTime;
 
+// initialize the background
+init();
+
 const player = new Player({
     x: 450,
     y :0,
@@ -85,9 +88,10 @@ function animate (timestamp) {
     lastBlockTime = timestamp;
     timeToNextBlock += deltaTime; 
     // update the Game of Life matrix for this frame
-    gol.generate();
+    //gol.generate();
     //gol.display();
     //giocatore
+    loop();
     player.update();
 
     if((primaNota == true) && (timeToNextBlock > blockInterval )){
@@ -117,7 +121,7 @@ function animate (timestamp) {
 
     
     //richiama ogni volta la funzione
-    window.requestAnimationFrame(animate)
+    setInterval(window.requestAnimationFrame(animate), 1000);
 }
 
 animate(0)
@@ -169,7 +173,7 @@ window.addEventListener('keydown', function(event) {
             //console.log("Vite rimaste: ", 3-window.keyPressCounter);
             console.log(rispostaGiusta)
             // initialize the game of life
-            gol.init();
+            //gol.init();
             break;
 
         //VITE RIMASTE se premo un atro key, invece di l
