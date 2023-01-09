@@ -181,6 +181,7 @@ window.addEventListener('keydown', function(event) {
                 window.keyPressCounter = 0;
             }
             console.log("Vite rimaste: ", 2-window.keyPressCounter);
+            //document.getElementById("numerovite").innerHTML = (3-window.keyPressCounter);
             window.keyPressCounter++;
             if (window.keyPressCounter >= 3) {
                 alert("MORTO! Torna alla schermata iniziale")

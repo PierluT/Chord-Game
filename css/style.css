@@ -9,7 +9,7 @@ canvas {
 }
   
 #c2 {
-    background: #000;
+    background: rgb(0, 0, 0);
 }
 
 #avatarScelto{
@@ -19,4 +19,24 @@ canvas {
     animation-duration: 2s;
     animation-iteration-count: infinite;
 }
+
+#livelloScelto{
+    font-family: "Press Start 2P";
+    text-align: right;
+    color: blanchedalmond;
+    line-height: 5em;
+    font-size: 1.3em;
+    padding-left: 47px;
+}
+
+#vite{
+    font-family: "Press Start 2P";
+    text-align: right;
+    color: blanchedalmond;
+    line-height: 5em;
+    font-size: 1.3em;
+    padding-left: 47px;
+}
+
+
 

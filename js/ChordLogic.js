@@ -4,9 +4,10 @@ import { Midi } from "tonal";*/
 
 
 //scegli livello 1 (triadi) o livello 2 (triade e settime) o livello 3 (triadi, settime, none)
-const FacDif = ["level 1", "level 2", "level 3"];
+const FacDif = ["LEVEL 1", "LEVEL 2", "LEVEL 3"];
 var indexFacDif = Math.floor(Math.random() * FacDif.length);
 const Livello_scelto = FacDif[indexFacDif];
+document.getElementById("livelloScelto").innerHTML = Livello_scelto;
 console.log("LIVELLO SCELTO (da 1 a 3): ", Livello_scelto);
 
 //SCEGLI DIREZIONE CIRCOLO DELLE QUINTE PER GENERARE SEQUENZA DI TONALITA'
@@ -112,14 +113,14 @@ for (let index=0; index<randomElementDB.length; index++){
         if(BooleanDomSec==true){
             Accordo_scelto_ridotto = Accordo_scelto;
         } else if (BooleanDomSec==false) {
-            if (Livello_scelto == "level 1") {
+            if (Livello_scelto == "LEVEL 1") {
                 Accordo_scelto = Accordo_scelto.replace(/m7b5|o7/g, "dim").replace(/maj7|7|Maj7|6/g, "");
-            } else if (Livello_scelto == "level 2") {
+            } else if (Livello_scelto == "LEVEL 2") {
                 let numeroCasuale1 = Math.random();
                 if (numeroCasuale1 <= 0.5) {
                     Accordo_scelto = Accordo_scelto.replace(/m7b5|o7/g, "dim").replace(/maj7|7|Maj7|6/g, "");
                 }
-            } else if (Livello_scelto == "level 3") {
+            } else if (Livello_scelto == "LEVEL 3") {
                 let numeroCasuale2 = Math.random();
                 if (numeroCasuale2 < 0.33) {
                     //triadi

@@ -26,7 +26,7 @@ class collisionBlock {
         c.strokeRect(this.position.x,this.position.y,this.width,this.height)
         c.drawImage(this.image,this.position.x,this.position.y,this.width,this.height)
         //inserico la sigla sopra al blocco
-        c.font = "50px 'Press Start 2P'";
+        c.font = "40px 'Press Start 2P'";
         c.fillStyle = 'rgba(255,235,205,255)';
         c.fillText(this.chord,this.position.x-(c.measureText(this.chord).width)/2+(this.width)/2 ,this.position.y);
     }
