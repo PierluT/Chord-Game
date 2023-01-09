@@ -73,52 +73,86 @@ for (let index=0; index<randomElementDB.length; index++){
     console.log("ARRAY DOMINANTI SOSTITUTIVE:", arrayDominantiSub); //solo per maggiori
 
     //visualizza tot accordi random di scala scelta
-    for(var i=0; i<10; i++){
-        let indexAccordoScelto = Math.floor(Math.random() * arrayAccordiPossibili.length);
-        var Accordo_scelto = arrayAccordiPossibili[indexAccordoScelto];
-        var Accordo_scelto_ridotto;
+    var BooleanDomSec = false;
+    var indexAccordoScelto;
+    var Accordo_scelto;
+    for(var i=0; i<20; i++){
+        if(BooleanDomSec==false){
+            indexAccordoScelto = Math.floor(Math.random() * arrayAccordiPossibili.length);
+        }
+        let index_perc = Math.random();
+        if (index_perc>=0.33 || BooleanDomSec == true){
+            Accordo_scelto = arrayAccordiPossibili[indexAccordoScelto];
+            BooleanDomSec = false;
+        } else if (index_perc>=0.11){
+            //scelgo dominante secondaria
+            if(indexAccordoScelto == 0 || indexAccordoScelto == 6){
+                Accordo_scelto = arrayAccordiPossibili[indexAccordoScelto];
+                BooleanDomSec = false;
+            } else{
+                Accordo_scelto = arrayDominantiSecondarie[indexAccordoScelto];
+                console.log("Scelta dominante secondaria");
+                BooleanDomSec = true;
+            } 
+        }else if (index_perc>=0){
+            //scelgo dominante sostitutiva
+            if(indexAccordoScelto == 0 || indexAccordoScelto == 6){
+                Accordo_scelto = arrayAccordiPossibili[indexAccordoScelto];
+                BooleanDomSec = false;
+            } else{
+                Accordo_scelto = arrayDominantiSub[indexAccordoScelto];
+                console.log("Scelta dominante sostitutiva");
+                BooleanDomSec = true;
+            } 
+        }
 
+
+        var Accordo_scelto_ridotto;
         //riduzione o ampliamento accordi in base a livello
-        if (Livello_scelto == "level 1") {
-            Accordo_scelto = Accordo_scelto.replace(/m7b5|o7/g, "dim").replace(/maj7|7|Maj7|6/g, "");
-        } else if (Livello_scelto == "level 2") {
-            let numeroCasuale1 = Math.random();
-            if (numeroCasuale1 <= 0.5) {
+        if(BooleanDomSec==true){
+            Accordo_scelto_ridotto = Accordo_scelto;
+        } else if (BooleanDomSec==false) {
+            if (Livello_scelto == "level 1") {
                 Accordo_scelto = Accordo_scelto.replace(/m7b5|o7/g, "dim").replace(/maj7|7|Maj7|6/g, "");
-            }
-        } else if (Livello_scelto == "level 3") {
-            let numeroCasuale2 = Math.random();
-            if (numeroCasuale2 < 0.33) {
-                //triadi
-                Accordo_scelto = Accordo_scelto.replace(/m7b5|o7/g, "dim").replace(/maj7|7|Maj7|6/g, "");
-            } else if (numeroCasuale2 < 0.66) {
-                //settime
-                Accordo_scelto = Accordo_scelto.replace(/6/g, "");
-            } else {
-                //nona modo maggiore
-                if (Modo_scelto == "major" && Accordo_scelto != arrayAccordiPossibili[2] && Accordo_scelto != arrayAccordiPossibili[6]) {
-                    //possibilità di none di dominante alterate
-                    let randomRepaceDom9 = ["9", "7#9", "7b9"];
-                    let randomIndexDom9 = Math.floor(Math.random() * randomRepaceDom9.length);
-                    let randomDom9 = randomRepaceDom9[randomIndexDom9];
-                    Accordo_scelto = Accordo_scelto.replace(/maj7/g, "maj9"). replace(/m7/g, "m9").replace(/7/g, randomDom9);
-                } else if (Modo_scelto == "major" && Accordo_scelto == arrayAccordiPossibili[2]){
-                    //no nona sul terzo grado scala maggiore
-                    let numeroCasuale3 = Math.random();
-                    if (numeroCasuale3 <= 0.5) {
-                        Accordo_scelto = Accordo_scelto.replace(/m7b5|o7/g, "dim").replace(/maj7|7|Maj7|6/g, "");
-                    }
-                } else if (Accordo_scelto != arrayAccordiPossibili[6]) {
-                    //no nona sul settimo grado scala maggiore
-                    let numeroCasuale4 = Math.random();
-                    if (numeroCasuale4 <= 0.5) {
-                        Accordo_scelto = Accordo_scelto.replace(/m7b5|o7/g, "dim").replace(/maj7|7|Maj7|6/g, "");
-                    }
-                }//DA METTERE NONE PER MODO MINORE NATURALE!!!
-                /*else if (Modo_scelto == "minor" && Modo_minore_scelto == "natural") {
-                    //nona modo maggiore naturale
-                    Accordo_scelto = Accordo_scelto.replace(/maj7/g, "maj9"). replace(/7/g, "9");
-                }*/
+            } else if (Livello_scelto == "level 2") {
+                let numeroCasuale1 = Math.random();
+                if (numeroCasuale1 <= 0.5) {
+                    Accordo_scelto = Accordo_scelto.replace(/m7b5|o7/g, "dim").replace(/maj7|7|Maj7|6/g, "");
+                }
+            } else if (Livello_scelto == "level 3") {
+                let numeroCasuale2 = Math.random();
+                if (numeroCasuale2 < 0.33) {
+                    //triadi
+                    Accordo_scelto = Accordo_scelto.replace(/m7b5|o7/g, "dim").replace(/maj7|7|Maj7|6/g, "");
+                } else if (numeroCasuale2 < 0.66) {
+                    //settime
+                    Accordo_scelto = Accordo_scelto.replace(/6/g, "");
+                } else {
+                    //nona modo maggiore
+                    if (Modo_scelto == "major" && Accordo_scelto != arrayAccordiPossibili[2] && Accordo_scelto != arrayAccordiPossibili[6]) {
+                        //possibilità di none di dominante alterate
+                        let randomRepaceDom9 = ["9", "7#9", "7b9"];
+                        let randomIndexDom9 = Math.floor(Math.random() * randomRepaceDom9.length);
+                        let randomDom9 = randomRepaceDom9[randomIndexDom9];
+                        Accordo_scelto = Accordo_scelto.replace(/maj7/g, "maj9"). replace(/m7/g, "m9").replace(/7/g, randomDom9);
+                    } else if (Modo_scelto == "major" && Accordo_scelto == arrayAccordiPossibili[2]){
+                        //no nona sul terzo grado scala maggiore
+                        let numeroCasuale3 = Math.random();
+                        if (numeroCasuale3 <= 0.5) {
+                            Accordo_scelto = Accordo_scelto.replace(/m7b5|o7/g, "dim").replace(/maj7|7|Maj7|6/g, "");
+                        }
+                    } else if (Accordo_scelto != arrayAccordiPossibili[6]) {
+                        //no nona sul settimo grado scala maggiore
+                        let numeroCasuale4 = Math.random();
+                        if (numeroCasuale4 <= 0.5) {
+                            Accordo_scelto = Accordo_scelto.replace(/m7b5|o7/g, "dim").replace(/maj7|7|Maj7|6/g, "");
+                        }
+                    }//DA METTERE NONE PER MODO MINORE NATURALE!!!
+                    /*else if (Modo_scelto == "minor" && Modo_minore_scelto == "natural") {
+                        //nona modo maggiore naturale
+                        Accordo_scelto = Accordo_scelto.replace(/maj7/g, "maj9"). replace(/7/g, "9");
+                    }*/
+                }
             }
         }
         console.log("ACCORDO SCELTO:", Accordo_scelto);

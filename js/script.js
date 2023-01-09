@@ -168,8 +168,8 @@ window.addEventListener('keydown', function(event) {
             vox_MODIFIER = V0X_MAX*(xDistance/canvas.width);
 
             rispostaGiusta = true;
-            window.keyPressCounter = 0;
-            //console.log("Vite rimaste: ", 3-window.keyPressCounter);
+            //attivo questo commento se do 3 possibilità per accordo e non 3 totali
+            //window.keyPressCounter = 0;
             console.log(rispostaGiusta)
             // initialize the game of life
             //gol.init();
