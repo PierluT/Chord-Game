@@ -8,8 +8,7 @@ const gravity = 0.5
 let checkGravity = true;
 
 //const colorGreen = 'rgba(75,192,192,1)';
-c.font = "italic bolder 50px Arial";
-//array provvisorio con elenco sigle accordi 
+//c.font = "italic bolder 50px Arial";
 
 //larghezza testo
 
