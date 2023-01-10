@@ -30,6 +30,9 @@ const soundEngine = {
 
 //MIDI
 
+var lastNoteReceived;
+console.log('ULTIMA NOTARICEVUTA',lastNoteReceived);
+
 //check to MIDI
 if(navigator.requestMIDIAccess){
     navigator.requestMIDIAccess().then(success, failure);
@@ -41,6 +44,13 @@ function success(midiAccess) {
     inputs.forEach((input) => {
         //console.log(input);
         input.addEventListener('midimessage', handleInput);
+        input.onmidimessage = (message) => {
+            const [eventType, noteNumber, velocity] = message.data;
+            if(eventType == 145) {
+                console.log('noteNumber:', noteNumber);
+                lastNoteReceived = noteNumber;
+            }
+        };
     })
 }
 function updateDevices(event) {
@@ -59,22 +69,22 @@ function handleInput(input) {
     //console.log(command, note, velocity);
 
     switch (command) {
+
         case 145: //noteOn
-        if(velocity>0){
+        /*if(velocity>0){
             //note is on
             noteOn(note, velocity);
         } else {
             //note is off
             noteOff(note);
-        }
+        }*/
         var notaMIDI = note.toString();
-
         soundEngine.init(notaMIDI);
-
         break;
-        case 129: //notetOff
+
+        case 129: //noteOff
         //note is off
-        noteOff(note);
+        /*noteOff(note);*/
         break;
     }
 

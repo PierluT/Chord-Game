@@ -217,6 +217,7 @@ switch (choosenMode) {
 //console.log("ARRAY TEXT SU BLOCCHI: ", ArrayText);
 
 
+
 //let keysPressed = {};
 /*let currentArray = 0;
 //ora uso keyArray, ma dovremo usare ArrayAccordiMidiScelti con i numeri MIDI
