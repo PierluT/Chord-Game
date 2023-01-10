@@ -238,8 +238,6 @@ window.addEventListener('keydown', (event) => {
 });*/
 
 
-
-
 /*window.addEventListener('keydown', function(event) {
     keysPressed[event.key] = true;
 
@@ -254,3 +252,5 @@ window.addEventListener('keydown', (event) => {
 })*/
 
 
+
+soundEngine.init('50');
