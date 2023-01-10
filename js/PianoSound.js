@@ -1,5 +1,3 @@
-//MODELLO RIPRODUZIONE SUONI MIDI VIDEO YOUTUBE
-
 //mp3 piano notes
 const sound = new Howl({
     src: ['dist/piano.mp3'],
@@ -28,3 +26,65 @@ const soundEngine = {
 
 //soundEngine.play(chordNotes);
 }
+
+
+//MIDI
+
+//check to MIDI
+if(navigator.requestMIDIAccess){
+    navigator.requestMIDIAccess().then(success, failure);
+}
+function success(midiAccess) {
+    midiAccess.addEventListener('statechange', updateDevices);
+    const inputs = midiAccess.inputs;
+    //console.log(inputs);
+    inputs.forEach((input) => {
+        //console.log(input);
+        input.addEventListener('midimessage', handleInput);
+    })
+}
+function updateDevices(event) {
+    console.log('Name:', event.port.name, 'Brand:', event.port.manufacturer, 'State:', event.port.state, 'Type:', event.port.type);
+}
+function failure() {
+    console.log('Could not connect MIDI');
+}
+
+//data notes
+function handleInput(input) {
+    //console.log(event);
+    const command = input.data[0];
+    const note = input.data[1];
+    const velocity = input.data[2];
+    //console.log(command, note, velocity);
+
+    switch (command) {
+        case 145: //noteOn
+        if(velocity>0){
+            //note is on
+            noteOn(note, velocity);
+        } else {
+            //note is off
+            noteOff(note);
+        }
+        var notaMIDI = note.toString();
+
+        soundEngine.init(notaMIDI);
+
+        break;
+        case 129: //notetOff
+        //note is off
+        noteOff(note);
+        break;
+    }
+
+    
+}
+
+function noteOn(note, velocity) {
+    console.log(note, velocity);
+}
+function noteOff(note, velocity) {
+    console.log(note, velocity);
+}
+
