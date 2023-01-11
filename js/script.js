@@ -67,9 +67,9 @@ block3.position.x = 100;
 block3.position.y = 100;
 
 
-chordBlockArray.push(block1)
-chordBlockArray.push(block2)
-chordBlockArray.push(block3)
+chordBlockArray.push(block1);
+chordBlockArray.push(block2);
+chordBlockArray.push(block3);
 
 
 //saranno le nostre giusto e sbagliato

@@ -2,11 +2,11 @@
 //mp3 piano notes
 const sound = new Howl({
     src: ['dist/piano.mp3'],
-    onload() {
-        //console.log('Sound file has been loaded. Do something here!');
+    /*onload() {
+        console.log('Sound file has been loaded. Do something here!');
         soundEngine.init();
         sound.stop();
-    },
+    },*/
     /*onloaderror(e, msg) {
         console.log('Error', e, msg);
     }*/
@@ -23,12 +23,31 @@ const soundEngine = {
         }    
         sound.play(x);
     }
+}
 
-
-//soundEngine.play(chordNotes);
+const soundChord = {
+    init(a,b,c) {
+        const lengthOfNote = 2400;
+        let timeIndex = 0;
+        //24 is C1 and 96 is C7
+        for (let i = 24; i <= 96; i++){
+            sound['_sprite'][i] = [timeIndex, lengthOfNote];
+            timeIndex += lengthOfNote;
+        }
+        sound.play(a);
+        sound.play(b);
+        sound.play(c)
+    }
 }
 
 
+<<<<<<< Updated upstream
+=======
+
+
+//MIDI
+
+>>>>>>> Stashed changes
 //check to MIDI
 if(navigator.requestMIDIAccess){
     navigator.requestMIDIAccess().then(success, failure);
@@ -69,6 +88,8 @@ function controlloPerdita() {
         ConteggioVite = 3;
     }
 }
+
+
 
 //data notes
 function handleInput(input) {
@@ -177,3 +198,14 @@ function noteOn(note, velocity) {
 function noteOff(note, velocity) {
     console.log(note, velocity);
 }
+
+
+
+
+
+
+
+
+
+
+

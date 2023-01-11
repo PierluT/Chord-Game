@@ -16,6 +16,7 @@ class collisionBlock {
         //booleano per collisione
         this.markedToCollision = false;
         this.chord = ArrayAccordiScelti[i];
+        this.chordFund = ArrayAccordiScelti_listen[i]
         this.image = new Image();
         this.image.src = scrImages[Math.floor(Math.random()*scrImages.length)];
     }
@@ -28,7 +29,16 @@ class collisionBlock {
         //inserico la sigla sopra al blocco
         c.font = "40px 'Press Start 2P'";
         c.fillStyle = 'rgba(255,235,205,255)';
-        c.fillText(this.chord,this.position.x-(c.measureText(this.chord).width)/2+(this.width)/2 ,this.position.y);
+
+
+        switch (choosenMode) {
+            case 'read':
+                c.fillText(this.chord,this.position.x-(c.measureText(this.chord).width)/2+(this.width)/2 ,this.position.y);
+                break;
+            case 'listen':
+                c.fillText(this.chordFund,this.position.x-(c.measureText(this.chordFund).width)/2+(this.width)/2 ,this.position.y);
+                break;
+        }
     }
 
     update() {
@@ -49,3 +59,5 @@ class collisionBlock {
 
    
 }
+
+

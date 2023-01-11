@@ -30,12 +30,12 @@ beethoven.addEventListener('click', function() {
 
 readChoosenMode.addEventListener('click', function(){
     choosenMode = 'read';
-    console.log("ARRAY TEXT SU BLOCCHI: ", ArrayText);
+    //console.log("ARRAY TEXT SU BLOCCHI: ", ArrayText);
 })
 
 listenChoosenMode.addEventListener('click',function() {
     choosenMode = 'listen';
-    console.log("ARRAY TEXT SU BLOCCHI: ", ArrayText);
+    //console.log("ARRAY TEXT SU BLOCCHI: ", ArrayText);
 })
 
 clickedButton.onclick = replace;
@@ -50,6 +50,8 @@ function replace () {
     }else{
         document.getElementById("schermataIniziale").style.display= "none";
         document.getElementById("schermataGioco").style.display = "inline";
+        soundChord.init('24','25','26');
+        soundEngine.init('24');
     } 
 }
 

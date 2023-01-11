@@ -1,25 +1,44 @@
 
 //CREAZIONE LIVELLI
-var level = "";
+/*var level = "";
+var ArrayTotale;
+var ArrayAccordiScelti = [];
+var ArrayAccordiMidiScelti = [];
+var ArrayAccordiScelti_listen = [];
+var ArrayNoteAccordoScelto = [];
 
 document.getElementById("button1").addEventListener("click", function() {
     level = "LEVEL 1";
-    CreateChords(level)
+    ArrayTotale = CreateChords(level);
 });
 document.getElementById("button2").addEventListener("click", function() {
     level = "LEVEL 2";
-    CreateChords(level)
+    CreateChords(level);
 });
 document.getElementById("button3").addEventListener("click", function() {
     level = "LEVEL 3";
-    CreateChords(level)
+    CreateChords(level);
 });
+
+if(level != ""){
+    ArrayAccordiScelti = ArrayTotale[0];
+    ArrayAccordiMidiScelti = ArrayTotale[1];
+    ArrayAccordiScelti_listen = ArrayTotale[2];
+    ArrayNoteAccordoScelto = ArrayTotale[3];
+}*/
+
+var level = "LEVEL 1";
+var ArrayTotale = CreateChords(level);
+var ArrayAccordiScelti = ArrayTotale[0];
+var ArrayAccordiMidiScelti = ArrayTotale[1];
+var ArrayAccordiScelti_listen = ArrayTotale[2];
+var ArrayNoteAccordoScelto = ArrayTotale[3];
 
 
 function CreateChords(Livello_scelto){
 
     //LIVELLLO SCELTO
-    console.log(level);
+    console.log(Livello_scelto);
 
     //SCEGLI DIREZIONE CIRCOLO DELLE QUINTE PER GENERARE SEQUENZA DI TONALITA'
     const ToneDiesis = ["C", "G", "D", "A", "E", "B", "F#", "C#"];
@@ -33,14 +52,14 @@ function CreateChords(Livello_scelto){
     randomElementDB = ToneBemolli;
     }
     //STAMPA ARRAY CIRCOLO DELLLE QUINTE DI ARRAY
-    console.log("CIRCOLO DI TONALITA' SCELTO (o tonalità con diesis o bemolli): ", randomElementDB);
+    //console.log("CIRCOLO DI TONALITA' SCELTO (o tonalità con diesis o bemolli): ", randomElementDB);
 
     //OGNI TOT ACCORDI, CAMBIARE TONALITA' nel circolo delle quinte scelto random
     var Tonalita_scelta;
 
-    const ArrayAccordiScelti = [];
-    const ArrayAccordiMidiScelti = [];
-    const ArrayAccordiScelti_listen = [];
+    var ArrayAccordiScelti = [];
+    var ArrayAccordiMidiScelti = [];
+    var ArrayAccordiScelti_listen = [];
 
     for (let index=0; index<randomElementDB.length; index++){
         Tonalita_scelta = randomElementDB[index];
@@ -53,9 +72,9 @@ function CreateChords(Livello_scelto){
         const Modo_scelto = MajMin[indexMajMin];
         console.log("MODO SCELTO: ", Modo_scelto);
 
-        const arrayAccordiPossibili = [];
-        const arrayDominantiSecondarie = [];
-        const arrayDominantiSub = [];
+        var arrayAccordiPossibili = [];
+        var arrayDominantiSecondarie = [];
+        var arrayDominantiSub = [];
         if(Modo_scelto == "major"){
             console.log("TONALITA' SCELTA: ", Tonal.Key.majorKey(Tonalita_scelta));
             for (const element of Tonal.Key.majorKey(Tonalita_scelta).chords) {
@@ -210,65 +229,15 @@ function CreateChords(Livello_scelto){
     return [ArrayAccordiScelti, ArrayAccordiMidiScelti, ArrayAccordiScelti_listen, ArrayNoteAccordoScelto];
 }
 
-var ArrayTotale = CreateChords();
+/*var ArrayTotale = CreateChords(level);
 var ArrayAccordiScelti = ArrayTotale[0];
 var ArrayAccordiMidiScelti = ArrayTotale[1];
 var ArrayAccordiScelti_listen = ArrayTotale[2];
-var ArrayNoteAccordoScelto = ArrayTotale[3];
-
-//scegli READ o LISTEN mode
-/*const GameMode = ["READ", "LISTEN"];
-const indexGameMode = Math.floor(Math.random() * GameMode.length);
-const GameMode_scelto = GameMode[indexGameMode];
-console.log("MODO DI GIOCO SCELTO (READ o LISTEN): ", GameMode_scelto);*/
-
-var ArrayText = {};
-
-switch (choosenMode) {
-    case 'read':
-        var ArrayText = ArrayAccordiScelti;
-        break;
-    
-    case 'listen':
-        var ArrayText = ArrayAccordiScelti_listen;
-        break;
-}
-
-//console.log("ARRAY TEXT SU BLOCCHI: ", ArrayText);
+var ArrayNoteAccordoScelto = ArrayTotale[3];*/
 
 
 
-//let keysPressed = {};
-/*let currentArray = 0;
-//ora uso keyArray, ma dovremo usare ArrayAccordiMidiScelti con i numeri MIDI
-const keyArray = [['q','w','e'], ['r','t','y'], ['r','t','y']];
-window.addEventListener('keydown', (event) => {
-    const key = event.key;
-    if (keyArray[currentArray].includes(key)){
-        console.log('ciao');
-        for(let i=0; i<currentArray.length; i++){
-            console.log(currentArray[i]);
-            soundEngine.init(currentArray[i]);
-        }
-        currentArray++;
-    }
-    if (currentArray >= keyArray.length){
-        console.log("fine gioco");
-    }
-});*/
 
 
-/*window.addEventListener('keydown', function(event) {
-    keysPressed[event.key] = true;
-
-    if (keysPressed["q"] && keysPressed["e"] && keysPressed["t"]) {
-        console.log("ciao");
-        soundEngine.init('24');
-        keysPressed[event.key] = false;
-    }
-    
-
-
-})*/
 
 
