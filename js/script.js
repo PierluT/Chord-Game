@@ -125,10 +125,13 @@ function animate (timestamp) {
 }
 
 animate(0)
+
+
+
+
+
 //in base a ciò che premo nella tastiera
 let keysPressed = {};
-
-
 
 window.addEventListener('keydown', function(event) {
   
@@ -139,9 +142,6 @@ window.addEventListener('keydown', function(event) {
  
         case 'l': //DA TENERE PER PROVE SENZA MIDI
             /*
-
-
-            
             let nextBlockPosition = player.computeNextBlockDistance();
 
             let nextBlockX = nextBlockPosition.xDestinationNextBlock;
@@ -173,57 +173,11 @@ window.addEventListener('keydown', function(event) {
             console.log(rispostaGiusta)
             // initialize the game of life
             //gol.init();
-            
-            
-            
-            
+
             */
             break;
 
-        //VITE RIMASTE se premo un atro key, invece di l
-        //se perdo 3 vite muoio e torno a home
-        default:
-            /*if (!window.keyPressCounter) {
-                window.keyPressCounter = 0;
-            }
-            console.log("Vite rimaste: ", 2-window.keyPressCounter);
-            //document.getElementById("numerovite").innerHTML = (3-window.keyPressCounter);
-            window.keyPressCounter++;
-            if (window.keyPressCounter >= 3) {
-                alert("MORTO! Torna alla schermata iniziale")
-                console.log("fine vite");
-                document.getElementById("schermataIniziale").style.display= "inline";
-                document.getElementById("schermataGioco").style.display = "none";
-
-                primaNota = false;
-                window.keyPressCounter = 0;
-            }*/
-
-            /*//PROVA CON BOTTONE
-            if (window.keyPressCounter >= 3) {
-
-                //bottone torna a schermata iniziale
-                let button = document.createElement("button");
-                button.textContent = "Torna alla schermata iniziale";
-                button.addEventListener("click", function() {
-                    document.getElementById("schermataIniziale").style.display= "inline";
-                    document.getElementById("schermataGioco").style.display = "none";
-                });
-                let message = "MORTO! Torna alla schermata iniziale";
-                window.alert(message + " " + button.outerHTML);
-                console.log("fine vite");
-                document.getElementById("schermataIniziale").style.display= "inline";
-                document.getElementById("schermataGioco").style.display = "none";
-                
-                primaNota = false;
-                window.keyPressCounter = 0;
-            }*/
-            break;
-
     }
-
-
-    
 
 
 })
