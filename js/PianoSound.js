@@ -29,9 +29,6 @@ const soundEngine = {
 }
 
 
-
-//MIDI
-
 //check to MIDI
 if(navigator.requestMIDIAccess){
     navigator.requestMIDIAccess().then(success, failure);

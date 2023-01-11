@@ -140,7 +140,7 @@ window.addEventListener('keydown', function(event) {
     switch(event.key){
  
         case 'l': //DA TENERE PER PROVE SENZA MIDI
-            /*
+            primaNota = true;
             let nextBlockPosition = player.computeNextBlockDistance();
 
             let nextBlockX = nextBlockPosition.xDestinationNextBlock;
@@ -173,8 +173,15 @@ window.addEventListener('keydown', function(event) {
             // initialize the game of life
             //gol.init();
 
-            */
             break;
+         //per implementazione perdita vite senza MIDI   
+         case 'g':
+            ConteggioVite--;
+            console.log("vite rimaste da script",ConteggioVite);
+            if(ConteggioVite == 0){
+                this.alert("alert secondario simulazione risposta sbagliata!");
+            }
+
 
     }
 
