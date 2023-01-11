@@ -14,7 +14,7 @@ let checkGravity = true;
 
 const textWidth = c.measureText(ArrayNoteAccordoScelto).width;
 const scrImages = ['./img/assets/block1_cut.png','./img/assets/block2_cut.png'];
-
+//const srcLooserPlayers = ['./img/Mozart/MozartPerso.gif', './img/Beethoven/BeethovenPerso.gif'];
 //blocchi che verranno disegnati dopo 
 var chordBlockArray = [];
 
@@ -179,7 +179,25 @@ window.addEventListener('keydown', function(event) {
             ConteggioVite--;
             console.log("vite rimaste da script",ConteggioVite);
             if(ConteggioVite == 0){
-                this.alert("alert secondario simulazione risposta sbagliata!");
+                var imageUrl = this.document.querySelector('#imgPlayerPerso');
+                imageUrl.src = looserImage;
+                primaNota = false;
+                document.getElementById("schermataGioco").style.opacity = 0.3;
+                $( function() {
+                    $( "#dialog" ).dialog({
+                      title: "Game Over",
+                      modal: true,
+                      buttons: {
+                        Restart: function() {
+                            ConteggioVite = 3;
+                            primaNota = false;
+                            document.getElementById("schermataGioco").style.opacity = 1;
+                          $( this ).dialog( "close" );
+                        }
+                      }
+                    });
+                  });
+              
             }
 
 

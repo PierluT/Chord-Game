@@ -38,5 +38,9 @@ canvas {
     padding-left: 47px;
 }
 
+#dialog{
+    display: none;
+    background-color: rgb(80, 74, 74);
+}
 
 
