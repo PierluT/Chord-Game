@@ -34,7 +34,7 @@ const V0Y_MAX = 1.03;
 
 let vox_MODIFIER;
 let deltaTime;
-
+var ConteggioVite = 3;
 // initialize the background
 init();
 
@@ -116,7 +116,7 @@ function animate (timestamp) {
     }else if (keys.a.pressed) {
         player.velocity.x = -1
     }
-
+    //controlloPerdita();
     
     //richiama ogni volta la funzione
    window.requestAnimationFrame(animate)
@@ -125,22 +125,21 @@ function animate (timestamp) {
 animate(0)
 //in base a ciò che premo nella tastiera
 let keysPressed = {};
+
+
+
 window.addEventListener('keydown', function(event) {
-    primaNota = true;
+  
     keysPressed[event.key] = true;
     
     //Al posto delle lettere ci andranno le risposte esatte o sbagliate
     switch(event.key){
-        /*case 'd':
-            keys.d.pressed = true
-            break
-        case 's':
-            keys.a.pressed = true
-                break
-        case 'w':
-                player.velocity.y = -20
-                break*/
-        case 'l':
+ 
+        case 'l': //DA TENERE PER PROVE SENZA MIDI
+            /*
+
+
+            
             let nextBlockPosition = player.computeNextBlockDistance();
 
             let nextBlockX = nextBlockPosition.xDestinationNextBlock;
@@ -172,12 +171,17 @@ window.addEventListener('keydown', function(event) {
             console.log(rispostaGiusta)
             // initialize the game of life
             //gol.init();
+            
+            
+            
+            
+            */
             break;
 
         //VITE RIMASTE se premo un atro key, invece di l
         //se perdo 3 vite muoio e torno a home
         default:
-            if (!window.keyPressCounter) {
+            /*if (!window.keyPressCounter) {
                 window.keyPressCounter = 0;
             }
             console.log("Vite rimaste: ", 2-window.keyPressCounter);
@@ -191,7 +195,7 @@ window.addEventListener('keydown', function(event) {
 
                 primaNota = false;
                 window.keyPressCounter = 0;
-            }
+            }*/
 
             /*//PROVA CON BOTTONE
             if (window.keyPressCounter >= 3) {
@@ -217,12 +221,6 @@ window.addEventListener('keydown', function(event) {
     }
 
 
-    /*if (keysPressed["q"] && keysPressed["e"] && keysPressed["t"]) {
-        console.log("ciao");
-        soundEngine.init('24');
-        soundEngine.init('28');
-        keysPressed[event.key] = false;
-    }*/
     
 
 
@@ -238,25 +236,4 @@ window.addEventListener('keydown', function(event) {
 
 
 
-/*//per aggiornare lo status delle keys
-window.addEventListener('keyup', (event) =>{
-    
-    //Al posto delle lettere ci andranno le risposte esatte o sbagliate
-    switch(event.key){
-        case 'd':
-            keys.d.pressed = false
-            break
-        case 's':
-            keys.a.pressed = false
-                break
-        case 'w':
-                player.velocity.y = -10
-                break
-    }
-})
-var a4 = teoria.note('a4');       // Scientific notation
-var g5 = teoria.note("g''"); 
-console.log(teoria.interval(a4, g5));
-
-console.log(Tonal.Key.minorKey("Ab"));*/
 

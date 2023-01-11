@@ -54,11 +54,23 @@ function failure() {
 }
 
 
-/*var lastNoteReceived = 50;
+var lastNoteReceived = 50;
 //faccio un ciclo for in ChordLogic per paassaargli l'array di aarray ogni saalto
-const arrrrrrr = [50,51,52];
-var arrayComparaMIDI =[];*/
+const arrrrrrr = ArrayAccordiMidiScelti;
+var arrayComparaMIDI =[];
+var indiceArrrr=0;
 
+function controlloPerdita() {
+    console.log("Vite rimaste: ", ConteggioVite)
+    if(ConteggioVite == 0){
+        alert("MORTO! Torna alla schermata iniziale")
+        console.log("fine vite");
+        document.getElementById("schermataIniziale").style.display= "inline";
+        document.getElementById("schermataGioco").style.display = "none";
+        primaNota = false;
+       // ConteggioVite = 3;
+    }
+}
 
 //data notes
 function handleInput(input) {
@@ -81,29 +93,69 @@ function handleInput(input) {
         var notaMIDI = note.toString();
         soundEngine.init(notaMIDI);
 
-        /*lastNoteReceived = note;
-        console.log('noteNumber:', lastNoteReceived);
+        lastNoteReceived = note;
+        //console.log('noteNumber:', lastNoteReceived);
 
-        for(let j=0; j<arrrrrrr.length; j++){
-            if(arrrrrrr[j]==lastNoteReceived || (lastNoteReceived-arrrrrrr[j]) % 12 == 0 || (lastNoteReceived+arrrrrrr[j]) % 12 == 0 ){
+        for(let j=0; j<arrrrrrr[indiceArrrr].length; j++){
+            if(arrrrrrr[indiceArrrr][j]==lastNoteReceived || (Math.abs(lastNoteReceived-arrrrrrr[indiceArrrr][j])) % 12 == 0){
                 if(!arrayComparaMIDI.includes(lastNoteReceived)
                 && !arrayComparaMIDI.includes(lastNoteReceived + 12) && !arrayComparaMIDI.includes(lastNoteReceived - 12)
                 && !arrayComparaMIDI.includes(lastNoteReceived + 24) && !arrayComparaMIDI.includes(lastNoteReceived - 24)
                 && !arrayComparaMIDI.includes(lastNoteReceived + 36) && !arrayComparaMIDI.includes(lastNoteReceived - 36)
                 && !arrayComparaMIDI.includes(lastNoteReceived + 48) && !arrayComparaMIDI.includes(lastNoteReceived - 48)
-                && !arrayComparaMIDI.includes(lastNoteReceived + 60) && !arrayComparaMIDI.includes(lastNoteReceived - 60)){
-                    arrayComparaMIDI.push(arrrrrrr[j]);
+                && !arrayComparaMIDI.includes(lastNoteReceived + 60) && !arrayComparaMIDI.includes(lastNoteReceived - 60)
+                && !arrayComparaMIDI.includes(lastNoteReceived + 72) && !arrayComparaMIDI.includes(lastNoteReceived - 72)
+                && !arrayComparaMIDI.includes(lastNoteReceived + 84) && !arrayComparaMIDI.includes(lastNoteReceived - 84)){
+                    arrayComparaMIDI.push(arrrrrrr[indiceArrrr][j]);
                 }
-            }  
+            } /*else {
+                ConteggioVite--;
+                j=arrrrrrr[indiceArrrr].length;
+                controlloPerdita();
+            } */
         }
+
         console.log(arrayComparaMIDI);
-        if(arrayComparaMIDI.length==arrrrrrr.length){
-            console.log("array controllato, passa al successivo");
+        if(arrayComparaMIDI.length==arrrrrrr[indiceArrrr].length){
+
+            ///////////////////////////////
+            primaNota = true;
+
+            let nextBlockPosition = player.computeNextBlockDistance();
+
+            let nextBlockX = nextBlockPosition.xDestinationNextBlock;
+
+            let xDistance = nextBlockX - player.position.x;
+
+            switch (true) {
+                case xDistance > 0:
+                    playerNamePlusState = "";
+                    playerState = "-salto-dx";
+                    playerNamePlusState = choosenAvatar + playerState;
+                    //player.updateIndexes(playerNamePlusState);                    
+                    break;
+
+                case xDistance < 0:
+                    playerNamePlusState = "";
+                    playerState = "-salto-sx";
+                    playerNamePlusState = choosenAvatar + playerState;
+                    //player.updateIndexes(playerNamePlusState);
+                    break;
+            }
+                
+            
+            vox_MODIFIER = V0X_MAX*(xDistance/canvas.width);
+
+            rispostaGiusta = true;
+
+            console.log(rispostaGiusta)
+
+            ///////////////////////////////
             arrayComparaMIDI = [];
-        }*/
-        
-        
-        
+            //passa a elemento successivo
+            indiceArrrr++;
+        }
+         
         break;
 
         case 129: //noteOff

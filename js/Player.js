@@ -2,7 +2,7 @@
 const deltaPixel = 38;
 // threshold per i movimenti su asse x in automatic jump
 const move_threshold = 5;
-const spriteWidth = 656;
+const spriteWidth = 600;
 const spriteHeight = 640;
 let frameX = 0;
 let gameFrame = 0;
