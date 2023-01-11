@@ -60,15 +60,16 @@ const arrrrrrr = ArrayAccordiMidiScelti;
 var arrayComparaMIDI =[];
 var indiceArrrr=0;
 
+//CONTEGGIO VITE e MORTE
+var ConteggioVite = 3;
 function controlloPerdita() {
     console.log("Vite rimaste: ", ConteggioVite)
     if(ConteggioVite == 0){
         alert("MORTO! Torna alla schermata iniziale")
-        console.log("fine vite");
         document.getElementById("schermataIniziale").style.display= "inline";
         document.getElementById("schermataGioco").style.display = "none";
         primaNota = false;
-       // ConteggioVite = 3;
+        ConteggioVite = 3;
     }
 }
 
@@ -96,7 +97,9 @@ function handleInput(input) {
         lastNoteReceived = note;
         //console.log('noteNumber:', lastNoteReceived);
 
-        for(let j=0; j<arrrrrrr[indiceArrrr].length; j++){
+        var controllo = true;
+
+        for(let j=0; j<arrrrrrr[indiceArrrr].length; j++){ 
             if(arrrrrrr[indiceArrrr][j]==lastNoteReceived || (Math.abs(lastNoteReceived-arrrrrrr[indiceArrrr][j])) % 12 == 0){
                 if(!arrayComparaMIDI.includes(lastNoteReceived)
                 && !arrayComparaMIDI.includes(lastNoteReceived + 12) && !arrayComparaMIDI.includes(lastNoteReceived - 12)
@@ -107,15 +110,19 @@ function handleInput(input) {
                 && !arrayComparaMIDI.includes(lastNoteReceived + 72) && !arrayComparaMIDI.includes(lastNoteReceived - 72)
                 && !arrayComparaMIDI.includes(lastNoteReceived + 84) && !arrayComparaMIDI.includes(lastNoteReceived - 84)){
                     arrayComparaMIDI.push(arrrrrrr[indiceArrrr][j]);
+                    console.log(arrayComparaMIDI);
                 }
-            } /*else {
-                ConteggioVite--;
-                j=arrrrrrr[indiceArrrr].length;
-                controlloPerdita();
-            } */
+                controllo = false;
+            }
         }
 
-        console.log(arrayComparaMIDI);
+        if(controllo == true){
+            ConteggioVite--;
+            controlloPerdita();
+        }
+
+
+        //console.log(arrayComparaMIDI);
         if(arrayComparaMIDI.length==arrrrrrr[indiceArrrr].length){
 
             ///////////////////////////////

@@ -34,7 +34,9 @@ const V0Y_MAX = 1.03;
 
 let vox_MODIFIER;
 let deltaTime;
-var ConteggioVite = 3;
+
+
+
 // initialize the background
 init();
 
