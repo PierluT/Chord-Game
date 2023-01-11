@@ -50,8 +50,15 @@ function replace () {
     }else{
         document.getElementById("schermataIniziale").style.display= "none";
         document.getElementById("schermataGioco").style.display = "inline";
-        soundChord.init('24','25','26');
-        soundEngine.init('24');
+        switch (choosenMode) {
+
+            case 'listen':
+                //devo passare dentro array MIDI del primo accordo
+                soundChord.init('24','25','26');
+                soundEngine.init('24');
+                break;
+        }
+        
     } 
 }
 

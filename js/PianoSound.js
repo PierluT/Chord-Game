@@ -41,13 +41,7 @@ const soundChord = {
 }
 
 
-<<<<<<< Updated upstream
-=======
 
-
-//MIDI
-
->>>>>>> Stashed changes
 //check to MIDI
 if(navigator.requestMIDIAccess){
     navigator.requestMIDIAccess().then(success, failure);
