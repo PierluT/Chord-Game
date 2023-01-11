@@ -118,7 +118,6 @@ function animate (timestamp) {
     }else if (keys.a.pressed) {
         player.velocity.x = -1
     }
-    //controlloPerdita();
     
     //richiama ogni volta la funzione
    window.requestAnimationFrame(animate)
