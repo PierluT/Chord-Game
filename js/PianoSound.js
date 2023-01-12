@@ -140,6 +140,7 @@ function handleInput(input) {
             ///////////////////////////////
             primaNota = true;
 
+            // funziona se il player è atterrato sul blocco
             let nextBlockPosition = player.computeNextBlockDistance();
 
             let nextBlockX = nextBlockPosition.xDestinationNextBlock;
@@ -166,9 +167,6 @@ function handleInput(input) {
             vox_MODIFIER = V0X_MAX*(xDistance/canvas.width);
 
             rispostaGiusta = true;
-            // updates the background
-
-            console.log(rispostaGiusta)
 
             ///////////////////////////////
             arrayComparaMIDI = [];

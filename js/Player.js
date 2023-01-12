@@ -154,7 +154,7 @@ class Player {
         // e setta rispostaGiusta = false ---> 1 - permette la collisione 2 - ferma la gravità (da sistemare)
         if (deltaDistance < deltaPixel && yDistance > 0) {
             rispostaGiusta = false;
-            console.log(rispostaGiusta)
+            //console.log(rispostaGiusta)
         }
         
     }

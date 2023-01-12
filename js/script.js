@@ -23,7 +23,7 @@ var chordBlockArray = [];
 
 let timeToNextBlock = 0;
 //variabile che andremo a modificare con il knob della MIDI, ora è impostato a 4 secondi
-let blockInterval= 4000;
+let blockInterval= 3000;
 let lastBlockTime = 0;
 let primaNota = false
 let gameOver = false
@@ -32,10 +32,11 @@ let playerState = "-frontale-sx";
 let playerNamePlusState = choosenAvatar + playerState;
 console.log(playerNamePlusState)
 
-const V0X_MAX = 1.1; // initial velocity (m/s)
-const V0Y_MAX = 1.03;
+const V0X_MAX = 1; // initial velocity (m/s)
+const V0Y_MAX = 1.2;
 
 let vox_MODIFIER;
+let voy_MODIEFIER;
 let deltaTime;
 
 
@@ -110,7 +111,7 @@ function animate (timestamp) {
     //stampa dell'array aggiornato nel quale ho solamente i blocchi visibili nel canvas.
     //console.log(chordBlockArray)
     if(rispostaGiusta){
-        player.automaticJump(vox_MODIFIER, V0Y_MAX)
+        player.automaticJump(vox_MODIFIER, voy_MODIEFIER)
     }
 
     //se tengo premuto continua ad andarea destra,altrimenti si stoppa 
@@ -130,8 +131,6 @@ animate(0)
 
 
 
-
-
 //in base a ciò che premo nella tastiera
 let keysPressed = {};
 
@@ -147,8 +146,10 @@ window.addEventListener('keydown', function(event) {
             let nextBlockPosition = player.computeNextBlockDistance();
 
             let nextBlockX = nextBlockPosition.xDestinationNextBlock;
+            let nextBlockY = nextBlockPosition.yDestinationNextBlock;
 
             let xDistance = nextBlockX - player.position.x;
+            let yDistance = -(nextBlockY  - player.position.y);
 
             switch (true) {
                 case xDistance > 0:
@@ -168,6 +169,8 @@ window.addEventListener('keydown', function(event) {
                 
             
             vox_MODIFIER = V0X_MAX*(xDistance/canvas.width);
+            voy_MODIEFIER = V0Y_MAX*(0.8 + 0.2*((yDistance+100)/canvas.height));
+            console.log(yDistance/canvas.height)
 
             rispostaGiusta = true;
             //attivo questo commento se do 3 possibilità per accordo e non 3 totali
