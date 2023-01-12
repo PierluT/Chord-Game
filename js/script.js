@@ -30,9 +30,8 @@ let gameOver = false
 let rispostaGiusta
 let playerState;
 let playerNamePlusState;
-playerState = "-frontale-sx";
 playerNamePlusState = choosenAvatar + playerState;
-//console.log(playerNamePlusState)
+
 
 const V0X_MAX = 1; // initial velocity (m/s)
 const V0Y_MAX = 1.2;
@@ -161,6 +160,7 @@ window.addEventListener('keydown', function(event) {
             ConteggioVite--;
             console.log("vite rimaste da script",ConteggioVite);
             if(ConteggioVite == 0){
+                //playerState = "";
                 var imageUrl = this.document.querySelector('#imgPlayerPerso');
                 imageUrl.src = looserImage;
                 primaNota = false;
@@ -197,7 +197,7 @@ function start(){
     primaNota = false;
     rispostaGiusta = false;
     indexChords=0;
-
+    playerState = "-frontale-sx";
     
     // initialize the background
     init();

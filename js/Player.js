@@ -68,6 +68,10 @@ class Player {
          }    
           gameFrame++;  
         } 
+        else {
+            this.sx = 0;
+            this.sy = 0;
+        }
     }
     
 
