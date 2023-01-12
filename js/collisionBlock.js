@@ -4,7 +4,7 @@ class collisionBlock {
         this.width = 200
         this.height = 90
         this.position = {
-            x: ( Math.random() * (canvas.width - this.width)),
+            x: (generateRandom() * (canvas.width - this.width)),
             y: 0,
         }
 
@@ -60,4 +60,18 @@ class collisionBlock {
    
 }
 
-
+function generateRandom(){
+    if (chordBlockArray.length > 1){
+        let lastBlock = chordBlockArray[chordBlockArray.length - 1];
+        prevRandom = lastBlock.position.x/(canvas.width - lastBlock.width);
+    
+        newRandom = Math.random();
+        while(Math.abs(newRandom - prevRandom) < 0.2){
+            newRandom = Math.random();
+        }
+    }
+    else {
+        newRandom = Math.random();
+    }
+    return newRandom;
+}

@@ -9,7 +9,6 @@ const gravity = 0.5
 
 let checkGravity = true;
 
-
 //const colorGreen = 'rgba(75,192,192,1)';
 //c.font = "italic bolder 50px Arial";
 
@@ -23,7 +22,7 @@ var chordBlockArray;
 
 let timeToNextBlock;
 //variabile che andremo a modificare con il knob della MIDI, ora è impostato a 4 secondi
-let blockInterval= 3000;
+let blockInterval= 4000;
 let lastBlockTime;
 let primaNota;
 let gameOver = false
