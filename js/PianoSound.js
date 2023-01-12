@@ -48,10 +48,14 @@ if(navigator.requestMIDIAccess){
 }
 
 function success(midiAccess) {
+    //console.log(midiAccess);
     midiAccess.addEventListener('statechange', updateDevices);
     const inputs = midiAccess.inputs;
+    //console.log(inputs);
     inputs.forEach((input) => {
+        //console.log(input);
         input.addEventListener('midimessage', handleInput);
+        
     })
 }
 
@@ -117,6 +121,7 @@ function controlloPerdita() {
                 buttons: {
                 Restart: function() {
                     ConteggioVite = 3;
+                    start();
                     errori = [];
                     ArrayAccordiErrori = [];
                     ArrayMIDIErrori = [[],[],[]];
@@ -172,10 +177,38 @@ function controlloGiusto(){
 
 //data notes
 function handleInput(input) {
+    //console.log(input);
     const command = input.data[0];
     const note = input.data[1];
     const velocity = input.data[2];
 
+    //LIVELLO
+    if (command == 128){
+        switch (note) {
+            case 64: //su
+            if(lev<3){
+                lev++;
+                console.log("Level: ", lev)
+                ArrayTotale = CreateChords(lev);
+                ArrayAccordiScelti = ArrayTotale[0];
+                ArrayAccordiMidiScelti = ArrayTotale[1];
+                ArrayAccordiScelti_listen = ArrayTotale[2];
+                ArrayNoteAccordoScelto = ArrayTotale[3];
+            }
+            break;
+            case 65: //giu
+            if(lev>1){
+                lev--;
+                console.log("Level: ", lev)
+                ArrayTotale = CreateChords(lev);
+                ArrayAccordiScelti = ArrayTotale[0];
+                ArrayAccordiMidiScelti = ArrayTotale[1];
+                ArrayAccordiScelti_listen = ArrayTotale[2];
+                ArrayNoteAccordoScelto = ArrayTotale[3];
+            }
+            break;
+        }
+    }
     switch (command) {
 
         case 145: //noteOn
@@ -215,11 +248,7 @@ function handleInput(input) {
         if(controllo == true){
             controlloPerdita(lastNoteReceived);
         }
-
-
-        //console.log(arrayComparaMIDI);
         if(arrayComparaMIDI.length==arrrrrrr[indiceArrrr].length){
-
             controlloGiusto();
             arrayComparaMIDI = [];
             //passa a elemento successivo

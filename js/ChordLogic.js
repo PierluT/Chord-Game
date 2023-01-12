@@ -1,13 +1,12 @@
 
-//CREAZIONE LIVELLI
-/*var level = "";
+
 var ArrayTotale;
 var ArrayAccordiScelti = [];
 var ArrayAccordiMidiScelti = [];
 var ArrayAccordiScelti_listen = [];
 var ArrayNoteAccordoScelto = [];
 
-document.getElementById("button1").addEventListener("click", function() {
+/*document.getElementById("button1").addEventListener("click", function() {
     level = "LEVEL 1";
     ArrayTotale = CreateChords(level);
 });
@@ -26,20 +25,20 @@ document.getElementById("button3").addEventListener("click", function() {
     ArrayAccordiMidiScelti = ArrayTotale[1];
     ArrayAccordiScelti_listen = ArrayTotale[2];
     ArrayNoteAccordoScelto = ArrayTotale[3];*/
+var lev = 2;
+console.log("Start Level: ", lev);
+ArrayTotale = CreateChords(lev);
+ArrayAccordiScelti = ArrayTotale[0];
+ArrayAccordiMidiScelti = ArrayTotale[1];
+ArrayAccordiScelti_listen = ArrayTotale[2];
+ArrayNoteAccordoScelto = ArrayTotale[3];
 
-
-var level = "LEVEL 1";
-var ArrayTotale = CreateChords(level);
-var ArrayAccordiScelti = ArrayTotale[0];
-var ArrayAccordiMidiScelti = ArrayTotale[1];
-var ArrayAccordiScelti_listen = ArrayTotale[2];
-var ArrayNoteAccordoScelto = ArrayTotale[3];
 
 
 function CreateChords(Livello_scelto){
 
     //LIVELLLO SCELTO
-    console.log(Livello_scelto);
+    console.log("livello sceto", Livello_scelto);
 
     //SCEGLI DIREZIONE CIRCOLO DELLE QUINTE PER GENERARE SEQUENZA DI TONALITA'
     const ToneDiesis = ["C", "G", "D", "A", "E", "B", "F#", "C#"];
@@ -144,14 +143,14 @@ function CreateChords(Livello_scelto){
             if(BooleanDomSec==true){
                 Accordo_scelto_ridotto = Accordo_scelto;
             } else if (BooleanDomSec==false) {
-                if (Livello_scelto == "LEVEL 1") {
+                if (Livello_scelto == 1) {
                     Accordo_scelto = Accordo_scelto.replace(/m7b5|o7/g, "dim").replace(/maj7|7|Maj7|6/g, "");
-                } else if (Livello_scelto == "LEVEL 2") {
+                } else if (Livello_scelto == 2) {
                     let numeroCasuale1 = Math.random();
                     if (numeroCasuale1 <= 0.5) {
                         Accordo_scelto = Accordo_scelto.replace(/m7b5|o7/g, "dim").replace(/maj7|7|Maj7|6/g, "");
                     }
-                } else if (Livello_scelto == "LEVEL 3") {
+                } else if (Livello_scelto == 3) {
                     let numeroCasuale2 = Math.random();
                     if (numeroCasuale2 < 0.33) {
                         //triadi
