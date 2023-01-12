@@ -23,7 +23,7 @@ function hsla( h, s, l, a ) {
 function create() {
   sizeBase = cw + ch;
   count = Math.floor( sizeBase * 0.3 ),
-  hue = rand( 160 , 200 ),
+  hue = rand( 120 , 180 ),
   opt = {
     radiusMin: 1,
     radiusMax: sizeBase * 0.04,
@@ -120,5 +120,5 @@ function click() {
   create()
 }
 
-//window.addEventListener( 'resize', resize );
+window.addEventListener( 'resize', resize );
 //window.addEventListener( 'click', click );

@@ -1,11 +1,14 @@
 const canvas = document.getElementById('gameSet');
 const c = canvas.getContext('2d');
-canvas.width = 1024
-canvas.height = 750
+// percentage of the window width that will be occupied by the canvas
+let width_perc = 0.65;
+canvas.width = width_perc*window.innerWidth;
+canvas.height = window.innerHeight;
 
 const gravity = 0.5
 
 let checkGravity = true;
+
 
 //const colorGreen = 'rgba(75,192,192,1)';
 //c.font = "italic bolder 50px Arial";
@@ -42,7 +45,7 @@ init();
 
 const player = new Player({
     x: 450,
-    y :0,
+    y: 0,
 })
 
 //const gol = new GOL();

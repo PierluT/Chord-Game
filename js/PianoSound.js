@@ -166,6 +166,8 @@ function handleInput(input) {
             vox_MODIFIER = V0X_MAX*(xDistance/canvas.width);
 
             rispostaGiusta = true;
+            // updates the background
+            create();
 
             console.log(rispostaGiusta)
 

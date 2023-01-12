@@ -81,7 +81,7 @@ class Player {
     
     applyGravity(){
         // TO DO: SISTEMARE LA GRAVITA' QUANDO RISPOSTA GIUSTA E' TRUE O FALSE
-        if (this.position.y + this.height + this.velocity.y < canvas.height && checkGravity == true){
+        if (this.position.y + this.height < canvas.height && checkGravity == true){
             this.velocity.y += gravity;
         }
         else {
