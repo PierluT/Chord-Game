@@ -9,6 +9,7 @@ let gameFrame = 0;
 let staggerFrame = 5;
 const srcLooserPlayers = ['./img/Mozart/MozartPerso.gif', './img/Beethoven/BeethovenPerso.gif'];
 let looserImage = "";
+let defaultSrc= "";
 
 
 class Player {
@@ -24,8 +25,8 @@ class Player {
             x: 0,
             y: 0,
         }
-        this.height = 100;
-        this.width = 100;
+        this.height = 130;
+        this.width = 130;
     }
     
     draw() {
@@ -108,7 +109,7 @@ class Player {
             checkGravity = false;
             let posizioneAtterraggioX;
             let posizioneAtterraggioY;
-            posizioneAtterraggioY = nextBlock.position.y - nextBlock.height;
+            posizioneAtterraggioY = nextBlock.position.y - nextBlock.height - 5;
             posizioneAtterraggioX = nextBlock.position.x + nextBlock.width / 2 - this.width/2;
             //cade al centro del blocco
             this.position.y = posizioneAtterraggioY;

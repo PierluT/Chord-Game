@@ -19,18 +19,20 @@ const textWidth = c.measureText(ArrayNoteAccordoScelto).width;
 const scrImages = ['./img/assets/block1_cut.png','./img/assets/block2_cut.png'];
 //const srcLooserPlayers = ['./img/Mozart/MozartPerso.gif', './img/Beethoven/BeethovenPerso.gif'];
 //blocchi che verranno disegnati dopo 
-var chordBlockArray = [];
+var chordBlockArray;
 
-let timeToNextBlock = 0;
+let timeToNextBlock;
 //variabile che andremo a modificare con il knob della MIDI, ora è impostato a 4 secondi
 let blockInterval= 3000;
-let lastBlockTime = 0;
-let primaNota = false
+let lastBlockTime;
+let primaNota;
 let gameOver = false
-let rispostaGiusta = false
-let playerState = "-frontale-sx";
-let playerNamePlusState = choosenAvatar + playerState;
-console.log(playerNamePlusState)
+let rispostaGiusta
+let playerState;
+let playerNamePlusState;
+playerState = "-frontale-sx";
+playerNamePlusState = choosenAvatar + playerState;
+//console.log(playerNamePlusState)
 
 const V0X_MAX = 1; // initial velocity (m/s)
 const V0Y_MAX = 1.2;
@@ -38,11 +40,6 @@ const V0Y_MAX = 1.2;
 let vox_MODIFIER;
 let voy_MODIEFIER;
 let deltaTime;
-
-
-
-// initialize the background
-init();
 
 const player = new Player({
     x: 450,
@@ -52,29 +49,9 @@ const player = new Player({
 //const gol = new GOL();
 
 //index array di accordi
-var indexChords=0;
+var indexChords;
 
-//blocchi di partenza
-const block1 = new collisionBlock(indexChords);
-indexChords++;
-block1.position.x = 100;
-block1.position.y = 500;
-
-const block2 = new collisionBlock(indexChords);
-indexChords++;
-block2.position.x = 700;
-block2.position.y = 300
-
-const block3 = new collisionBlock(indexChords);
-indexChords++;
-block3.position.x = 100;
-block3.position.y = 100;
-
-
-chordBlockArray.push(block1);
-chordBlockArray.push(block2);
-chordBlockArray.push(block3);
-
+start()
 
 //saranno le nostre giusto e sbagliato
 const keys = {
@@ -170,7 +147,7 @@ window.addEventListener('keydown', function(event) {
             
             vox_MODIFIER = V0X_MAX*(xDistance/canvas.width);
             voy_MODIEFIER = V0Y_MAX*(0.8 + 0.2*((yDistance+100)/canvas.height));
-            console.log(yDistance/canvas.height)
+            //console.log(yDistance/canvas.height)
 
             rispostaGiusta = true;
             //attivo questo commento se do 3 possibilità per accordo e non 3 totali
@@ -195,7 +172,9 @@ window.addEventListener('keydown', function(event) {
                       buttons: {
                         Restart: function() {
                             ConteggioVite = 3;
-                            primaNota = false;
+
+                            start()
+                            console.log()
                             document.getElementById("schermataGioco").style.opacity = 1;
                           $( this ).dialog( "close" );
                         }
@@ -211,7 +190,41 @@ window.addEventListener('keydown', function(event) {
 
 })
 
+function start(){
+    chordBlockArray = [];
+    timeToNextBlock = 0;
+    lastBlockTime = 0;
+    primaNota = false;
+    rispostaGiusta = false;
+    indexChords=0;
 
+    
+    // initialize the background
+    init();
+
+    player.position.y = canvas.height-player.height;
+    player.position.x = 450;
+
+    //blocchi di partenza
+    const block1 = new collisionBlock(indexChords);
+    indexChords++;
+    block1.position.x = 100;
+    block1.position.y = 500;
+
+    const block2 = new collisionBlock(indexChords);
+    indexChords++;
+    block2.position.x = 700;
+    block2.position.y = 300
+
+    const block3 = new collisionBlock(indexChords);
+    indexChords++;
+    block3.position.x = 100;
+    block3.position.y = 100;
+
+    chordBlockArray.push(block1);
+    chordBlockArray.push(block2);
+    chordBlockArray.push(block3);
+}
 
 
 
