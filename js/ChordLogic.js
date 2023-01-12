@@ -25,6 +25,7 @@ document.getElementById("button3").addEventListener("click", function() {
     ArrayAccordiMidiScelti = ArrayTotale[1];
     ArrayAccordiScelti_listen = ArrayTotale[2];
     ArrayNoteAccordoScelto = ArrayTotale[3];*/
+
 var lev = 2;
 console.log("Start Level: ", lev);
 ArrayTotale = CreateChords(lev);
@@ -38,6 +39,7 @@ ArrayNoteAccordoScelto = ArrayTotale[3];
 function CreateChords(Livello_scelto){
 
     //LIVELLLO SCELTO
+    Livello_scelto=Livello_scelto;
     console.log("livello sceto", Livello_scelto);
 
     //SCEGLI DIREZIONE CIRCOLO DELLE QUINTE PER GENERARE SEQUENZA DI TONALITA'
@@ -112,10 +114,10 @@ function CreateChords(Livello_scelto){
                 indexAccordoScelto = Math.floor(Math.random() * arrayAccordiPossibili.length);
             }
             let index_perc = Math.random();
-            if (index_perc>=0.33 || BooleanDomSec == true){
+            if (index_perc>=0.25 || BooleanDomSec == true){
                 Accordo_scelto = arrayAccordiPossibili[indexAccordoScelto];
                 BooleanDomSec = false;
-            } else if (index_perc>=0.11){
+            } else if (index_perc>=0.1){
                 //scelgo dominante secondaria
                 if(indexAccordoScelto == 0 || indexAccordoScelto == 6){
                     Accordo_scelto = arrayAccordiPossibili[indexAccordoScelto];
