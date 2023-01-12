@@ -130,6 +130,44 @@ function controlloPerdita() {
     }
 }
 
+function controlloGiusto(){
+    primaNota = true;
+    let nextBlockPosition = player.computeNextBlockDistance();
+
+    let nextBlockX = nextBlockPosition.xDestinationNextBlock;
+    let nextBlockY = nextBlockPosition.yDestinationNextBlock;
+
+    let xDistance = nextBlockX - player.position.x;
+    let yDistance = -(nextBlockY  - player.position.y);
+
+    switch (true) {
+        case xDistance > 0:
+            playerNamePlusState = "";
+            playerState = "-salto-dx";
+            playerNamePlusState = choosenAvatar + playerState;
+            //player.updateIndexes(playerNamePlusState);                    
+            break;
+
+        case xDistance < 0:
+            playerNamePlusState = "";
+            playerState = "-salto-sx";
+            playerNamePlusState = choosenAvatar + playerState;
+            //player.updateIndexes(playerNamePlusState);
+            break;
+    }
+        
+    vox_MODIFIER = V0X_MAX*(xDistance/canvas.width);
+    voy_MODIEFIER = V0Y_MAX*(0.8 + 0.2*((yDistance+100)/canvas.height));
+    //console.log(yDistance/canvas.height)
+
+    rispostaGiusta = true;
+    //attivo questo commento se do 3 possibilità per accordo e non 3 totali
+    //window.keyPressCounter = 0;
+    // initialize the game of life
+    //gol.init();
+
+}
+
 
 
 //data notes
@@ -154,8 +192,6 @@ function handleInput(input) {
         soundEngine.init(notaMIDI);
 
         lastNoteReceived = note;
-        //console.log('noteNumber:', lastNoteReceived);
-
         var controllo = true;
 
         for(let j=0; j<arrrrrrr[indiceArrrr].length; j++){ 
@@ -184,38 +220,7 @@ function handleInput(input) {
         //console.log(arrayComparaMIDI);
         if(arrayComparaMIDI.length==arrrrrrr[indiceArrrr].length){
 
-            ///////////////////////////////
-            primaNota = true;
-
-            // funziona se il player è atterrato sul blocco
-            let nextBlockPosition = player.computeNextBlockDistance();
-
-            let nextBlockX = nextBlockPosition.xDestinationNextBlock;
-
-            let xDistance = nextBlockX - player.position.x;
-
-            switch (true) {
-                case xDistance > 0:
-                    playerNamePlusState = "";
-                    playerState = "-salto-dx";
-                    playerNamePlusState = choosenAvatar + playerState;
-                    //player.updateIndexes(playerNamePlusState);                    
-                    break;
-
-                case xDistance < 0:
-                    playerNamePlusState = "";
-                    playerState = "-salto-sx";
-                    playerNamePlusState = choosenAvatar + playerState;
-                    //player.updateIndexes(playerNamePlusState);
-                    break;
-            }
-                
-            
-            vox_MODIFIER = V0X_MAX*(xDistance/canvas.width);
-
-            rispostaGiusta = true;
-
-            ///////////////////////////////
+            controlloGiusto();
             arrayComparaMIDI = [];
             //passa a elemento successivo
             indiceArrrr++;

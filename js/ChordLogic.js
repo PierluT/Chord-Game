@@ -13,19 +13,20 @@ document.getElementById("button1").addEventListener("click", function() {
 });
 document.getElementById("button2").addEventListener("click", function() {
     level = "LEVEL 2";
-    CreateChords(level);
+    ArrayTotale = CreateChords(level);
 });
 document.getElementById("button3").addEventListener("click", function() {
     level = "LEVEL 3";
-    CreateChords(level);
+    ArrayTotale = CreateChords(level);
 });
 
-if(level != ""){
+
+
     ArrayAccordiScelti = ArrayTotale[0];
     ArrayAccordiMidiScelti = ArrayTotale[1];
     ArrayAccordiScelti_listen = ArrayTotale[2];
-    ArrayNoteAccordoScelto = ArrayTotale[3];
-}*/
+    ArrayNoteAccordoScelto = ArrayTotale[3];*/
+
 
 var level = "LEVEL 1";
 var ArrayTotale = CreateChords(level);
