@@ -167,7 +167,6 @@ function handleInput(input) {
 
             rispostaGiusta = true;
             // updates the background
-            create();
 
             console.log(rispostaGiusta)
 

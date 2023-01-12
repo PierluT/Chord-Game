@@ -23,7 +23,7 @@ function hsla( h, s, l, a ) {
 function create() {
   sizeBase = cw + ch;
   count = Math.floor( sizeBase * 0.3 ),
-  hue = rand( 120 , 180 ),
+  hue = rand( 120 , 170 ),
   opt = {
     radiusMin: 1,
     radiusMax: sizeBase * 0.04,

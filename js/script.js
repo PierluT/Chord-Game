@@ -172,7 +172,6 @@ window.addEventListener('keydown', function(event) {
             rispostaGiusta = true;
             //attivo questo commento se do 3 possibilità per accordo e non 3 totali
             //window.keyPressCounter = 0;
-            console.log(rispostaGiusta)
             // initialize the game of life
             //gol.init();
 
