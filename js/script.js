@@ -197,16 +197,13 @@ window.addEventListener('keydown', function(event) {
                       buttons: {
                         Restart: function() {
                             ConteggioVite = 3;
-<<<<<<< Updated upstream
 
                             start()
                             console.log()
-=======
                             errori = [];
                             ArrayAccordiErrori = [];
                             ArrayMIDIErrori = [[],[],[]];
                             primaNota = false;
->>>>>>> Stashed changes
                             document.getElementById("schermataGioco").style.opacity = 1;
                           $( this ).dialog( "close" );
                         }
