@@ -157,13 +157,39 @@ window.addEventListener('keydown', function(event) {
          //per implementazione perdita vite senza MIDI   
          case 'g':
             ConteggioVite--;
-            console.log("vite rimaste da script",ConteggioVite);
+            errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true }));
+            ArrayAccordiErrori.push(ArrayAccordiScelti[indexChords-3]);
+            if(ConteggioVite == 2){
+                for(let k=0; k<ArrayAccordiMidiScelti[indexChords-3].length; k++) {
+                    ArrayMIDIErrori[0].push(Tonal.Midi.midiToNoteName(ArrayAccordiMidiScelti[indexChords-3][k], { pitchClass: true }));
+                }
+            }
+            if(ConteggioVite == 1){
+                for(let k=0; k<ArrayAccordiMidiScelti[indexChords-3].length; k++) {
+                    ArrayMIDIErrori[1].push(Tonal.Midi.midiToNoteName(ArrayAccordiMidiScelti[indexChords-3][k], { pitchClass: true }));
+                }
+            }
+            if(ConteggioVite == 0){
+                for(let k=0; k<ArrayAccordiMidiScelti[indexChords-3].length; k++) {
+                    ArrayMIDIErrori[2].push(Tonal.Midi.midiToNoteName(ArrayAccordiMidiScelti[indexChords-3][k], { pitchClass: true }));
+                }
+            }
+
             if(ConteggioVite == 0){
                 //playerState = "";
                 var imageUrl = this.document.querySelector('#imgPlayerPerso');
                 imageUrl.src = looserImage;
                 primaNota = false;
                 document.getElementById("schermataGioco").style.opacity = 0.3;
+
+                //PRIMO ERRORE
+                document.getElementById("primoErrore").innerHTML = "1st wrong chord: " + ArrayAccordiErrori[0] + "<br>The notes were: " + ArrayMIDIErrori[0] + "<br>Error: " + errori[0];
+                //SECONDO ERRORE
+                document.getElementById("secondoErrore").innerHTML = "2nd wrong chord: " + ArrayAccordiErrori[1] + "<br>The notes were: " + ArrayMIDIErrori[1] + "<br>Error: " + errori[1];
+                //TERZO ERRORE
+                document.getElementById("terzoErrore").innerHTML = "3rd wrong chord: " + ArrayAccordiErrori[2] + "<br>The notes were: " + ArrayMIDIErrori[2] + "<br>Error: " + errori[2];
+
+
                 $( function() {
                     $( "#dialog" ).dialog({
                       title: "Game Over",
@@ -171,9 +197,16 @@ window.addEventListener('keydown', function(event) {
                       buttons: {
                         Restart: function() {
                             ConteggioVite = 3;
+<<<<<<< Updated upstream
 
                             start()
                             console.log()
+=======
+                            errori = [];
+                            ArrayAccordiErrori = [];
+                            ArrayMIDIErrori = [[],[],[]];
+                            primaNota = false;
+>>>>>>> Stashed changes
                             document.getElementById("schermataGioco").style.opacity = 1;
                           $( this ).dialog( "close" );
                         }

@@ -64,7 +64,7 @@ function failure() {
 }
 
 
-var lastNoteReceived = 50;
+var lastNoteReceived = 0;
 //faccio un ciclo for in ChordLogic per paassaargli l'array di aarray ogni saalto
 const arrrrrrr = ArrayAccordiMidiScelti;
 var arrayComparaMIDI =[];
@@ -72,14 +72,61 @@ var indiceArrrr=0;
 
 //CONTEGGIO VITE e MORTE
 var ConteggioVite = 3;
+var errori = [];
+var ArrayAccordiErrori = [];
+var ArrayMIDIErrori = [[],[],[]];
+
 function controlloPerdita() {
-    console.log("Vite rimaste: ", ConteggioVite)
+
+    ConteggioVite--;
+    errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true }));
+    ArrayAccordiErrori.push(ArrayAccordiScelti[indexChords-3]);
+    if(ConteggioVite == 2){
+        for(let k=0; k<ArrayAccordiMidiScelti[indexChords-3].length; k++) {
+            ArrayMIDIErrori[0].push(Tonal.Midi.midiToNoteName(ArrayAccordiMidiScelti[indexChords-3][k], { pitchClass: true, sharps: true }));
+        }
+    }
+    if(ConteggioVite == 1){
+        for(let k=0; k<ArrayAccordiMidiScelti[indexChords-3].length; k++) {
+            ArrayMIDIErrori[1].push(Tonal.Midi.midiToNoteName(ArrayAccordiMidiScelti[indexChords-3][k], { pitchClass: true, sharps: true }));
+        }
+    }
     if(ConteggioVite == 0){
-        alert("MORTO! Torna alla schermata iniziale")
-        document.getElementById("schermataIniziale").style.display= "inline";
-        document.getElementById("schermataGioco").style.display = "none";
+        for(let k=0; k<ArrayAccordiMidiScelti[indexChords-3].length; k++) {
+            ArrayMIDIErrori[2].push(Tonal.Midi.midiToNoteName(ArrayAccordiMidiScelti[indexChords-3][k], { pitchClass: true, sharps: true }));
+        }
+    }
+
+    if(ConteggioVite == 0){
+        var imageUrl = this.document.querySelector('#imgPlayerPerso');
+        imageUrl.src = looserImage;
         primaNota = false;
-        ConteggioVite = 3;
+        document.getElementById("schermataGioco").style.opacity = 0.3;
+
+        //PRIMO ERRORE
+        document.getElementById("primoErrore").innerHTML = "1st wrong chord: " + ArrayAccordiErrori[0] + "<br>The notes were: " + ArrayMIDIErrori[0] + "<br>Error: " + errori[0];
+        //SECONDO ERRORE
+        document.getElementById("secondoErrore").innerHTML = "2nd wrong chord: " + ArrayAccordiErrori[1] + "<br>The notes were: " + ArrayMIDIErrori[1] + "<br>Error: " + errori[1];
+        //TERZO ERRORE
+        document.getElementById("terzoErrore").innerHTML = "3rd wrong chord: " + ArrayAccordiErrori[2] + "<br>The notes were: " + ArrayMIDIErrori[2] + "<br>Error: " + errori[2];
+
+        $( function() {
+            $( "#dialog" ).dialog({
+                title: "Game Over",
+                modal: true,
+                buttons: {
+                Restart: function() {
+                    ConteggioVite = 3;
+                    errori = [];
+                    ArrayAccordiErrori = [];
+                    ArrayMIDIErrori = [[],[],[]];
+                    primaNota = false;
+                    document.getElementById("schermataGioco").style.opacity = 1;
+                    $( this ).dialog( "close" );
+                    }
+                }
+            });
+        });       
     }
 }
 
@@ -102,7 +149,7 @@ function handleInput(input) {
             noteOff(note);
         }*/
         
-        //playTatso
+        //playTasto
         var notaMIDI = note.toString();
         soundEngine.init(notaMIDI);
 
@@ -128,9 +175,9 @@ function handleInput(input) {
             }
         }
 
+        // errori
         if(controllo == true){
-            ConteggioVite--;
-            controlloPerdita();
+            controlloPerdita(lastNoteReceived);
         }
 
 
