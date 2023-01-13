@@ -1,6 +1,5 @@
 
-//DA METTERE var lev = 0; quando si usa piano keyboard
-var lev = 1;
+var lev = 0;
 console.log("Start Level: ", lev);
 document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
 var ArrayTotale;
