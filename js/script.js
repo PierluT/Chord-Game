@@ -140,6 +140,10 @@ window.addEventListener('keydown', function(event) {
 ///////////////////////////////////////////
 
 function start(){
+
+    
+
+
     chordBlockArray = [];
     timeToNextBlock = 0;
     lastBlockTime = 0;
@@ -160,6 +164,7 @@ function start(){
         ArrayAccordiScelti = ArrayTotale[0];
         ArrayAccordiMidiScelti = ArrayTotale[1];
         ArrayAccordiScelti_listen = ArrayTotale[2];
+        ArrayAccordiSceltiMidi_listen = ArrayTotale[3];
     }
     
 
@@ -184,6 +189,15 @@ function start(){
     chordBlockArray.push(block3);
 
 
+
+    switch (choosenMode) {
+
+        case 'listen':
+            //devo passare dentro array MIDI del primo accordo
+            listenSound(ArrayAccordiSceltiMidi_listen);
+            console.log(ArrayAccordiSceltiMidi_listen)
+        break;
+    }
     
 }
 

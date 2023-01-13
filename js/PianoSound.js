@@ -187,10 +187,12 @@ function handleInput(input) {
 
     switch (command) {
 
+
         case 145:
 
         var notaMIDI = note.toString();
         soundEngine.init(notaMIDI);
+        console.log(note);
 
         lastNoteReceived = note;
         var controllo = true;
@@ -241,8 +243,32 @@ function noteOff(note, velocity) {
 
 
 
+function listenSound (ArrayAccordiSceltiMidi_listen) {
 
+        var terza;
+        var majminChord = Math.random();
+        if (majminChord<0.5){
+            terza = ArrayAccordiSceltiMidi_listen[0] + 4;
+        } else {
+            terza = ArrayAccordiSceltiMidi_listen[0] + 3;
+        }
+        var quinta = ArrayAccordiSceltiMidi_listen[0] + 7;
 
+        soundEngine.init(ArrayAccordiSceltiMidi_listen[0].toString());
+        setTimeout(function() {
+            soundEngine.init(terza.toString());
+        }, 1000);
+        setTimeout(function() {
+            soundEngine.init(quinta.toString());
+        }, 2000);
+        setTimeout(function() {
+            soundEngine.init(ArrayAccordiSceltiMidi_listen[0].toString());
+            soundEngine.init(terza.toString());
+            soundEngine.init(quinta.toString());
+        }, 3000);
+    //}
+
+}
 
 
 
