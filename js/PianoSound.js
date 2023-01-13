@@ -187,16 +187,8 @@ function handleInput(input) {
 
     switch (command) {
 
-        case 145: //noteOn
-        /*if(velocity>0){
-            //note is on
-            noteOn(note, velocity);
-        } else {
-            //note is off
-            noteOff(note);
-        }*/
-        
-        //playTasto
+        case 145:
+
         var notaMIDI = note.toString();
         soundEngine.init(notaMIDI);
 
@@ -234,10 +226,6 @@ function handleInput(input) {
          
         break;
 
-        case 129: //noteOff
-        //note is off
-        /*noteOff(note);*/
-        break;
     }
   
 }
