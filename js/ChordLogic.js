@@ -110,15 +110,15 @@ function CreateChords(Livello_scelto){
                     Accordo_scelto = Accordo_scelto.replace(/m7b5|o7/g, "dim").replace(/maj7|7|Maj7|6/g, "");
                 } else if (Livello_scelto == 2) {
                     let numeroCasuale1 = Math.random();
-                    if (numeroCasuale1 <= 0.5) {
+                    if (numeroCasuale1 <= 0.25) {
                         Accordo_scelto = Accordo_scelto.replace(/m7b5|o7/g, "dim").replace(/maj7|7|Maj7|6/g, "");
                     }
                 } else if (Livello_scelto == 3) {
                     let numeroCasuale2 = Math.random();
-                    if (numeroCasuale2 < 0.33) {
+                    if (numeroCasuale2 < 0.10) {
                         //triadi
                         Accordo_scelto = Accordo_scelto.replace(/m7b5|o7/g, "dim").replace(/maj7|7|Maj7|6/g, "");
-                    } else if (numeroCasuale2 < 0.66) {
+                    } else if (numeroCasuale2 < 0.25) {
                         //settime
                         Accordo_scelto = Accordo_scelto.replace(/6/g, "");
                     } else {
