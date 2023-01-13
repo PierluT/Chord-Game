@@ -32,9 +32,8 @@ function setLevel(input){
                 start();
             }
             break;
-        }
-        
-    } 
+        } 
+    }
 }
 
 

@@ -103,8 +103,8 @@ function animate (timestamp) {
 animate(0)
 
 
-
-//in base a ciò che premo nella tastiera
+///////////////////////////////////////////
+//in base a ciò che premo nella tastiera (SENZA PIANO KEYBOARD)
 let keysPressed = {};
 
 window.addEventListener('keydown', function(event) {
@@ -119,10 +119,25 @@ window.addEventListener('keydown', function(event) {
         case 'g': //RISPOSTA SBAGLIATA
             controlloPerdita(lastNoteReceived);
             break;
+        case 'q': //su
+        if(lev<3){
+            lev++;
+            console.log("Level: ", lev)
+            document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
+            start();
+        }
+        break;
+        case 'w': //giu
+        if(lev>1){
+            lev--;
+            console.log("Level: ", lev)
+            document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
+            start();
+        }
+        break;
     }
-
-
 })
+///////////////////////////////////////////
 
 function start(){
     chordBlockArray = [];
