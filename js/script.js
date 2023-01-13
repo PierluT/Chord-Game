@@ -12,9 +12,7 @@ let checkGravity = true;
 //const colorGreen = 'rgba(75,192,192,1)';
 //c.font = "italic bolder 50px Arial";
 
-//larghezza testo
 
-const textWidth = c.measureText(ArrayNoteAccordoScelto).width;
 const scrImages = ['./img/assets/block1_cut.png','./img/assets/block2_cut.png'];
 //const srcLooserPlayers = ['./img/Mozart/MozartPerso.gif', './img/Beethoven/BeethovenPerso.gif'];
 //blocchi che verranno disegnati dopo 
@@ -141,6 +139,15 @@ function start(){
     player.position.y = canvas.height-player.height;
     player.position.x = 450;
 
+    
+    if(lev != 0){
+        ArrayTotale = CreateChords(lev);
+        ArrayAccordiScelti = ArrayTotale[0];
+        ArrayAccordiMidiScelti = ArrayTotale[1];
+        ArrayAccordiScelti_listen = ArrayTotale[2];
+    }
+    
+
     //blocchi di partenza
     const block1 = new collisionBlock(indexChords);
     indexChords++;
@@ -160,6 +167,9 @@ function start(){
     chordBlockArray.push(block1);
     chordBlockArray.push(block2);
     chordBlockArray.push(block3);
+
+
+    
 }
 
 

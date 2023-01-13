@@ -22,11 +22,11 @@ canvas {
 
 #livelloScelto{
     font-family: "Press Start 2P";
-    text-align: right;
-    color: blanchedalmond;
-    line-height: 5em;
+    float: inherit;
+    color: white;
     font-size: 1.3em;
     padding-left: 47px;
+    text-align: center;
 }
 
 #vite{

@@ -1,46 +1,8 @@
 
-
-var ArrayTotale;
-var ArrayAccordiScelti = [];
-var ArrayAccordiMidiScelti = [];
-var ArrayAccordiScelti_listen = [];
-var ArrayNoteAccordoScelto = [];
-
-/*document.getElementById("button1").addEventListener("click", function() {
-    level = "LEVEL 1";
-    ArrayTotale = CreateChords(level);
-});
-document.getElementById("button2").addEventListener("click", function() {
-    level = "LEVEL 2";
-    ArrayTotale = CreateChords(level);
-});
-document.getElementById("button3").addEventListener("click", function() {
-    level = "LEVEL 3";
-    ArrayTotale = CreateChords(level);
-});
-
-
-
-    ArrayAccordiScelti = ArrayTotale[0];
-    ArrayAccordiMidiScelti = ArrayTotale[1];
-    ArrayAccordiScelti_listen = ArrayTotale[2];
-    ArrayNoteAccordoScelto = ArrayTotale[3];*/
-
-var lev = 2;
-console.log("Start Level: ", lev);
-ArrayTotale = CreateChords(lev);
-ArrayAccordiScelti = ArrayTotale[0];
-ArrayAccordiMidiScelti = ArrayTotale[1];
-ArrayAccordiScelti_listen = ArrayTotale[2];
-ArrayNoteAccordoScelto = ArrayTotale[3];
-
-
-
 function CreateChords(Livello_scelto){
 
     //LIVELLLO SCELTO
-    Livello_scelto=Livello_scelto;
-    console.log("livello sceto", Livello_scelto);
+    console.log("livello scelto", Livello_scelto);
 
     //SCEGLI DIREZIONE CIRCOLO DELLE QUINTE PER GENERARE SEQUENZA DI TONALITA'
     const ToneDiesis = ["C", "G", "D", "A", "E", "B", "F#", "C#"];
@@ -65,20 +27,20 @@ function CreateChords(Livello_scelto){
 
     for (let index=0; index<randomElementDB.length; index++){
         Tonalita_scelta = randomElementDB[index];
-        console.log("TONALITA': ", Tonalita_scelta);
+        //console.log("TONALITA': ", Tonalita_scelta);
 
         //scegli maggiore, minore
         //const MajMin = ["major", "minor"];
         const MajMin = ["major"];
         const indexMajMin = Math.floor(Math.random() * MajMin.length);
         const Modo_scelto = MajMin[indexMajMin];
-        console.log("MODO SCELTO: ", Modo_scelto);
+        //console.log("MODO SCELTO: ", Modo_scelto);
 
         var arrayAccordiPossibili = [];
         var arrayDominantiSecondarie = [];
         var arrayDominantiSub = [];
         if(Modo_scelto == "major"){
-            console.log("TONALITA' SCELTA: ", Tonal.Key.majorKey(Tonalita_scelta));
+            //console.log("TONALITA' SCELTA: ", Tonal.Key.majorKey(Tonalita_scelta));
             for (const element of Tonal.Key.majorKey(Tonalita_scelta).chords) {
                 arrayAccordiPossibili.push(element);
             }
@@ -93,17 +55,16 @@ function CreateChords(Livello_scelto){
             const NatHarmMel = ["natural", "harmonic", "melodic"];
             let indexNatHarmMel = Math.floor(Math.random() * NatHarmMel.length);
             const Modo_minore_scelto = NatHarmMel[indexNatHarmMel];
-            console.log("MODO MINORE SCELTO: ", Modo_minore_scelto);
-            console.log("TONALITA' SCELTA: ", Tonal.Key.minorKey(Tonalita_scelta)[Modo_minore_scelto]);
+            //console.log("MODO MINORE SCELTO: ", Modo_minore_scelto);
+            //console.log("TONALITA' SCELTA: ", Tonal.Key.minorKey(Tonalita_scelta)[Modo_minore_scelto]);
             for (const element of Tonal.Key.minorKey(Tonalita_scelta)[Modo_minore_scelto].chords) {
                 arrayAccordiPossibili.push(element);
             }
         }
 
-        console.log("ARRAY ACCORDI POSSIBILI:", arrayAccordiPossibili);
-        //DA GESTIRE DOMINANTI SECONDAARIE O DOMINANTI SUB
-        console.log("ARRAY DOMINANTI SECONDARIE:", arrayDominantiSecondarie); //solo per maggiori
-        console.log("ARRAY DOMINANTI SOSTITUTIVE:", arrayDominantiSub); //solo per maggiori
+        //console.log("ARRAY ACCORDI POSSIBILI:", arrayAccordiPossibili);
+        //console.log("ARRAY DOMINANTI SECONDARIE:", arrayDominantiSecondarie); //solo per maggiori
+        //console.log("ARRAY DOMINANTI SOSTITUTIVE:", arrayDominantiSub); //solo per maggiori
 
         //visualizza tot accordi random di scala scelta
         var BooleanDomSec = false;
@@ -114,17 +75,17 @@ function CreateChords(Livello_scelto){
                 indexAccordoScelto = Math.floor(Math.random() * arrayAccordiPossibili.length);
             }
             let index_perc = Math.random();
-            if (index_perc>=0.25 || BooleanDomSec == true){
+            if (index_perc>=0.15 || BooleanDomSec == true){
                 Accordo_scelto = arrayAccordiPossibili[indexAccordoScelto];
                 BooleanDomSec = false;
-            } else if (index_perc>=0.1){
+            } else if (index_perc>=0.05){
                 //scelgo dominante secondaria
                 if(indexAccordoScelto == 0 || indexAccordoScelto == 6){
                     Accordo_scelto = arrayAccordiPossibili[indexAccordoScelto];
                     BooleanDomSec = false;
                 } else{
                     Accordo_scelto = arrayDominantiSecondarie[indexAccordoScelto];
-                    console.log("Scelta dominante secondaria");
+                    //console.log("Scelta dominante secondaria");
                     BooleanDomSec = true;
                 } 
             }else if (index_perc>=0){
@@ -134,7 +95,7 @@ function CreateChords(Livello_scelto){
                     BooleanDomSec = false;
                 } else{
                     Accordo_scelto = arrayDominantiSub[indexAccordoScelto];
-                    console.log("Scelta dominante sostitutiva");
+                    //console.log("Scelta dominante sostitutiva");
                     BooleanDomSec = true;
                 } 
             }
@@ -188,15 +149,15 @@ function CreateChords(Livello_scelto){
                     }
                 }
             }
-            console.log("ACCORDO SCELTO:", Accordo_scelto);
+            //console.log("ACCORDO SCELTO:", Accordo_scelto);
 
             //visualizza note dell'accordo in un array
             var ArrayNoteAccordoScelto = Tonal.Chord.get(Accordo_scelto).notes;
-            console.log("ARRAY ACCORDO SCELTO:", ArrayNoteAccordoScelto);
+            //console.log("ARRAY ACCORDO SCELTO:", ArrayNoteAccordoScelto);
 
             //riduci accordo per modalità LISTEN
             Accordo_scelto_ridotto = ArrayNoteAccordoScelto[0];
-            console.log("ARRAY ACCORDO SCELTO RIDOTTO:", Accordo_scelto_ridotto);
+            //console.log("ARRAY ACCORDO SCELTO RIDOTTO:", Accordo_scelto_ridotto);
 
             //aggiungi ottava 4 e 5
             for (var k=0; k<ArrayNoteAccordoScelto.length; k++){
@@ -206,14 +167,14 @@ function CreateChords(Livello_scelto){
                     ArrayNoteAccordoScelto[k]=ArrayNoteAccordoScelto[k]+"4";
                 }  
             }
-            console.log("ARRAY ACCORDO SCELTO con ottava:", ArrayNoteAccordoScelto);
+            //console.log("ARRAY ACCORDO SCELTO con ottava:", ArrayNoteAccordoScelto);
 
             //trasforma note in MIDI
             var ArrayMidi = [];
             for (var k=0; k<ArrayNoteAccordoScelto.length; k++){
                 ArrayMidi[k]=Tonal.Midi.toMidi(ArrayNoteAccordoScelto[k]);
             }
-            console.log("ARRAY MIDI: ", ArrayMidi);
+            //console.log("ARRAY MIDI: ", ArrayMidi);
 
             //push elementi dell'array degli accordi scelti
             ArrayAccordiScelti.push(Accordo_scelto);
@@ -228,14 +189,8 @@ function CreateChords(Livello_scelto){
     console.log("ARRAY ACCORDI MIDI SCELTI: ", ArrayAccordiMidiScelti);
     console.log("ARRAY ACCORDI SCELTI RIDOTTI: ", ArrayAccordiScelti_listen);
 
-    return [ArrayAccordiScelti, ArrayAccordiMidiScelti, ArrayAccordiScelti_listen, ArrayNoteAccordoScelto];
+    return [ArrayAccordiScelti, ArrayAccordiMidiScelti, ArrayAccordiScelti_listen];
 }
-
-/*var ArrayTotale = CreateChords(level);
-var ArrayAccordiScelti = ArrayTotale[0];
-var ArrayAccordiMidiScelti = ArrayTotale[1];
-var ArrayAccordiScelti_listen = ArrayTotale[2];
-var ArrayNoteAccordoScelto = ArrayTotale[3];*/
 
 
 

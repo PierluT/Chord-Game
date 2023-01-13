@@ -41,8 +41,8 @@ listenChoosenMode.addEventListener('click',function() {
 clickedButton.onclick = replace;
 
 function replace () {
-    if(choosenMode == "" || choosenAvatar == "") {
-        alert("Choose a character and a modality.")
+    if(choosenMode == "" || choosenAvatar == "" || lev==0) {
+        alert("Choose a character, modality and level.")
         choosenMode = "";
         choosenAvatar= "";
         composerToAnimate= "";
@@ -50,15 +50,17 @@ function replace () {
     }else{
         document.getElementById("schermataIniziale").style.display= "none";
         document.getElementById("schermataGioco").style.display = "inline";
+
         switch (choosenMode) {
 
             case 'listen':
                 //devo passare dentro array MIDI del primo accordo
                 soundChord.init('24','25','26');
                 soundEngine.init('24');
-                break;
+            break;
         }
         
+        start();
     } 
 }
 

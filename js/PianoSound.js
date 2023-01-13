@@ -55,8 +55,10 @@ function success(midiAccess) {
     inputs.forEach((input) => {
         //console.log(input);
         input.addEventListener('midimessage', handleInput);
-        
+        input.addEventListener('midimessage', setLevel); 
     })
+    
+
 }
 
 
@@ -68,11 +70,7 @@ function failure() {
 }
 
 
-var lastNoteReceived = 0;
-//faccio un ciclo for in ChordLogic per paassaargli l'array di aarray ogni saalto
-const arrrrrrr = ArrayAccordiMidiScelti;
-var arrayComparaMIDI =[];
-var indiceArrrr=0;
+
 
 //CONTEGGIO VITE e MORTE
 var ConteggioVite = 3;
@@ -106,6 +104,7 @@ function controlloPerdita() {
         imageUrl.src = looserImage;
         primaNota = false;
         document.getElementById("schermataGioco").style.opacity = 0.3;
+        document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
 
         //PRIMO ERRORE
         document.getElementById("primoErrore").innerHTML = "1st wrong chord: " + ArrayAccordiErrori[0] + "<br>The notes were: " + ArrayMIDIErrori[0] + "<br>Error: " + errori[0];
@@ -121,6 +120,7 @@ function controlloPerdita() {
                 buttons: {
                 Restart: function() {
                     ConteggioVite = 3;
+                    indexChords=0;
                     start();
                     errori = [];
                     ArrayAccordiErrori = [];
@@ -174,6 +174,9 @@ function controlloGiusto(){
 }
 
 
+var lastNoteReceived = 0;
+var arrayComparaMIDI =[];
+var indiceArrrr=0;
 
 //data notes
 function handleInput(input) {
@@ -182,33 +185,6 @@ function handleInput(input) {
     const note = input.data[1];
     const velocity = input.data[2];
 
-    //LIVELLO
-    if (command == 128){
-        switch (note) {
-            case 64: //su
-            if(lev<3){
-                lev++;
-                console.log("Level: ", lev)
-                ArrayTotale = CreateChords(lev);
-                ArrayAccordiScelti = ArrayTotale[0];
-                ArrayAccordiMidiScelti = ArrayTotale[1];
-                ArrayAccordiScelti_listen = ArrayTotale[2];
-                ArrayNoteAccordoScelto = ArrayTotale[3];
-            }
-            break;
-            case 65: //giu
-            if(lev>1){
-                lev--;
-                console.log("Level: ", lev)
-                ArrayTotale = CreateChords(lev);
-                ArrayAccordiScelti = ArrayTotale[0];
-                ArrayAccordiMidiScelti = ArrayTotale[1];
-                ArrayAccordiScelti_listen = ArrayTotale[2];
-                ArrayNoteAccordoScelto = ArrayTotale[3];
-            }
-            break;
-        }
-    }
     switch (command) {
 
         case 145: //noteOn
@@ -227,6 +203,7 @@ function handleInput(input) {
         lastNoteReceived = note;
         var controllo = true;
 
+        var arrrrrrr = ArrayAccordiMidiScelti;
         for(let j=0; j<arrrrrrr[indiceArrrr].length; j++){ 
             if(arrrrrrr[indiceArrrr][j]==lastNoteReceived || (Math.abs(lastNoteReceived-arrrrrrr[indiceArrrr][j])) % 12 == 0){
                 if(!arrayComparaMIDI.includes(lastNoteReceived)
@@ -262,8 +239,7 @@ function handleInput(input) {
         /*noteOff(note);*/
         break;
     }
-
-    
+  
 }
 
 function noteOn(note, velocity) {

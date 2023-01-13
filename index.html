@@ -10,59 +10,59 @@
 
     </head>
         <body>
-           <div id="schermataIniziale">
-            <header>
-                <h1>THE CHORD GAME</h1>
-                <div id="choices">
-                    <h2 class="avatarChoice">SELECT YOUR AVATAR</h2>
-                    <h2 class="modeChoice">SELECT MODALITY GAME</h2>
-                </div>
-               
-            </header>
-            <section id="avatarMenu">
-                <div class="player_box_beethoven">
-                    <div class='png' id="beethoven" ></div>
-                    <p class="name" >BEETHOVEN</p>
-                </div>
-                <div class="player_box_mozart">
-                    <div class='png' id="mozart" ></div>
-                    <p class="name" >MOZART</p>
-                </div>
-                <div id="readMode">
-                   <h2 class="earString">READ</h2> 
-                   <h3 class="description">You have to play with the MIDI the chord you listen.</h3>
-                </div>        
-                <div id="listenMode">
-                    <h2 class="earString">LISTEN</h2> 
-                    <h3 class="description">You have to play with the MIDI the chord you read above the block.</h3>
-                </div>
-                <div id="levelbuttons">
-                    <button id="button1">1</button>
-                    <button id="button2">2</button>
-                    <button id="button3">3</button>
-                 </div>        
+            <div id="schermataIniziale">
+                <header>
+                    <h1>THE CHORD GAME</h1>
+                    <div id="choices">
+                        <h2 class="avatarChoice">SELECT YOUR AVATAR</h2>
+                        <h2 class="modeChoice">SELECT MODALITY GAME</h2>
+                    </div>
+                </header>
+                <section id="avatarMenu">
+                    <div class="player_box_beethoven">
+                        <div class='png' id="beethoven" ></div>
+                        <p class="name" >BEETHOVEN</p>
+                    </div>
+                    <div class="player_box_mozart">
+                        <div class='png' id="mozart" ></div>
+                        <p class="name" >MOZART</p>
+                    </div>
+                    <div id="readMode">
+                    <h2 class="earString">READ</h2> 
+                    <h3 class="description">You have to play with the MIDI the chord you listen.</h3>
+                    </div>        
+                    <div id="listenMode">
+                        <h2 class="earString">LISTEN</h2> 
+                        <h3 class="description">You have to play with the MIDI the chord you read above the block.</h3>
+                    </div>       
+                </section>
+                <button id="playButton">PLAY</button>
+                <section id="levelSection">
+                    <p class="name">SELECT YOUR LEVEL: </p>
+                    <div id="livelloScelto"></div>
 
-            </section>
-            <button id="playButton">PLAY</button>
-         </div> 
+                </section>
+            </div>
+
             <div id="schermataGioco">
                 <canvas id="c1"></canvas>
                 <canvas id="c2"></canvas>
                 <canvas id="gameSet"></canvas>
                 <img id="avatarScelto">
-                <!----PROVE SCHERMATA A LATO-->
-                <div id="livelloScelto"></div>
-                <div id="vite">VITE RIMASTE: <div id="numerovite"></div>
-                </div>
             </div> 
+
             <div id="dialog">
                 <h2>Game Over</h2>
                 <p id="primoErrore"></p>
                 <p id="secondoErrore"></p>
                 <p id="terzoErrore"></p>
                 <img id="imgPlayerPerso" alt="gif animation">
-            </div>  
+            </div> 
+
+            </div>
         </body>
+        
+    <script src = "js/chooseLevel.js" ></script> 
     <script src = "js/spriteAnimations.js" ></script>
     <script src = "js/background.js" ></script>
     <script src = "js/logic.js" ></script>
@@ -74,6 +74,7 @@
     <script src = "js/script.js" ></script>  
     <script src = "js/lib/howler.js" ></script>
     <script src = "js/PianoSound.js" ></script>  
+    
       
     
 </html>
