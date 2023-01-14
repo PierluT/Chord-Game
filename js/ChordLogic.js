@@ -1,10 +1,7 @@
 
 function CreateChords(Livello_scelto){
 
-    //LIVELLLO SCELTO
-    console.log("livello scelto (console in function CreateChord)", Livello_scelto);
-
-    //if (choosenMode == 'read'){
+    if (choosenMode == 'read'){
         //SCEGLI DIREZIONE CIRCOLO DELLE QUINTE PER GENERARE SEQUENZA DI TONALITA'
         const ToneDiesis = ["C", "G", "D", "A", "E", "B", "F#", "C#"];
         const ToneBemolli = ["C", "F", "Bb", "Eb", "Ab", "Db", "Gb", "Cb"];
@@ -184,9 +181,10 @@ function CreateChords(Livello_scelto){
             }
         }
         if (choosenMode == 'read'){
-        console.log("Scelto READ")
-        console.log("ARRAY ACCORDI SCELTI: ", ArrayAccordiScelti);
-        console.log("ARRAY ACCORDI MIDI SCELTI: ", ArrayAccordiMidiScelti);
+            console.log("Scelto READ")
+            console.log("ARRAY ACCORDI SCELTI: ", ArrayAccordiScelti);
+            console.log("ARRAY ACCORDI MIDI SCELTI: ", ArrayAccordiMidiScelti);
+        }
     }
 
 

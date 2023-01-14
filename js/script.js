@@ -89,6 +89,7 @@ function animate (timestamp) {
 //in base a ciò che premo nella tastiera (SENZA PIANO KEYBOARD)
 let keysPressed = {};
 
+
 window.addEventListener('keydown', function(event) {
   
     keysPressed[event.key] = true;

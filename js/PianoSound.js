@@ -82,7 +82,12 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
     ConteggioVite--;
     errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true }));
     console.log("errore", errori);
-    ArrayAccordiErrori.push(arChord[indiceAr].slice(0, -1));
+    if(choosenMode=='listen'){
+        ArrayAccordiErrori.push(arChord[indiceAr].slice(0, -1));
+        //DA DIRE QUAALE ACCORDO FINALE HO, non la nota FONDAMENTALE!!!!!!
+    } else {
+        ArrayAccordiErrori.push(arChord[indiceAr]);
+    }
     console.log("accordo in cui ho fatto l'errore", ArrayAccordiErrori);
     if(ConteggioVite == 2){
         for(let k=0; k<arMIDI[indiceAr].length; k++) {
