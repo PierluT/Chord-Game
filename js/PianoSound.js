@@ -202,14 +202,13 @@ function handleInput(input) {
         lastNoteReceived = note;
         var controllo = true;
 
-        var arMIDI = [];
-        var arChord = [];
+        var arMIDI;
+        var arChord;
 
         switch (choosenMode) {
             case 'read':
                 arMIDI = ArrayAccordiMidiScelti;
                 arChord = ArrayAccordiScelti;
-                console.log(indiceAr);
             break;
             
             case 'listen':

@@ -162,9 +162,10 @@ class Player {
             //console.log(rispostaGiusta)
             indiceAr++;
             fund++;
-            listenSound(ArrayAccordiMidiScelti_listen[fund]);
-        }
-        
+            if(choosenMode=='listen'){
+                listenSound(ArrayAccordiMidiScelti_listen[fund]);
+            } 
+        } 
     }
     
     computeNextBlockDistance(){

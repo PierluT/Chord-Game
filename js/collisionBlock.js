@@ -15,8 +15,12 @@ class collisionBlock {
         
         //booleano per collisione
         this.markedToCollision = false;
-        this.chord = ArrayAccordiScelti[i];
-        this.chordFund = ArrayAccordiScelti_listen[i];
+        if(choosenMode=='read'){
+            this.chord = ArrayAccordiScelti[i];
+        }
+        if(choosenMode=='listen'){
+            this.chordFund = ArrayAccordiScelti_listen[i];
+        }
         this.image = new Image();
         this.image.src = scrImages[Math.floor(Math.random()*scrImages.length)];
     }
