@@ -202,12 +202,12 @@ function handleInput(input) {
 
             case 'read':
                 arrrrrrr = ArrayAccordiMidiScelti;
-
+                console.log("read sono qui")
             break;
             
             case 'listen':
-
-
+                arrrrrrr = ArrayAccordiMidiScelti_listen;
+                console.log("listen sono qui")
             break;
             
         }
@@ -259,26 +259,26 @@ function listenSound (allChord) {
     }, 500);
     setTimeout(function() {
         soundEngine.init(allChord[1].toString());
-    }, 1500);
+    }, 1000);
     setTimeout(function() {
         soundEngine.init(allChord[2].toString());
-    }, 2500);
+    }, 1500);
     if(lev==3){
         setTimeout(function() {
             soundEngine.init(allChord[3].toString());
-        }, 3500);
+        }, 2000);
         setTimeout(function() {
             soundEngine.init(allChord[0].toString());
             soundEngine.init(allChord[1].toString());
             soundEngine.init(allChord[2].toString());
             soundEngine.init(allChord[3].toString());
-        }, 4500);
+        }, 2500);
     } else {
         setTimeout(function() {
             soundEngine.init(allChord[0].toString());
             soundEngine.init(allChord[1].toString());
             soundEngine.init(allChord[2].toString());
-        }, 3500);
+        }, 2000);
     }
 
     

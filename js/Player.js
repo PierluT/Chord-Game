@@ -160,6 +160,8 @@ class Player {
         if (deltaDistance < deltaPixel && yDistance > 0) {
             rispostaGiusta = false;
             //console.log(rispostaGiusta)
+            fund++;
+            listenSound(ArrayAccordiMidiScelti_listen[fund]);
         }
         
     }

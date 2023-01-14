@@ -6,6 +6,7 @@ var ArrayTotale;
 var ArrayAccordiScelti = [];
 var ArrayAccordiMidiScelti = [];
 var ArrayAccordiScelti_listen = [];
+var ArrayAccordiMidiScelti_listen = [];
 
 function setLevel(input){
     const porta1 = input.data[0];
