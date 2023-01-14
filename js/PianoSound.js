@@ -104,7 +104,7 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
             ArrayMIDIErrori[2].push(Tonal.Midi.midiToNoteName(arMIDI[indiceAr][k], { pitchClass: true, sharps: true }));
         }
     }
-    console.log("note in cui ho fatto l'errore", ArrayMIDIErrori);
+    //console.log("note in cui ho fatto l'errore", ArrayMIDIErrori);
 
     if(ConteggioVite == 0){
         var imageUrl = this.document.querySelector('#imgPlayerPerso');
@@ -202,13 +202,14 @@ function handleInput(input) {
         lastNoteReceived = note;
         var controllo = true;
 
-        var arMIDI;
-        var arChord;
+        var arMIDI = [];
+        var arChord = [];
 
         switch (choosenMode) {
             case 'read':
                 arMIDI = ArrayAccordiMidiScelti;
                 arChord = ArrayAccordiScelti;
+                console.log(indiceAr);
             break;
             
             case 'listen':
