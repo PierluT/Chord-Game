@@ -52,6 +52,8 @@ function replace () {
         document.getElementById("schermataGioco").style.display = "inline";
       
         start();
+        animate(0);
+
     } 
 }
 

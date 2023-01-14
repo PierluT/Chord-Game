@@ -12,6 +12,8 @@ let checkGravity = true;
 //const colorGreen = 'rgba(75,192,192,1)';
 //c.font = "italic bolder 50px Arial";
 
+// initialize the background
+init();
 
 const scrImages = ['./img/assets/block1_cut.png','./img/assets/block2_cut.png'];
 //const srcLooserPlayers = ['./img/Mozart/MozartPerso.gif', './img/Beethoven/BeethovenPerso.gif'];
@@ -29,8 +31,7 @@ let playerState;
 let playerNamePlusState;
 playerNamePlusState = choosenAvatar + playerState;
 
-
-const V0X_MAX = 1.1;
+const V0X_MAX = 1;
 const V0Y_MAX = 1.2;
 
 let vox_MODIFIER;
@@ -46,8 +47,6 @@ const player = new Player({
 
 //index array di accordi
 var indexChords;
-
-start();
 
 //il timestamp mi serve per controllare il refresh automatico della animate.
 function animate (timestamp) {
@@ -85,8 +84,6 @@ function animate (timestamp) {
    window.requestAnimationFrame(animate)
 }
 
-animate(0)
-
 
 ///////////////////////////////////////////
 //in base a ciò che premo nella tastiera (SENZA PIANO KEYBOARD)
@@ -109,7 +106,6 @@ window.addEventListener('keydown', function(event) {
             lev++;
             console.log("Level: ", lev)
             document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
-            start();
         }
         break;
         case 'w': //giu
@@ -117,7 +113,6 @@ window.addEventListener('keydown', function(event) {
             lev--;
             console.log("Level: ", lev)
             document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
-            start();
         }
         break;
     }
@@ -133,9 +128,6 @@ function start(){
     rispostaGiusta = false;
     indexChords=0;
     playerState = "-frontale-sx";
-    
-    // initialize the background
-    init();
 
     player.position.y = canvas.height-player.height;
     player.position.x = 450;
@@ -177,14 +169,15 @@ function start(){
     switch (choosenMode) {
 
         case 'listen':
-            blockInterval = 1000
+            blockInterval = 6000;
             //devo passare dentro array MIDI del primo accordo
             fund=0
             listenSound(ArrayAccordiMidiScelti_listen[fund]);
-        break;
+            break;
 
         case 'read':
             blockInterval = 4000;
+            break;
     }
     
 }
