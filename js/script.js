@@ -20,7 +20,7 @@ var chordBlockArray;
 
 let timeToNextBlock;
 //variabile che andremo a modificare con il knob della MIDI, ora è impostato a 4 secondi
-let blockInterval= 1000;
+let blockInterval= 2000;
 let lastBlockTime;
 let primaNota;
 let gameOver = false
@@ -30,7 +30,7 @@ let playerNamePlusState;
 playerNamePlusState = choosenAvatar + playerState;
 
 
-const V0X_MAX = 1; // initial velocity (m/s)
+const V0X_MAX = 1.1;
 const V0Y_MAX = 1.2;
 
 let vox_MODIFIER;
@@ -47,17 +47,8 @@ const player = new Player({
 //index array di accordi
 var indexChords;
 
-start()
+start();
 
-//saranno le nostre giusto e sbagliato
-const keys = {
-    d:{
-        pressed : false
-    },
-    a:{
-        pressed : false
-    }
-}
 //il timestamp mi serve per controllare il refresh automatico della animate.
 function animate (timestamp) {
     c.clearRect(0,0,canvas.width,canvas.height)
@@ -90,15 +81,6 @@ function animate (timestamp) {
         player.automaticJump(vox_MODIFIER, voy_MODIEFIER)
     }
 
-    //se tengo premuto continua ad andarea destra,altrimenti si stoppa 
-    //perchè la velocità viene risettata a 0
-    player.velocity.x = 0
-    if(keys.d.pressed) {
-        player.velocity.x = 1
-    }else if (keys.a.pressed) {
-        player.velocity.x = -1
-    }
-    
     //richiama ogni volta la funzione
    window.requestAnimationFrame(animate)
 }
