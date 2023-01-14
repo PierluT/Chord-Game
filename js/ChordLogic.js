@@ -330,9 +330,9 @@ function CreateChords(Livello_scelto){
 
         }
 
-        console.log("NOTE FUND: ", ArrayAccordiScelti_listen);
-        console.log("NOTE FUND MIDI ", ArrayFundMidiScelti_listen);
-        console.log("ACCORDI ", ArrayAccordiMidiScelti_listen);
+        //console.log("NOTE FUND: ", ArrayAccordiScelti_listen);
+        //console.log("NOTE FUND MIDI ", ArrayFundMidiScelti_listen);
+        //console.log("ACCORDI ", ArrayAccordiMidiScelti_listen);
     
       
     }
