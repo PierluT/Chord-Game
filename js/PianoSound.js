@@ -78,40 +78,41 @@ var errori = [];
 var ArrayAccordiErrori = [];
 var ArrayMIDIErrori = [[],[],[]];
 
-function controlloPerdita() {
-
+function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
     ConteggioVite--;
     errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true }));
-    ArrayAccordiErrori.push(ArrayAccordiScelti[indexChords-3]);
+    console.log("errore", errori);
+    ArrayAccordiErrori.push(arChord[indiceAr].slice(0, -1));
+    console.log("accordo in cui ho fatto l'errore", ArrayAccordiErrori);
     if(ConteggioVite == 2){
-        for(let k=0; k<ArrayAccordiMidiScelti[indexChords-3].length; k++) {
-            ArrayMIDIErrori[0].push(Tonal.Midi.midiToNoteName(ArrayAccordiMidiScelti[indexChords-3][k], { pitchClass: true, sharps: true }));
+        for(let k=0; k<arMIDI[indiceAr].length; k++) {
+            ArrayMIDIErrori[0].push(Tonal.Midi.midiToNoteName(arMIDI[indiceAr][k], { pitchClass: true, sharps: true }));
         }
     }
     if(ConteggioVite == 1){
-        for(let k=0; k<ArrayAccordiMidiScelti[indexChords-3].length; k++) {
-            ArrayMIDIErrori[1].push(Tonal.Midi.midiToNoteName(ArrayAccordiMidiScelti[indexChords-3][k], { pitchClass: true, sharps: true }));
+        for(let k=0; k<arMIDI[indiceAr].length; k++) {
+            ArrayMIDIErrori[1].push(Tonal.Midi.midiToNoteName(arMIDI[indiceAr][k], { pitchClass: true, sharps: true }));
         }
     }
     if(ConteggioVite == 0){
-        for(let k=0; k<ArrayAccordiMidiScelti[indexChords-3].length; k++) {
-            ArrayMIDIErrori[2].push(Tonal.Midi.midiToNoteName(ArrayAccordiMidiScelti[indexChords-3][k], { pitchClass: true, sharps: true }));
+        for(let k=0; k<arMIDI[indiceAr].length; k++) {
+            ArrayMIDIErrori[2].push(Tonal.Midi.midiToNoteName(arMIDI[indiceAr][k], { pitchClass: true, sharps: true }));
         }
     }
+    console.log("note in cui ho fatto l'errore", ArrayMIDIErrori);
 
     if(ConteggioVite == 0){
         var imageUrl = this.document.querySelector('#imgPlayerPerso');
         imageUrl.src = looserImage;
         primaNota = false;
         document.getElementById("schermataGioco").style.opacity = 0.3;
-        document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
 
         //PRIMO ERRORE
-        document.getElementById("primoErrore").innerHTML = "1st wrong chord: " + ArrayAccordiErrori[0] + "<br>The notes were: " + ArrayMIDIErrori[0] + "<br>Error: " + errori[0];
+        document.getElementById("primoErrore").innerHTML = ArrayAccordiErrori[0] + " -> " + ArrayMIDIErrori[0] + "(<s>" + errori[0] + "</s>)";
         //SECONDO ERRORE
-        document.getElementById("secondoErrore").innerHTML = "2nd wrong chord: " + ArrayAccordiErrori[1] + "<br>The notes were: " + ArrayMIDIErrori[1] + "<br>Error: " + errori[1];
+        document.getElementById("secondoErrore").innerHTML = ArrayAccordiErrori[1] + " -> " + ArrayMIDIErrori[1] + "(<s>" + errori[1] + "</s>)";
         //TERZO ERRORE
-        document.getElementById("terzoErrore").innerHTML = "3rd wrong chord: " + ArrayAccordiErrori[2] + "<br>The notes were: " + ArrayMIDIErrori[2] + "<br>Error: " + errori[2];
+        document.getElementById("terzoErrore").innerHTML = ArrayAccordiErrori[2] + " -> " + ArrayMIDIErrori[2] + "(<s>" + errori[2] + "</s>)";
 
         $( function() {
             $( "#dialog" ).dialog({
@@ -176,7 +177,7 @@ function controlloGiusto(){
 
 var lastNoteReceived = 0;
 var arrayComparaMIDI =[];
-var indiceArrrr=0;
+var indiceAr=0;
 
 //data notes
 function handleInput(input) {
@@ -196,45 +197,47 @@ function handleInput(input) {
         lastNoteReceived = note;
         var controllo = true;
 
-        var arrrrrrr;
+        var arMIDI;
+        var arChord;
 
         switch (choosenMode) {
-
             case 'read':
-                arrrrrrr = ArrayAccordiMidiScelti;
+                arMIDI = ArrayAccordiMidiScelti;
+                arChord = ArrayAccordiScelti;
             break;
             
             case 'listen':
-                arrrrrrr = ArrayAccordiMidiScelti_listen;
+                arMIDI = ArrayAccordiMidiScelti_listen;
+                arChord = ArrayAccordiScelti_listen;
             break;
-
         }
 
-        for(let j=0; j<arrrrrrr[indiceArrrr].length; j++){ 
-            if(arrrrrrr[indiceArrrr][j]==lastNoteReceived || (Math.abs(lastNoteReceived-arrrrrrr[indiceArrrr][j])) % 12 == 0){
-                if(!arrayComparaMIDI.includes(lastNoteReceived)
-                && !arrayComparaMIDI.includes(lastNoteReceived + 12) && !arrayComparaMIDI.includes(lastNoteReceived - 12)
-                && !arrayComparaMIDI.includes(lastNoteReceived + 24) && !arrayComparaMIDI.includes(lastNoteReceived - 24)
-                && !arrayComparaMIDI.includes(lastNoteReceived + 36) && !arrayComparaMIDI.includes(lastNoteReceived - 36)
-                && !arrayComparaMIDI.includes(lastNoteReceived + 48) && !arrayComparaMIDI.includes(lastNoteReceived - 48)
-                && !arrayComparaMIDI.includes(lastNoteReceived + 60) && !arrayComparaMIDI.includes(lastNoteReceived - 60)
-                && !arrayComparaMIDI.includes(lastNoteReceived + 72) && !arrayComparaMIDI.includes(lastNoteReceived - 72)
-                && !arrayComparaMIDI.includes(lastNoteReceived + 84) && !arrayComparaMIDI.includes(lastNoteReceived - 84)){
-                    arrayComparaMIDI.push(arrrrrrr[indiceArrrr][j]);
+        for(let j=0; j<arMIDI[indiceAr].length; j++){ 
+            if(arMIDI[indiceAr][j]==lastNoteReceived || (Math.abs(lastNoteReceived-arMIDI[indiceAr][j])) % 12 == 0){
+                let found = false;
+                for (let i = -96; i <= 96; i += 12) {
+                    if (arrayComparaMIDI.includes(lastNoteReceived + i)) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    arrayComparaMIDI.push(lastNoteReceived);
                     console.log(arrayComparaMIDI);
                 }
+
                 controllo = false;
             }
         }       
 
         // errori
         if(controllo == true){
-            controlloPerdita(lastNoteReceived);
+            controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);
         }
-        if(arrayComparaMIDI.length==arrrrrrr[indiceArrrr].length){
+        if(arrayComparaMIDI.length==arMIDI[indiceAr].length){
             controlloGiusto();
             arrayComparaMIDI = [];
-            indiceArrrr++;
+            //indiceAr++; //messo in function automaticJump in Player.js (così prima di atterrare non conta errore se si ripetono note)
         }
          
         break;

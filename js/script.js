@@ -99,7 +99,7 @@ window.addEventListener('keydown', function(event) {
             controlloGiusto()
             break; 
         case 'g': //RISPOSTA SBAGLIATA
-            controlloPerdita(lastNoteReceived);
+            controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);
             break;
         case 'q': //su
         if(lev<3){
