@@ -20,7 +20,7 @@ var chordBlockArray;
 
 let timeToNextBlock;
 //variabile che andremo a modificare con il knob della MIDI, ora è impostato a 4 secondi
-let blockInterval= 2000;
+let blockInterval;
 let lastBlockTime;
 let primaNota;
 let gameOver = false
@@ -177,10 +177,14 @@ function start(){
     switch (choosenMode) {
 
         case 'listen':
+            blockInterval = 1000
             //devo passare dentro array MIDI del primo accordo
             fund=0
             listenSound(ArrayAccordiMidiScelti_listen[fund]);
         break;
+
+        case 'read':
+            blockInterval = 4000;
     }
     
 }
