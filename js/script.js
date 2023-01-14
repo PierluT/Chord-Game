@@ -81,6 +81,9 @@ function animate (timestamp) {
     [...chordBlockArray].forEach(block => block.update());
     
     player.chechForVerticalCollision(chordBlockArray);
+
+
+
     //stampa dell'array aggiornato nel quale ho solamente i blocchi visibili nel canvas.
     //console.log(chordBlockArray)
     if(rispostaGiusta){
@@ -141,9 +144,6 @@ window.addEventListener('keydown', function(event) {
 
 function start(){
 
-    
-
-
     chordBlockArray = [];
     timeToNextBlock = 0;
     lastBlockTime = 0;
@@ -160,11 +160,13 @@ function start(){
 
     
     if(lev != 0){
+        //READ
         ArrayTotale = CreateChords(lev);
         ArrayAccordiScelti = ArrayTotale[0];
         ArrayAccordiMidiScelti = ArrayTotale[1];
+        //LISTEN
         ArrayAccordiScelti_listen = ArrayTotale[2];
-        ArrayAccordiSceltiMidi_listen = ArrayTotale[3];
+        ArrayAccordiMidiScelti_listen = ArrayTotale[3];
     }
     
 
@@ -194,8 +196,8 @@ function start(){
 
         case 'listen':
             //devo passare dentro array MIDI del primo accordo
-            listenSound(ArrayAccordiSceltiMidi_listen);
-            console.log(ArrayAccordiSceltiMidi_listen)
+            fund=0
+            listenSound(ArrayAccordiMidiScelti_listen[fund]);
         break;
     }
     

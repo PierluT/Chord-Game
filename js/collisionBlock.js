@@ -55,6 +55,7 @@ class collisionBlock {
 
     disappearChord(){
         this.chord = "";
+        this.chordFund = "";
     }
 
    

@@ -187,7 +187,6 @@ function handleInput(input) {
 
     switch (command) {
 
-
         case 145:
 
         var notaMIDI = note.toString();
@@ -197,7 +196,22 @@ function handleInput(input) {
         lastNoteReceived = note;
         var controllo = true;
 
-        var arrrrrrr = ArrayAccordiMidiScelti;
+        var arrrrrrr;
+
+        switch (choosenMode) {
+
+            case 'read':
+                arrrrrrr = ArrayAccordiMidiScelti;
+
+            break;
+            
+            case 'listen':
+
+
+            break;
+            
+        }
+
         for(let j=0; j<arrrrrrr[indiceArrrr].length; j++){ 
             if(arrrrrrr[indiceArrrr][j]==lastNoteReceived || (Math.abs(lastNoteReceived-arrrrrrr[indiceArrrr][j])) % 12 == 0){
                 if(!arrayComparaMIDI.includes(lastNoteReceived)
@@ -214,6 +228,7 @@ function handleInput(input) {
                 controllo = false;
             }
         }
+        
 
         // errori
         if(controllo == true){
@@ -222,7 +237,6 @@ function handleInput(input) {
         if(arrayComparaMIDI.length==arrrrrrr[indiceArrrr].length){
             controlloGiusto();
             arrayComparaMIDI = [];
-            //passa a elemento successivo
             indiceArrrr++;
         }
          
@@ -232,42 +246,42 @@ function handleInput(input) {
   
 }
 
-function noteOn(note, velocity) {
-    console.log(note, velocity);
-}
-function noteOff(note, velocity) {
-    console.log(note, velocity);
-}
 
 
+var fund = 0;
+
+//entra la fondamentale ogni volta per l'accordo successivo
+function listenSound (allChord) {
 
 
-
-function listenSound (ArrayAccordiSceltiMidi_listen) {
-
-        var terza;
-        var majminChord = Math.random();
-        if (majminChord<0.5){
-            terza = ArrayAccordiSceltiMidi_listen[0] + 4;
-        } else {
-            terza = ArrayAccordiSceltiMidi_listen[0] + 3;
-        }
-        var quinta = ArrayAccordiSceltiMidi_listen[0] + 7;
-
-        soundEngine.init(ArrayAccordiSceltiMidi_listen[0].toString());
+    setTimeout(function() {
+        soundEngine.init(allChord[0].toString());
+    }, 500);
+    setTimeout(function() {
+        soundEngine.init(allChord[1].toString());
+    }, 1500);
+    setTimeout(function() {
+        soundEngine.init(allChord[2].toString());
+    }, 2500);
+    if(lev==3){
         setTimeout(function() {
-            soundEngine.init(terza.toString());
-        }, 1000);
+            soundEngine.init(allChord[3].toString());
+        }, 3500);
         setTimeout(function() {
-            soundEngine.init(quinta.toString());
-        }, 2000);
+            soundEngine.init(allChord[0].toString());
+            soundEngine.init(allChord[1].toString());
+            soundEngine.init(allChord[2].toString());
+            soundEngine.init(allChord[3].toString());
+        }, 4500);
+    } else {
         setTimeout(function() {
-            soundEngine.init(ArrayAccordiSceltiMidi_listen[0].toString());
-            soundEngine.init(terza.toString());
-            soundEngine.init(quinta.toString());
-        }, 3000);
-    //}
+            soundEngine.init(allChord[0].toString());
+            soundEngine.init(allChord[1].toString());
+            soundEngine.init(allChord[2].toString());
+        }, 3500);
+    }
 
+    
 }
 
 

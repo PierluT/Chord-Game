@@ -118,7 +118,7 @@ class Player {
             //cade al centro del blocco
             this.position.y = posizioneAtterraggioY;
             this.position.x = posizioneAtterraggioX;
-            this.checkedCollision(nextBlock);            
+            this.checkedCollision(nextBlock);         
         }
         else {
             checkGravity = true;

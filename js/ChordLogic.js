@@ -71,7 +71,7 @@ function CreateChords(Livello_scelto){
             var BooleanDomSec = false;
             var indexAccordoScelto;
             var Accordo_scelto;
-            for(var i=0; i<20; i++){
+            for(var i=0; i<3; i++){
                 if(BooleanDomSec==false){
                     indexAccordoScelto = Math.floor(Math.random() * arrayAccordiPossibili.length);
                 }
@@ -194,6 +194,7 @@ function CreateChords(Livello_scelto){
     //LISTEN MODE
 
     var ArrayAccordiScelti_listen = [];
+    var ArrayFundMidiScelti_listen = [];
     var ArrayAccordiMidiScelti_listen = [];
 
     if (choosenMode=='listen'){
@@ -252,22 +253,87 @@ function CreateChords(Livello_scelto){
             if(SecondNotes.includes(ArrayAccordiScelti_listen[i])) { //set ottava di partenza
                 ArrayAccordiScelti_listen[i] = ArrayAccordiScelti_listen[i] + "3";
             }
-            /*var majminIndex = Math.random();
-            if(majminIndex<0.5){ //minori
-                ArrayAccordiScelti_listen[i] = ArrayAccordiScelti_listen[i].slice(0,-1) +"m" + ArrayAccordiScelti_listen[i].slice(-1);
-            }*/
-            //ArrayAccordiScelti_listen_notes[i] = Tonal.Chord.get(ArrayAccordiScelti_listen[i]).notes;
         }
         
+        
         for (var k=0; k<ArrayAccordiScelti_listen.length; k++){
-            ArrayAccordiMidiScelti_listen[k]=Tonal.Midi.toMidi(ArrayAccordiScelti_listen[k]);
+            ArrayFundMidiScelti_listen[k]=Tonal.Midi.toMidi(ArrayAccordiScelti_listen[k]);
+
+            var fund = ArrayFundMidiScelti_listen[k];
+            var terza;
+            var quinta;
+            var settima;
+
+            if (Livello_scelto==1){ //triadi maggiori e minori
+                var majminChord = Math.random();
+                if (majminChord<0.5){
+                    terza = fund + 4; //maggiore
+                } else {
+                    terza = fund + 3; //minore
+                }
+                quinta = fund + 7;
+            }
+            if (Livello_scelto == 2) { //triadi maggiori, minori, eccedenti, diminuite
+                var majmindimaugChord = Math.random();
+                if (majmindimaugChord<0.25){ //maggiore
+                    terza = fund + 4;
+                    quinta = fund + 7;
+                } else if (majmindimaugChord<0.5){ //minore
+                    terza = fund + 3;
+                    quinta = fund + 7
+                } else if (majmindimaugChord<0.75){ //diminuita
+                    terza = fund + 3;
+                    quinta = fund + 6;
+                } else { //eccedente
+                    terza = fund + 4;
+                    quinta = fund + 8;
+                }
+            }
+            if (Livello_scelto == 3) { //settime
+                var majmindimaugChord = Math.random();
+                if (majmindimaugChord<0.16){ //prima specie (settima di dominante) -> più percentuale
+                    terza = fund + 4;
+                    quinta = fund + 7;
+                    settima = fund + 10;
+                } else if (majmindimaugChord<0.30){ //seconda specie
+                    terza = fund + 3;
+                    quinta = fund + 7;
+                    settima = fund + 10;
+                } else if (majmindimaugChord<0.44){ //terza specie
+                    terza = fund + 3;
+                    quinta = fund + 6;
+                    settima = fund + 10;
+                } else if (majmindimaugChord<0.58){ //quarta specie
+                    terza = fund + 4;
+                    quinta = fund + 7;
+                    settima = fund + 11;
+                } else if (majmindimaugChord<0.72){ //quinta specie
+                    terza = fund + 3;
+                    quinta = fund + 6;
+                    settima = fund + 9;
+                } else if (majmindimaugChord<0.86){ //sesta specie
+                    terza = fund + 3;
+                    quinta = fund + 7;
+                    settima = fund + 11;
+                } else { //settima specie
+                    terza = fund + 4;
+                    quinta = fund + 8;
+                    settima = fund + 11;
+                }
+            }
+  
+            if(Livello_scelto==3){
+                ArrayAccordiMidiScelti_listen[k] = [fund, terza, quinta, settima];
+            } else {
+                ArrayAccordiMidiScelti_listen[k] = [fund, terza, quinta];
+            }
+
         }
 
-
-
-        console.log("ARRAY ACCORDI SCELTI RIDOTTI: ", ArrayAccordiScelti_listen);
-        console.log("asdasda ", ArrayAccordiMidiScelti_listen);
-      
+        console.log("NOTE FUND: ", ArrayAccordiScelti_listen);
+        console.log("NOTE FUND MIDI ", ArrayFundMidiScelti_listen);
+        console.log("ACCORDI ", ArrayAccordiMidiScelti_listen);
+    
       
     }
 
