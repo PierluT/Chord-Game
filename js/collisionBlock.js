@@ -16,7 +16,7 @@ class collisionBlock {
         //booleano per collisione
         this.markedToCollision = false;
         this.chord = ArrayAccordiScelti[i];
-        this.chordFund = ArrayAccordiScelti_listen[i]
+        this.chordFund = ArrayAccordiScelti_listen[i].slice(0, -1);
         this.image = new Image();
         this.image.src = scrImages[Math.floor(Math.random()*scrImages.length)];
     }

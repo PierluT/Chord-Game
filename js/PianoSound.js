@@ -202,14 +202,12 @@ function handleInput(input) {
 
             case 'read':
                 arrrrrrr = ArrayAccordiMidiScelti;
-                console.log("read sono qui")
             break;
             
             case 'listen':
                 arrrrrrr = ArrayAccordiMidiScelti_listen;
-                console.log("listen sono qui")
             break;
-            
+
         }
 
         for(let j=0; j<arrrrrrr[indiceArrrr].length; j++){ 
@@ -227,8 +225,7 @@ function handleInput(input) {
                 }
                 controllo = false;
             }
-        }
-        
+        }       
 
         // errori
         if(controllo == true){
@@ -250,10 +247,7 @@ function handleInput(input) {
 
 var fund = 0;
 
-//entra la fondamentale ogni volta per l'accordo successivo
 function listenSound (allChord) {
-
-
     setTimeout(function() {
         soundEngine.init(allChord[0].toString());
     }, 500);
@@ -279,9 +273,7 @@ function listenSound (allChord) {
             soundEngine.init(allChord[1].toString());
             soundEngine.init(allChord[2].toString());
         }, 2000);
-    }
-
-    
+    }  
 }
 
 
