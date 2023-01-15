@@ -71,7 +71,7 @@ function generateRandom(){
         prevRandom = lastBlock.position.x/(canvas.width - lastBlock.width);
     
         newRandom = Math.random();
-        while(Math.abs(newRandom - prevRandom) < 0.01){
+        while(Math.abs(newRandom - prevRandom) < 0.2){
             newRandom = Math.random();
         }
     }

@@ -31,8 +31,8 @@ let playerState;
 let playerNamePlusState;
 playerNamePlusState = choosenAvatar + playerState;
 
-const V0X_MAX = 1;
-const V0Y_MAX = 1.2;
+const V0X_MAX = 1.1;
+const V0Y_MAX = 1.1;
 
 let vox_MODIFIER;
 let voy_MODIEFIER;
