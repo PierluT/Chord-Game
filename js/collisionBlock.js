@@ -19,7 +19,7 @@ class collisionBlock {
             this.chord = ArrayAccordiScelti[i];
         }
         if(choosenMode=='listen'){
-            this.chordFund = ArrayAccordiScelti_listen[i];
+            this.chordFund = ArrayAccordiScelti_listen[i].slice(0, 1).trim();
         }
         this.image = new Image();
         this.image.src = scrImages[Math.floor(Math.random()*scrImages.length)];
@@ -40,7 +40,7 @@ class collisionBlock {
                 c.fillText(this.chord,this.position.x-(c.measureText(this.chord).width)/2+(this.width)/2 ,this.position.y);
                 break;
             case 'listen':
-                c.fillText(this.chordFund.slice(0, -1),this.position.x-(c.measureText(this.chordFund).width)/2+(this.width)/2 ,this.position.y);
+                c.fillText(this.chordFund,this.position.x-(c.measureText(this.chordFund).width)/2+(this.width)/2 ,this.position.y);
                 break;
         }
     }

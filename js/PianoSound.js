@@ -1,7 +1,7 @@
 
 //mp3 piano notes
 const sound = new Howl({
-    src: ['dist/piano.mp3'],
+    src: ['dist/mp3/piano.mp3'],
     /*onload() {
         console.log('Sound file has been loaded. Do something here!');
         soundEngine.init();
@@ -20,7 +20,10 @@ const soundEngine = {
         for (let i = 24; i <= 96; i++){
             sound['_sprite'][i] = [timeIndex, lengthOfNote];
             timeIndex += lengthOfNote;
-        }    
+        }
+        //set volume
+        sound.volume(0.3);
+
         sound.play(x);
     }
 }
@@ -80,28 +83,30 @@ var ArrayAccordiErrori = [];
 var ArrayMIDIErrori = [[],[],[]];
 
 function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
+
+
     ConteggioVite--;
     document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
     errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true }));
     console.log("errore", errori);
-    if(choosenMode=='listen'){
-        ArrayAccordiErrori.push(arChord[indiceAr].slice(0, -1));
-        //DA DIRE QUAALE ACCORDO FINALE HO, non la nota FONDAMENTALE!!!!!!
-    } else {
-        ArrayAccordiErrori.push(arChord[indiceAr]);
-    }
+
+    ArrayAccordiErrori.push(arChord[indiceAr]);
+
     console.log("accordo in cui ho fatto l'errore", ArrayAccordiErrori);
     if(ConteggioVite == 2){
+        error.play();
         for(let k=0; k<arMIDI[indiceAr].length; k++) {
             ArrayMIDIErrori[0].push(Tonal.Midi.midiToNoteName(arMIDI[indiceAr][k], { pitchClass: true, sharps: true }));
         }
     }
     if(ConteggioVite == 1){
+        error.play();
         for(let k=0; k<arMIDI[indiceAr].length; k++) {
             ArrayMIDIErrori[1].push(Tonal.Midi.midiToNoteName(arMIDI[indiceAr][k], { pitchClass: true, sharps: true }));
         }
     }
     if(ConteggioVite == 0){
+        lost.play();
         for(let k=0; k<arMIDI[indiceAr].length; k++) {
             ArrayMIDIErrori[2].push(Tonal.Midi.midiToNoteName(arMIDI[indiceAr][k], { pitchClass: true, sharps: true }));
         }
@@ -127,6 +132,7 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                 modal: true,
                 buttons: {
                 Restart: function() {
+                    lost.stop();
                     ConteggioVite = 3;
                     document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
                     indexChords=0;
@@ -145,6 +151,10 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
 }
 
 function controlloGiusto(){
+
+    //SOUND RIGHT ANSWER
+    rightAnswer.play();
+
     primaNota = true;
     let nextBlockPosition = player.computeNextBlockDistance();
 
@@ -179,6 +189,8 @@ function controlloGiusto(){
     //window.keyPressCounter = 0;
     // initialize the game of life
     //gol.init();
+
+    
 
 }
 
@@ -294,6 +306,25 @@ function listenSound (allChord) {
     }  
 }
 
+
+
+
+////////////////////ACTION SOUNDS////////////////////
+
+//RIGHT ANSWER
+const rightAnswer = new Howl({
+    src: ['dist/mp3/rightAnswer.mp3'],
+});
+
+//ERROR
+const error = new Howl({
+    src: ['dist/mp3/error.mp3'],
+});
+
+//LOST
+const lost = new Howl({
+    src: ['dist/mp3/lost.mp3'],
+});
 
 
 

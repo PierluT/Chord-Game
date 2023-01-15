@@ -68,7 +68,7 @@ function CreateChords(Livello_scelto){
             var BooleanDomSec = false;
             var indexAccordoScelto;
             var Accordo_scelto;
-            for(var i=0; i<3; i++){
+            for(var i=0; i<20; i++){
                 if(BooleanDomSec==false){
                     indexAccordoScelto = Math.floor(Math.random() * arrayAccordiPossibili.length);
                 }
@@ -192,7 +192,6 @@ function CreateChords(Livello_scelto){
     //LISTEN MODE
 
     var ArrayAccordiScelti_listen = [];
-    var ArrayFundMidiScelti_listen = [];
     var ArrayAccordiMidiScelti_listen = [];
 
     if (choosenMode=='listen'){
@@ -255,12 +254,13 @@ function CreateChords(Livello_scelto){
         
         
         for (var k=0; k<ArrayAccordiScelti_listen.length; k++){
-            ArrayFundMidiScelti_listen[k]=Tonal.Midi.toMidi(ArrayAccordiScelti_listen[k]);
 
-            var fund = ArrayFundMidiScelti_listen[k];
+            var fund = Tonal.Midi.toMidi(ArrayAccordiScelti_listen[k]);
             var terza;
             var quinta;
             var settima;
+
+            var chordType = "";
 
             if (Livello_scelto==1){ //triadi maggiori e minori
                 var majminChord = Math.random();
@@ -268,6 +268,7 @@ function CreateChords(Livello_scelto){
                     terza = fund + 4; //maggiore
                 } else {
                     terza = fund + 3; //minore
+                    chordType = "min";
                 }
                 quinta = fund + 7;
             }
@@ -279,12 +280,15 @@ function CreateChords(Livello_scelto){
                 } else if (majmindimaugChord<0.5){ //minore
                     terza = fund + 3;
                     quinta = fund + 7
+                    chordType = "min";
                 } else if (majmindimaugChord<0.75){ //diminuita
                     terza = fund + 3;
                     quinta = fund + 6;
+                    chordType = "dim";
                 } else { //eccedente
                     terza = fund + 4;
                     quinta = fund + 8;
+                    chordType = "aug";
                 }
             }
             if (Livello_scelto == 3) { //settime
@@ -293,30 +297,37 @@ function CreateChords(Livello_scelto){
                     terza = fund + 4;
                     quinta = fund + 7;
                     settima = fund + 10;
+                    chordType = "7";
                 } else if (majmindimaugChord<0.30){ //seconda specie
                     terza = fund + 3;
                     quinta = fund + 7;
                     settima = fund + 10;
+                    chordType = "min7";
                 } else if (majmindimaugChord<0.44){ //terza specie
                     terza = fund + 3;
                     quinta = fund + 6;
                     settima = fund + 10;
+                    chordType = "m7b5";
                 } else if (majmindimaugChord<0.58){ //quarta specie
                     terza = fund + 4;
                     quinta = fund + 7;
                     settima = fund + 11;
+                    chordType = "maj7";
                 } else if (majmindimaugChord<0.72){ //quinta specie
                     terza = fund + 3;
                     quinta = fund + 6;
                     settima = fund + 9;
+                    chordType = "dim7";
                 } else if (majmindimaugChord<0.86){ //sesta specie
                     terza = fund + 3;
                     quinta = fund + 7;
                     settima = fund + 11;
+                    chordType = "mMaj7";
                 } else { //settima specie
                     terza = fund + 4;
                     quinta = fund + 8;
                     settima = fund + 11;
+                    chordType = "maj7#5";
                 }
             }
   
@@ -326,11 +337,13 @@ function CreateChords(Livello_scelto){
                 ArrayAccordiMidiScelti_listen[k] = [fund, terza, quinta];
             }
 
+            ArrayAccordiScelti_listen[k]=ArrayAccordiScelti_listen[k].slice(0, -1);
+            ArrayAccordiScelti_listen[k]=ArrayAccordiScelti_listen[k] + chordType;
+
         }
 
-        //console.log("NOTE FUND: ", ArrayAccordiScelti_listen);
-        //console.log("NOTE FUND MIDI ", ArrayFundMidiScelti_listen);
-        //console.log("ACCORDI ", ArrayAccordiMidiScelti_listen);
+        console.log("ACCORDI: ", ArrayAccordiScelti_listen);
+        console.log("ACCORDI MIDI ", ArrayAccordiMidiScelti_listen);
     
       
     }
