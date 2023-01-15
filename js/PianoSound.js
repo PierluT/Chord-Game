@@ -181,7 +181,7 @@ function controlloGiusto(){
     }
         
     vox_MODIFIER = V0X_MAX*(xDistance/canvas.width);
-    voy_MODIEFIER = V0Y_MAX*(0.6 + 0.4*((yDistance+ 300)/canvas.height));
+    voy_MODIEFIER = V0Y_MAX*(0.75 + 0.25*((yDistance + 300)/canvas.height));
     //console.log(yDistance/canvas.height)
 
     rispostaGiusta = true;
