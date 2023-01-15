@@ -133,7 +133,7 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                 buttons: {
                 Restart: function() {
                     lost.stop();
-                    ConteggioVite = 3;
+                    ConteggioVite=3;
                     document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
                     indexChords=0;
                     start();
@@ -201,7 +201,7 @@ var indiceAr=0;
 
 //data notes
 function handleInput(input) {
-    //console.log(input);
+    console.log(input);
     const command = input.data[0];
     const note = input.data[1];
     const velocity = input.data[2];

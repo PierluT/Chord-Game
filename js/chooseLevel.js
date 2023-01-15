@@ -14,14 +14,13 @@ function setLevel(input){
     const porta3 = input.data[2];
 
     //LIVELLO
-    if (porta1 == 128){
+    if (porta1 == 144){
         switch (porta2) {
             case 64: //su
             if(lev<3){
                 lev++;
                 console.log("Level: ", lev)
                 document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
-                start();
             }
             break;
             case 65: //giu
@@ -29,8 +28,11 @@ function setLevel(input){
                 lev--;
                 console.log("Level: ", lev)
                 document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
-                start();
             }
+            break;
+            case 66: //restart
+                start();
+                document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
             break;
         } 
     }

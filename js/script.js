@@ -121,6 +121,7 @@ window.addEventListener('keydown', function(event) {
 ///////////////////////////////////////////
 
 function start(){
+    ConteggioVite=3;
     indiceAr=0;
     chordBlockArray = [];
     timeToNextBlock = 0;

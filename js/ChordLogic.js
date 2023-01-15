@@ -205,40 +205,24 @@ function CreateChords(Livello_scelto){
         const SecondNotes = ["B#", "Cb", "C", "C#", "Db", "D", "D#", "Eb", "E"];
 
 
-        //SCELTA IN BASE A PERCENTUALE
-        /*for (let i=0; i<100; i++){
-            var indexNoteWB = Math.random();
-            if (indexNoteWB >= 0.20) {
-                var indexNote = Math.floor(Math.random() * WhiteNotes.length);
-                var randomNote = WhiteNotes[indexNote];
-                ArrayAccordiScelti_listen.push(randomNote);
-            } else if (indexNoteWB >= 0.10){
-                var indexNote = Math.floor(Math.random() * BlackNotesDiesis.length);
-                var randomNote = BlackNotesDiesis[indexNote];
-                ArrayAccordiScelti_listen.push(randomNote);
-            } else {
-                var indexNote = Math.floor(Math.random() * BlackNotesBemolli.length);
-                var randomNote = BlackNotesBemolli[indexNote];
-                ArrayAccordiScelti_listen.push(randomNote);
-            }
-            
-        }*/
-
         //SCELTA IN CRESCENTE
         for (let i=0; i<100; i++){
 
-            if (i<33) {
+            if (i<33) { //note naturali
                 var indexNote = Math.floor(Math.random() * WhiteNotes.length);
                 var randomNote = WhiteNotes[indexNote];
                 ArrayAccordiScelti_listen.push(randomNote);
-            } else if (i<66){
-                var indexNote = Math.floor(Math.random() * BlackNotesDiesis.length);
-                var randomNote = BlackNotesDiesis[indexNote];
-                ArrayAccordiScelti_listen.push(randomNote);
-            } else {
-                var indexNote = Math.floor(Math.random() * BlackNotesBemolli.length);
-                var randomNote = BlackNotesBemolli[indexNote];
-                ArrayAccordiScelti_listen.push(randomNote);
+            } else { //note alterate
+                var indexNoteWB = Math.random();
+                if(indexNoteWB<0.5){ //bemolli
+                    var indexNote = Math.floor(Math.random() * BlackNotesBemolli.length);
+                    var randomNote = BlackNotesBemolli[indexNote];
+                    ArrayAccordiScelti_listen.push(randomNote);
+                } else { //diesis
+                    var indexNote = Math.floor(Math.random() * BlackNotesDiesis.length);
+                    var randomNote = BlackNotesDiesis[indexNote];
+                    ArrayAccordiScelti_listen.push(randomNote);
+                }
             }
             
         }
