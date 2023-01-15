@@ -13,7 +13,7 @@ function setLevel(input){
     const porta2 = input.data[1];
     const porta3 = input.data[2];
 
-    //LIVELLO
+    //LIVELLO E RESTART
     if (porta1 == 144){
         switch (porta2) {
             case 64: //su
