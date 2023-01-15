@@ -164,7 +164,7 @@ class Player {
             fund++;
             if(choosenMode=='listen'){
                 listenSound(ArrayAccordiMidiScelti_listen[fund]);
-            } 
+            }
         } 
     }
     

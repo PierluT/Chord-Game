@@ -74,12 +74,14 @@ function failure() {
 
 //CONTEGGIO VITE e MORTE
 var ConteggioVite = 3;
+document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
 var errori = [];
 var ArrayAccordiErrori = [];
 var ArrayMIDIErrori = [[],[],[]];
 
 function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
     ConteggioVite--;
+    document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
     errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true }));
     console.log("errore", errori);
     if(choosenMode=='listen'){
@@ -126,6 +128,7 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                 buttons: {
                 Restart: function() {
                     ConteggioVite = 3;
+                    document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
                     indexChords=0;
                     start();
                     errori = [];
@@ -233,7 +236,14 @@ function handleInput(input) {
 
                 controllo = false;
             }
-        }       
+        }
+        
+        if(choosenMode=='read') {
+            document.getElementById("score").innerHTML = "SCORE: " + indiceAr +"/" + ArrayAccordiScelti.length;
+        }
+        if(choosenMode=='listen'){
+            document.getElementById("score").innerHTML = "SCORE: " + indiceAr +"/" + ArrayAccordiScelti_listen.length;
+        }
 
         // errori
         if(controllo == true){

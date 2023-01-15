@@ -180,6 +180,16 @@ function start(){
             blockInterval = 4000;
             break;
     }
+
+
+    document.getElementById("level").innerHTML = "LEVEL: " + lev;
+    document.getElementById("mode").innerHTML = "MODE: " + choosenMode; 
+    if(choosenMode=='read') {
+        document.getElementById("score").innerHTML = "SCORE: " + indiceAr +"/" + ArrayAccordiScelti.length;
+    }
+    if(choosenMode=='listen'){
+        document.getElementById("score").innerHTML = "SCORE: " + indiceAr +"/" + ArrayAccordiScelti_listen.length;
+    }
     
 }
 
