@@ -1,6 +1,6 @@
 class collisionBlock {
     //poi la dovrò settare random
-    constructor(i) {
+    constructor(i,v) {
         this.width = 200
         this.height = 90
         this.position = {
@@ -10,7 +10,8 @@ class collisionBlock {
 
         this.velocity= {
             x:0,
-            y:0.6,
+            //y:0.6,
+            y:v,
         }
         
         //booleano per collisione
