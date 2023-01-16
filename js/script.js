@@ -93,7 +93,6 @@ function animate (timestamp) {
 //in base a ciò che premo nella tastiera (SENZA PIANO KEYBOARD)
 let keysPressed = {};
 
-
 window.addEventListener('keydown', function(event) {
   
     keysPressed[event.key] = true;
@@ -179,7 +178,7 @@ function start(){
     switch (choosenMode) {
 
         case 'listen':
-            blockInterval = 6000;
+            blockInterval = 7000;
             arMIDI = ArrayAccordiMidiScelti_listen;
             arChord = ArrayAccordiScelti_listen;
             //devo passare dentro array MIDI del primo accordo
@@ -188,7 +187,7 @@ function start(){
             break;
 
         case 'read':
-            blockInterval = 4000;
+            blockInterval = 5000;
             arMIDI = ArrayAccordiMidiScelti;
             arChord = ArrayAccordiScelti;
             break;

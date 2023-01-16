@@ -22,7 +22,7 @@ function hsla( h, s, l, a ) {
   
 function create() {
   sizeBase = cw + ch;
-  count = Math.floor( sizeBase * 0.3 ),
+  count = Math.floor( sizeBase * 0.4 ),
   hue = rand( 120 , 170 ),
   opt = {
     radiusMin: 1,
@@ -57,6 +57,7 @@ function create() {
     ctx1.closePath();
     ctx1.fill();
   }
+  ctx2.clearRect( 0, 0, cw, ch );
   ctx2.globalCompositeOperation = 'source-over';
   ctx2.shadowBlur = 0;
   ctx2.drawImage( c1, 0, 0 );
@@ -65,7 +66,7 @@ function create() {
   ctx2.shadowColor = '#fff';
   
   // former num of particles = Math.floor( ( cw + ch ) * 0.0001 )
-  /*
+  
   parts.length = 0;
   for( var i = 0; i < numParticles; i++ ) {
     parts.push({
@@ -76,7 +77,7 @@ function create() {
       vel: rand( 0.1, 0.5 ),
       tick: rand( 0, 10000 )
     });
-  }*/
+  }
 }
 
 function init() {
