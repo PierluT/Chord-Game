@@ -46,7 +46,7 @@ beethoven.addEventListener('click', function() {
 
 bach.addEventListener('click', function() {
     composerAnimation.style.animationName = 'bach'; 
-    composerToAnimate ='bach';
+    //composerToAnimate ='bach';
     choosenAvatar = 'bach';
     srcPlayer = 'bach';
   });

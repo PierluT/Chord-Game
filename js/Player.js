@@ -54,13 +54,6 @@ class Player {
             case 'bach':
                 looserImage = srcLooserPlayers[2];
                 break;
-            case 'bach':
-                looserImage = srcLooserPlayers[2];
-                /*
-                playerNamePlusState = choosenAvatar + playerState;
-                this.playerImage.src = spriteAnimations.find(animation => animation.name == playerNamePlusState).path;
-                this.updateIndexes();
-                */
         }
         playerNamePlusState = choosenAvatar + playerState;
         this.playerImage.src = spriteAnimations.find(animation => animation.name == playerNamePlusState).path;

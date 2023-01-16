@@ -138,6 +138,9 @@ function start(){
     gameOver = false;
     indexChords=0;
     playerState = "-frontale-sx";
+
+    // initialize the score in start
+    score = 0;
     
     if(lev != 0){
         //READ
@@ -207,4 +210,28 @@ function start(){
         document.getElementById("score").innerHTML = "SCORE: " + indiceAr +"/" + ArrayAccordiScelti_listen.length;
     } 
     
+}
+
+// score is initialized to 0 in start()
+let score;
+let moltiplicator = 1;
+let amount = 50;
+
+function plusScore(amount, level, moltiplicator){
+    score += amount * level * moltiplicator;
+}
+
+function checkStreak(lastCorrect){
+    if (lastCorrect){
+        
+    }
+}
+
+function chechMoltiplicator(streak){
+    if(streak % 5) {
+        moltiplicator++;
+    }
+    else {
+        moltiplicator = 1;
+    }
 }
