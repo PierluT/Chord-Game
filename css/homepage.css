@@ -3,11 +3,6 @@
 @import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
 
 /*-- general settings --*/
-p{
-    font-size: 2em;
-    font-family: "Press Start 2P";
-}
-
 body {
     background: rgb(39, 38, 38);
 }
@@ -25,7 +20,7 @@ h1{
     text-align: center;
 }
 
-h2{
+h2 {
     color: blanchedalmond;
     font-size: 1.4em;
     font-family: "Press Start 2P";
@@ -36,35 +31,29 @@ h4{
   font-size: 1em;
   font-family: "Press Start 2P";
 }
+p{
+    font-size: 2em;
+    font-family: "Press Start 2P";
+}
+
+#avatarMenu{
+    display:flex;
+    width: 100vh;
+    margin-left: 10%;
+    margin-right: 10%;
+}
 
 #modeMenu{
   display:flex;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 #levelMenu{
   display:flex;
-}
-/*
-#choices {
-    margin-bottom: 30px;
-    margin-top: 10px;
-    display: flex;
-}
-
-.avatarChoice {
-    width: auto;
-    margin-left: 100px;
-}
-
-.modeChoice {
-    width: auto;
-    margin-right: 100px;
-    margin-left: 400px;
-}
-*/
-#avatarMenu{
-    display:flex;
-    width: 100vh;
+  margin-left: 10%;
+  margin-right: 10%;
+  inset-block: auto;
 }
 
 .png{
@@ -135,7 +124,7 @@ h4{
   }
   
   .player_box_mozart:hover {
-    transform: scale(1.3);
+    transform: scale(1.1);
   }
 
   #mozart:active, #mozart:focus {
@@ -207,7 +196,7 @@ h4{
   }
   
   .player_box_beethoven:hover {
-    transform: scale(1.3);
+    transform: scale(1.1);
   }
 
   #beethoven:active, #beethoven:focus {
@@ -278,7 +267,7 @@ h4{
   }
   
   .player_box_bach:hover {
-    transform: scale(1.3);
+    transform: scale(1.1);
   }
 
   #bach:active, #bach:focus {
@@ -306,7 +295,7 @@ h4{
   }
   
   #readMode:hover {
-    transform: scale(1.3);
+    transform: scale(1.1);
   }
 
   #readMode:active, #readMode:focus {
@@ -326,7 +315,7 @@ h4{
   }
   
   #listenMode:hover {
-    transform: scale(1.3);
+    transform: scale(1.1);
   }
 
   #listenMode:active, #listenMode:focus {
