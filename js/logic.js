@@ -5,6 +5,7 @@ let clickedButton = document.getElementById('playButton');
 // Seleziona i div
 var mozart = document.querySelector('#mozart');
 var beethoven = document.querySelector('#beethoven');
+var bach = document.querySelector('#bach');
 
 var livello1Scelto = document.querySelector('#livello1');
 var livello2Scelto = document.querySelector('#livello2');

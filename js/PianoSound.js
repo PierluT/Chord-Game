@@ -124,6 +124,12 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
             $( "#dialog" ).dialog({
                 title: "Game Over",
                 modal: true,
+                draggable: false, 
+                resizable: true, 
+                minWidth: 200, 
+                width:560,
+                minheight:98,
+                position:[400,120],
                 buttons: {
                 Restart: function() {
                     lost.stop();

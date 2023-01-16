@@ -26,7 +26,7 @@
             </div>
             
             <div id="mozart" class="col-4">
-                <img src="/img/Mozart/mozart-frontale-dx/mozart_frontaledx_1.png" >
+                <img src="/img/Mozart/mozart-frontale-sx/mozart_frontalesx_1.png" >
                 <p>Mozart</p>
             </div>
             <div id="bach" class="col-4">
@@ -39,13 +39,12 @@
     <h3 class="text-sm-left">Select modality game</h3>
     <div id="container-mode" class="container">
         <div class="row">
-            <div id="listenMode" class="col">
-                <h4>LISTEN</h4>
-                <p>Play with the MIDI the chord you listen. Above the block you find the chord's fundamental.</p>
-            </div>
             <div id="readMode" class="col">
                 <h4>READ</h4>
                 <p>Play with the MIDI the chord you read above the blocks.</p>
+            </div> <div id="listenMode" class="col">
+                <h4>LISTEN</h4>
+                <p>Play with the MIDI the chord you listen. Above the block you find the chord's fundamental.</p>
             </div>
         </div>
     </div>
@@ -70,9 +69,9 @@
       </div>
     </div>
 
-      <div id="schermataGioco">
-        <canvas id="c1"></canvas>
-        <canvas id="c2"></canvas>
+      <div id="schermataGioco" class="embed-responsive">
+        <canvas class="embed-responsive-item img-responsive" id="c1"></canvas>
+        <canvas class="embed-responsive-item img-responsive" id="c2"></canvas>
         <canvas id="gameSet"></canvas>
         <img id="avatarScelto">
         <div id="mode"></div>
