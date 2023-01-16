@@ -110,7 +110,7 @@ window.addEventListener('keydown', function(event) {
             controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);
             break;
         case 'q': //su
-        if(lev=<3){
+        if(lev<=3){
             lev++;
             console.log("Level: ", lev)
             document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;

@@ -19,16 +19,6 @@ canvas {
     animation-duration: 2s;
     animation-iteration-count: infinite;
 }
-
-#livelloScelto{
-    font-family: "Press Start 2P";
-    float: inherit;
-    color: white;
-    font-size: 1.3em;
-    padding-left: 47px;
-    text-align: center;
-}
-
 #vite{
     font-family: "Press Start 2P";
     text-align: right;
@@ -76,6 +66,4 @@ canvas {
     top: 200px;
     right: 250px;
 }
-
-
 

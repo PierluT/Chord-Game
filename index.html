@@ -1,96 +1,107 @@
-<!DOCTYPE html>
-<html>
-    <head> 
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1">
-          <link rel = "stylesheet" href = "css/style.css">
-          <link rel = "stylesheet" href = "css/homepage.css"> 
-          <script src="https://cdn.jsdelivr.net/npm/@tonaljs/tonal@4.6.5/browser/tonal.min.js"></script>
-          <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-          <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-          
-          <title>Chord Game</title>
-    </head>
-        <body>
-            <div id="schermataIniziale">
-                <header>
-                    <h1>THE CHORD GAME</h1>
-                </header>
-                
-                <h4>Select your avatar</h4>
-                <section id="avatarMenu">
-                    <div class="player_box_beethoven">
-                        <div class='png' id="beethoven" ></div>
-                        <p class="name" >BEETHOVEN</p>
-                    </div>
-                    <div class="player_box_mozart">
-                        <div class='png' id="mozart" ></div>
-                        <p class="name" >MOZART</p>
-                    </div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@tonaljs/tonal@4.6.5/browser/tonal.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel = "stylesheet" href = "css/style.css">
+    <link rel = "stylesheet" href = "css/homepage.css"> 
+    <title>The Chord Game</title>
+</head>
+  <body>
+ <div id="schermataIniziale">
+  <h1> CHORD GAME</h1>
+    <h3 class="text-sm-left">Select your avatar</h3>
+    <div id="container-avatar" class="container">
+        <div class="row">
 
-                    <div class="player_box_bach">
-                        <div class="png" id="bach"></div>
-                            <p class="name">BACH</p>
-                    </div>
-                </section>
-
-                <h4>Select modality game</h4>
-                <section id="modeMenu">
-                     <div id="readMode">
-                    <h2 class="earString">READ</h2> 
-                    <h3 class="description">Play with the MIDI the chord you read above the blocks.</h3>
-                    </div>        
-                    <div id="listenMode">
-                        <h2 class="earString">LISTEN</h2> 
-                        <h3 class="description">Play with the MIDI the chord you recognize.</h3>
-                    </div> 
-                </section>
-                <button id="playButton">PLAY</button>
-                <section id="levelSection">
-                    <p class="name">SELECT YOUR LEVEL: </p>
-                    <div id="livelloScelto"></div>  
-                </section>
-                
+            <div id="beethoven" class="col-4">
+                <img src="beethoven_front_dx_1.png">
+                <p>Beethoven</p>
             </div>
-
-            <div id="schermataGioco">
-                <canvas id="c1"></canvas>
-                <canvas id="c2"></canvas>
-                <canvas id="gameSet"></canvas>
-                <img id="avatarScelto">
-                <div id="mode"></div>
-                <div id="level"></div>
-                <div id="livesleft"></div>
-                <div id="score"></div>
-
-            </div> 
-
-            <div id="dialog">
-                <h2>Game Over</h2>
-                <h2>YOUR ERRORS:</h2>
-                <p id="primoErrore"></p>
-                <p id="secondoErrore"></p>
-                <p id="terzoErrore"></p>
-                <img id="imgPlayerPerso" alt="gif animation">
-            </div> 
-
+            
+            <div id="mozart" class="col-4">
+                <img src="mozart_frontaledx_1.png" >
+                <p>Mozart</p>
             </div>
-        </body>
+            <div id="bach" class="col-4">
+                <img src="bach_front_dx_1.png" >
+                <p>Bach</p>
+            </div>
+        </div>
+    </div>
 
-    <script src = "js/ButtonKnob.js" ></script> 
-    <script src = "js/spriteAnimations.js" ></script>
-    <script src = "js/background.js" ></script>
-    <script src = "js/logic.js" ></script>
-    <script src = "js/lib/teoria.js" ></script> 
-    <script src = "js/Player.js" ></script>
-    <script src = "js/GOL.js" ></script>
-    <script src = "js/ChordLogic.js" ></script> 
-    <script src = "js/collisionBlock.js"></script>
-    <script src = "js/script.js" ></script>  
-    <script src = "js/lib/howler.js" ></script>
-    <script src = "js/PianoSound.js" ></script>  
+    <h3 class="text-sm-left">Select modality game</h3>
+    <div id="container-mode" class="container">
+        <div class="row">
+            <div id="listenMode" class="col">
+                <h4>LISTEN</h4>
+                <p>Play with the MIDI the chord you listen. Above the block you find the chord's fundamental.</p>
+            </div>
+            <div id="readMode" class="col">
+                <h4>READ</h4>
+                <p>Play with the MIDI the chord you read above the blocks.</p>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="text-sm-left">Select level game</h3>
+    <div id="container-level" class="container">
+        <div class="row" >
+            <div id="livelloScelto" class="col" >
+                <h2 id="livello1" class="level"> LIVELLO 1</h2>
+            </div>
+            <div class="col">
+                <h2 id="livello2" class="level"> LIVELLO 2</h2>
+            </div>
+            <div class="col">
+                <h2 id="livello3" class="level"> LIVELLO 3</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">  
+        <button id="playButton" class="btn btn-primary">PLAY</button>
+      </div>
+    </div>
+
+      <div id="schermataGioco">
+        <canvas id="c1"></canvas>
+        <canvas id="c2"></canvas>
+        <canvas id="gameSet"></canvas>
+        <img id="avatarScelto">
+        <div id="mode"></div>
+        <div id="level"></div>
+        <div id="livesleft"></div>
+        <div id="score"></div>
+
+    </div> 
+
+      <div id="dialog">
+        <h2>Game Over</h2>
+        <h2>YOUR ERRORS:</h2>
+        <p id="primoErrore"></p>
+        <p id="secondoErrore"></p>
+        <p id="terzoErrore"></p>
+        <img id="imgPlayerPerso" alt="gif animation">
+    </div> 
     
-      
-    
+  </body>
+  <script src = "js/ButtonKnob.js" ></script> 
+  <script src = "js/spriteAnimations.js" ></script>
+  <script src = "js/background.js" ></script>
+  <script src = "js/logic.js" ></script>
+  <script src = "js/lib/teoria.js" ></script> 
+  <script src = "js/Player.js" ></script>
+  <script src = "js/GOL.js" ></script>
+  <script src = "js/ChordLogic.js" ></script> 
+  <script src = "js/collisionBlock.js"></script>
+  <script src = "js/script.js" ></script>  
+  <script src = "js/lib/howler.js" ></script>
+  <script src = "js/PianoSound.js" ></script>  
 </html>

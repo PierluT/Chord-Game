@@ -1,67 +1,34 @@
-
-@import url(https://fonts.googleapis.com/css?family=Bungee+Shade);
 @import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
 
-/*-- general settings --*/
-body {
-    background: rgb(39, 38, 38);
-}
-
-#schermataIniziale{
-    justify-content:center;
-}
-
-h1{
-    font-size: 4em;
-    padding-top: 10px;
-    padding: 5px;
-    color: white;
+body{
+    background-color: rgb(2, 17, 29);
     font-family: "Press Start 2P";
-    text-align: center;
-}
-
-h2 {
-    color: blanchedalmond;
-    font-size: 1.4em;
-    font-family: "Press Start 2P";
-}
-
-h4{
-  color: rgb(60, 151, 51);
-  font-size: 1em;
-  font-family: "Press Start 2P";
-}
-p{
-    font-size: 2em;
-    font-family: "Press Start 2P";
-}
-
-#avatarMenu{
-    display:flex;
-    width: 100vh;
     margin-left: 10%;
     margin-right: 10%;
 }
 
-#modeMenu{
-  display:flex;
-  margin-left: 10%;
-  margin-right: 10%;
+h1{
+    text-align: center;
+    color: rgb(230, 86, 19);
+    margin-top: 2%;
 }
 
-#levelMenu{
-  display:flex;
-  margin-left: 10%;
-  margin-right: 10%;
-  inset-block: auto;
+h3{
+  color: rgb(189, 211, 231);
+  font-size: 1.2rem;
+  margin-bottom: 1%;
+  margin-top: 1%;
 }
 
-.png{
-    width: 300px;
-    height: 250px;
-    margin-left: 50px;
-    background-color:  rgb(53, 121, 146);
-    border-radius:50px;
+h4{
+  text-align: center;
+}
+
+.col-4 {
+  width: 27%;
+  height: 27%;
+  vertical-align: top;
+  margin-left: 2%;
 }
 
 #mozart{
@@ -70,6 +37,13 @@ p{
     animation-iteration-count: infinite;
 }
 
+#mozart:hover {
+  transform: scale(1.1);
+}
+
+#mozart:active, #mozart:focus {
+  border:  5px solid rgb(132, 222, 13);
+}
 
 @keyframes mozart {
     0% {
@@ -118,26 +92,23 @@ p{
       content: url("/plot/mozart-frontale-sx/mozart_frontalesx_15.png");
     }
   }
-  
-  .player_box_mozart {
-    transform: scale(1);
-  }
-  
-  .player_box_mozart:hover {
-    transform: scale(1.1);
-  }
 
-  #mozart:active, #mozart:focus {
-    border:  5px solid rgb(132, 222, 13);
-  }
-
-#beethoven{
+  #beethoven{
     animation-name: beethoven;
     animation-duration: 2s;
     animation-iteration-count: infinite;
 }
 
-@keyframes beethoven {
+#beethoven:hover {
+  transform: scale(1.1);
+}
+
+#beethoven:active, #beethoven:focus {
+  border:  5px solid rgb(132, 222, 13);
+}
+
+
+  @keyframes beethoven {
     0% {
       content: url("/plot/beethoven-frontale-dx/beethoven_front_dx_1.png");
     }
@@ -191,166 +162,87 @@ p{
       }
 }
 
- .player_box_beethoven {
-    transform: scale(1);
-  }
-  
-  .player_box_beethoven:hover {
-    transform: scale(1.1);
-  }
-
-  #beethoven:active, #beethoven:focus {
-    border:  5px solid rgb(132, 222, 13);
-  }
-
-
-  #bach {
-    animation-name: bach;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-  }
-  
-  
-  @keyframes bach {
-    0% {
-      content: url("/img/Bach/bach-front-dx/bach_front_dx_1.png");
-    }
-    6.25% {
-      content: url("/img/Bach/bach-front-dx/bach_front_dx_2.png");
-    }
-    12.5% {
-      content: url("/img/Bach/bach-front-dx/bach_front_dx_3.png");
-    }
-    18.75% {
-      content: url("/img/Bach/bach-front-dx/bach_front_dx_4.png");
-    }
-    25% {
-      content: url("/img/Bach/bach-front-dx/bach_front_dx_5.png");
-    }
-    31.25% {
-      content: url("/img/Bach/bach-front-dx/bach_front_dx_6.png");
-    }
-    37.5% {
-      content: url("/img/Bach/bach-front-dx/bach_front_dx_7.png");
-    }
-    43.75% {
-      content: url("/img/Bach/bach-front-dx/bach_front_dx_8.png");
-    }
-    50% {
-      content: url("/img/Bach/bach-front-dx/bach_front_dx_9.png");
-    }
-    56.25% {
-      content: url("/img/Bach/bach-front-dx/bach_front_dx_10.png");
-    }
-    62.5% {
-      content: url("/img/Bach/bach-front-dx/bach_front_dx_11.png");
-    }
-    68.75% {
-      content: url("/img/Bach/bach-front-dx/bach_front_dx_12.png");
-    }
-    75% {
-      content: url("/img/Bach/bach-front-dx/bach_front_dx_13.png");
-    }
-    81.25% {
-      content: url("/img/Bach/bach-front-dx/bach_front_dx_14.png");
-    }
-    87.5% {
-      content: url("/img/Bach/bach-front-dx/bach_front_dx_15.png");
-    }
-    100% {
-      content: url("/img/Bach/bach-front-dx/bach_front_dx_16.png");
-    }
-  }
-
-  .player_box_bach {
-    transform: scale(1);
-  }
-  
-  .player_box_bach:hover {
-    transform: scale(1.1);
-  }
-
-  #bach:active, #bach:focus {
-    border:  5px solid rgb(132, 222, 13);
-  }
-
-.name{
-    float: inherit;
-    color: white;
-    font-size: 1.3em;
-    padding-left: 47px;
-    text-align: center;
+#bach {
+  animation-name: bach;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
 }
 
-#readMode{
-    width: 300px;
-    height: 250px;
-    background-color:  rgb(196, 97, 36);
-    margin-left: 150px;
-    border-radius:50px;
+#bach:hover {
+  transform: scale(1.1);
 }
 
-#readMode {
-    transform: scale(1);
-  }
-  
-  #readMode:hover {
-    transform: scale(1.1);
-  }
-
-  #readMode:active, #readMode:focus {
-    border:  5px solid rgb(132, 222, 13);
-  }
-
-#listenMode{
-    width: 300px;
-    height: 250px;
-    background-color: rgb(196, 97, 36);
-    margin-left: 50px;
-    border-radius:50px;
+#bach:active, #bach:focus {
+  border:  5px solid rgb(132, 222, 13);
 }
 
-#listenMode {
-    transform: scale(1);
+@keyframes bach {
+  0% {
+    content: url("/img/Bach/bach-front-dx/bach_front_dx_1.png");
   }
-  
-  #listenMode:hover {
-    transform: scale(1.1);
+  6.25% {
+    content: url("/img/Bach/bach-front-dx/bach_front_dx_2.png");
   }
-
-  #listenMode:active, #listenMode:focus {
-    border:  5px solid rgb(132, 222, 13);
+  12.5% {
+    content: url("/img/Bach/bach-front-dx/bach_front_dx_3.png");
   }
-
-
-.earString{
-    font-family: "Press Start 2P";
-    text-align: center;
-    font-size: 1.9em;
+  18.75% {
+    content: url("/img/Bach/bach-front-dx/bach_front_dx_4.png");
+  }
+  25% {
+    content: url("/img/Bach/bach-front-dx/bach_front_dx_5.png");
+  }
+  31.25% {
+    content: url("/img/Bach/bach-front-dx/bach_front_dx_6.png");
+  }
+  37.5% {
+    content: url("/img/Bach/bach-front-dx/bach_front_dx_7.png");
+  }
+  43.75% {
+    content: url("/img/Bach/bach-front-dx/bach_front_dx_8.png");
+  }
+  50% {
+    content: url("/img/Bach/bach-front-dx/bach_front_dx_9.png");
+  }
+  56.25% {
+    content: url("/img/Bach/bach-front-dx/bach_front_dx_10.png");
+  }
+  62.5% {
+    content: url("/img/Bach/bach-front-dx/bach_front_dx_11.png");
+  }
+  68.75% {
+    content: url("/img/Bach/bach-front-dx/bach_front_dx_12.png");
+  }
+  75% {
+    content: url("/img/Bach/bach-front-dx/bach_front_dx_13.png");
+  }
+  81.25% {
+    content: url("/img/Bach/bach-front-dx/bach_front_dx_14.png");
+  }
+  87.5% {
+    content: url("/img/Bach/bach-front-dx/bach_front_dx_15.png");
+  }
+  100% {
+    content: url("/img/Bach/bach-front-dx/bach_front_dx_16.png");
+  }
 }
 
-.description{
-    font-family: "Press Start 2P";
-    text-align: center;
-    color: blanchedalmond;
-    font-size: 0.9em;
-    line-height: 2.3em;
+.col{
+  margin-left: 2%;
 }
 
-#playButton{
-    width: 300px;
-    height: 100px;
-    margin-left: 630px;
-    margin-top: 50px;
-    font-size: 2em;
-    font-family: "Press Start 2P";
-    color: white;
-    background-color: rgb(7, 25, 124);
-    border-radius:50px;
-    
+.col:hover {
+  transform: scale(1.1);
 }
+
+p{
+  text-align: center;
+}
+
 #schermataGioco{
-    display: none;
+  display: none;
 }
 
-
+#dialog{
+  display: none;
+}
