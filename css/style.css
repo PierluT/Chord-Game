@@ -14,11 +14,15 @@ canvas {
 
 #avatarScelto{
     position: absolute;
-    top: 90px;
-    right: 50px;
+    width: 30%;
+    height: 30%;
+    margin-top: 10%;
+    margin-bottom: 20%;
+    margin-left: 50%;
     animation-duration: 2s;
     animation-iteration-count: infinite;
 }
+
 #vite{
     font-family: "Press Start 2P";
     text-align: right;
