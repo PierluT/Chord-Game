@@ -90,6 +90,70 @@ const spriteAnimations = [
         frames: 1,
 
         path: './img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_1.png'
+<<<<<<< Updated upstream
+=======
+    },
+    {
+        name: "bach-frontale-dx",
+
+        loc: [{x: 200, y: 80, w: 230, h: 450}],
+
+        frames: 1,
+
+        path: 'img/Bach/bach-front-dx/bach_front_dx_1.png'
+    },
+
+    {
+        name: "bach-frontale-sx",
+
+        loc: [{x: 200, y: 80, w: 230, h: 450}],
+
+        frames: 1,
+
+        path: 'img/Bach/bach-front-sx/bach_front_sx_1.png'
+    },
+
+    {
+        name: "bach-salto-sx",
+
+        loc: [{ x: 150, y : 172, w: 187, h: 241},
+            { x: 622, y: 232, w: 195, h: 181},
+            { x: 1087, y: 255, w: 195, h: 158},
+            { x: 1567, y: 270, w: 195, h: 143},
+            { x: 2032, y: 255, w: 203, h: 158},
+            { x: 2512, y: 240, w: 188, h: 173},
+            { x: 2992, y : 247, w: 188, h: 166},
+            { x: 3450, y: 202, w: 210, h: 211},
+            { x: 3908, y: 225, w: 255, h: 188},
+            { x: 4357, y: 202, w: 285, h: 143},
+            { x: 4935, y: 187, w: 187, h: 226},
+            { x: 5422, y: 165, w: 173, h: 248} ],
+
+        frames: 12,
+
+        path: './img/Bach/bach_salto_sx_spritesheet.png'
+    },
+
+    {
+        name: "bach-salto-dx",
+
+        loc: [{ x: 150, y : 172, w: 187, h: 241},
+            { x: 630, y: 232, w: 195, h: 181},
+            { x: 1125, y: 255, w: 195, h: 158},
+            { x: 1612, y: 255, w: 203, h: 158},
+            { x: 2092, y: 165, w: 173, h: 248},
+            { x: 2565, y: 202, w: 285, h: 211},
+            { x: 3045, y: 225, w: 255, h: 188},
+            { x: 3547, y: 247, w: 188, h: 166},
+            { x: 4027, y: 240, w: 188, h: 173},
+            { x: 4485, y: 187, w: 187, h: 226},
+            { x: 4965, y: 270, w: 195, h: 143},
+            { x: 5467, y: 202, w: 210, h: 211} ],
+
+        frames: 12,
+
+        path: './img/Bach/bach_salto_dx_spritesheet.png'
+>>>>>>> Stashed changes
     }
 ]
 

@@ -122,12 +122,12 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
 
         $( function() {
             $( "#dialog" ).dialog({
-                title: "Game Over",
                 modal: true,
                 draggable: false, 
                 resizable: true, 
                 minWidth: 200, 
                 width:560,
+                height: 740,
                 minheight:98,
                 position:[400,120],
                 buttons: {
@@ -142,7 +142,6 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                     ArrayAccordiErrori = [];
                     ArrayMIDIErrori = [[],[],[]];
                     start();
-                    
                     document.getElementById("schermataGioco").style.opacity = 1;
                     $( this ).dialog( "close" );
                     }
