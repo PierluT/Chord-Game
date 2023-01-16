@@ -243,6 +243,7 @@ function handleInput(input) {
 
         // errori
         if(controllo == true){
+            ConteggioVite--;
             controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);
         }
         if(arrayComparaMIDI.length==arMIDI[indiceAr].length){

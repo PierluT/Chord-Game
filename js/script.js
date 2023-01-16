@@ -66,9 +66,12 @@ function animate (timestamp) {
             timeToNextBlock = 0;
         }
 
-        if (player.position.y + player.height >= canvas.height) {
-            ConteggioVite = 0;
-            setTimeout(() => {controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr)}, 1000);
+        if (player.position.y + player.height >= canvas.height && gameOver == false) {
+            //controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);
+            gameOver = true;
+            setTimeout(() => {
+                ConteggioVite = 0;
+                controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);}, 1000);
         }
     
         [...chordBlockArray].forEach(block => block.update());
@@ -132,6 +135,7 @@ function start(){
     lastBlockTime = 0;
     //gameStarted = true;
     rispostaGiusta = false;
+    gameOver = false;
     indexChords=0;
     playerState = "-frontale-sx";
     
