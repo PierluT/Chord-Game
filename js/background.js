@@ -78,7 +78,7 @@ function init() {
   //loop();
 }
 
-function loop() {
+function backGroundloop() {
   
   ctx2.clearRect( 0, 0, cw, ch );
   ctx2.globalCompositeOperation = 'source-over';
@@ -113,6 +113,7 @@ function loop() {
 function resize() {
   cw = c1.width = c2.width = canvas.width,
   ch = c1.height = c2.height = canvas.height;
+  create();
 }
 
 function click() {

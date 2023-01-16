@@ -1,3 +1,5 @@
+var arMIDI;
+var arChord;
 
 //mp3 piano notes
 const sound = new Howl({
@@ -76,8 +78,6 @@ var ArrayMIDIErrori = [[],[],[]];
 
 function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
 
-
-    ConteggioVite--;
     document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
     errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true }));
     console.log("errore", errori);
@@ -108,7 +108,7 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
     if(ConteggioVite == 0){
         var imageUrl = this.document.querySelector('#imgPlayerPerso');
         imageUrl.src = looserImage;
-        primaNota = false;
+        gameStarted = false;
         document.getElementById("schermataGioco").style.opacity = 0.3;
 
         //PRIMO ERRORE
@@ -132,7 +132,6 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                     errori = [];
                     ArrayAccordiErrori = [];
                     ArrayMIDIErrori = [[],[],[]];
-                    primaNota = false;
                     document.getElementById("schermataGioco").style.opacity = 1;
                     $( this ).dialog( "close" );
                     }
@@ -147,7 +146,7 @@ function controlloGiusto(){
     //SOUND RIGHT ANSWER
     rightAnswer.play();
 
-    primaNota = true;
+    gameStarted = true;
     let nextBlockPosition = player.computeNextBlockDistance();
 
     let nextBlockX = nextBlockPosition.xDestinationNextBlock;
@@ -208,9 +207,6 @@ function handleInput(input) {
 
         lastNoteReceived = note;
         var controllo = true;
-
-        var arMIDI;
-        var arChord;
 
         switch (choosenMode) {
             case 'read':
