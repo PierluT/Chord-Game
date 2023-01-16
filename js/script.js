@@ -5,7 +5,11 @@ let width_perc = 0.65;
 canvas.width = width_perc*window.innerWidth;
 canvas.height = window.innerHeight;
 
+let gameStarted = false;
+
 const gravity = 0.5
+
+let startBlock;
 
 let checkGravity = true;
 
@@ -24,7 +28,6 @@ let timeToNextBlock;
 //variabile che andremo a modificare con il knob della MIDI, ora è impostato a 4 secondi
 let blockInterval;
 let lastBlockTime;
-let primaNota;
 let gameOver = false
 let rispostaGiusta
 let playerState;
@@ -52,27 +55,33 @@ function animate (timestamp) {
     deltaTime = timestamp - lastBlockTime;
     lastBlockTime = timestamp;
     timeToNextBlock += deltaTime; 
-    //giocatore
-    loop();
+
+    backGroundloop();
     player.update();
 
-    if((primaNota == true) && (timeToNextBlock > blockInterval )){
-        chordBlockArray.push(new collisionBlock(indexChords));
-        indexChords++;
-        timeToNextBlock = 0;
-    };
+    if (gameStarted == true) {
+        if(timeToNextBlock > blockInterval) {
+            chordBlockArray.push(new collisionBlock(indexChords));
+            indexChords++;
+            timeToNextBlock = 0;
+        }
+
+        if (player.position.y + player.height >= canvas.height) {
+            ConteggioVite = 0;
+            controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);
+        }
+    
+        [...chordBlockArray].forEach(block => block.update());
+    }
+
     [...chordBlockArray].forEach(block => block.draw());
     
-    [...chordBlockArray].forEach(block => block.update());
-    
     player.chechForVerticalCollision(chordBlockArray);
-
-
 
     //stampa dell'array aggiornato nel quale ho solamente i blocchi visibili nel canvas.
     //console.log(chordBlockArray)
     if(rispostaGiusta){
-        player.automaticJump(vox_MODIFIER, voy_MODIEFIER)
+        player.automaticJump(vox_MODIFIER, voy_MODIEFIER);
     }
 
     //richiama ogni volta la funzione
@@ -95,6 +104,7 @@ window.addEventListener('keydown', function(event) {
             controlloGiusto()
             break; 
         case 'g': //RISPOSTA SBAGLIATA
+            ConteggioVite--;
             controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);
             break;
         case 'q': //su
@@ -121,14 +131,10 @@ function start(){
     chordBlockArray = [];
     timeToNextBlock = 0;
     lastBlockTime = 0;
-    primaNota = false;
+    //gameStarted = true;
     rispostaGiusta = false;
     indexChords=0;
     playerState = "-frontale-sx";
-
-    player.position.y = canvas.height-player.height;
-    player.position.x = canvas.width/2 - player.width/2;
-
     
     if(lev != 0){
         //READ
@@ -140,6 +146,15 @@ function start(){
         ArrayAccordiMidiScelti_listen = ArrayTotale[3];
     }
     
+    // start block
+    startBlock = new collisionBlock(0);
+    startBlock.position.x = (canvas.width - startBlock.width)/2;
+    startBlock.position.y = canvas.height - startBlock.height*2;
+    startBlock.velocity.y = 10;
+    chordBlockArray.push(startBlock)
+
+    player.position.y = startBlock.position.y - 50;
+    player.position.x = (canvas.width - player.width)/2;
 
     //blocchi di partenza
     const block1 = new collisionBlock(indexChords);

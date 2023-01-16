@@ -10,7 +10,7 @@ class collisionBlock {
 
         this.velocity= {
             x:0,
-            y:0.8,
+            y:0.6,
         }
         
         //booleano per collisione
@@ -47,7 +47,7 @@ class collisionBlock {
 
     update() {
         //se io premo sulla tastiera i blocchi cominciano a scendere
-        if(primaNota == true) {
+        if(gameStarted == true) {
             //comincia a scendere
             this.position.y += this.velocity.y 
               if(this.position.y > 750 ) {
