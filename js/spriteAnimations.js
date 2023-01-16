@@ -90,8 +90,6 @@ const spriteAnimations = [
         frames: 1,
 
         path: './img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_1.png'
-<<<<<<< Updated upstream
-=======
     },
     {
         name: "bach-frontale-dx",
@@ -153,7 +151,6 @@ const spriteAnimations = [
         frames: 12,
 
         path: './img/Bach/bach_salto_dx_spritesheet.png'
->>>>>>> Stashed changes
     }
 ]
 

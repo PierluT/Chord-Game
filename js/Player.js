@@ -57,7 +57,6 @@ class Player {
                 this.playerImage.src = spriteAnimations.find(animation => animation.name == playerNamePlusState).path;
                 this.updateIndexes();
 
-<<<<<<< Updated upstream
                 break;
             case 'bach':
                 looserImage = srcLooserPlayers[2];
@@ -67,18 +66,12 @@ class Player {
                 this.updateIndexes();
                 */
         }
-       
-=======
-            case 'bach':
-                looserImage = srcLooserPlayers[2];
-                
-        }
         playerNamePlusState = choosenAvatar + playerState;
         console.log('stampo player name',playerNamePlusState)
         this.playerImage.src = spriteAnimations.find(animation => animation.name == playerNamePlusState).path;
         console.log("src di ciò che voglio",this.playerImage.src)
-        this.updateIndexes();       
->>>>>>> Stashed changes
+        this.updateIndexes();
+       
     }
 
     updateIndexes() {

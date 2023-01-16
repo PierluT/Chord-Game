@@ -44,6 +44,13 @@ beethoven.addEventListener('click', function() {
   srcPlayer = 'beethoven';
 });
 
+bach.addEventListener('click', function() {
+    composerAnimation.style.animationName = 'bach'; 
+    composerToAnimate ='bach';
+    choosenAvatar = 'bach';
+    srcPlayer = 'bach';
+  });
+
 readChoosenMode.addEventListener('click', function(){
     choosenMode = 'read';
     //console.log("ARRAY TEXT SU BLOCCHI: ", ArrayText);
