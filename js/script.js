@@ -43,8 +43,6 @@ const player = new Player({
     y: 0,
 })
 
-//const gol = new GOL();
-
 //index array di accordi
 var indexChords;
 
@@ -54,9 +52,6 @@ function animate (timestamp) {
     deltaTime = timestamp - lastBlockTime;
     lastBlockTime = timestamp;
     timeToNextBlock += deltaTime; 
-    // update the Game of Life matrix for this frame
-    //gol.generate();
-    //gol.display();
     //giocatore
     loop();
     player.update();

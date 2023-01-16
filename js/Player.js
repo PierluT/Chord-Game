@@ -2,11 +2,12 @@
 const deltaPixel = 38;
 // threshold per i movimenti su asse x in automatic jump
 const move_threshold = 5;
-const spriteWidth = 600;
-const spriteHeight = 640;
+//const spriteWidth = 600;
+//const spriteHeight = 640;
 let frameX = 0;
 let gameFrame = 0;
-let staggerFrame = 5;
+// speed of the frames
+let staggerFrame = 7;
 const srcLooserPlayers = ['./img/Mozart/MozartPerso.gif', './img/Beethoven/BeethovenPerso.gif'];
 let looserImage = "";
 let defaultSrc= "";
@@ -17,22 +18,25 @@ class Player {
     constructor(position){
         this.playerImage = new Image();
         this.playerImage.src ="";
-        this.sx = 0;
-        this.sy = 0;
+        this.sx = 190;
+        this.sy = 130;
+        this.spriteWidth = 260;
+        this.spriteHeight = 410;
+        this.aspectRatio = this.spriteWidth/this.spriteHeight;
         this.position = position
         //velocità di caduta per simulazione gravità
         this.velocity = {
             x: 0,
             y: 0,
         }
-        this.height = 130;
-        this.width = 130;
+        this.height = 80;
+        this.width = Math.floor(this.height*this.aspectRatio);
     }
     
     draw() {
         c.fillStyle= 'red';
         //c.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
-        c.drawImage(this.playerImage,this.sx,this.sy,spriteWidth,spriteHeight, this.position.x, this.position.y, this.width,this.height)
+        c.drawImage(this.playerImage,this.sx,this.sy,this.spriteWidth,this.spriteHeight, this.position.x, this.position.y, this.width,this.height)
     }
 
     selectPlayerAnimation() {
@@ -63,14 +67,18 @@ class Player {
                 if(frameX < spriteToUse.frames) {
                     this.sx = spriteToUse.loc[frameX].x;
                     this.sy = spriteToUse.loc[frameX].y;
+                    this.spriteWidth = spriteToUse.loc[frameX].w;
+                    this.spriteHeight = spriteToUse.loc[frameX].h;
                     frameX++
                 } else frameX = 0;
          }    
           gameFrame++;  
         } 
         else {
-            this.sx = 0;
-            this.sy = 0;
+            this.sx = 190;
+            this.sy = 130;
+            this.spriteWidth = 260;
+            this.spriteHeight = 410;
         }
     }
     
@@ -99,7 +107,7 @@ class Player {
         var nextBlock;
         for (let i = 0; i < arrayBlocchi.length; i++) {
             nextBlock = arrayBlocchi[i];
-            // HO ALZATO IL CONTROLLO DELLA COLLISIONE SULLE Y DI 10 PX
+            // HO ALZATO IL CONTROLLO DELLA COLLISIONE SULLE Y DI 30 PX
             if ( this.position.x >= nextBlock.position.x && this.position.x + this.width <= nextBlock.position.x +nextBlock.width &&
                 this.position.y + this.height >= nextBlock.position.y - 30 &&
                 this.position.y < nextBlock.position.y){
@@ -113,7 +121,7 @@ class Player {
             checkGravity = false;
             let posizioneAtterraggioX;
             let posizioneAtterraggioY;
-            posizioneAtterraggioY = nextBlock.position.y - nextBlock.height - 5;
+            posizioneAtterraggioY = nextBlock.position.y - nextBlock.height + 10;
             posizioneAtterraggioX = nextBlock.position.x + nextBlock.width / 2 - this.width/2;
             //cade al centro del blocco
             this.position.y = posizioneAtterraggioY;
@@ -160,6 +168,7 @@ class Player {
         if (deltaDistance < deltaPixel && yDistance > 0) {
             rispostaGiusta = false;
             //console.log(rispostaGiusta)
+            playerState = "-frontale-sx";
             indiceAr++;
             fund++;
             if(choosenMode=='listen'){
