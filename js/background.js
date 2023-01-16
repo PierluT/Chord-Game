@@ -113,7 +113,6 @@ function loop() {
 function resize() {
   cw = c1.width = c2.width = canvas.width,
   ch = c1.height = c2.height = canvas.height;
-  create();
 }
 
 function click() {

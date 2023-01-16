@@ -39,7 +39,7 @@ let voy_MODIEFIER;
 let deltaTime;
 
 const player = new Player({
-    x: 450,
+    x: canvas.width/2,
     y: 0,
 })
 
@@ -127,7 +127,7 @@ function start(){
     playerState = "-frontale-sx";
 
     player.position.y = canvas.height-player.height;
-    player.position.x = 450;
+    player.position.x = canvas.width/2 - player.width/2;
 
     
     if(lev != 0){
@@ -160,8 +160,6 @@ function start(){
     chordBlockArray.push(block1);
     chordBlockArray.push(block2);
     chordBlockArray.push(block3);
-
-
 
     switch (choosenMode) {
 

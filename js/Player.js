@@ -186,8 +186,6 @@ class Player {
         return {xDestinationNextBlock, yDestinationNextBlock};
     }
     
-
-    
     
 }
  
