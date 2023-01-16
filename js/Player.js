@@ -61,9 +61,9 @@ class Player {
     }
 
     updateIndexes() {
-        if(!playerNamePlusState.includes("frontale")) {
-            const spriteToUse = spriteAnimations.find(animation => animation.name == playerNamePlusState);
-         if( gameFrame % staggerFrame == 0){
+        const spriteToUse = spriteAnimations.find(animation => animation.name == playerNamePlusState);
+        if(!playerNamePlusState.includes("frontale")) {            
+            if( gameFrame % staggerFrame == 0){
                 if(frameX < spriteToUse.frames) {
                     this.sx = spriteToUse.loc[frameX].x;
                     this.sy = spriteToUse.loc[frameX].y;
@@ -75,10 +75,10 @@ class Player {
           gameFrame++;  
         } 
         else {
-            this.sx = 190;
-            this.sy = 130;
-            this.spriteWidth = 260;
-            this.spriteHeight = 410;
+            this.sx = spriteToUse.loc[0].x;
+            this.sy = spriteToUse.loc[0].y;
+            this.spriteWidth = spriteToUse.loc[0].w;
+            this.spriteHeight = spriteToUse.loc[0].h;
         }
     }
     
