@@ -108,7 +108,7 @@ const spriteAnimations = [
 
         frames: 1,
 
-        path: '.img/Bach/bach-front-dx/bach_front_sx_1.png'
+        path: '.img/Bach/bach-front-sx/bach_front_sx_1.png'
     },
 
     {
@@ -129,7 +129,7 @@ const spriteAnimations = [
 
         frames: 12,
 
-        path: './img/Beethoven/bach_salto_sx_spritesheet.png'
+        path: './img/Bach/bach_salto_sx_spritesheet.png'
     },
 
     {
@@ -150,7 +150,7 @@ const spriteAnimations = [
 
         frames: 12,
 
-        path: './img/Beethoven/bach_salto_dx_spritesheet.png'
+        path: './img/Bach/bach_salto_dx_spritesheet.png'
     }
 ]
 
