@@ -21,7 +21,6 @@ livello2Scelto.addEventListener('click', function() {
 livello3Scelto.addEventListener('click', function() {
     lev = 3;
 });
-
 // Seleziona l'elemento
 var composerAnimation = document.querySelector('#avatarScelto');
 // Aggiungi l'animation-name 'myAnimation' all'elemento

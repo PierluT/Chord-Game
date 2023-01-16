@@ -2,7 +2,7 @@
 var lev = 1;
 var v=0.6;
 
-document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
+//document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
 var ArrayTotale;
 var ArrayAccordiScelti = [];
 var ArrayAccordiMidiScelti = [];
@@ -21,14 +21,14 @@ function setLevel(input){
             if(lev<=3){
                 lev++;
                 console.log("Level: ", lev)
-                document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
+                //document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
             }
             break;
             case 65: //giu
             if(lev>=1){
                 lev--;
                 console.log("Level: ", lev)
-                document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
+                //document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
             }
             break;
         } 
