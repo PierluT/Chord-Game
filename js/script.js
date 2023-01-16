@@ -68,7 +68,7 @@ function animate (timestamp) {
 
         if (player.position.y + player.height >= canvas.height) {
             ConteggioVite = 0;
-            controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);
+            setTimeout(() => {controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr)}, 1000);
         }
     
         [...chordBlockArray].forEach(block => block.update());
@@ -148,7 +148,7 @@ function start(){
     // start block
     startBlock = new collisionBlock(0, v);
     startBlock.position.x = (canvas.width - startBlock.width)/2;
-    startBlock.position.y = canvas.height - startBlock.height*2;
+    startBlock.position.y = canvas.height - startBlock.height*1.3;
     startBlock.velocity.y = 10;
     chordBlockArray.push(startBlock)
 
@@ -204,13 +204,3 @@ function start(){
     } 
     
 }
-
-
-
-
-
-
-
-
-
-
