@@ -50,7 +50,7 @@ class collisionBlock {
         if(gameStarted == true) {
             //comincia a scendere
             this.position.y += this.velocity.y 
-              if(this.position.y > 750 ) {
+              if(this.position.y > canvas.height + this.height ) {
                 //this.markedToDelete = true; 
                 chordBlockArray.shift()
             }  

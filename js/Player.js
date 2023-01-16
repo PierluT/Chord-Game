@@ -34,9 +34,10 @@ class Player {
     }
     
     draw() {
-        c.fillStyle= 'red';
+        //c.fillStyle= 'red';
         //c.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
-        c.drawImage(this.playerImage,this.sx,this.sy,this.spriteWidth,this.spriteHeight, this.position.x, this.position.y, this.width,this.height)
+        c.strokeRect(this.position.x, this.position.y, this.width, this.height)
+        c.drawImage(this.playerImage, this.sx, this.sy, this.spriteWidth, this.spriteHeight, this.position.x, this.position.y, this.width, this.height)
     }
 
     selectPlayerAnimation() {
@@ -55,6 +56,7 @@ class Player {
                 playerNamePlusState = choosenAvatar + playerState;
                 this.playerImage.src = spriteAnimations.find(animation => animation.name == playerNamePlusState).path;
                 this.updateIndexes();
+
                 break;
         }
        
@@ -87,7 +89,7 @@ class Player {
     update() {
         this.selectPlayerAnimation()
         this.draw()
-        this.position.x += this.velocity.x
+        //this.position.x += this.velocity.x
         this.position.y += this.velocity.y
         this.applyGravity()
     }
@@ -121,11 +123,15 @@ class Player {
             checkGravity = false;
             let posizioneAtterraggioX;
             let posizioneAtterraggioY;
-            posizioneAtterraggioY = nextBlock.position.y - nextBlock.height + 10;
+            posizioneAtterraggioY = nextBlock.position.y - this.height;
             posizioneAtterraggioX = nextBlock.position.x + nextBlock.width / 2 - this.width/2;
             //cade al centro del blocco
+            if (this.position.y + this.height >= canvas.height){
+                this.position.y= canvas.height - this.height;
+            } else {
             this.position.y = posizioneAtterraggioY;
             this.position.x = posizioneAtterraggioX;
+            }
             this.checkedCollision(nextBlock);         
         }
         else {
