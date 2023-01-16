@@ -58,6 +58,7 @@ function setVelocity(input){
     var porta3 = input.data[2];
     if (porta1 == 176 && porta2 == 51){
         var v=(porta3/(127));
+        console.log(v)
     }
     return v
 }

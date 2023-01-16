@@ -126,21 +126,21 @@ function createSequenceRead(arrayAccordiPossibili, arrayDominantiSecondarie, arr
 
 function createSequenceListen(ArrayAccordiScelti_listen, ArrayAccordiMidiScelti_listen, Livello_scelto){
 
-    for (let i=0; i<100; i++){
+    for (let i=0; i<5; i++){
         if (i<33) { //note naturali
-            var indexNote = Math.floor(Math.random() * WhiteNotes.length);
-            var randomNote = WhiteNotes[indexNote];
-            ArrayAccordiScelti_listen.push(randomNote);
+            var indexNoteW = Math.floor(Math.random() * WhiteNotes.length);
+            var randomNoteW = WhiteNotes[indexNoteW];
+            ArrayAccordiScelti_listen.push(randomNoteW);
         } else { //note alterate
             var indexNoteWB = Math.random();
             if(indexNoteWB<0.5){ //bemolli
-                var indexNote = Math.floor(Math.random() * BlackNotesBemolli.length);
-                var randomNote = BlackNotesBemolli[indexNote];
-                ArrayAccordiScelti_listen.push(randomNote);
+                var indexNoteBB = Math.floor(Math.random() * BlackNotesBemolli.length);
+                var randomNoteBB = BlackNotesBemolli[indexNoteBB];
+                ArrayAccordiScelti_listen.push(randomNoteBB);
             } else { //diesis
-                var indexNote = Math.floor(Math.random() * BlackNotesDiesis.length);
-                var randomNote = BlackNotesDiesis[indexNote];
-                ArrayAccordiScelti_listen.push(randomNote);
+                var indexNoteBD = Math.floor(Math.random() * BlackNotesDiesis.length);
+                var randomNoteBD = BlackNotesDiesis[indexNoteBD];
+                ArrayAccordiScelti_listen.push(randomNoteBD);
             }
         }  
     }
@@ -153,7 +153,6 @@ function createSequenceListen(ArrayAccordiScelti_listen, ArrayAccordiMidiScelti_
             ArrayAccordiScelti_listen[i] = ArrayAccordiScelti_listen[i] + "3";
         }
     }
-    console.log(ArrayAccordiScelti_listen)
     
     for (var k=0; k<ArrayAccordiScelti_listen.length; k++){
     
@@ -237,11 +236,11 @@ function createSequenceListen(ArrayAccordiScelti_listen, ArrayAccordiMidiScelti_
         } else {
             ArrayAccordiMidiScelti_listen[k] = [fund, terza, quinta];
         }
-        console.log("1: ", ArrayAccordiScelti_listen);
-        ArrayAccordiScelti_listen[k]=ArrayAccordiScelti_listen[k].slice(0, 1).trim();
-        console.log("2: ", ArrayAccordiScelti_listen);
+        //console.log("1: ", ArrayAccordiScelti_listen);
+        ArrayAccordiScelti_listen[k]=ArrayAccordiScelti_listen[k].slice(0, -1).trim();
+        //console.log("2: ", ArrayAccordiScelti_listen);
         ArrayAccordiScelti_listen[k]=ArrayAccordiScelti_listen[k] + chordType;
-        console.log("3: ", ArrayAccordiScelti_listen);
+        //console.log("3: ", ArrayAccordiScelti_listen);
     }
     return [ArrayAccordiScelti_listen, ArrayAccordiMidiScelti_listen]
 }

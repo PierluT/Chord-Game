@@ -187,6 +187,10 @@ class Player {
             if(choosenMode=='listen'){
                 listenSound(ArrayAccordiMidiScelti_listen[fund]);
             }
+            console.log(indiceAr)
+            if (indiceAr == ArrayAccordiMidiScelti_listen.length){
+                console.log("CAMBIO LIVELLO")
+            }
         } 
     }
     

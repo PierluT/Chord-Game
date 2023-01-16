@@ -81,30 +81,32 @@ var ArrayMIDIErrori = [[],[],[]];
 function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
 
     document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
-    errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true }));
-    console.log("errore", errori);
-
-    ArrayAccordiErrori.push(arChord[indiceAr]);
-
-    console.log("accordo in cui ho fatto l'errore", ArrayAccordiErrori);
-    if(ConteggioVite == 2){
-        error.play();
-        for(let k=0; k<arMIDI[indiceAr].length; k++) {
-            ArrayMIDIErrori[0].push(Tonal.Midi.midiToNoteName(arMIDI[indiceAr][k], { pitchClass: true, sharps: true }));
+    if(ConteggioVite!=0){
+        errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true }));
+        ArrayAccordiErrori.push(arChord[indiceAr]);
+        if(ConteggioVite == 2){
+            error.play();
+            for(let k=0; k<arMIDI[indiceAr].length; k++) {
+                ArrayMIDIErrori[0].push(Tonal.Midi.midiToNoteName(arMIDI[indiceAr][k], { pitchClass: true, sharps: true }));
+            }
+        }
+        if(ConteggioVite == 1){
+            error.play();
+            for(let k=0; k<arMIDI[indiceAr].length; k++) {
+                ArrayMIDIErrori[1].push(Tonal.Midi.midiToNoteName(arMIDI[indiceAr][k], { pitchClass: true, sharps: true }));
+            }
         }
     }
-    if(ConteggioVite == 1){
-        error.play();
-        for(let k=0; k<arMIDI[indiceAr].length; k++) {
-            ArrayMIDIErrori[1].push(Tonal.Midi.midiToNoteName(arMIDI[indiceAr][k], { pitchClass: true, sharps: true }));
-        }
-    }
-    if(ConteggioVite == 0){
+    if(ConteggioVite == 0 && gameOver==false){
+        errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true }));
+        ArrayAccordiErrori.push(arChord[indiceAr]);
         lost.play();
         for(let k=0; k<arMIDI[indiceAr].length; k++) {
             ArrayMIDIErrori[2].push(Tonal.Midi.midiToNoteName(arMIDI[indiceAr][k], { pitchClass: true, sharps: true }));
         }
     }
+    console.log("errore", errori);
+    console.log("accordo in cui ho fatto l'errore", ArrayAccordiErrori);
     //console.log("note in cui ho fatto l'errore", ArrayMIDIErrori);
 
     if(ConteggioVite == 0){
@@ -113,13 +115,28 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
         gameStarted = false;
         document.getElementById("schermataGioco").style.opacity = 0.3;
 
-        //PRIMO ERRORE
-        document.getElementById("primoErrore").innerHTML = ArrayAccordiErrori[0] + " -> " + ArrayMIDIErrori[0] + "(<s>" + errori[0] + "</s>)";
-        //SECONDO ERRORE
-        document.getElementById("secondoErrore").innerHTML = ArrayAccordiErrori[1] + " -> " + ArrayMIDIErrori[1] + "(<s>" + errori[1] + "</s>)";
-        //TERZO ERRORE
-        document.getElementById("terzoErrore").innerHTML = ArrayAccordiErrori[2] + " -> " + ArrayMIDIErrori[2] + "(<s>" + errori[2] + "</s>)";
+        if (gameOver==true){ //se muore per raggiungimento ground
+            if(errori.length==0){
+                document.getElementById("primoErrore").innerHTML = "You're slow! You didn't jump in time";
+            } else if(errori.length==1){
+                document.getElementById("primoErrore").innerHTML = ArrayAccordiErrori[0] + " -> " + ArrayMIDIErrori[0] + "(<s>" + errori[0] + "</s>)";
+                document.getElementById("secondoErrore").innerHTML = "You're slow! You didn't jump in time";
+            } else if(errori.length==2){
+                document.getElementById("primoErrore").innerHTML = ArrayAccordiErrori[0] + " -> " + ArrayMIDIErrori[0] + "(<s>" + errori[0] + "</s>)";
+                document.getElementById("secondoErrore").innerHTML = ArrayAccordiErrori[1] + " -> " + ArrayMIDIErrori[1] + "(<s>" + errori[1] + "</s>)";
+                document.getElementById("terzoErrore").innerHTML = "You're slow! You didn't jump in time";
+            }
+        } else {
+            //PRIMO ERRORE
+            document.getElementById("primoErrore").innerHTML = ArrayAccordiErrori[0] + " -> " + ArrayMIDIErrori[0] + "(<s>" + errori[0] + "</s>)";
+            //SECONDO ERRORE
+            document.getElementById("secondoErrore").innerHTML = ArrayAccordiErrori[1] + " -> " + ArrayMIDIErrori[1] + "(<s>" + errori[1] + "</s>)";
+            //TERZO ERRORE
+            document.getElementById("terzoErrore").innerHTML = ArrayAccordiErrori[2] + " -> " + ArrayMIDIErrori[2] + "(<s>" + errori[2] + "</s>)";
+        }
 
+        
+        
         $( function() {
             $( "#dialog" ).dialog({
                 title: "Game Over",
@@ -135,6 +152,7 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                     errori = [];
                     ArrayAccordiErrori = [];
                     ArrayMIDIErrori = [[],[],[]];
+                    arrayComparaMIDI = [];
                     start();
                     
                     document.getElementById("schermataGioco").style.opacity = 1;
@@ -150,6 +168,7 @@ function controlloGiusto(){
 
     //SOUND RIGHT ANSWER
     rightAnswer.play();
+
 
     gameStarted = true;
     let nextBlockPosition = player.computeNextBlockDistance();
@@ -195,7 +214,7 @@ var indiceAr=0;
 
 //data notes
 function handleInput(input) {
-    console.log(input);
+    //console.log(input);
     const command = input.data[0];
     const note = input.data[1];
     const velocity = input.data[2];
