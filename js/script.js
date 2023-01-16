@@ -61,7 +61,7 @@ function animate (timestamp) {
 
     if (gameStarted == true) {
         if(timeToNextBlock > blockInterval) {
-            chordBlockArray.push(new collisionBlock(indexChords));
+            chordBlockArray.push(new collisionBlock(indexChords, v));
             indexChords++;
             timeToNextBlock = 0;
         }
@@ -146,7 +146,7 @@ function start(){
     }
     
     // start block
-    startBlock = new collisionBlock(0);
+    startBlock = new collisionBlock(0, v);
     startBlock.position.x = (canvas.width - startBlock.width)/2;
     startBlock.position.y = canvas.height - startBlock.height*2;
     startBlock.velocity.y = 10;
@@ -156,12 +156,12 @@ function start(){
     player.position.x = (canvas.width - player.width)/2;
 
     //blocchi di partenza
-    const block1 = new collisionBlock(indexChords);
+    const block1 = new collisionBlock(indexChords, v);
     indexChords++;
     block1.position.x = 100;
     block1.position.y = 500;
 
-    const block2 = new collisionBlock(indexChords);
+    const block2 = new collisionBlock(indexChords, v);
     indexChords++;
     block2.position.x = 700;
     block2.position.y = 300

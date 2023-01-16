@@ -52,7 +52,9 @@ function success(midiAccess) {
     inputs.forEach((input) => {
         //console.log(input);
         input.addEventListener('midimessage', handleInput);
-        input.addEventListener('midimessage', setLevel); 
+        input.addEventListener('midimessage', setLevel);
+        input.addEventListener('midimessage', setReset);
+        input.addEventListener('midimessage', setVelocity);
     })
     
 
