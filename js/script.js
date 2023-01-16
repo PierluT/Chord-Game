@@ -166,7 +166,7 @@ function start(){
     block2.position.x = 700;
     block2.position.y = 300
 
-    const block3 = new collisionBlock(indexChords);
+    const block3 = new collisionBlock(indexChords, v);
     indexChords++;
     block3.position.x = 100;
     block3.position.y = 100;
