@@ -132,10 +132,11 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                     indexChords=0;
                     ArrayAccordiScelti = [];
                     ArrayAccordiScelti_listen = [];
-                    start();
                     errori = [];
                     ArrayAccordiErrori = [];
                     ArrayMIDIErrori = [[],[],[]];
+                    start();
+                    
                     document.getElementById("schermataGioco").style.opacity = 1;
                     $( this ).dialog( "close" );
                     }

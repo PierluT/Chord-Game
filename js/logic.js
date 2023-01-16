@@ -6,6 +6,22 @@ let clickedButton = document.getElementById('playButton');
 var mozart = document.querySelector('#mozart');
 var beethoven = document.querySelector('#beethoven');
 
+var livello1Scelto = document.querySelector('#livello1');
+var livello2Scelto = document.querySelector('#livello2');
+var livello3Scelto = document.querySelector('#livello3');
+
+livello1Scelto.addEventListener('click', function() {
+    lev = 1;
+  });
+
+livello2Scelto.addEventListener('click', function() {
+    lev = 2;
+});
+
+livello3Scelto.addEventListener('click', function() {
+    lev = 3;
+});
+
 // Seleziona l'elemento
 var composerAnimation = document.querySelector('#avatarScelto');
 // Aggiungi l'animation-name 'myAnimation' all'elemento

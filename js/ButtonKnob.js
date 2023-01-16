@@ -1,5 +1,5 @@
 
-var lev = 0;
+var lev = 1;
 var v=0.6;
 
 document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
@@ -18,14 +18,14 @@ function setLevel(input){
     if (porta1 == 144){
         switch (porta2) {
             case 64: //su
-            if(lev<3){
+            if(lev<=3){
                 lev++;
                 console.log("Level: ", lev)
                 document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
             }
             break;
             case 65: //giu
-            if(lev>1){
+            if(lev>=1){
                 lev--;
                 console.log("Level: ", lev)
                 document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
