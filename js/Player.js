@@ -8,7 +8,7 @@ let frameX = 0;
 let gameFrame = 0;
 // speed of the frames
 let staggerFrame = 7;
-const srcLooserPlayers = ['./img/Mozart/MozartPerso.gif', './img/Beethoven/BeethovenPerso.gif'];
+const srcLooserPlayers = ['./img/Mozart/MozartPerso.gif', './img/Beethoven/BeethovenPerso.gif', './img/Bach/BachPerso.gif'];
 let looserImage = "";
 let defaultSrc= "";
 
@@ -45,21 +45,19 @@ class Player {
         switch (choosenAvatar) {
             case 'beethoven':
                 looserImage = srcLooserPlayers[1];
-                playerNamePlusState = choosenAvatar + playerState;
-                this.playerImage.src = spriteAnimations.find(animation => animation.name == playerNamePlusState).path;
-                this.updateIndexes();
-
                 break;
 
             case 'mozart':
                 looserImage = srcLooserPlayers[0];
-                playerNamePlusState = choosenAvatar + playerState;
-                this.playerImage.src = spriteAnimations.find(animation => animation.name == playerNamePlusState).path;
-                this.updateIndexes();
+                break;
 
+            case 'bach':
+                looserImage = srcLooserPlayers[2];
                 break;
         }
-       
+        playerNamePlusState = choosenAvatar + playerState;
+        this.playerImage.src = spriteAnimations.find(animation => animation.name == playerNamePlusState).path;
+        this.updateIndexes();       
     }
 
     updateIndexes() {

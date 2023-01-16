@@ -5,6 +5,7 @@ let clickedButton = document.getElementById('playButton');
 // Seleziona i div
 var mozart = document.querySelector('#mozart');
 var beethoven = document.querySelector('#beethoven');
+var bach = document.querySelector('#bach');
 
 var livello1Scelto = document.querySelector('#livello1');
 var livello2Scelto = document.querySelector('#livello2');
@@ -42,6 +43,13 @@ beethoven.addEventListener('click', function() {
   choosenAvatar = 'beethoven';
   srcPlayer = 'beethoven';
 });
+
+bach.addEventListener('click', function() {
+    composerAnimation.style.animationName = 'bach'; 
+    composerToAnimate ='bach';
+    choosenAvatar = 'bach';
+    srcPlayer = 'bach';
+  });
 
 readChoosenMode.addEventListener('click', function(){
     choosenMode = 'read';
