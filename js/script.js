@@ -35,7 +35,7 @@ let playerNamePlusState;
 playerNamePlusState = choosenAvatar + playerState;
 
 const V0X_MAX = 1.1;
-const V0Y_MAX = 1.1;
+const V0Y_MAX = 1.4;
 
 let vox_MODIFIER;
 let voy_MODIEFIER;
@@ -56,7 +56,7 @@ function animate (timestamp) {
     lastBlockTime = timestamp;
     timeToNextBlock += deltaTime; 
 
-    backGroundloop();
+    //backGroundloop();
     player.update();
 
     if (gameStarted == true) {
@@ -180,6 +180,8 @@ function start(){
 
         case 'listen':
             blockInterval = 6000;
+            arMIDI = ArrayAccordiMidiScelti_listen;
+            arChord = ArrayAccordiScelti_listen;
             //devo passare dentro array MIDI del primo accordo
             fund=0
             listenSound(ArrayAccordiMidiScelti_listen[fund]);
@@ -187,10 +189,12 @@ function start(){
 
         case 'read':
             blockInterval = 4000;
+            arMIDI = ArrayAccordiMidiScelti;
+            arChord = ArrayAccordiScelti;
             break;
     }
 
-
+    
     document.getElementById("level").innerHTML = "LEVEL: " + lev;
     document.getElementById("mode").innerHTML = "MODE: " + choosenMode; 
     if(choosenMode=='read') {
@@ -198,7 +202,7 @@ function start(){
     }
     if(choosenMode=='listen'){
         document.getElementById("score").innerHTML = "SCORE: " + indiceAr +"/" + ArrayAccordiScelti_listen.length;
-    }
+    } 
     
 }
 

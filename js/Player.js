@@ -169,7 +169,14 @@ class Player {
             rispostaGiusta = false;
             //console.log(rispostaGiusta)
             playerState = "-frontale-sx";
+            // update indiceAr and update the score on the screen
             indiceAr++;
+            if(choosenMode=='read') {
+                document.getElementById("score").innerHTML = "SCORE: " + indiceAr +"/" + ArrayAccordiScelti.length;
+            }
+            if(choosenMode=='listen'){
+                document.getElementById("score").innerHTML = "SCORE: " + indiceAr +"/" + ArrayAccordiScelti_listen.length;
+            }   
             fund++;
             if(choosenMode=='listen'){
                 listenSound(ArrayAccordiMidiScelti_listen[fund]);

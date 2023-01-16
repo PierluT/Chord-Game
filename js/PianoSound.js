@@ -128,6 +128,8 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                     ConteggioVite=3;
                     document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
                     indexChords=0;
+                    ArrayAccordiScelti = [];
+                    ArrayAccordiScelti_listen = [];
                     start();
                     errori = [];
                     ArrayAccordiErrori = [];
@@ -172,16 +174,14 @@ function controlloGiusto(){
     }
         
     vox_MODIFIER = V0X_MAX*(xDistance/canvas.width);
-    voy_MODIEFIER = V0Y_MAX*(0.75 + 0.25*((yDistance + 300)/canvas.height));
+    voy_MODIEFIER = V0Y_MAX*(0.5 + 0.5*((yDistance + 100)/canvas.height));
     //console.log(yDistance/canvas.height)
 
     rispostaGiusta = true;
     //attivo questo commento se do 3 possibilità per accordo e non 3 totali
     //window.keyPressCounter = 0;
     // initialize the game of life
-    //gol.init();
-
-    
+    //gol.init(); 
 
 }
 
@@ -208,6 +208,7 @@ function handleInput(input) {
         lastNoteReceived = note;
         var controllo = true;
 
+        /*
         switch (choosenMode) {
             case 'read':
                 arMIDI = ArrayAccordiMidiScelti;
@@ -218,7 +219,7 @@ function handleInput(input) {
                 arMIDI = ArrayAccordiMidiScelti_listen;
                 arChord = ArrayAccordiScelti_listen;
             break;
-        }
+        } */
 
         for(let j=0; j<arMIDI[indiceAr].length; j++){ 
             if(arMIDI[indiceAr][j]==lastNoteReceived || (Math.abs(lastNoteReceived-arMIDI[indiceAr][j])) % 12 == 0){
@@ -236,13 +237,6 @@ function handleInput(input) {
 
                 controllo = false;
             }
-        }
-        
-        if(choosenMode=='read') {
-            document.getElementById("score").innerHTML = "SCORE: " + indiceAr +"/" + ArrayAccordiScelti.length;
-        }
-        if(choosenMode=='listen'){
-            document.getElementById("score").innerHTML = "SCORE: " + indiceAr +"/" + ArrayAccordiScelti_listen.length;
         }
 
         // errori

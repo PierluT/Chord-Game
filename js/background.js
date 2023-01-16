@@ -57,8 +57,15 @@ function create() {
     ctx1.closePath();
     ctx1.fill();
   }
+  ctx2.globalCompositeOperation = 'source-over';
+  ctx2.shadowBlur = 0;
+  ctx2.drawImage( c1, 0, 0 );
+  ctx2.globalCompositeOperation = 'lighter';
+  ctx2.shadowBlur = 15;
+  ctx2.shadowColor = '#fff';
   
   // former num of particles = Math.floor( ( cw + ch ) * 0.0001 )
+  /*
   parts.length = 0;
   for( var i = 0; i < numParticles; i++ ) {
     parts.push({
@@ -69,7 +76,7 @@ function create() {
       vel: rand( 0.1, 0.5 ),
       tick: rand( 0, 10000 )
     });
-  }
+  }*/
 }
 
 function init() {
@@ -113,7 +120,7 @@ function backGroundloop() {
 function resize() {
   cw = c1.width = c2.width = canvas.width,
   ch = c1.height = c2.height = canvas.height;
-  create();
+  //create();
 }
 
 function click() {
