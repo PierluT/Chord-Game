@@ -30,7 +30,7 @@ function setLevel(input){
                 document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
             }
             break;
-            case 66: //restart
+            case 81: //restart
                 start();
                 document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
             break;

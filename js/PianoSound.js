@@ -2,14 +2,6 @@
 //mp3 piano notes
 const sound = new Howl({
     src: ['dist/mp3/piano.mp3'],
-    /*onload() {
-        console.log('Sound file has been loaded. Do something here!');
-        soundEngine.init();
-        sound.stop();
-    },*/
-    /*onloaderror(e, msg) {
-        console.log('Error', e, msg);
-    }*/
 });
 
 const soundEngine = {
