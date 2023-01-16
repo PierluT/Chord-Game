@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
     <head> 
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
           <link rel = "stylesheet" href = "css/style.css">
           <link rel = "stylesheet" href = "css/homepage.css"> 
           <script src="https://cdn.jsdelivr.net/npm/@tonaljs/tonal@4.6.5/browser/tonal.min.js"></script>
           <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
           <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
           <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+          
+          <title>Chord Game</title>
     </head>
         <body>
             <div id="schermataIniziale">
                 <header>
                     <h1>THE CHORD GAME</h1>
-                    <div id="choices">
-                        <h2 class="avatarChoice">SELECT YOUR AVATAR</h2>
-                        <h2 class="modeChoice">SELECT MODALITY GAME</h2>
-                    </div>
                 </header>
+                
+                <h4>Select your avatar</h4>
                 <section id="avatarMenu">
                     <div class="player_box_beethoven">
                         <div class='png' id="beethoven" ></div>
@@ -27,19 +28,35 @@
                         <div class='png' id="mozart" ></div>
                         <p class="name" >MOZART</p>
                     </div>
-                    <div id="readMode">
+
+                    <div class="player_box_bach">
+                        <div class="png" id="bach"></div>
+                            <p class="name">BACH</p>
+                    </div>
+                </section>
+
+                <h4>Select modality game</h4>
+                <section id="modeMenu">
+                     <div id="readMode">
                     <h2 class="earString">READ</h2> 
                     <h3 class="description">Play with the MIDI the chord you read above the blocks.</h3>
                     </div>        
                     <div id="listenMode">
                         <h2 class="earString">LISTEN</h2> 
                         <h3 class="description">Play with the MIDI the chord you recognize.</h3>
-                    </div>       
+                    </div> 
                 </section>
+
+                <h4>Select yout level</h4>
+                <div id="levelMenu">
+                    <p>LIVELLO 1</p>
+                    <p>LIVELLO 2</p>
+                    <p>LIVELLO 3</p>
+                </div>
+
                 <button id="playButton">PLAY</button>
                 <section id="levelSection">
-                    <p class="name">SELECT YOUR LEVEL: </p>
-                    <div id="livelloScelto"></div>
+                <!-- <p class="name">SELECT YOUR LEVEL: </p> -->    
 
                 </section>
             </div>
