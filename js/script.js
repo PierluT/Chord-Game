@@ -56,6 +56,8 @@ function animate (timestamp) {
     lastBlockTime = timestamp;
     timeToNextBlock += deltaTime; 
 
+    //scoreOnHead()
+
     //backGroundloop();
     player.update();
 
@@ -141,6 +143,9 @@ function start(){
 
     // initialize the score in start
     score = 0;
+    moltiplicator = 1;
+    streak = 0;
+    lastCorrect = true;
     
     if(lev != 0){
         //READ
@@ -204,34 +209,51 @@ function start(){
     document.getElementById("level").innerHTML = "LEVEL: " + lev;
     document.getElementById("mode").innerHTML = "MODE: " + choosenMode; 
     if(choosenMode=='read') {
-        document.getElementById("score").innerHTML = "SCORE: " + indiceAr +"/" + ArrayAccordiScelti.length;
+        document.getElementById("score").innerHTML = "SCORE: " + score +"/" + ArrayAccordiScelti.length;
     }
     if(choosenMode=='listen'){
-        document.getElementById("score").innerHTML = "SCORE: " + indiceAr +"/" + ArrayAccordiScelti_listen.length;
+        document.getElementById("score").innerHTML = "SCORE: " + score +"/" + ArrayAccordiScelti_listen.length;
     } 
     
 }
 
+// -------- SCORE UTILS --------
+
 // score is initialized to 0 in start()
 let score;
-let moltiplicator = 1;
+let moltiplicator;
 let amount = 50;
+let streak;
+let lastCorrect;
 
-function plusScore(amount, level, moltiplicator){
-    score += amount * level * moltiplicator;
+function plusScore(){
+    score += amount * lev * moltiplicator;
 }
 
-function checkStreak(lastCorrect){
+function checkStreak(){
     if (lastCorrect){
-        
-    }
-}
-
-function chechMoltiplicator(streak){
-    if(streak % 5) {
-        moltiplicator++;
+        streak++;
     }
     else {
+        streak = 0;
+    }
+    console.log(streak)
+}
+
+function checkMoltiplicator(){
+    // MAX moltiplicator is 5
+    if(streak % 5 == 0 && streak > 0 && moltiplicator <= 5) { 
+        moltiplicator++;
+    }
+    else if(streak == 0 && moltiplicator <= 5){
         moltiplicator = 1;
     }
+}
+
+function scorePipeline() {
+    checkStreak();
+    checkMoltiplicator();
+    plusScore();
+    lastCorrect = true;
+    alpha = 1.0;
 }

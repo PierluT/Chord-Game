@@ -11,7 +11,7 @@ let staggerFrame = 7;
 const srcLooserPlayers = ['./img/Mozart/MozartPerso.gif', './img/Beethoven/BeethovenPerso.gif','./img/Bach/BachPerso.gif'];
 let looserImage = "";
 let defaultSrc= "";
-
+var alpha = 1.0;
 
 class Player {
     //proprietà del giocatore
@@ -90,6 +90,9 @@ class Player {
         //this.position.x += this.velocity.x
         this.position.y += this.velocity.y
         this.applyGravity()
+        if(lastCorrect == true && rispostaGiusta == true) {
+            this.scoreOnHead();
+        }
     }
     
     applyGravity(){
@@ -175,17 +178,11 @@ class Player {
             playerState = "-frontale-sx";
             // update indiceAr and update the score on the screen
             indiceAr++;
-            if(choosenMode=='read') {
-                document.getElementById("score").innerHTML = "SCORE: " + indiceAr +"/" + ArrayAccordiScelti.length;
-            }
-            if(choosenMode=='listen'){
-                document.getElementById("score").innerHTML = "SCORE: " + indiceAr +"/" + ArrayAccordiScelti_listen.length;
-            }   
             fund++;
             if(choosenMode=='listen'){
                 listenSound(ArrayAccordiMidiScelti_listen[fund]);
             }
-            console.log(indiceAr)
+            //console.log(indiceAr)
             if (indiceAr == ArrayAccordiMidiScelti_listen.length){
                 console.log("CAMBIO LIVELLO")
             }
@@ -200,7 +197,16 @@ class Player {
     
         return {xDestinationNextBlock, yDestinationNextBlock};
     }
-    
+
+    scoreOnHead(){
+
+        let text = '+ ' + amount*lev*moltiplicator;
+       
+        c.fillStyle = "rgba(255, 255, 35, " + alpha + ")";
+        c.font = "40px 'Press Start 2P'";
+        c.fillText(text,this. position.x - (c.measureText(text).width)/2 + this.width/2, this.position.y - 5);
+        alpha = alpha - 0.01; // decrease opacity (fade out)
+    }    
     
 }
  

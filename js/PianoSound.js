@@ -80,6 +80,10 @@ var ArrayMIDIErrori = [[],[],[]];
 
 function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
 
+    // streak interrupted
+    lastCorrect = false;
+    checkStreak();
+
     document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
     if(ConteggioVite!=0){
         errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true }));
@@ -175,7 +179,6 @@ function controlloGiusto(){
     //SOUND RIGHT ANSWER
     rightAnswer.play();
 
-
     gameStarted = true;
     let nextBlockPosition = player.computeNextBlockDistance();
 
@@ -210,6 +213,17 @@ function controlloGiusto(){
     //window.keyPressCounter = 0;
     // initialize the game of life
     //gol.init(); 
+
+    // -------- UPDATE THE SCORE --------
+
+    scorePipeline();
+
+    if(choosenMode=='read') {
+        document.getElementById("score").innerHTML = "SCORE: " + score +"/" + ArrayAccordiScelti.length;
+    }
+    if(choosenMode=='listen'){
+        document.getElementById("score").innerHTML = "SCORE: " + score +"/" + ArrayAccordiScelti_listen.length;
+    }   
 
 }
 
