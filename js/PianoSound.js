@@ -347,7 +347,7 @@ const error = new Howl({
 
 //LOST
 const lost = new Howl({
-    src: ['dist/mp3/lost.mp3'],
+    src: ['dist/mp3/game_over.mp3'],
 });
 
 // INTRO MUSIC
