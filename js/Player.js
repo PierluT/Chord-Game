@@ -182,6 +182,7 @@ class Player {
             // update indiceAr and update the score on the screen
             indiceAr++;
             fund++;
+<<<<<<< Updated upstream
             if(choosenMode=='listen'){
                 listenSound(ArrayAccordiMidiScelti_listen[fund]);
                 if (indiceAr == ArrayAccordiMidiScelti_listen.length){
@@ -194,6 +195,21 @@ class Player {
             }
             
             
+=======
+
+            //incremento di livello
+            if(levInizialeScelto == 1 && indiceAr == Math.floor((arChord.length)/3)){
+                levInizialeScelto++;
+            } else if (levInizialeScelto == 2 && indiceAr == 2*Math.floor((arChord.length)/3)){
+                levInizialeScelto++;
+            }
+            document.getElementById("level").innerHTML = "LEVEL: " + levInizialeScelto;
+
+            if(choosenMode=='listen'){
+                listenSound(arMIDI[fund]);
+            }
+
+>>>>>>> Stashed changes
         } 
     }
     

@@ -1,9 +1,11 @@
 
 var lev = 1;
-var v=0.6;
 
 //document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
 var ArrayTotale;
+var ArrayTot1;
+var ArrayTot2;
+var ArrayTot3;
 var ArrayAccordiScelti = [];
 var ArrayAccordiMidiScelti = [];
 var ArrayAccordiScelti_listen = [];
@@ -19,16 +21,16 @@ function setLevel(input){
         switch (porta2) {
             case 64: //su
             if(lev<=3){
+                levInizialeScelto=lev;
                 lev++;
                 console.log("Level: ", lev)
-                //document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
             }
             break;
             case 65: //giu
             if(lev>=1){
+                levInizialeScelto=lev;
                 lev--;
                 console.log("Level: ", lev)
-                //document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
             }
             break;
         } 
@@ -43,6 +45,7 @@ function setReset(input){
     if (porta1 == 144){
         switch (porta2) {
             case 81: //restart
+                lev=levInizialeScelto;
                 start();
                 //document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
             break;
@@ -50,16 +53,18 @@ function setReset(input){
     }
 }
 
-
+var v;
 //KNOB VELOCITA'
 function setVelocity(input){
     var porta1 = input.data[0];
     var porta2 = input.data[1];
     var porta3 = input.data[2];
     if (porta1 == 176 && porta2 == 51){
-        var v=(porta3/(127));
+        v=(porta3/(127));
         console.log(v)
     }
-    return v
 }
+
+
+
 

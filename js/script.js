@@ -54,6 +54,9 @@ const player = new Player({
 //index array di accordi
 var indexChords;
 
+var lastBlockPositionX;
+var lastBlockPositionY;
+
 //il timestamp mi serve per controllare il refresh automatico della animate.
 function animate (timestamp) {
     c.clearRect(0,0,canvas.width,canvas.height)
@@ -66,15 +69,37 @@ function animate (timestamp) {
     //backGroundloop();
     player.update();
 
+    switch (choosenMode) {
+
+        case 'listen':
+            arMIDI = ArrayAccordiMidiScelti_listen;
+            arChord = ArrayAccordiScelti_listen;
+            break;
+
+        case 'read':
+            arMIDI = ArrayAccordiMidiScelti;
+            arChord = ArrayAccordiScelti;
+            break;
+    }
+
     if (gameStarted == true) {
-        if(timeToNextBlock > blockInterval) {
-            chordBlockArray.push(new collisionBlock(indexChords, v));
-            indexChords++;
-            timeToNextBlock = 0;
+        //console.log("indiceAr", indiceAr)
+        //console.log("array", arChord)
+        if (indexChords < arChord.length) {
+            if(timeToNextBlock > blockInterval) {
+                chordBlockArray.push(new collisionBlock(indexChords));
+                indexChords++;
+                timeToNextBlock = 0;     
+            }
+            //console.log("indexChord", indexChords)
+        } else if (indiceAr == arChord.length){
+            if (lev==3){
+                console.log("VITTORIA")
+            }
         }
 
+
         if (player.position.y + player.height >= canvas.height && gameOver == false) {
-            //controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);
             gameOver = true;
             setTimeout(() => {
                 lost.play();
@@ -124,35 +149,39 @@ window.addEventListener('keydown', function(event) {
         if(lev<=3){
             lev++;
             console.log("Level: ", lev)
-            document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
         }
         break;
         case 'w': //giu
         if(lev>=1){
             lev--;
             console.log("Level: ", lev)
-            document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
         }
         break;
     }
 })
 ///////////////////////////////////////////
 
+var levInizialeScelto;
+
 function start(){
 
+<<<<<<< Updated upstream
     preventDuplicate = true;
 
+=======
+    v=0.6;
+>>>>>>> Stashed changes
     ConteggioVite=3;
     indiceAr=0;
     chordBlockArray = [];
     timeToNextBlock = 0;
     lastBlockTime = 0;
-    //gameStarted = true;
     rispostaGiusta = false;
     gameOver = false;
     indexChords=0;
     playerState = "-frontale-sx";
 
+<<<<<<< Updated upstream
     // GAME STARTED SOUND
     game_started_sound.play();
 
@@ -161,19 +190,52 @@ function start(){
     moltiplicator = 1;
     streak = 0;
     lastCorrect = true;
+=======
+    //inizializzo tutto
+    ArrayAccordiScelti = [];
+    ArrayAccordiScelti_listen = [];
+    ArrayAccordiMIDIScelti = [];
+    ArrayAccordiMIDIScelti_listen = [];
+    arChord=[];
+    arMIDI=[];
+
+>>>>>>> Stashed changes
     
-    if(lev != 0){
+    if(lev==1){
+        ArrayTot1 = CreateChords(lev);
+        lev++;
+        ArrayTot2 = CreateChords(lev);
+        lev++;
+        ArrayTot3 = CreateChords(lev);
+        console.log(ArrayTot1, ArrayTot2, ArrayTot3)
         //READ
-        ArrayTotale = CreateChords(lev);
-        ArrayAccordiScelti = ArrayTotale[0];
-        ArrayAccordiMidiScelti = ArrayTotale[1];
+        ArrayAccordiScelti = ArrayTot1[0].concat(ArrayTot2[0], ArrayTot3[0]);
+        ArrayAccordiMidiScelti = ArrayTot1[1].concat(ArrayTot2[1], ArrayTot3[1]);
         //LISTEN
-        ArrayAccordiScelti_listen = ArrayTotale[2];
-        ArrayAccordiMidiScelti_listen = ArrayTotale[3];
+        ArrayAccordiScelti_listen = ArrayTot1[2].concat(ArrayTot2[2], ArrayTot3[2]);
+        ArrayAccordiMidiScelti_listen = ArrayTot1[3].concat(ArrayTot2[3], ArrayTot3[3]);
+    } else if(lev==2){
+        ArrayTot2 = CreateChords(lev);
+        lev++;
+        ArrayTot3 = CreateChords(lev);
+        //READ
+        ArrayAccordiScelti = ArrayTot2[0].concat(ArrayTot3[0]);
+        ArrayAccordiMidiScelti = ArrayTot2[1].concat(ArrayTot3[1]);
+        //LISTEN
+        ArrayAccordiScelti_listen = ArrayTot2[2].concat(ArrayTot3[2]);
+        ArrayAccordiMidiScelti_listen = ArrayTot2[3].concat(ArrayTot3[3]);
+    } else if(lev==3){
+        ArrayTot3 = CreateChords(lev);
+        //READ
+        ArrayAccordiScelti = ArrayTot3[0];
+        ArrayAccordiMidiScelti = ArrayTot3[1];
+        //LISTEN
+        ArrayAccordiScelti_listen = ArrayTot3[2];
+        ArrayAccordiMidiScelti_listen = ArrayTot3[3];
     }
     
     // start block
-    startBlock = new collisionBlock(0, v);
+    startBlock = new collisionBlock(0);
     startBlock.position.x = (canvas.width - startBlock.width)/2;
     startBlock.position.y = canvas.height - startBlock.height*1.3;
     startBlock.velocity.y = 10;
@@ -183,17 +245,17 @@ function start(){
     player.position.x = (canvas.width - player.width)/2;
 
     //blocchi di partenza
-    const block1 = new collisionBlock(indexChords, v);
+    const block1 = new collisionBlock(indexChords);
     indexChords++;
     block1.position.x = 100;
     block1.position.y = 500;
 
-    const block2 = new collisionBlock(indexChords, v);
+    const block2 = new collisionBlock(indexChords);
     indexChords++;
     block2.position.x = 700;
     block2.position.y = 300
 
-    const block3 = new collisionBlock(indexChords, v);
+    const block3 = new collisionBlock(indexChords);
     indexChords++;
     block3.position.x = 100;
     block3.position.y = 100;
@@ -205,23 +267,26 @@ function start(){
     switch (choosenMode) {
 
         case 'listen':
-            blockInterval = 7000;
+            blockInterval = 7000/(1+v);
             arMIDI = ArrayAccordiMidiScelti_listen;
             arChord = ArrayAccordiScelti_listen;
             //devo passare dentro array MIDI del primo accordo
             fund=0
+<<<<<<< Updated upstream
             setTimeout(() => {listenSound(ArrayAccordiMidiScelti_listen[fund])}, 2000);
+=======
+            listenSound(arMIDI[fund]);
+>>>>>>> Stashed changes
             break;
 
         case 'read':
-            blockInterval = 5000;
+            blockInterval = 5000/(1+v);
             arMIDI = ArrayAccordiMidiScelti;
             arChord = ArrayAccordiScelti;
             break;
     }
-
     
-    document.getElementById("level").innerHTML = "LEVEL: " + lev;
+
     document.getElementById("mode").innerHTML = "MODE: " + choosenMode; 
     if(choosenMode=='read') {
         document.getElementById("score").innerHTML = "SCORE: " + score +"/" + ArrayAccordiScelti.length;
@@ -229,6 +294,7 @@ function start(){
     if(choosenMode=='listen'){
         document.getElementById("score").innerHTML = "SCORE: " + score +"/" + ArrayAccordiScelti_listen.length;
     } 
+    document.getElementById("level").innerHTML = "LEVEL: " + levInizialeScelto;
     
 }
 function starControl(){

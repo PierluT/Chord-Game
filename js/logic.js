@@ -13,14 +13,17 @@ var livello3Scelto = document.querySelector('#livello3');
 
 livello1Scelto.addEventListener('click', function() {
     lev = 1;
+    levInizialeScelto=lev;
   });
 
 livello2Scelto.addEventListener('click', function() {
     lev = 2;
+    levInizialeScelto=lev;
 });
 
 livello3Scelto.addEventListener('click', function() {
     lev = 3;
+    levInizialeScelto=lev;
 });
 // Seleziona l'elemento
 var composerAnimation = document.querySelector('#avatarScelto');

@@ -140,7 +140,6 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
         }
 
         
-        
         $( function() {
             $( "#dialog" ).dialog({
                 modal: true,
@@ -155,6 +154,7 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                 width: 660,
                 buttons: {
                 Restart: function() {
+                    lev=levInizialeScelto;
                     lost.stop();
                     ConteggioVite=3;
                     indexChords=0;
@@ -266,23 +266,10 @@ function handleInput(input) {
 
         var notaMIDI = note.toString();
         soundEngine.init(notaMIDI);
-        console.log(note);
+        //console.log(note);
 
         lastNoteReceived = note;
         var controllo = true;
-
-        /*
-        switch (choosenMode) {
-            case 'read':
-                arMIDI = ArrayAccordiMidiScelti;
-                arChord = ArrayAccordiScelti;
-            break;
-            
-            case 'listen':
-                arMIDI = ArrayAccordiMidiScelti_listen;
-                arChord = ArrayAccordiScelti_listen;
-            break;
-        } */
 
         for(let j=0; j<arMIDI[indiceAr].length; j++){ 
             if(arMIDI[indiceAr][j]==lastNoteReceived || (Math.abs(lastNoteReceived-arMIDI[indiceAr][j])) % 12 == 0){
@@ -295,7 +282,7 @@ function handleInput(input) {
                 }
                 if (!found) {
                     arrayComparaMIDI.push(lastNoteReceived);
-                    console.log(arrayComparaMIDI);
+                    //console.log(arrayComparaMIDI);
                 }
 
                 controllo = false;
@@ -326,7 +313,7 @@ function handleInput(input) {
 var fund = 0;
 
 function listenSound (allChord) {
-    setTimeout(function() {
+  setTimeout(function() {
         soundEngine.init(allChord[0].toString());
     }, 500);
     setTimeout(function() {
@@ -335,7 +322,7 @@ function listenSound (allChord) {
     setTimeout(function() {
         soundEngine.init(allChord[2].toString());
     }, 1500);
-    if(lev==3){
+    if(levInizialeScelto==3){
         setTimeout(function() {
             soundEngine.init(allChord[3].toString());
         }, 2000);
