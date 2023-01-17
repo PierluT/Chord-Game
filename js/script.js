@@ -1,9 +1,9 @@
 const canvas = document.getElementById('gameSet');
 const c = canvas.getContext('2d');
 // percentage of the window width that will be occupied by the canvas
-let width_perc = 0.65;
-canvas.width = width_perc*window.innerWidth;
-canvas.height = window.innerHeight;
+//let width_perc = 0.65;
+canvas.width = 1000;
+canvas.height = 700;
 
 let preventDuplicate = true;
 
@@ -282,7 +282,7 @@ function checkStreak(){
 
 function checkMoltiplicator(){
     // MAX moltiplicator is 5
-    if(streak % 5 == 0 && streak > 0 && moltiplicator <= 5) { 
+    if(streak % 5 == 0 && streak > 0 && moltiplicator < 5) { 
         moltiplicator++;
     }
     else if(streak == 0 && moltiplicator <= 5){
