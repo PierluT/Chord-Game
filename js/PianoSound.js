@@ -385,4 +385,39 @@ const game_started_sound = new Howl({
 });
 
 
-
+function mostraDialog(){
+    $( "#winner-dialog" ).dialog({
+        modal: true,
+                draggable: true, 
+                resizable: false, 
+                position: {
+                    my: "left top", 
+                    at: "right top", 
+                    of: "#schermataInziale"
+                },
+                height: 750,
+                width: "100%",
+        buttons: {
+          OK: function() {
+            $(this).dialog("destroy");
+                    lost.stop();
+                    intro_music.play();
+                    choosenAvatar = "";
+                    choosenMode= "";
+                    composerToAnimate = "";
+                    ConteggioVite=3;
+                    indexChords=0;
+                    ArrayAccordiScelti = [];
+                    ArrayAccordiScelti_listen = [];
+                    errori = [];
+                    ArrayAccordiErrori = [];
+                    ArrayMIDIErrori = [[],[],[]];
+                    arrayComparaMIDI = [];
+                    document.getElementById("schermataIniziale").style.display = "inline";
+                    document.getElementById("schermataGioco").style.display = "none";
+                    document.getElementById("schermataGioco").style.opacity = 1;
+          }
+        }
+      });
+      
+}

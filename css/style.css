@@ -45,6 +45,16 @@ canvas {
     background-image: url('/img/assets/blue-sky.png');
 }
 
+#winner-dialog{
+    display: none;
+    background-color: black;
+}
+
+#winner-img{
+    width: 1024px;
+    height: 750px;
+}
+
 .stringGameOver{
     color: blue;
     font-family: "Press Start 2P";

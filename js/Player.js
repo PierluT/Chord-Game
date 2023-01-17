@@ -181,11 +181,16 @@ class Player {
             fund++;
             if(choosenMode=='listen'){
                 listenSound(ArrayAccordiMidiScelti_listen[fund]);
+                if (indiceAr == ArrayAccordiMidiScelti_listen.length){
+                    //jdialog vittoria
+                    mostraDialog();
+                }
+            } else if( choosenMode=='read' && indiceAr == ArrayAccordiMidiScelti.length){
+                //jdialog vittoria
+                mostraDialog();
             }
-            //console.log(indiceAr)
-            if (indiceAr == ArrayAccordiMidiScelti_listen.length){
-                console.log("CAMBIO LIVELLO")
-            }
+            
+            
         } 
     }
     
