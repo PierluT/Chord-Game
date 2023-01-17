@@ -128,5 +128,5 @@ function click() {
   create()
 }
 
-window.addEventListener( 'resize', resize );
+//window.addEventListener( 'resize', resize );
 //window.addEventListener( 'click', click );

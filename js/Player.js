@@ -174,7 +174,10 @@ class Player {
         // e setta rispostaGiusta = false ---> 1 - permette la collisione 2 - ferma la gravità (da sistemare)
         if (deltaDistance < deltaPixel && yDistance > 0) {
             rispostaGiusta = false;
-            //console.log(rispostaGiusta)
+
+            preventDuplicate = true;
+            console.log(preventDuplicate)
+
             playerState = "-frontale-sx";
             // update indiceAr and update the score on the screen
             indiceAr++;

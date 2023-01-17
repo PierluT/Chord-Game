@@ -5,6 +5,8 @@ let width_perc = 0.65;
 canvas.width = width_perc*window.innerWidth;
 canvas.height = window.innerHeight;
 
+let preventDuplicate = true;
+
 let gameStarted = false;
 
 const gravity = 0.5
@@ -75,6 +77,7 @@ function animate (timestamp) {
             //controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);
             gameOver = true;
             setTimeout(() => {
+                lost.play();
                 ConteggioVite = 0;
                 controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);}, 1000);
         }
@@ -108,7 +111,10 @@ window.addEventListener('keydown', function(event) {
     //DA TENERE PER PROVE SENZA MIDI
     switch(event.key){
         case 'l': //RISPOSTA GIUSTA
-            controlloGiusto()
+            if(preventDuplicate){
+                controlloGiusto()
+                preventDuplicate = false;
+            }
             break; 
         case 'g': //RISPOSTA SBAGLIATA
             ConteggioVite--;
@@ -133,6 +139,8 @@ window.addEventListener('keydown', function(event) {
 ///////////////////////////////////////////
 
 function start(){
+
+    preventDuplicate = true;
 
     ConteggioVite=3;
     indiceAr=0;
