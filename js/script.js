@@ -19,6 +19,9 @@ let checkGravity = true;
 // initialize the background
 init();
 
+// START THE MUSIC
+intro_music.play();
+
 const scrImages = ['./img/assets/block1_cut.png','./img/assets/block2_cut.png'];
 //const srcLooserPlayers = ['./img/Mozart/MozartPerso.gif', './img/Beethoven/BeethovenPerso.gif'];
 //blocchi che verranno disegnati dopo 
@@ -141,6 +144,9 @@ function start(){
     indexChords=0;
     playerState = "-frontale-sx";
 
+    // GAME STARTED SOUND
+    game_started_sound.play();
+
     // initialize the score in start
     score = 0;
     moltiplicator = 1;
@@ -237,7 +243,6 @@ function checkStreak(){
     else {
         streak = 0;
     }
-    console.log(streak)
 }
 
 function checkMoltiplicator(){

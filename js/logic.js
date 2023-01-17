@@ -73,6 +73,7 @@ function replace () {
     }else{
         document.getElementById("schermataIniziale").style.display= "none";
         document.getElementById("schermataGioco").style.display = "inline";
+        intro_music.stop();
         start();
         animate(0);
 

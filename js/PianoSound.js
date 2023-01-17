@@ -333,24 +333,36 @@ function listenSound (allChord) {
     }  
 }
 
-
-
-
-////////////////////ACTION SOUNDS////////////////////
+// ------- INITIALIZING THE SOUNDS --------
 
 //RIGHT ANSWER
 const rightAnswer = new Howl({
-    src: ['dist/mp3/rightAnswer.mp3'],
+    src: ['dist/mp3/risposta_giusta.mp3'],
 });
 
 //ERROR
 const error = new Howl({
-    src: ['dist/mp3/error.mp3'],
+    src: ['dist/mp3/risposta_sbagliata.mp3'],
 });
 
 //LOST
 const lost = new Howl({
     src: ['dist/mp3/lost.mp3'],
+});
+
+// INTRO MUSIC
+const intro_music = new Howl({
+    src: ['dist/mp3/intro_music.mp3'],
+});
+
+// LEVEL UP
+const level_up_sound = new Howl({
+    src: ['dist/mp3/level_up.wav'],
+});
+
+// GAME STARTED
+const game_started_sound = new Howl({
+    src: ['dist/mp3/game_started.mp3'],
 });
 
 
