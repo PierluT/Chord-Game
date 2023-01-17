@@ -235,6 +235,7 @@ h4{
 .col:hover {
   transform: scale(1.1);
   cursor: pointer;
+  color:rgb(189, 211, 231);
 }
 
 p{
@@ -251,4 +252,9 @@ p{
 
 .level {
   cursor: pointer;
+}
+
+.col_selected {
+  transform: scale(1.1);
+  color:rgb(189, 211, 231);
 }

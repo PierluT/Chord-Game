@@ -12,6 +12,8 @@ var livello2Scelto = document.querySelector('#livello2');
 var livello3Scelto = document.querySelector('#livello3');
 
 livello1Scelto.addEventListener('click', function() {
+  /*var el = document.getElementById("livello1");
+  el.classList.add("col_selected");*/
     lev = 1;
   });
 
