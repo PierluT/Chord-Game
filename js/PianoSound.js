@@ -303,16 +303,18 @@ function handleInput(input) {
         }
 
         // errori
-        if(controllo == true){
-            ConteggioVite--;
-            controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);
-        }
-        if(arrayComparaMIDI.length==arMIDI[indiceAr].length){
-            controlloGiusto();
-            arrayComparaMIDI = [];
-            //indiceAr++; //messo in function automaticJump in Player.js (così prima di atterrare non conta errore se si ripetono note)
-        }
-         
+        if(preventDuplicate){
+            if(controllo == true){
+                ConteggioVite--;
+                controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);
+            }
+            if(arrayComparaMIDI.length==arMIDI[indiceAr].length){
+                controlloGiusto();
+                arrayComparaMIDI = [];
+                //indiceAr++; //messo in function automaticJump in Player.js (così prima di atterrare non conta errore se si ripetono note)
+            }
+            preventDuplicate = false;
+        }         
         break;
 
     }
