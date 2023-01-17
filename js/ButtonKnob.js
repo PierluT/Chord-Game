@@ -44,7 +44,7 @@ function setReset(input){
         switch (porta2) {
             case 81: //restart
                 start();
-                document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
+                //document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
             break;
         } 
     }

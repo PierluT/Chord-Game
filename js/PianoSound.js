@@ -73,7 +73,7 @@ function failure() {
 
 //CONTEGGIO VITE e MORTE
 var ConteggioVite = 3;
-document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
+//document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
 var errori = [];
 var ArrayAccordiErrori = [];
 var ArrayMIDIErrori = [[],[],[]];
@@ -84,7 +84,7 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
     lastCorrect = false;
     checkStreak();
 
-    document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
+    //document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
     if(ConteggioVite!=0){
         errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true }));
         ArrayAccordiErrori.push(arChord[indiceAr]);
@@ -157,7 +157,7 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                 Restart: function() {
                     lost.stop();
                     ConteggioVite=3;
-                    document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
+                    //document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
                     indexChords=0;
                     ArrayAccordiScelti = [];
                     ArrayAccordiScelti_listen = [];

@@ -58,7 +58,7 @@ function animate (timestamp) {
     deltaTime = timestamp - lastBlockTime;
     lastBlockTime = timestamp;
     timeToNextBlock += deltaTime; 
-
+    starControl();
     //scoreOnHead()
 
     //backGroundloop();
@@ -133,6 +133,7 @@ window.addEventListener('keydown', function(event) {
 ///////////////////////////////////////////
 
 function start(){
+
     ConteggioVite=3;
     indiceAr=0;
     chordBlockArray = [];
@@ -221,6 +222,32 @@ function start(){
         document.getElementById("score").innerHTML = "SCORE: " + score +"/" + ArrayAccordiScelti_listen.length;
     } 
     
+}
+function starControl(){
+
+    switch(ConteggioVite) {
+        case 0:
+            document.getElementById("star1").style.display = "none";
+            document.getElementById("star3").style.display = "none";
+            document.getElementById("star2").style.display = "none";
+            break;
+
+        case 1:
+            document.getElementById("star3").style.display = "none";
+            document.getElementById("star2").style.display = "none";
+            break;
+
+        case 2:
+            document.getElementById("star3").style.display = "none"; 
+            break;
+
+        case 3:
+            document.getElementById("star1").style.display = "inline";
+            document.getElementById("star3").style.display = "inline";
+            document.getElementById("star2").style.display = "inline";
+
+        
+    }
 }
 
 // -------- SCORE UTILS --------

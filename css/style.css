@@ -35,6 +35,11 @@ canvas {
     color: blanchedalmond;
 }
 
+.starLifes{
+    width: 2%;
+    width: 2%;
+}
+
 #dialog{
     display: none;
     background-image: url('/img/assets/blue-sky.png');
