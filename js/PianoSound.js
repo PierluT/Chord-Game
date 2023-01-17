@@ -83,7 +83,7 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
     // streak interrupted
     lastCorrect = false;
     checkStreak();
-
+    
     //document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
     if(ConteggioVite!=0){
         errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true }));
@@ -157,7 +157,6 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                 Restart: function() {
                     lost.stop();
                     ConteggioVite=3;
-                    //document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
                     indexChords=0;
                     ArrayAccordiScelti = [];
                     ArrayAccordiScelti_listen = [];
@@ -169,7 +168,27 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                     document.getElementById("schermataGioco").style.opacity = 1;
                     $(this).dialog("destroy");
                     //$( this ).dialog( "close" );
-                    }
+                    },
+                Reset : function(){
+                    $(this).dialog("destroy");
+                    lost.stop();
+                    intro_music.play();
+                    choosenAvatar = "";
+                    choosenMode= "";
+                    composerToAnimate = "";
+                    ConteggioVite=3;
+                    indexChords=0;
+                    ArrayAccordiScelti = [];
+                    ArrayAccordiScelti_listen = [];
+                    errori = [];
+                    ArrayAccordiErrori = [];
+                    ArrayMIDIErrori = [[],[],[]];
+                    arrayComparaMIDI = [];
+                    document.getElementById("schermataIniziale").style.display = "inline";
+                    document.getElementById("schermataGioco").style.display = "none";
+                    document.getElementById("schermataGioco").style.opacity = 1;
+
+                },
                 }
             });
         });       
