@@ -5,6 +5,7 @@ body{
     font-family: "Press Start 2P";
     margin-left: 10%;
     margin-right: 10%;
+    user-select: none;
 }
 
 h1{
@@ -252,9 +253,4 @@ p{
 
 .level {
   cursor: pointer;
-}
-
-.col_selected {
-  transform: scale(1.1);
-  color:rgb(189, 211, 231);
 }
