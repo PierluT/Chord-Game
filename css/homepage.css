@@ -29,6 +29,7 @@ h4{
   height: 27%;
   vertical-align: top;
   margin-left: 2%;
+  cursor: pointer;
 }
 
 #mozart{
@@ -233,6 +234,7 @@ h4{
 
 .col:hover {
   transform: scale(1.1);
+  cursor: pointer;
 }
 
 p{
@@ -245,4 +247,8 @@ p{
 
 #dialog {
   display: none;
+}
+
+.level {
+  cursor: pointer;
 }
