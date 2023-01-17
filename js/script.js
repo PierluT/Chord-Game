@@ -201,7 +201,7 @@ function start(){
             arChord = ArrayAccordiScelti_listen;
             //devo passare dentro array MIDI del primo accordo
             fund=0
-            listenSound(ArrayAccordiMidiScelti_listen[fund]);
+            setTimeout(() => {listenSound(ArrayAccordiMidiScelti_listen[fund])}, 2000);
             break;
 
         case 'read':
