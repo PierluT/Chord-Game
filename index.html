@@ -72,19 +72,20 @@
       </div>
     </div>
 
-      <div id="schermataGioco" class="embed-responsive">
-        <canvas class="embed-responsive-item img-responsive" id="c1"></canvas>
-        <canvas class="embed-responsive-item img-responsive" id="c2"></canvas>
+      <div id="schermataGioco">
+        <canvas  id="c1"></canvas>
+        <canvas  id="c2"></canvas>
         <canvas id="gameSet"></canvas>
         <img id="avatarScelto">
-        <div id="mode"></div>
-        <div id="level"></div>
-        <div id="livesleft"></div>
-        <div id="score"></div>
+        <div id="mode" class="stringheLaterali"></div>
+        <div id="level" class="stringheLaterali"></div>
+        <div id="livesleft" class="stringheLaterali"></div>
+        <div id="score" class="stringheLaterali"></div>
 
     </div> 
 
       <div id="dialog">
+        <span class="ui-dialog-titlebar-close"></span>
         <h2 id="gameOverTitle" class="stringGameOver">Game Over</h2>
         <h2 class="stringGameOver">YOUR ERRORS:</h2>
         <p id="primoErrore" class="stringGameOver"></p>

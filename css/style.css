@@ -21,16 +21,18 @@ canvas {
     margin-bottom: 20%;
     margin-left: 50%;
     animation-duration: 2s;
-    animation-iteration-count: infinite;
+    animation-iteration-count:infinite;
 }
 
-#vite{
-    font-family: "Press Start 2P";
+#mode{
+    margin-top: 5%;
+}
+
+.stringheLaterali{
+    margin-top: 2%;
     text-align: right;
-    color: blanchedalmond;
-    line-height: 5em;
     font-size: 1.3em;
-    padding-left: 47px;
+    color: blanchedalmond;
 }
 
 #dialog{
@@ -42,38 +44,9 @@ canvas {
     color: blue;
     font-family: "Press Start 2P";
 }
-
-
-#mode {
-    font-family: "Press Start 2P";
-    color: blanchedalmond;
-    font-size: 1.3em;
-    position: absolute;
-    top: 50px;
-    right: 250px;
+/*
+#gameOverTitle{
+    display: inline-block;
 }
-#level {
-    font-family: "Press Start 2P";
-    color: blanchedalmond;
-    font-size: 1.3em;
-    position: absolute;
-    top: 100px;
-    right: 250px;
-}
-#livesleft {
-    font-family: "Press Start 2P";
-    color: blanchedalmond;
-    font-size: 1.3em;
-    position: absolute;
-    top: 150px;
-    right: 250px;
-}
-#score {
-    font-family: "Press Start 2P";
-    color: blanchedalmond;
-    font-size: 1.3em;
-    position: absolute;
-    top: 200px;
-    right: 250px;
-}
+*/
 
