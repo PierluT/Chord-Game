@@ -75,6 +75,7 @@ function animate (timestamp) {
             //controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);
             gameOver = true;
             setTimeout(() => {
+                lost.play();
                 ConteggioVite = 0;
                 controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);}, 1000);
         }
