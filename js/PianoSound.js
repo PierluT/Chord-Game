@@ -143,19 +143,20 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
         
         $( function() {
             $( "#dialog" ).dialog({
-                title: "Game Over",
                 modal: true,
                 draggable: false, 
-                resizable: true, 
+                resizable: false, 
                 minWidth: 200, 
-                width:560,
+                width:660,
+                height: 740,
                 minheight:98,
-                position:[400,120],
+                position:['middle',120],
                 buttons: {
                 Restart: function() {
                     lost.stop();
                     ConteggioVite=3;
                     document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
+                    
                     indexChords=0;
                     ArrayAccordiScelti = [];
                     ArrayAccordiScelti_listen = [];
@@ -164,7 +165,6 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                     ArrayMIDIErrori = [[],[],[]];
                     arrayComparaMIDI = [];
                     start();
-                    
                     document.getElementById("schermataGioco").style.opacity = 1;
                     $( this ).dialog( "close" );
                     }
