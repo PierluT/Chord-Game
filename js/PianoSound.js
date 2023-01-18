@@ -383,7 +383,7 @@ function mostraDialogVittoria(){
                     of: "#schermataInziale"
                 },
                 height: 730,
-                width: 900,
+                width: 850,
         buttons: {
           OK: function() {
             $(this).dialog("destroy");
