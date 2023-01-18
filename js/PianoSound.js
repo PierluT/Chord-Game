@@ -248,7 +248,7 @@ var indiceAr=0;
 
 //data notes
 function handleInput(input) {
-    //console.log(input);
+    console.log(input);
     const command = input.data[0];
     const note = input.data[1];
     const velocity = input.data[2];
@@ -371,7 +371,7 @@ const game_started_sound = new Howl({
 function mostraDialogVittoria(){
     document.getElementById("schermataGioco").style.opacity = 0.3;
     $( "#winner-dialog" ).dialog({
-        title: " CONGRATULATIONS, you're the CHORD MASTER!",
+        title: "You win!",
         modal: true,
                 draggable: true, 
                 resizable: false, 
