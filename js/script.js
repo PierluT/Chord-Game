@@ -40,7 +40,7 @@ let playerState;
 let playerNamePlusState;
 playerNamePlusState = choosenAvatar + playerState;
 
-const V0X_MAX = 1.1;
+const V0X_MAX = 1.05;
 const V0Y_MAX = 1.4;
 
 let vox_MODIFIER;
@@ -374,8 +374,8 @@ function scorePipeline() {
 
 function levelUp() {
     c.fillStyle = "rgba(255, 255, 0, " + alpha_level + ")";
-    c.font = "40px 'Press Start 2P'";
-    c.fillText(text_levelUp, -c.measureText(text_levelUp).width/2 + canvas.width/2, 200);
+    c.font = ""+ 40 - alpha_level*20 + "px 'Press Start 2P'";
+    c.fillText(text_levelUp, -c.measureText(text_levelUp).width/2 + canvas.width/2, 200+alpha_level*100);
     alpha_level = alpha_level - 0.008;
     if(alpha_level<0) {
         levelUp_bool = false;
