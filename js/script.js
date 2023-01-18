@@ -288,11 +288,11 @@ function start(){
      
     if(choosenMode=='read') {
         document.getElementById("mode").innerHTML = "READ MODE";
-        document.getElementById("score").innerHTML = "SCORE: " + score +"/" + ArrayAccordiScelti.length;
+        document.getElementById("score").innerHTML = "SCORE: " + score;
     }
     if(choosenMode=='listen'){
         document.getElementById("mode").innerHTML = "LISTEN MODE";
-        document.getElementById("score").innerHTML = "SCORE: " + score +"/" + ArrayAccordiScelti_listen.length;
+        document.getElementById("score").innerHTML = "SCORE: " + score;
     } 
     document.getElementById("level").innerHTML = "LEVEL: " + levInizialeScelto;
     
