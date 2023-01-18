@@ -33,7 +33,7 @@ var originalStyleBeethoven = window.getComputedStyle(document.getElementById("be
   livello1Scelto.onclick = function() {
     lev = 1;
     levInizialeScelto=lev;
-    console.log(levInizialeScelto);
+    console.log("LIVELLO SCELTO", levInizialeScelto);
     this.style.color = "white";
     var currentSize = window.getComputedStyle(this, null).getPropertyValue('font-size');
     var currentSize = parseFloat(currentSize);
