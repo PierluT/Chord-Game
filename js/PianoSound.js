@@ -369,8 +369,13 @@ const game_started_sound = new Howl({
     src: ['dist/mp3/game_started.mp3'],
 });
 
+// VICTORY
+const victory_sound = new Howl({
+    src: ['dist/mp3/victory.mp3'],
+});
 
 function mostraDialogVittoria(){
+    victory_sound.play();
     document.getElementById("schermataGioco").style.opacity = 0.3;
     $( "#winner-dialog" ).dialog({
         title: "You win!",
@@ -387,6 +392,7 @@ function mostraDialogVittoria(){
         buttons: {
             OK: function() {
                 $(this).dialog("destroy");
+                victory_sound.stop();
                 lost.stop();
                 intro_music.play();
                 gameStarted = false;
