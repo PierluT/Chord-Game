@@ -1,8 +1,10 @@
 let choosenAvatar = "";
 let choosenMode= "";
 let composerToAnimate = "";
-let clickedButton = document.getElementById('playButton');
+let graficaModificata = false;
 // Seleziona i div
+var composerAnimation = document.querySelector('#avatarScelto');
+let clickedButton = document.getElementById('playButton');
 var mozart = document.querySelector('#mozart');
 var beethoven = document.querySelector('#beethoven');
 var bach = document.querySelector('#bach');
@@ -10,6 +12,9 @@ var bach = document.querySelector('#bach');
 var livello1Scelto = document.querySelector('#livello1');
 var livello2Scelto = document.querySelector('#livello2');
 var livello3Scelto = document.querySelector('#livello3');
+
+var readChoosenMode = document.querySelector('#readMode');
+var listenChoosenMode = document.querySelector('#listenMode');
 
 //variabili css originale elementi HTML
 //livelli style
@@ -23,12 +28,7 @@ var originalStyleListenMode = window.getComputedStyle(document.getElementById("l
 var originalStyleBach = window.getComputedStyle(document.getElementById("bach"), null);
 var originalStyleMozart = window.getComputedStyle(document.getElementById("mozart"), null);
 var originalStyleBeethoven = window.getComputedStyle(document.getElementById("beethoven"), null);
-/*
-livello1Scelto.addEventListener('click', function() {
-    lev = 1;
-    levInizialeScelto=lev;
-  });
-*/
+
   //cliccato a mano,va settato con bottone
   livello1Scelto.onclick = function() {
     lev = 1;
@@ -43,13 +43,6 @@ livello1Scelto.addEventListener('click', function() {
     document.getElementById("livello3").style.cssText = originalStyleLivello3.cssText;
 }
 
-/*
-livello2Scelto.addEventListener('click', function() {
-    lev = 2;
-    levInizialeScelto=lev;
-});
-*/
-
 //cliccato a mano,va settato con bottone
 livello2Scelto.onclick = function() {
     lev = 2;
@@ -63,12 +56,6 @@ livello2Scelto.onclick = function() {
     document.getElementById("livello1").style.cssText = originalStyleLivello1.cssText;
     document.getElementById("livello3").style.cssText = originalStyleLivello3.cssText;
 }
-/*
-livello3Scelto.addEventListener('click', function() {
-    lev = 3;
-    levInizialeScelto=lev;
-});
-*/
 
 //cliccato a mano,va settato con bottone
 livello3Scelto.onclick = function() {
@@ -82,16 +69,12 @@ livello3Scelto.onclick = function() {
     document.getElementById("livello2").style.cssText = originalStyleLivello2.cssText;
     document.getElementById("livello1").style.cssText = originalStyleLivello1.cssText;
 }
-// Seleziona l'elemento
-var composerAnimation = document.querySelector('#avatarScelto');
+
 // Aggiungi l'animation-name 'myAnimation' all'elemento
 composerAnimation.style.animationName = composerToAnimate;
 
-
-var readChoosenMode = document.querySelector('#readMode');
-var listenChoosenMode = document.querySelector('#listenMode');
-
 readChoosenMode.onclick = function() {
+    choosenMode = 'read';
     this.style.color = "white";
     var currentSize = window.getComputedStyle(this, null).getPropertyValue('font-size');
     var currentSize = parseFloat(currentSize);
@@ -102,6 +85,7 @@ readChoosenMode.onclick = function() {
 }
 
 listenChoosenMode.onclick = function() {
+    choosenMode = 'listen';
     this.style.color = "white";
     var currentSize = window.getComputedStyle(this, null).getPropertyValue('font-size');
     var currentSize = parseFloat(currentSize);
@@ -111,12 +95,18 @@ listenChoosenMode.onclick = function() {
 }
 
 mozart.onclick = function(){
+    composerAnimation.style.animationName = 'mozart';
+    choosenAvatar = 'mozart';
+    srcPlayer = 'mozart';
     $(mozart).css('border','2px solid green');
     document.getElementById("bach").style.cssText = originalStyleBach.cssText;
     document.getElementById("beethoven").style.cssText = originalStyleBeethoven.cssText;
 }
 
 bach.onclick = function(){
+    composerAnimation.style.animationName = 'bach'; 
+    //composerToAnimate ='bach';
+    choosenAvatar = 'bach';
     $(bach).css('border','2px solid green');
     document.getElementById("mozart").style.cssText = originalStyleMozart.cssText;
     document.getElementById("beethoven").style.cssText = originalStyleBeethoven.cssText;
@@ -124,38 +114,14 @@ bach.onclick = function(){
 }
 
 beethoven.onclick = function(){
+    composerAnimation.style.animationName = 'beethoven'; 
+    composerToAnimate ='beethoven';
+    choosenAvatar = 'beethoven';
+    srcPlayer = 'beethoven';
     $(beethoven).css('border','2px solid green');
     document.getElementById("bach").style.cssText = originalStyleBach.cssText;
     document.getElementById("mozart").style.cssText = originalStyleMozart.cssText;
 }
-
-mozart.addEventListener('click', function() {
-  composerAnimation.style.animationName = 'mozart';
-  choosenAvatar = 'mozart';
-  srcPlayer = 'mozart';
-});
-
-beethoven.addEventListener('click', function() {
-  composerAnimation.style.animationName = 'beethoven'; 
-  composerToAnimate ='beethoven';
-  choosenAvatar = 'beethoven';
-  srcPlayer = 'beethoven';
-});
-
-bach.addEventListener('click', function() {
-    composerAnimation.style.animationName = 'bach'; 
-    //composerToAnimate ='bach';
-    choosenAvatar = 'bach';
-    srcPlayer = 'bach';
-  });
-
-readChoosenMode.addEventListener('click', function(){
-    choosenMode = 'read';
-})
-
-listenChoosenMode.addEventListener('click',function() {
-    choosenMode = 'listen';
-})
 
 clickedButton.onclick = replace;
 

@@ -13,6 +13,9 @@ let startBlock;
 
 let checkGravity = true;
 
+// helps to draw the text 'LEVEL UP' on the canvas
+let levelUp_bool = false;
+
 // initialize the background
 init();
 
@@ -61,6 +64,10 @@ function animate (timestamp) {
     deltaTime = timestamp - lastBlockTime;
     lastBlockTime = timestamp; 
     starControl();
+
+    if (levelUp_bool) {
+        levelUp();
+    }
 
     //backGroundloop();
     player.update();
@@ -368,7 +375,10 @@ function scorePipeline() {
 function levelUp() {
     c.fillStyle = "rgba(255, 255, 0, " + alpha_level + ")";
     c.font = "40px 'Press Start 2P'";
-    level_up_sound.play();
     c.fillText(text_levelUp, -c.measureText(text_levelUp).width/2 + canvas.width/2, 200);
     alpha_level = alpha_level - 0.008;
+    if(alpha_level<0) {
+        levelUp_bool = false;
+        alpha_level = 1.0;
+    }
 }

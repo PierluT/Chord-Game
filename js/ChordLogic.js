@@ -8,6 +8,8 @@ const BlackNotesBemolli = ["Cb", "Db", "Eb", "Fb", "Gb", "Ab", "Bb"];
 const FirstNotes = ["E#", "Fb", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B"];
 const SecondNotes = ["B#", "Cb", "C", "C#", "Db", "D", "D#", "Eb", "E"];
 
+const CHORDS_TO_LEVELUP = 8;
+
 
 function chosenCircleOfFifth(ToneDiesis, ToneBemolli){
     var indexToneDB = Math.random();
@@ -24,7 +26,7 @@ function createSequenceRead(arrayAccordiPossibili, arrayDominantiSecondarie, arr
     var BooleanDomSec = false; //secDom o subDom sì o no
     var Accordo_scelto;
 
-    for(var i=0; i<10; i++){
+    for(var i=0; i<Math.floor(CHORDS_TO_LEVELUP/8); i++){
         if(BooleanDomSec==false){
             var indexAccordoScelto = Math.floor(Math.random() * arrayAccordiPossibili.length);
         }
@@ -135,8 +137,9 @@ function createSequenceListen(Livello_scelto){
     var ArrayTempChord = [];
     var ArrayTempMIDI = [];
 
-    for (let i=0; i<80; i++){
-        if (i<33) { //note naturali
+
+    for (let i=0; i<CHORDS_TO_LEVELUP; i++){
+        if (i<Math.floor(CHORDS_TO_LEVELUP*0.33)) { //note naturali
             var indexNoteW = Math.floor(Math.random() * WhiteNotes.length);
             var randomNoteW = WhiteNotes[indexNoteW];
             ArrayTempChord.push(randomNoteW);
