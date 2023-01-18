@@ -1,7 +1,5 @@
 const canvas = document.getElementById('gameSet');
 const c = canvas.getContext('2d');
-// percentage of the window width that will be occupied by the canvas
-//let width_perc = 0.65;
 canvas.width = 1000;
 canvas.height = 700;
 
@@ -15,9 +13,6 @@ let startBlock;
 
 let checkGravity = true;
 
-//const colorGreen = 'rgba(75,192,192,1)';
-//c.font = "italic bolder 50px Arial";
-
 // initialize the background
 init();
 
@@ -25,7 +20,6 @@ init();
 intro_music.play();
 
 const scrImages = ['./img/assets/block1_cut.png','./img/assets/block2_cut.png'];
-//const srcLooserPlayers = ['./img/Mozart/MozartPerso.gif', './img/Beethoven/BeethovenPerso.gif'];
 //blocchi che verranno disegnati dopo 
 var chordBlockArray;
 
@@ -60,7 +54,6 @@ function animate (timestamp) {
     deltaTime = timestamp - lastBlockTime;
     lastBlockTime = timestamp; 
     starControl();
-    //scoreOnHead()
 
     //backGroundloop();
     player.update();
@@ -271,6 +264,8 @@ let moltiplicator;
 let amount = 50;
 let streak;
 let lastCorrect;
+let text_levelUp = 'LEVEL UP';
+let alpha_level = 1.0;
 
 function plusScore(){
     score += amount * lev * moltiplicator;
@@ -301,4 +296,12 @@ function scorePipeline() {
     plusScore();
     lastCorrect = true;
     alpha = 1.0;
+}
+
+function levelUp() {
+    c.fillStyle = "rgba(255, 255, 0, " + alpha_level + ")";
+    c.font = "40px 'Press Start 2P'";
+    level_up_sound.play();
+    c.fillText(text_levelUp, -c.measureText(text_levelUp).width/2 + canvas.width/2, 200);
+    alpha_level = alpha_level - 0.008;
 }
