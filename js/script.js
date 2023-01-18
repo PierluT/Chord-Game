@@ -23,9 +23,11 @@ init();
 intro_music.play();
 
 
-//const scrImages = ['./img/assets/block1_cut.png','./img/assets/block2_cut.png'];
-const scrImages = ['./img/assets/block1.png','./img/assets/block2.png'];
-//const srcLooserPlayers = ['./img/Mozart/MozartPerso.gif', './img/Beethoven/BeethovenPerso.gif'];
+
+const scrImagesLev1 = ['./img/assets/Ghiaccio1.png','./img/assets/Ghiaccio2.png'];
+const scrImagesLev2 = ['./img/assets/Caldo1.png','./img/assets/Caldo2.png'];
+const scrImagesLev3 = ['./img/assets/Terra1.png','./img/assets/Terra2.png'];
+
 
 //blocchi che verranno disegnati dopo 
 var chordBlockArray;

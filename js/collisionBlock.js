@@ -20,7 +20,13 @@ class collisionBlock {
             this.chordFund = ArrayAccordiScelti_listen[i].slice(0, 1).trim();
         }
         this.image = new Image();
-        this.image.src = scrImages[Math.floor(Math.random()*scrImages.length)];
+        if(levInizialeScelto == 1){
+            this.image.src = scrImagesLev1[Math.floor(Math.random()*scrImagesLev1.length)];
+        } else if(levInizialeScelto == 2){
+            this.image.src = scrImagesLev2[Math.floor(Math.random()*scrImagesLev2.length)];
+        } else if(levInizialeScelto == 3){
+            this.image.src = scrImagesLev3[Math.floor(Math.random()*scrImagesLev3.length)];
+        }
     }
 
     draw(){

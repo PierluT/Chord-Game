@@ -43,12 +43,9 @@ if(navigator.requestMIDIAccess){
 }
 
 function success(midiAccess) {
-    //console.log(midiAccess);
     midiAccess.addEventListener('statechange', updateDevices);
     const inputs = midiAccess.inputs;
-    //console.log(inputs);
     inputs.forEach((input) => {
-        //console.log(input);
         input.addEventListener('midimessage', handleInput);
         input.addEventListener('midimessage', setLevel);
         input.addEventListener('midimessage', setReset);
@@ -67,10 +64,27 @@ function failure() {
 
 //CONTEGGIO VITE e MORTE
 var ConteggioVite = 3;
-//document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
 var errori = [];
 var ArrayAccordiErrori = [];
 var ArrayMIDIErrori = [[],[],[]];
+
+function azzeraValori(){
+    ConteggioVite=3;
+    indexChords=0;
+    ArrayAccordiScelti.length=0;
+    ArrayAccordiScelti_listen.length=0;
+    ArrayAccordiMidiScelti.length=0;
+    ArrayAccordiMidiScelti_listen.length=0;
+    errori.length=0;
+    ArrayAccordiErrori.length=0;
+    ArrayMIDIErrori[0].length = 0;
+    ArrayMIDIErrori[1].length = 0;
+    ArrayMIDIErrori[2].length = 0;
+    arrayComparaMIDI.length=0;
+    document.getElementById("primoErrore").innerHTML = "";
+    document.getElementById("secondoErrore").innerHTML = "";
+    document.getElementById("terzoErrore").innerHTML = "";
+}
 
 function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
 
@@ -78,10 +92,10 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
     lastCorrect = false;
     checkStreak();
     
-    //document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
     if(ConteggioVite!=0){
         errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true, sharps: true }));
         ArrayAccordiErrori.push(arChord[indiceAr]);
+
         if(ConteggioVite == 2){
             error.play();
             for(let k=0; k<arMIDI[indiceAr].length; k++) {
@@ -103,11 +117,12 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
             ArrayMIDIErrori[2].push(Tonal.Midi.midiToNoteName(arMIDI[indiceAr][k], { pitchClass: true, sharps: true }));
         }
     }
-    console.log("errore", errori);
-    console.log("accordo in cui ho fatto l'errore", ArrayAccordiErrori);
-    //console.log("note in cui ho fatto l'errore", ArrayMIDIErrori);
+
+    console.log("ERRORE", errori);
+    console.log("ACCORDO IN CUI ERRORE", ArrayAccordiErrori);
 
     if(ConteggioVite == 0){
+        console.log("vite", ConteggioVite);
         var imageUrl = this.document.querySelector('#imgPlayerPerso');
         imageUrl.src = looserImage;
         gameStarted = false;
@@ -150,20 +165,11 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                 Restart: function() {
                     lev=levInizialeScelto;
                     lost.stop();
-                    ConteggioVite=3;
-                    indexChords=0;
-                    ArrayAccordiScelti.length=0;
-                    ArrayAccordiScelti_listen.length=0;
-                    ArrayAccordiMidiScelti.length=0;
-                    ArrayAccordiMidiScelti_listen.length=0;
-                    errori.length=0;
-                    ArrayAccordiErrori.length=0;
-                    ArrayMIDIErrori.length=0;
-                    arrayComparaMIDI.length=0;
+                    azzeraValori();
                     start();
                     document.getElementById("schermataGioco").style.opacity = 1;
                     $(this).dialog("destroy");
-                    },
+                },
                 Reset : function(){
                     $(this).dialog("destroy");
                     lost.stop();
@@ -171,16 +177,7 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                     choosenAvatar = "";
                     choosenMode= "";
                     composerToAnimate = "";
-                    ConteggioVite=3;
-                    indexChords=0;
-                    ArrayAccordiScelti.length=0;
-                    ArrayAccordiScelti_listen.length=0;
-                    ArrayAccordiMidiScelti.length=0;
-                    ArrayAccordiMidiScelti_listen.length=0;
-                    errori.length=0;
-                    ArrayAccordiErrori.length=0;
-                    ArrayMIDIErrori.length=0;
-                    arrayComparaMIDI.length=0;
+                    azzeraValori();
                     document.getElementById("schermataIniziale").style.display = "inline";
                     document.getElementById("schermataGioco").style.display = "none";
                     document.getElementById("schermataGioco").style.opacity = 1;
@@ -289,8 +286,10 @@ function handleInput(input) {
         if(preventDuplicate){
             console.log("errore", errori);
             if(controllo == true){
+                console.log("errore", errori);
                 ConteggioVite--;
                 controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);
+                console.log("errore", errori);
             }
             if(arrayComparaMIDI.length==arMIDI[indiceAr].length){
                 controlloGiusto();
@@ -298,7 +297,6 @@ function handleInput(input) {
                 preventDuplicate = false;
                 //indiceAr++; //messo in function automaticJump in Player.js (così prima di atterrare non conta errore se si ripetono note)
             }
-            //console.log(preventDuplicate)
         }         
         break;
 
@@ -393,14 +391,7 @@ function mostraDialogVittoria(){
                     choosenAvatar = "";
                     choosenMode= "";
                     composerToAnimate = "";
-                    ConteggioVite=3;
-                    indexChords=0;
-                    ArrayAccordiScelti = [];
-                    ArrayAccordiScelti_listen = [];
-                    errori = [];
-                    ArrayAccordiErrori = [];
-                    ArrayMIDIErrori = [[],[],[]];
-                    arrayComparaMIDI = [];
+                    azzeraValori();
                     document.getElementById("schermataIniziale").style.display = "inline";
                     document.getElementById("schermataGioco").style.display = "none";
                     document.getElementById("schermataGioco").style.opacity = 1;
