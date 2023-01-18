@@ -10,12 +10,12 @@ body{
 
 h1{
     text-align: center;
-    color: rgb(230, 86, 19);
+    color: rgb(19, 89, 230);
     margin-top: 2%;
 }
 
 h3{
-  color: rgb(189, 211, 231);
+  color: rgb(120, 157, 191);
   font-size: 1.2rem;
   margin-bottom: 1%;
   margin-top: 1%;
@@ -31,7 +31,7 @@ h4{
   vertical-align: top;
   margin-left: 2%;
   cursor: pointer;
-}
+} 
 
 #mozart{
     animation-name: mozart;
