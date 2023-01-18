@@ -23,14 +23,17 @@ var originalStyleListenMode = window.getComputedStyle(document.getElementById("l
 var originalStyleBach = window.getComputedStyle(document.getElementById("bach"), null);
 var originalStyleMozart = window.getComputedStyle(document.getElementById("mozart"), null);
 var originalStyleBeethoven = window.getComputedStyle(document.getElementById("beethoven"), null);
-
+/*
 livello1Scelto.addEventListener('click', function() {
     lev = 1;
     levInizialeScelto=lev;
   });
-
+*/
   //cliccato a mano,va settato con bottone
   livello1Scelto.onclick = function() {
+    lev = 1;
+    levInizialeScelto=lev;
+    console.log(levInizialeScelto);
     this.style.color = "white";
     var currentSize = window.getComputedStyle(this, null).getPropertyValue('font-size');
     var currentSize = parseFloat(currentSize);
@@ -40,14 +43,18 @@ livello1Scelto.addEventListener('click', function() {
     document.getElementById("livello3").style.cssText = originalStyleLivello3.cssText;
 }
 
-
+/*
 livello2Scelto.addEventListener('click', function() {
     lev = 2;
     levInizialeScelto=lev;
 });
+*/
 
 //cliccato a mano,va settato con bottone
 livello2Scelto.onclick = function() {
+    lev = 2;
+    levInizialeScelto=lev;
+    console.log(levInizialeScelto);
     this.style.color = "white";
     var currentSize = window.getComputedStyle(this, null).getPropertyValue('font-size');
     var currentSize = parseFloat(currentSize);
@@ -56,19 +63,22 @@ livello2Scelto.onclick = function() {
     document.getElementById("livello1").style.cssText = originalStyleLivello1.cssText;
     document.getElementById("livello3").style.cssText = originalStyleLivello3.cssText;
 }
-
+/*
 livello3Scelto.addEventListener('click', function() {
     lev = 3;
     levInizialeScelto=lev;
 });
+*/
 
 //cliccato a mano,va settato con bottone
 livello3Scelto.onclick = function() {
+    lev = 3;
+    levInizialeScelto=lev;
+    console.log(levInizialeScelto);
     this.style.color = "white";
     var currentSize = window.getComputedStyle(this, null).getPropertyValue('font-size');
     var currentSize = parseFloat(currentSize);
     this.style.fontSize = (currentSize * 1.08) + 'px';
-
     document.getElementById("livello2").style.cssText = originalStyleLivello2.cssText;
     document.getElementById("livello1").style.cssText = originalStyleLivello1.cssText;
 }
@@ -156,7 +166,7 @@ function replace () {
         choosenAvatar= "";
         composerToAnimate= "";
         ripristinoGraficaIniziale();
-    }else{
+    } else{
         //display schermata di gioco
         document.getElementById("schermataIniziale").style.display= "none";
         document.getElementById("schermataGioco").style.display = "inline";

@@ -154,7 +154,7 @@ window.addEventListener('keydown', function(event) {
 })
 ///////////////////////////////////////////
 
-var levInizialeScelto;
+var levInizialeScelto = 0;
 
 function start(){
 
