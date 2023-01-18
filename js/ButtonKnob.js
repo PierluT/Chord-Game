@@ -1,7 +1,6 @@
 
 var lev = 1;
 
-//document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
 var ArrayTotale;
 var ArrayTot1;
 var ArrayTot2;
@@ -37,7 +36,7 @@ function setLevel(input){
     }
 }
 
-//RESET BUTTON
+//RESET BUTTON (STOP ALL CLIPS)
 function setReset(input){
     var porta1 = input.data[0];
     var porta2 = input.data[1];
@@ -45,9 +44,7 @@ function setReset(input){
     if (porta1 == 144){
         switch (porta2) {
             case 81: //restart
-                lev=levInizialeScelto;
-                start();
-                //document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
+                replace();
             break;
         } 
     }

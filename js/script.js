@@ -197,17 +197,11 @@ function start(){
     arMIDI=[];
     
     if(lev==1){
-        //console.log(ArrayAccordiScelti)
-        //console.log(ArrayAccordiMIDIScelti)
         ArrayTot1 = CreateChords(lev);
-        //console.log(lev)
         lev++;
-        //console.log(lev)
         ArrayTot2 = CreateChords(lev);
         lev++;
         ArrayTot3 = CreateChords(lev);
-        //console.log(ArrayTot1, ArrayTot2, ArrayTot3)
-        //console.log(lev)
         //LISTEN
         ArrayAccordiScelti_listen = ArrayTot1[2].concat(ArrayTot2[2], ArrayTot3[2]);
         ArrayAccordiMidiScelti_listen = ArrayTot1[3].concat(ArrayTot2[3], ArrayTot3[3]);
@@ -260,8 +254,6 @@ function start(){
     chordBlockArray.push(block2);
     chordBlockArray.push(block3);
 
-    //console.log("erMIDI", arMIDI);
-    //console.log("ArrayAccordiMidiScelti", ArrayAccordiMidiScelti)
     switch (choosenMode) {
 
         case 'listen':
@@ -272,7 +264,7 @@ function start(){
 
             arMIDI = ArrayAccordiMidiScelti_listen;
             arChord = ArrayAccordiScelti_listen;
-            //devo passare dentro array MIDI del primo accordo
+
             fund=0
             setTimeout(() => {listenSound(arMIDI[fund])}, 2000);
             break;

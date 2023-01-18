@@ -383,20 +383,19 @@ function mostraDialogVittoria(){
                 height: 730,
                 width: 850,
         buttons: {
-          OK: function() {
-            $(this).dialog("destroy");
-                    lost.stop();
-                    intro_music.play();
-                    gameStarted = false;
-                    choosenAvatar = "";
-                    choosenMode= "";
-                    composerToAnimate = "";
-                    azzeraValori();
-                    document.getElementById("schermataIniziale").style.display = "inline";
-                    document.getElementById("schermataGioco").style.display = "none";
-                    document.getElementById("schermataGioco").style.opacity = 1;
-          }
+            OK: function() {
+                $(this).dialog("destroy");
+                lost.stop();
+                intro_music.play();
+                gameStarted = false;
+                choosenAvatar = "";
+                choosenMode= "";
+                composerToAnimate = "";
+                azzeraValori();
+                document.getElementById("schermataIniziale").style.display = "inline";
+                document.getElementById("schermataGioco").style.display = "none";
+                document.getElementById("schermataGioco").style.opacity = 1;
+            }
         }
-      });
-      
+    });    
 }
