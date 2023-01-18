@@ -36,7 +36,7 @@ class Player {
     draw() {
         //c.fillStyle= 'red';
         //c.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
-        c.strokeRect(this.position.x, this.position.y, this.width, this.height)
+        //c.strokeRect(this.position.x, this.position.y, this.width, this.height)
         c.drawImage(this.playerImage, this.sx, this.sy, this.spriteWidth, this.spriteHeight, this.position.x, this.position.y, this.width, this.height)
     }
 
@@ -225,9 +225,7 @@ class Player {
     }
 
     scoreOnHead(){
-
-        let text = '+ ' + amount*levInizialeScelto*moltiplicator;
-       
+        let text = '+ ' + amount*levInizialeScelto*moltiplicator;       
         c.fillStyle = "rgba(255, 255, 35, " + alpha + ")";
         c.font = "40px 'Press Start 2P'";
         c.fillText(text,this. position.x - (c.measureText(text).width)/2 + this.width/2, this.position.y + 5);

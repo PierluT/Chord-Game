@@ -32,7 +32,7 @@ class collisionBlock {
     draw(){
         c.beginPath()
         //serve?
-        c.strokeRect(this.position.x,this.position.y,this.width,this.height)
+        //c.strokeRect(this.position.x,this.position.y,this.width,this.height)
         c.drawImage(this.image,this.position.x,this.position.y,this.width,this.height)
         //inserico la sigla sopra al blocco
         c.font = "40px 'Press Start 2P'";

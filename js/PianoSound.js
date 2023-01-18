@@ -16,7 +16,7 @@ const soundEngine = {
             timeIndex += lengthOfNote;
         }
         //set volume
-        sound.volume(0.3);
+        //sound.volume(0.3);
 
         sound.play(x);
     }
@@ -233,10 +233,10 @@ function controlloGiusto(){
     scorePipeline();
 
     if(choosenMode=='read') {
-        document.getElementById("score").innerHTML = "SCORE: " + score +"/" + ArrayAccordiScelti.length;
+        document.getElementById("score").innerHTML = "SCORE: " + score;
     }
     if(choosenMode=='listen'){
-        document.getElementById("score").innerHTML = "SCORE: " + score +"/" + ArrayAccordiScelti_listen.length;
+        document.getElementById("score").innerHTML = "SCORE: " + score;
     }   
 
 }
