@@ -58,8 +58,7 @@ var indexChords;
 function animate (timestamp) {
     c.clearRect(0,0,canvas.width,canvas.height)
     deltaTime = timestamp - lastBlockTime;
-    lastBlockTime = timestamp;
-    timeToNextBlock += deltaTime; 
+    lastBlockTime = timestamp; 
     starControl();
     //scoreOnHead()
 
@@ -67,6 +66,7 @@ function animate (timestamp) {
     player.update();
 
     if (gameStarted == true) {
+        timeToNextBlock += deltaTime;
         if(timeToNextBlock > blockInterval) {
             chordBlockArray.push(new collisionBlock(indexChords, v));
             indexChords++;
@@ -80,9 +80,10 @@ function animate (timestamp) {
                 lost.play();
                 ConteggioVite = 0;
                 controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);}, 1000);
-        }
-    
+        }        
+        
         [...chordBlockArray].forEach(block => block.update());
+        startBlock.velocity.y = 10;
     }
 
     [...chordBlockArray].forEach(block => block.draw());
@@ -186,17 +187,17 @@ function start(){
     const block1 = new collisionBlock(indexChords, v);
     indexChords++;
     block1.position.x = 100;
-    block1.position.y = 500;
+    block1.position.y = 450;
 
     const block2 = new collisionBlock(indexChords, v);
     indexChords++;
     block2.position.x = 700;
-    block2.position.y = 300
+    block2.position.y = 250;
 
     const block3 = new collisionBlock(indexChords, v);
     indexChords++;
     block3.position.x = 100;
-    block3.position.y = 100;
+    block3.position.y = 50;
 
     chordBlockArray.push(block1);
     chordBlockArray.push(block2);
@@ -205,7 +206,9 @@ function start(){
     switch (choosenMode) {
 
         case 'listen':
-            blockInterval = 7000;
+            // distance btw 2 consecutive blocks is 262 pixels in the y axis
+            // blockInterval = 7000;
+            blockInterval = 262 * 16 / (v + 0.0001);
             arMIDI = ArrayAccordiMidiScelti_listen;
             arChord = ArrayAccordiScelti_listen;
             //devo passare dentro array MIDI del primo accordo
@@ -214,7 +217,9 @@ function start(){
             break;
 
         case 'read':
-            blockInterval = 5000;
+            // distance btw 2 consecutive blocks is 187 pixels in the y axis
+            // blockInterval = 5000;
+            blockInterval = 187 * 16 / (v + 0.0001);
             arMIDI = ArrayAccordiMidiScelti;
             arChord = ArrayAccordiScelti;
             break;

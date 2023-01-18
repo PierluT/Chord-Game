@@ -406,6 +406,7 @@ function mostraDialog(){
             $(this).dialog("destroy");
                     lost.stop();
                     intro_music.play();
+                    gameStarted = false;
                     choosenAvatar = "";
                     choosenMode= "";
                     composerToAnimate = "";
