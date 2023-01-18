@@ -24,7 +24,7 @@ function createSequenceRead(arrayAccordiPossibili, arrayDominantiSecondarie, arr
     var BooleanDomSec = false; //secDom o subDom sì o no
     var Accordo_scelto;
 
-    for(var i=0; i<1; i++){
+    for(var i=0; i<10; i++){
         if(BooleanDomSec==false){
             var indexAccordoScelto = Math.floor(Math.random() * arrayAccordiPossibili.length);
         }
@@ -110,16 +110,22 @@ function createSequenceRead(arrayAccordiPossibili, arrayDominantiSecondarie, arr
                 ArrayNoteAccordoScelto[k]=ArrayNoteAccordoScelto[k]+"3";
             } 
         }
-
+       // console.log("ocio", ArrayNoteAccordoScelto)
         //trasforma note in MIDI
         var ArrayMidi = [];
         for (var k=0; k<ArrayNoteAccordoScelto.length; k++){
             ArrayMidi[k]=Tonal.Midi.toMidi(ArrayNoteAccordoScelto[k]);
         }
-
+        //console.log("MIDI", ArrayMidi)
+        //console.log("10 per tonalità", Accordo_scelto)
         ArrayAccordiScelti.push(Accordo_scelto);
         ArrayAccordiMidiScelti.push(ArrayMidi);
+        //console.log("10 per tonalità", ArrayAccordiScelti)
+    //console.log("10 per tonalità MIDI", ArrayAccordiMidiScelti)
     }
+
+    //console.log("10 per tonalità", ArrayAccordiScelti)
+    //console.log("10 per tonalità MIDI", ArrayAccordiMidiScelti)
 
     return [ArrayAccordiScelti, ArrayAccordiMidiScelti]
 }
@@ -255,9 +261,12 @@ function CreateChords(Livello_scelto){
 
     if (choosenMode == 'read'){
 
+        console.log("ArrayAccordiScelti", ArrayAccordiScelti)
+        console.log("ArrayAccordiMidiScelti", ArrayAccordiMidiScelti)
+
         //scegli tonalità con diesis o tonalità con bemolli
         var randomElementDB = chosenCircleOfFifth(ToneDiesis, ToneBemolli);
-
+        
         for (let index=0; index<randomElementDB.length; index++){
 
             var arrayAccordiPossibili = [];
@@ -276,11 +285,21 @@ function CreateChords(Livello_scelto){
                 arrayDominantiSub.push(element);
             }
 
+            console.log(arrayAccordiPossibili)
+
+
             var creaTotRead = createSequenceRead(arrayAccordiPossibili, arrayDominantiSecondarie, arrayDominantiSub, Livello_scelto);
             ArrayAccordiScelti = creaTotRead[0];
             ArrayAccordiMidiScelti = creaTotRead[1];
+
+            console.log("CIAO",ArrayAccordiScelti)
+            
         }
+
         console.log("ARRAY ACCORDI SCELTI: ", ArrayAccordiScelti)
+        console.log("ArrayAccordiMidiScelti", ArrayAccordiMidiScelti)
+
+        return [ArrayAccordiScelti, ArrayAccordiMidiScelti, ArrayAccordiScelti_listen, ArrayAccordiMidiScelti_listen];
     }
 
     //////////////////////////////
@@ -293,9 +312,12 @@ function CreateChords(Livello_scelto){
         ArrayAccordiMidiScelti_listen = creaTotListen[1];
 
         console.log("ACCORDI: ", ArrayAccordiScelti_listen);
+        console.log("ArrayAccordiMidiScelti", ArrayAccordiMidiScelti_listen)
+
+        return [ArrayAccordiScelti, ArrayAccordiMidiScelti, ArrayAccordiScelti_listen, ArrayAccordiMidiScelti_listen];
     }
 
-    return [ArrayAccordiScelti, ArrayAccordiMidiScelti, ArrayAccordiScelti_listen, ArrayAccordiMidiScelti_listen];
+    
 }
 
 

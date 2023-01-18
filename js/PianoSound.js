@@ -86,7 +86,7 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
     
     //document.getElementById("livesleft").innerHTML = "LIVES LEFT: " + ConteggioVite;
     if(ConteggioVite!=0){
-        errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true }));
+        errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true, sharps: true }));
         ArrayAccordiErrori.push(arChord[indiceAr]);
         if(ConteggioVite == 2){
             error.play();
@@ -102,7 +102,7 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
         }
     }
     if(ConteggioVite == 0 && gameOver==false){
-        errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true }));
+        errori.push(Tonal.Midi.midiToNoteName(lastNoteReceived, { pitchClass: true, sharps: true }));
         ArrayAccordiErrori.push(arChord[indiceAr]);
         lost.play();
         for(let k=0; k<arMIDI[indiceAr].length; k++) {
@@ -146,24 +146,26 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                 draggable: true, 
                 resizable: false, 
                 position: {
-                    my: "left top", 
-                    at: "right top", 
-                    of: "#schermataInziale"
+                    my: "center", 
+                    at: "center", 
+                    of: window
                 },
-                height: 740,
-                width: 660,
+                height: 600,
+                width: 500,
                 buttons: {
                 Restart: function() {
                     lev=levInizialeScelto;
                     lost.stop();
                     ConteggioVite=3;
                     indexChords=0;
-                    ArrayAccordiScelti = [];
-                    ArrayAccordiScelti_listen = [];
-                    errori = [];
-                    ArrayAccordiErrori = [];
-                    ArrayMIDIErrori = [[],[],[]];
-                    arrayComparaMIDI = [];
+                    ArrayAccordiScelti.length=0;
+                    ArrayAccordiScelti_listen.length=0;
+                    ArrayAccordiMidiScelti.length=0;
+                    ArrayAccordiMidiScelti_listen.length=0;
+                    errori.length=0;
+                    ArrayAccordiErrori.length=0;
+                    ArrayMIDIErrori.length=0;
+                    arrayComparaMIDI.length=0;
                     start();
                     document.getElementById("schermataGioco").style.opacity = 1;
                     $(this).dialog("destroy");
@@ -298,9 +300,10 @@ function handleInput(input) {
             if(arrayComparaMIDI.length==arMIDI[indiceAr].length){
                 controlloGiusto();
                 arrayComparaMIDI = [];
+                preventDuplicate = false;
                 //indiceAr++; //messo in function automaticJump in Player.js (così prima di atterrare non conta errore se si ripetono note)
             }
-            preventDuplicate = false;
+            console.log(preventDuplicate)
         }         
         break;
 

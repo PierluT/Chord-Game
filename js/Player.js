@@ -182,20 +182,19 @@ class Player {
             // update indiceAr and update the score on the screen
             indiceAr++;
             fund++;
-<<<<<<< Updated upstream
+
+
             if(choosenMode=='listen'){
-                listenSound(ArrayAccordiMidiScelti_listen[fund]);
-                if (indiceAr == ArrayAccordiMidiScelti_listen.length){
+               // listenSound(ArrayAccordiMidiScelti_listen[fund]);
+                if (indiceAr == arMIDI.length){
                     //jdialog vittoria
                     mostraDialog();
                 }
-            } else if( choosenMode=='read' && indiceAr == ArrayAccordiMidiScelti.length){
+            } else if( choosenMode=='read' && indiceAr == arMIDI.length){
                 //jdialog vittoria
                 mostraDialog();
             }
             
-            
-=======
 
             //incremento di livello
             if(levInizialeScelto == 1 && indiceAr == Math.floor((arChord.length)/3)){
@@ -209,7 +208,6 @@ class Player {
                 listenSound(arMIDI[fund]);
             }
 
->>>>>>> Stashed changes
         } 
     }
     
@@ -224,7 +222,7 @@ class Player {
 
     scoreOnHead(){
 
-        let text = '+ ' + amount*lev*moltiplicator;
+        let text = '+ ' + amount*levInizialeScelto*moltiplicator;
        
         c.fillStyle = "rgba(255, 255, 35, " + alpha + ")";
         c.font = "40px 'Press Start 2P'";

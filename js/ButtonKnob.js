@@ -20,14 +20,14 @@ function setLevel(input){
     if (porta1 == 144){
         switch (porta2) {
             case 64: //su
-            if(lev<=3){
+            if(lev<3){
                 levInizialeScelto=lev;
                 lev++;
                 console.log("Level: ", lev)
             }
             break;
             case 65: //giu
-            if(lev>=1){
+            if(lev>1){
                 levInizialeScelto=lev;
                 lev--;
                 console.log("Level: ", lev)

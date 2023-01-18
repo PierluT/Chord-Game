@@ -22,9 +22,10 @@ let checkGravity = true;
 init();
 
 // START THE MUSIC
-intro_music.play();
+//intro_music.play();
 
-const scrImages = ['./img/assets/block1_cut.png','./img/assets/block2_cut.png'];
+//const scrImages = ['./img/assets/block1_cut.png','./img/assets/block2_cut.png'];
+const scrImages = ['./img/assets/block1.png','./img/assets/block2.png'];
 //const srcLooserPlayers = ['./img/Mozart/MozartPerso.gif', './img/Beethoven/BeethovenPerso.gif'];
 //blocchi che verranno disegnati dopo 
 var chordBlockArray;
@@ -69,7 +70,7 @@ function animate (timestamp) {
     //backGroundloop();
     player.update();
 
-    switch (choosenMode) {
+    /*switch (choosenMode) {
 
         case 'listen':
             arMIDI = ArrayAccordiMidiScelti_listen;
@@ -80,7 +81,7 @@ function animate (timestamp) {
             arMIDI = ArrayAccordiMidiScelti;
             arChord = ArrayAccordiScelti;
             break;
-    }
+    }*/
 
     if (gameStarted == true) {
         //console.log("indiceAr", indiceAr)
@@ -165,12 +166,9 @@ var levInizialeScelto;
 
 function start(){
 
-<<<<<<< Updated upstream
     preventDuplicate = true;
 
-=======
-    v=0.6;
->>>>>>> Stashed changes
+    v=1;
     ConteggioVite=3;
     indiceAr=0;
     chordBlockArray = [];
@@ -181,7 +179,6 @@ function start(){
     indexChords=0;
     playerState = "-frontale-sx";
 
-<<<<<<< Updated upstream
     // GAME STARTED SOUND
     game_started_sound.play();
 
@@ -190,7 +187,7 @@ function start(){
     moltiplicator = 1;
     streak = 0;
     lastCorrect = true;
-=======
+
     //inizializzo tutto
     ArrayAccordiScelti = [];
     ArrayAccordiScelti_listen = [];
@@ -198,19 +195,21 @@ function start(){
     ArrayAccordiMIDIScelti_listen = [];
     arChord=[];
     arMIDI=[];
-
->>>>>>> Stashed changes
+    
+    console.log("LIVELLO ERMIDI", lev);
     
     if(lev==1){
+        //console.log(ArrayAccordiScelti)
+        //console.log(ArrayAccordiMIDIScelti)
         ArrayTot1 = CreateChords(lev);
+        //console.log(lev)
         lev++;
+        //console.log(lev)
         ArrayTot2 = CreateChords(lev);
         lev++;
         ArrayTot3 = CreateChords(lev);
-        console.log(ArrayTot1, ArrayTot2, ArrayTot3)
-        //READ
-        ArrayAccordiScelti = ArrayTot1[0].concat(ArrayTot2[0], ArrayTot3[0]);
-        ArrayAccordiMidiScelti = ArrayTot1[1].concat(ArrayTot2[1], ArrayTot3[1]);
+        //console.log(ArrayTot1, ArrayTot2, ArrayTot3)
+        //console.log(lev)
         //LISTEN
         ArrayAccordiScelti_listen = ArrayTot1[2].concat(ArrayTot2[2], ArrayTot3[2]);
         ArrayAccordiMidiScelti_listen = ArrayTot1[3].concat(ArrayTot2[3], ArrayTot3[3]);
@@ -218,21 +217,18 @@ function start(){
         ArrayTot2 = CreateChords(lev);
         lev++;
         ArrayTot3 = CreateChords(lev);
-        //READ
-        ArrayAccordiScelti = ArrayTot2[0].concat(ArrayTot3[0]);
-        ArrayAccordiMidiScelti = ArrayTot2[1].concat(ArrayTot3[1]);
         //LISTEN
         ArrayAccordiScelti_listen = ArrayTot2[2].concat(ArrayTot3[2]);
         ArrayAccordiMidiScelti_listen = ArrayTot2[3].concat(ArrayTot3[3]);
     } else if(lev==3){
         ArrayTot3 = CreateChords(lev);
-        //READ
-        ArrayAccordiScelti = ArrayTot3[0];
-        ArrayAccordiMidiScelti = ArrayTot3[1];
         //LISTEN
         ArrayAccordiScelti_listen = ArrayTot3[2];
         ArrayAccordiMidiScelti_listen = ArrayTot3[3];
     }
+
+    //console.log("ARRAY TOT", ArrayAccordiScelti)
+    //console.log("ARRAY TOT MIDI", ArrayAccordiMidiScelti)
     
     // start block
     startBlock = new collisionBlock(0);
@@ -264,6 +260,8 @@ function start(){
     chordBlockArray.push(block2);
     chordBlockArray.push(block3);
 
+    //console.log("erMIDI", arMIDI);
+    //console.log("ArrayAccordiMidiScelti", ArrayAccordiMidiScelti)
     switch (choosenMode) {
 
         case 'listen':
@@ -272,11 +270,7 @@ function start(){
             arChord = ArrayAccordiScelti_listen;
             //devo passare dentro array MIDI del primo accordo
             fund=0
-<<<<<<< Updated upstream
-            setTimeout(() => {listenSound(ArrayAccordiMidiScelti_listen[fund])}, 2000);
-=======
-            listenSound(arMIDI[fund]);
->>>>>>> Stashed changes
+            setTimeout(() => {listenSound(arMIDI[fund])}, 2000);
             break;
 
         case 'read':
@@ -285,13 +279,19 @@ function start(){
             arChord = ArrayAccordiScelti;
             break;
     }
+
     
 
-    document.getElementById("mode").innerHTML = "MODE: " + choosenMode; 
+    
+    
+
+     
     if(choosenMode=='read') {
+        document.getElementById("mode").innerHTML = "READ MODE";
         document.getElementById("score").innerHTML = "SCORE: " + score +"/" + ArrayAccordiScelti.length;
     }
     if(choosenMode=='listen'){
+        document.getElementById("mode").innerHTML = "LISTEN MODE";
         document.getElementById("score").innerHTML = "SCORE: " + score +"/" + ArrayAccordiScelti_listen.length;
     } 
     document.getElementById("level").innerHTML = "LEVEL: " + levInizialeScelto;
@@ -334,7 +334,7 @@ let streak;
 let lastCorrect;
 
 function plusScore(){
-    score += amount * lev * moltiplicator;
+    score += amount * levInizialeScelto * moltiplicator;
 }
 
 function checkStreak(){
