@@ -8,7 +8,7 @@ const BlackNotesBemolli = ["Cb", "Db", "Eb", "Fb", "Gb", "Ab", "Bb"];
 const FirstNotes = ["E#", "Fb", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B"];
 const SecondNotes = ["B#", "Cb", "C", "C#", "Db", "D", "D#", "Eb", "E"];
 
-const CHORDS_TO_LEVELUP = 8;
+const CHORDS_TO_LEVELUP = 4;
 
 function chosenCircleOfFifth(ToneDiesis, ToneBemolli){
     var indexToneDB = Math.random();

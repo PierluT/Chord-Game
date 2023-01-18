@@ -47,11 +47,17 @@ canvas {
 
 #winner-dialog{
     display: none;
-    background-color: black;
-}
+    background-image: url("/img/assets/win.png") ;
+  }
 
 .stringGameOver{
     color: rgb(19, 89, 230);
+    font-family: "Press Start 2P";
+    text-align: center;
+}
+
+.stringWin{
+    color: blanchedalmond;
     font-family: "Press Start 2P";
     text-align: center;
 }
