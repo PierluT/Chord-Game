@@ -64,19 +64,18 @@ function animate (timestamp) {
 
     //backGroundloop();
     player.update();
-
-    /*switch (choosenMode) {
-
+    switch (choosenMode) {
         case 'listen':
-            arMIDI = ArrayAccordiMidiScelti_listen;
-            arChord = ArrayAccordiScelti_listen;
+            // distance btw 2 consecutive blocks is 262 pixels in the y axis
+            // blockInterval = 7000;
+            blockInterval = 262 * 16 / (v);
             break;
-
         case 'read':
-            arMIDI = ArrayAccordiMidiScelti;
-            arChord = ArrayAccordiScelti;
+            // distance btw 2 consecutive blocks is 187 pixels in the y axis
+            // blockInterval = 5000;
+            blockInterval = 187 * 16 / (v);
             break;
-    }*/
+    }
 
     if (gameStarted == true) {
 
@@ -95,11 +94,11 @@ function animate (timestamp) {
 
 
         if (player.position.y + player.height >= canvas.height && gameOver == false) {
-            gameOver = true;
+            /*gameOver = true;
             setTimeout(() => {
                 lost.play();
                 ConteggioVite = 0;
-                controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);}, 1000);
+                controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);}, 1000);*/
         }        
         [...chordBlockArray].forEach(block => block.update());
     }
