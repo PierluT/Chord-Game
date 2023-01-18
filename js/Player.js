@@ -188,11 +188,11 @@ class Player {
                // listenSound(ArrayAccordiMidiScelti_listen[fund]);
                 if (indiceAr == arMIDI.length){
                     //jdialog vittoria
-                    mostraDialog();
+                    mostraDialogVittoria();
                 }
             } else if( choosenMode=='read' && indiceAr == arMIDI.length){
                 //jdialog vittoria
-                mostraDialog();
+                mostraDialogVittoria();
             }
             
 

@@ -263,8 +263,8 @@ function CreateChords(Livello_scelto){
 
     if (choosenMode == 'read'){
 
-        console.log("ArrayAccordiScelti", ArrayAccordiScelti)
-        console.log("ArrayAccordiMidiScelti", ArrayAccordiMidiScelti)
+        //console.log("ArrayAccordiScelti", ArrayAccordiScelti)
+        //console.log("ArrayAccordiMidiScelti", ArrayAccordiMidiScelti)
 
         //scegli tonalità con diesis o tonalità con bemolli
         var randomElementDB = chosenCircleOfFifth(ToneDiesis, ToneBemolli);
@@ -287,19 +287,19 @@ function CreateChords(Livello_scelto){
                 arrayDominantiSub.push(element);
             }
 
-            console.log(arrayAccordiPossibili)
+            //console.log(arrayAccordiPossibili)
 
 
             var creaTotRead = createSequenceRead(arrayAccordiPossibili, arrayDominantiSecondarie, arrayDominantiSub, Livello_scelto);
             ArrayAccordiScelti = creaTotRead[0];
             ArrayAccordiMidiScelti = creaTotRead[1];
 
-            console.log("CIAO",ArrayAccordiScelti)
+            //console.log("CIAO",ArrayAccordiScelti)
             
         }
 
-        console.log("ARRAY ACCORDI SCELTI: ", ArrayAccordiScelti)
-        console.log("ArrayAccordiMidiScelti", ArrayAccordiMidiScelti)
+        //console.log("ARRAY ACCORDI SCELTI: ", ArrayAccordiScelti)
+        //console.log("ArrayAccordiMidiScelti", ArrayAccordiMidiScelti)
 
         return [ArrayAccordiScelti, ArrayAccordiMidiScelti, ArrayAccordiScelti_listen, ArrayAccordiMidiScelti_listen];
     }
@@ -313,8 +313,8 @@ function CreateChords(Livello_scelto){
         ArrayAccordiScelti_listen = creaTotListen[0];
         ArrayAccordiMidiScelti_listen = creaTotListen[1];
 
-        console.log("ACCORDI: ", ArrayAccordiScelti_listen);
-        console.log("ArrayAccordiMidiScelti", ArrayAccordiMidiScelti_listen)
+        //console.log("ACCORDI: ", ArrayAccordiScelti_listen);
+        //console.log("ArrayAccordiMidiScelti", ArrayAccordiMidiScelti_listen)
 
         return [ArrayAccordiScelti, ArrayAccordiMidiScelti, ArrayAccordiScelti_listen, ArrayAccordiMidiScelti_listen];
     }

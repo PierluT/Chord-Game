@@ -194,8 +194,6 @@ function start(){
     arChord=[];
     arMIDI=[];
     
-    console.log("LIVELLO ERMIDI", lev);
-    
     if(lev==1){
         //console.log(ArrayAccordiScelti)
         //console.log(ArrayAccordiMIDIScelti)
@@ -225,8 +223,10 @@ function start(){
         ArrayAccordiMidiScelti_listen = ArrayTot3[3];
     }
 
-    //console.log("ARRAY TOT", ArrayAccordiScelti)
-    //console.log("ARRAY TOT MIDI", ArrayAccordiMidiScelti)
+    console.log("ARRAY ACCORDI: ", ArrayAccordiScelti)
+    console.log("ARRAY ACCORDI MIDI", ArrayAccordiMidiScelti)
+    console.log("ARRAY ACCORDI LISTEN: ", ArrayAccordiScelti_listen)
+    console.log("ARRAY ACCORDI MIDI LISTEN", ArrayAccordiMidiScelti_listen)
     
     // start block
     startBlock = new collisionBlock(0);
