@@ -17,7 +17,7 @@ let checkGravity = true;
 init();
 
 // START THE MUSIC
-//intro_music.play();
+intro_music.play();
 
 
 //const scrImages = ['./img/assets/block1_cut.png','./img/assets/block2_cut.png'];
@@ -101,11 +101,8 @@ function animate (timestamp) {
                 ConteggioVite = 0;
                 controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);}, 1000);
         }        
-        
         [...chordBlockArray].forEach(block => block.update());
-        startBlock.velocity.y = 10;
     }
-
     [...chordBlockArray].forEach(block => block.draw());
     
     player.chechForVerticalCollision(chordBlockArray);

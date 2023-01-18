@@ -48,6 +48,7 @@ class collisionBlock {
         if(gameStarted == true) {
             //velocità del knob
             this.velocity.y = v;
+            startBlock.velocity.y = 10;
             //comincia a scendere
             this.position.y += this.velocity.y;
               if(this.position.y > canvas.height + this.height ) {
