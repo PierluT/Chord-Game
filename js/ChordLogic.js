@@ -10,7 +10,6 @@ const SecondNotes = ["B#", "Cb", "C", "C#", "Db", "D", "D#", "Eb", "E"];
 
 const CHORDS_TO_LEVELUP = 8;
 
-
 function chosenCircleOfFifth(ToneDiesis, ToneBemolli){
     var indexToneDB = Math.random();
     var randomElementDB;

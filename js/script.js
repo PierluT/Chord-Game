@@ -101,11 +101,11 @@ function animate (timestamp) {
 
 
         if (player.position.y + player.height >= canvas.height && gameOver == false) {
-            /*gameOver = true;
+            gameOver = true;
             setTimeout(() => {
                 lost.play();
                 ConteggioVite = 0;
-                controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);}, 1000);*/
+                controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);}, 1000);
         }        
         [...chordBlockArray].forEach(block => block.update());
     }
