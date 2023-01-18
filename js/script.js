@@ -89,7 +89,7 @@ function animate (timestamp) {
     if (gameStarted == true) {
 
         timeToNextBlock += deltaTime;
-        //if (indexChords < arChord.length) {
+        if (indexChords < arChord.length) {
             if(timeToNextBlock > blockInterval) {
                 chordBlockArray.push(new collisionBlock(indexChords));
                 indexChords++;
@@ -98,8 +98,8 @@ function animate (timestamp) {
        /* } else if (indiceAr == arChord.length){
             if (lev==3){
                 console.log("VITTORIA")
-            }
-        }*/
+            }*/
+        }
 
 
         if (player.position.y + player.height >= canvas.height && gameOver == false) {
