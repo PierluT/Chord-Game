@@ -33,35 +33,6 @@ h4{
   border-radius: 20px;
 } 
 
-.col-4::before{
-  content: '';
-  width: 33%;
-  height: 500%;
-  background: linear-gradient(red, blue);
-  background: blanchedalmond;
-  animation: animate 4s linear infinite;
-}
-
-.col-4::after{
-  content: '';
-  position: absolute;
-  inset: 4px;
-  background: rgb(0, 0, 0);
-  border-radius: 16px;
-}
-
-@keyframes animate
-{
-  0%
-  {
-    transform: rotate(0deg);
-  }
-  100%
-  {
-    transform: rotate(360deg);
-  }
-}
-
 #mozart{
     animation-name: mozart;
     animation-duration: 2s;

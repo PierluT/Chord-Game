@@ -98,6 +98,46 @@ function changeMode() {
     }
 }
 
+//cliccato a mano,va settato con bottone
+livello1Scelto.onclick = function() {
+    lev = 1;
+    levInizialeScelto=lev;
+    console.log("LIVELLO SCELTO", levInizialeScelto);
+    this.style.color = "white";
+    var currentSize = window.getComputedStyle(this, null).getPropertyValue('font-size');
+    var currentSize = parseFloat(currentSize);
+    this.style.fontSize = (currentSize * 1.08) + 'px';
+    document.getElementById("livello2").style.cssText = originalStyleLivello2.cssText;
+    document.getElementById("livello3").style.cssText = originalStyleLivello3.cssText;
+}
+
+//cliccato a mano,va settato con bottone
+livello2Scelto.onclick = function() {
+    lev = 2;
+    levInizialeScelto=lev;
+    console.log("LIVELLO SCELTO", levInizialeScelto);
+    this.style.color = "white";
+    var currentSize = window.getComputedStyle(this, null).getPropertyValue('font-size');
+    var currentSize = parseFloat(currentSize);
+    this.style.fontSize = (currentSize * 1.08) + 'px';
+    document.getElementById("livello1").style.cssText = originalStyleLivello1.cssText;
+    document.getElementById("livello3").style.cssText = originalStyleLivello3.cssText;
+}
+
+//cliccato a mano,va settato con bottone
+livello3Scelto.onclick = function() {
+    lev = 3;
+    levInizialeScelto=lev;
+    console.log("LIVELLO SCELTO", levInizialeScelto);
+    this.style.color = "white";
+    var currentSize = window.getComputedStyle(this, null).getPropertyValue('font-size');
+    var currentSize = parseFloat(currentSize);
+    this.style.fontSize = (currentSize * 1.08) + 'px';
+    document.getElementById("livello2").style.cssText = originalStyleLivello2.cssText;
+    document.getElementById("livello1").style.cssText = originalStyleLivello1.cssText;
+}
+
+
 // Aggiungi l'animation-name 'myAnimation' all'elemento
 composerAnimation.style.animationName = composerToAnimate;
 
@@ -105,16 +145,17 @@ mozart.onclick = function(){
     composerAnimation.style.animationName = 'mozart';
     choosenAvatar = 'mozart';
     srcPlayer = 'mozart';
-    $(mozart).css('border','2px solid green');
+    $(mozart).css('border','2px solid blanchedalmond');
+    $(mozart).css('border-radius','20px');
     document.getElementById("bach").style.cssText = originalStyleBach.cssText;
     document.getElementById("beethoven").style.cssText = originalStyleBeethoven.cssText;
 }
 
 bach.onclick = function(){
     composerAnimation.style.animationName = 'bach'; 
-    //composerToAnimate ='bach';
     choosenAvatar = 'bach';
-    $(bach).css('border','2px solid green');
+    $(bach).css('border','2px solid blanchedalmond');
+    $(bach).css('border-radius','20px'); 
     document.getElementById("mozart").style.cssText = originalStyleMozart.cssText;
     document.getElementById("beethoven").style.cssText = originalStyleBeethoven.cssText;
     
@@ -126,9 +167,30 @@ beethoven.onclick = function(){
     choosenAvatar = 'beethoven';
     srcPlayer = 'beethoven';
     $(beethoven).css('border','2px solid blanchedalmond');
+    $(beethoven).css('border-radius','20px'); 
     document.getElementById("bach").style.cssText = originalStyleBach.cssText;
     document.getElementById("mozart").style.cssText = originalStyleMozart.cssText;
 }
+
+listenChoosenMode.onclick = function() {
+    choosenMode = 'listen';
+    listenChoosenMode.style.color = "white";
+    var currentSize = window.getComputedStyle(listenChoosenMode, null).getPropertyValue('font-size');
+    var currentSize = parseFloat(currentSize);
+    listenChoosenMode.style.fontSize = (currentSize * 1.08) + 'px';
+    document.getElementById("readMode").style.cssText = originalStyleReadMode.cssText;
+}
+
+readChoosenMode.onclick = function() {
+    choosenMode = 'read';
+    readChoosenMode.style.color = "white";
+    var currentSize = window.getComputedStyle(listenChoosenMode, null).getPropertyValue('font-size');
+    var currentSize = parseFloat(currentSize);
+    readChoosenMode.style.fontSize = (currentSize * 1.08) + 'px';
+    document.getElementById("listenMode").style.cssText = originalStyleListenMode.cssText;
+}
+
+
 
 clickedButton.onclick = replace;
 
