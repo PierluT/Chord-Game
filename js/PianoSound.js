@@ -387,7 +387,7 @@ const game_started_sound = new Howl({
 });
 
 
-function mostraDialog(){
+function mostraDialogVittoria(){
     document.getElementById("schermataGioco").style.opacity = 0.3;
     $( "#winner-dialog" ).dialog({
         title: " CONGRATULATIONS, you're the CHORD MASTER!",
