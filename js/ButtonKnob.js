@@ -21,10 +21,6 @@ function setLevel(input){
         switch (porta2) {
             case 64: //su
             if(posizioneLiv < 3){
-                /*
-                levInizialeScelto=lev;
-                lev++;
-                */
                 posizioneLiv++;
                 console.log("posizione livello: ", posizioneLiv)
                 changeLevel();
@@ -32,15 +28,27 @@ function setLevel(input){
             break;
             case 65: //giu
             if(posizioneLiv > 1){
-                /*
-                levInizialeScelto=lev;
-                lev--;
-                */
                 posizioneLiv--;
                 console.log("Level: ", posizioneLiv)
                 changeLevel();
             }
             break;
+
+            case 66:    
+                if( posizioneMode > 0){
+                    posizioneMode--;
+                    console.log("indice mode", posizioneMode)
+                    changeMode();
+                }
+                break;
+            
+            case 67:
+                if(posizioneMode < 2){
+                    posizioneMode++;
+                    console.log("indice mode", posizioneMode)
+                    changeMode();
+                }
+                break;
         } 
     }
 }
