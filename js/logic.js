@@ -16,7 +16,7 @@ var livello1Scelto = document.querySelector('#livello1');
 var livello2Scelto = document.querySelector('#livello2');
 var livello3Scelto = document.querySelector('#livello3');
 
-var readChoosenMode = document.querySelector('#readMode');
+var readChoosenMode = document.querySelector('#readMode'); 
 var listenChoosenMode = document.querySelector('#listenMode');
 
 //variabili css originale elementi HTML

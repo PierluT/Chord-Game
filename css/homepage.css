@@ -29,8 +29,38 @@ h4{
   width: 27%;
   height: 27%;
   vertical-align: top;
-  cursor: pointer;
+  overflow: hidden;
+  border-radius: 20px;
 } 
+
+.col-4::before{
+  content: '';
+  width: 33%;
+  height: 500%;
+  background: linear-gradient(red, blue);
+  background: blanchedalmond;
+  animation: animate 4s linear infinite;
+}
+
+.col-4::after{
+  content: '';
+  position: absolute;
+  inset: 4px;
+  background: rgb(0, 0, 0);
+  border-radius: 16px;
+}
+
+@keyframes animate
+{
+  0%
+  {
+    transform: rotate(0deg);
+  }
+  100%
+  {
+    transform: rotate(360deg);
+  }
+}
 
 #mozart{
     animation-name: mozart;
@@ -40,10 +70,6 @@ h4{
 
 #mozart:hover {
   transform: scale(1.1);
-}
-
-#mozart:active, #mozart:focus {
-  border:  5px solid rgb(132, 222, 13);
 }
 
 @keyframes mozart {
@@ -104,62 +130,57 @@ h4{
   transform: scale(1.1);
 }
 
-#beethoven:active, #beethoven:focus {
-  border:  5px solid rgb(132, 222, 13);
-}
-
-
   @keyframes beethoven {
     0% {
-      content: url("/img/Beethoven/beethoven-frontale-dx/beethoven_front_dx_1.png");
+      content: url("/img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_1.png");
     }
     5.88% {
-      content: url("/img/Beethoven/beethoven-frontale-dx/beethoven_front_dx_2.png");
+      content: url("/img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_2.png");
     }
     11.76% {
-      content: url("/img/Beethoven/beethoven-frontale-dx/beethoven_front_dx_3.png");
+      content: url("/img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_3.png");
     }
     17.65% {
-      content: url("/img/Beethoven/beethoven-frontale-dx/beethoven_front_dx_4.png");
+      content: url("/img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_4.png");
     }
     23.53% {
-      content: url("/img/Beethoven/beethoven-frontale-dx/beethoven_front_dx_5.png");
+      content: url("/img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_5.png");
     }
     29.41% {
-      content: url("/img/Beethoven/beethoven-frontale-dx/beethoven_front_dx_6.png");
+      content: url("/img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_6.png");
     }
     35.29% {
-      content: url("/img/Beethoven/beethoven-frontale-dx/beethoven_front_dx_7.png");
+      content: url("/img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_7.png");
     }
     41.18% {
-      content: url("/img/Beethoven/beethoven-frontale-dx/beethoven_front_dx_8.png");
+      content: url("/img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_8.png");
     }
     47.06% {
-      content: url("/img/Beethoven/beethoven-frontale-dx/beethoven_front_dx_9.png");
+      content: url("/img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_9.png");
     }
     52.94% {
-      content: url("/img/Beethoven/beethoven-frontale-dx/beethoven_front_dx_10.png");
+      content: url("/img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_10.png");
     }
     58.82% {
-      content: url("/img/Beethoven/beethoven-frontale-dx/beethoven_front_dx_11.png");
+      content: url("/img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_11.png");
     }
     64.71% {
-      content: url("/img/Beethoven/beethoven-frontale-dx/beethoven_front_dx_12.png");
+      content: url("/img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_12.png");
       }
     70.59% {
-      content: url("/img/Beethoven/beethoven-frontale-dx/beethoven_front_dx_13.png");
+      content: url("/img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_13.png");
       }
     76.47% {
-        content: url("/img/Beethoven/beethoven-frontale-dx/beethoven_front_dx_14.png");
+        content: url("/img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_14.png");
       }
     82.35% {
-        content: url("/img/Beethoven/beethoven-frontale-dx/beethoven_front_dx_15.png");
+        content: url("/img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_15.png");
       }
     88.24% {
-        content: url("/img/Beethoven/beethoven-frontale-dx/beethoven_front_dx_16.png");
+        content: url("/img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_16.png");
       }
     100% {
-        content: url("/img/Beethoven/beethoven-frontale-dx/beethoven_front_dx_17.png");
+        content: url("/img/Beethoven/beethoven-frontale-sx/beethoven_front_sx_17.png");
       }
 }
 
@@ -173,58 +194,54 @@ h4{
   transform: scale(1.1);
 }
 
-#bach:active, #bach:focus {
-  border:  5px solid rgb(132, 222, 13);
-}
-
 @keyframes bach {
   0% {
-    content: url("/img/Bach/bach-front-dx/bach_front_dx_1.png");
+    content: url("/img/Bach/bach-front-sx/bach_front_sx_1.png");
   }
   6.25% {
-    content: url("/img/Bach/bach-front-dx/bach_front_dx_2.png");
+    content: url("/img/Bach/bach-front-sx/bach_front_sx_2.png");
   }
   12.5% {
-    content: url("/img/Bach/bach-front-dx/bach_front_dx_3.png");
+    content: url("/img/Bach/bach-front-sx/bach_front_sx_3.png");
   }
   18.75% {
-    content: url("/img/Bach/bach-front-dx/bach_front_dx_4.png");
+    content: url("/img/Bach/bach-front-sx/bach_front_sx_4.png");
   }
   25% {
-    content: url("/img/Bach/bach-front-dx/bach_front_dx_5.png");
+    content: url("/img/Bach/bach-front-sx/bach_front_sx_5.png");
   }
   31.25% {
-    content: url("/img/Bach/bach-front-dx/bach_front_dx_6.png");
+    content: url("/img/Bach/bach-front-sx/bach_front_sx_6.png");
   }
   37.5% {
-    content: url("/img/Bach/bach-front-dx/bach_front_dx_7.png");
+    content: url("/img/Bach/bach-front-sx/bach_front_sx_7.png");
   }
   43.75% {
-    content: url("/img/Bach/bach-front-dx/bach_front_dx_8.png");
+    content: url("/img/Bach/bach-front-sx/bach_front_sx_8.png");
   }
   50% {
-    content: url("/img/Bach/bach-front-dx/bach_front_dx_9.png");
+    content: url("/img/Bach/bach-front-sx/bach_front_sx_9.png");
   }
   56.25% {
-    content: url("/img/Bach/bach-front-dx/bach_front_dx_10.png");
+    content: url("/img/Bach/bach-front-sx/bach_front_sx_10.png");
   }
   62.5% {
-    content: url("/img/Bach/bach-front-dx/bach_front_dx_11.png");
+    content: url("/img/Bach/bach-front-sx/bach_front_sx_11.png");
   }
   68.75% {
-    content: url("/img/Bach/bach-front-dx/bach_front_dx_12.png");
+    content: url("/img/Bach/bach-front-sx/bach_front_sx_12.png");
   }
   75% {
-    content: url("/img/Bach/bach-front-dx/bach_front_dx_13.png");
+    content: url("/img/Bach/bach-front-sx/bach_front_sx_13.png");
   }
   81.25% {
-    content: url("/img/Bach/bach-front-dx/bach_front_dx_14.png");
+    content: url("/img/Bach/bach-front-sx/bach_front_sx_14.png");
   }
   87.5% {
-    content: url("/img/Bach/bach-front-dx/bach_front_dx_15.png");
+    content: url("/img/Bach/bach-front-sx/bach_front_sx_15.png");
   }
   100% {
-    content: url("/img/Bach/bach-front-dx/bach_front_dx_16.png");
+    content: url("/img/Bach/bach-front-sx/bach_front_sx_16.png");
   }
 }
 
