@@ -199,8 +199,12 @@ class Player {
             //incremento di livello
             if(levInizialeScelto == 1 && indiceAr == Math.floor((arChord.length)/3)){
                 levInizialeScelto++;
+                levelUp_bool = true;
+                level_up_sound.play();
             } else if (levInizialeScelto == 2 && indiceAr == 2*Math.floor((arChord.length)/3)){
                 levInizialeScelto++;
+                levelUp_bool = true;
+                level_up_sound.play();
             }
             document.getElementById("level").innerHTML = "LEVEL: " + levInizialeScelto;
 
