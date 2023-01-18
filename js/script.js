@@ -289,12 +289,14 @@ function start(){
     if(choosenMode=='read') {
         document.getElementById("mode").innerHTML = "READ MODE";
         document.getElementById("score").innerHTML = "SCORE: " + score;
+        document.getElementById("moltiplicator").innerHTML = "x" + moltiplicator;
     }
     if(choosenMode=='listen'){
         document.getElementById("mode").innerHTML = "LISTEN MODE";
         document.getElementById("score").innerHTML = "SCORE: " + score;
     } 
     document.getElementById("level").innerHTML = "LEVEL: " + levInizialeScelto;
+    document.getElementById("moltiplicator").innerHTML = "x" + moltiplicator;
     
 }
 function starControl(){

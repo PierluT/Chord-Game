@@ -234,9 +234,11 @@ function controlloGiusto(){
 
     if(choosenMode=='read') {
         document.getElementById("score").innerHTML = "SCORE: " + score;
+        document.getElementById("moltiplicator").innerHTML = "x" + moltiplicator;
     }
     if(choosenMode=='listen'){
         document.getElementById("score").innerHTML = "SCORE: " + score;
+        document.getElementById("moltiplicator").innerHTML = "x" + moltiplicator;
     }   
 
 }

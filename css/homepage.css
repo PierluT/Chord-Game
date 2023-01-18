@@ -10,7 +10,7 @@ body{
 
 h1{
     text-align: center;
-    color: rgb(230, 19, 19);
+    color: rgb(220,53,69);
     margin-top: 2%;
 }
 
@@ -37,7 +37,6 @@ h4{
   content: '';
   width: 33%;
   height: 500%;
-  background: linear-gradient(red, blue);
   background: blanchedalmond;
   animation: animate 4s linear infinite;
 }
