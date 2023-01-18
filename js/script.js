@@ -374,8 +374,8 @@ function scorePipeline() {
 
 function levelUp() {
     c.fillStyle = "rgba(255, 255, 0, " + alpha_level + ")";
-    c.font = ""+ 40 - alpha_level*20 + "px 'Press Start 2P'";
-    c.fillText(text_levelUp, -c.measureText(text_levelUp).width/2 + canvas.width/2, 200+alpha_level*100);
+    c.font = ""+ 60 - alpha_level*20 + "px 'Press Start 2P'";
+    c.fillText(text_levelUp, -c.measureText(text_levelUp).width/2 + canvas.width/2, 200 + alpha_level*100);
     alpha_level = alpha_level - 0.008;
     if(alpha_level<0) {
         levelUp_bool = false;

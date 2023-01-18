@@ -230,7 +230,7 @@ class Player {
        
         c.fillStyle = "rgba(255, 255, 35, " + alpha + ")";
         c.font = "40px 'Press Start 2P'";
-        c.fillText(text,this. position.x - (c.measureText(text).width)/2 + this.width/2, this.position.y - 5);
+        c.fillText(text,this. position.x - (c.measureText(text).width)/2 + this.width/2, this.position.y + 5);
         alpha = alpha - 0.01; // decrease opacity (fade out)
     }    
     
