@@ -154,8 +154,7 @@ mozart.onclick = function(){
 bach.onclick = function(){
     composerAnimation.style.animationName = 'bach'; 
     choosenAvatar = 'bach';
-    $(bach).css('border','2px solid blanchedalmond');
-    $(bach).css('border-radius','20px'); 
+    $(bach).css('border','2px solid green');
     document.getElementById("mozart").style.cssText = originalStyleMozart.cssText;
     document.getElementById("beethoven").style.cssText = originalStyleBeethoven.cssText;
     

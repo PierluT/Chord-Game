@@ -20,7 +20,7 @@ h1{
     font-size: 4em;
     padding-top: 10px;
     padding: 5px;
-    color: white;
+    color: blanchedalmond;
     font-family: "Press Start 2P";
     text-align: center;
 }
@@ -203,7 +203,7 @@ h2{
 
 .name{
     float: inherit;
-    color: white;
+    color: blanchedalmond;
     font-size: 1.3em;
     padding-left: 47px;
     text-align: center;
@@ -271,7 +271,7 @@ h2{
     margin-top: 50px;
     font-size: 2em;
     font-family: "Press Start 2P";
-    color: white;
+    color: blanchedalmond;
     background-color: rgb(7, 25, 124);
     border-radius:50px;
     

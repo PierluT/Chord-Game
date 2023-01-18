@@ -89,7 +89,7 @@ function animate (timestamp) {
     if (gameStarted == true) {
 
         timeToNextBlock += deltaTime;
-        //if (indexChords < arChord.length) {
+        if (indexChords < arChord.length) {
             if(timeToNextBlock > blockInterval) {
                 chordBlockArray.push(new collisionBlock(indexChords));
                 indexChords++;
@@ -98,8 +98,8 @@ function animate (timestamp) {
        /* } else if (indiceAr == arChord.length){
             if (lev==3){
                 console.log("VITTORIA")
-            }
-        }*/
+            }*/
+        }
 
 
         if (player.position.y + player.height >= canvas.height && gameOver == false) {
@@ -289,12 +289,14 @@ function start(){
     if(choosenMode=='read') {
         document.getElementById("mode").innerHTML = "READ MODE";
         document.getElementById("score").innerHTML = "SCORE: " + score;
+        document.getElementById("moltiplicator").innerHTML = "x" + moltiplicator;
     }
     if(choosenMode=='listen'){
         document.getElementById("mode").innerHTML = "LISTEN MODE";
         document.getElementById("score").innerHTML = "SCORE: " + score;
     } 
     document.getElementById("level").innerHTML = "LEVEL: " + levInizialeScelto;
+    document.getElementById("moltiplicator").innerHTML = "x" + moltiplicator;
     
 }
 function starControl(){

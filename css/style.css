@@ -16,10 +16,10 @@ canvas {
 #avatarScelto{
     position: absolute;
     width: 40%;
-    height: 40%;
-    margin-top: 15%;
+    height: 55%;
+    margin-top: 20%;
     margin-bottom: 20%;
-    margin-left: 50%;
+    margin-left: 55%;
     animation-duration: 2s;
     animation-iteration-count:infinite;
 }
@@ -42,7 +42,7 @@ canvas {
 
 #dialog{
     display: none;
-    background-image: url('/img/assets/blue-sky.png');
+    background-image: url('/img/assets/lost.png');
 }
 
 #winner-dialog{
