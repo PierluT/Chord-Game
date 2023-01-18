@@ -136,8 +136,16 @@ function replace () {
         composerToAnimate= "";
         //srcPlayer = "";
     }else{
+        //display schermata di gioco
         document.getElementById("schermataIniziale").style.display= "none";
         document.getElementById("schermataGioco").style.display = "inline";
+
+        //ripristino grafica iniziale
+        document.getElementById("livello1").style.cssText = originalStyleLivello1.cssText;
+        document.getElementById("livello2").style.cssText = originalStyleLivello2.cssText;
+        document.getElementById("livello3").style.cssText = originalStyleLivello3.cssText;
+        document.getElementById("readMode").style.cssText = originalStyleReadMode.cssText;
+        document.getElementById("listenMode").style.cssText = originalStyleListenMode.cssText;
         intro_music.stop();
         start();
         animate(0);
