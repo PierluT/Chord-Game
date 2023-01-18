@@ -1,7 +1,5 @@
 const canvas = document.getElementById('gameSet');
 const c = canvas.getContext('2d');
-// percentage of the window width that will be occupied by the canvas
-//let width_perc = 0.65;
 canvas.width = 1000;
 canvas.height = 700;
 
@@ -15,17 +13,17 @@ let startBlock;
 
 let checkGravity = true;
 
-//const colorGreen = 'rgba(75,192,192,1)';
-//c.font = "italic bolder 50px Arial";
-
 // initialize the background
 init();
 
 // START THE MUSIC
-intro_music.play();
+//intro_music.play();
 
-const scrImages = ['./img/assets/block1_cut.png','./img/assets/block2_cut.png'];
+
+//const scrImages = ['./img/assets/block1_cut.png','./img/assets/block2_cut.png'];
+const scrImages = ['./img/assets/block1.png','./img/assets/block2.png'];
 //const srcLooserPlayers = ['./img/Mozart/MozartPerso.gif', './img/Beethoven/BeethovenPerso.gif'];
+
 //blocchi che verranno disegnati dopo 
 var chordBlockArray;
 
@@ -54,35 +52,58 @@ const player = new Player({
 //index array di accordi
 var indexChords;
 
+var lastBlockPositionX;
+var lastBlockPositionY;
+
 //il timestamp mi serve per controllare il refresh automatico della animate.
 function animate (timestamp) {
     c.clearRect(0,0,canvas.width,canvas.height)
     deltaTime = timestamp - lastBlockTime;
-    lastBlockTime = timestamp;
-    timeToNextBlock += deltaTime; 
+    lastBlockTime = timestamp; 
     starControl();
-    //scoreOnHead()
 
     //backGroundloop();
     player.update();
 
+    /*switch (choosenMode) {
+
+        case 'listen':
+            arMIDI = ArrayAccordiMidiScelti_listen;
+            arChord = ArrayAccordiScelti_listen;
+            break;
+
+        case 'read':
+            arMIDI = ArrayAccordiMidiScelti;
+            arChord = ArrayAccordiScelti;
+            break;
+    }*/
+
     if (gameStarted == true) {
-        if(timeToNextBlock > blockInterval) {
-            chordBlockArray.push(new collisionBlock(indexChords, v));
-            indexChords++;
-            timeToNextBlock = 0;
-        }
+
+        timeToNextBlock += deltaTime;
+        //if (indexChords < arChord.length) {
+            if(timeToNextBlock > blockInterval) {
+                chordBlockArray.push(new collisionBlock(indexChords));
+                indexChords++;
+                timeToNextBlock = 0;     
+            }
+       /* } else if (indiceAr == arChord.length){
+            if (lev==3){
+                console.log("VITTORIA")
+            }
+        }*/
+
 
         if (player.position.y + player.height >= canvas.height && gameOver == false) {
-            //controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);
             gameOver = true;
             setTimeout(() => {
                 lost.play();
                 ConteggioVite = 0;
                 controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);}, 1000);
-        }
-    
+        }        
+        
         [...chordBlockArray].forEach(block => block.update());
+        startBlock.velocity.y = 10;
     }
 
     [...chordBlockArray].forEach(block => block.draw());
@@ -124,30 +145,30 @@ window.addEventListener('keydown', function(event) {
         if(lev<=3){
             lev++;
             console.log("Level: ", lev)
-            document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
         }
         break;
         case 'w': //giu
         if(lev>=1){
             lev--;
             console.log("Level: ", lev)
-            document.getElementById("livelloScelto").innerHTML = "LEVEL: " + lev;
         }
         break;
     }
 })
 ///////////////////////////////////////////
 
+var levInizialeScelto;
+
 function start(){
 
     preventDuplicate = true;
 
+    v=1;
     ConteggioVite=3;
     indiceAr=0;
     chordBlockArray = [];
     timeToNextBlock = 0;
     lastBlockTime = 0;
-    //gameStarted = true;
     rispostaGiusta = false;
     gameOver = false;
     indexChords=0;
@@ -161,19 +182,51 @@ function start(){
     moltiplicator = 1;
     streak = 0;
     lastCorrect = true;
+
+    //inizializzo tutto
+    ArrayAccordiScelti = [];
+    ArrayAccordiScelti_listen = [];
+    ArrayAccordiMIDIScelti = [];
+    ArrayAccordiMIDIScelti_listen = [];
+    arChord=[];
+    arMIDI=[];
     
-    if(lev != 0){
-        //READ
-        ArrayTotale = CreateChords(lev);
-        ArrayAccordiScelti = ArrayTotale[0];
-        ArrayAccordiMidiScelti = ArrayTotale[1];
+    console.log("LIVELLO ERMIDI", lev);
+    
+    if(lev==1){
+        //console.log(ArrayAccordiScelti)
+        //console.log(ArrayAccordiMIDIScelti)
+        ArrayTot1 = CreateChords(lev);
+        //console.log(lev)
+        lev++;
+        //console.log(lev)
+        ArrayTot2 = CreateChords(lev);
+        lev++;
+        ArrayTot3 = CreateChords(lev);
+        //console.log(ArrayTot1, ArrayTot2, ArrayTot3)
+        //console.log(lev)
         //LISTEN
-        ArrayAccordiScelti_listen = ArrayTotale[2];
-        ArrayAccordiMidiScelti_listen = ArrayTotale[3];
+        ArrayAccordiScelti_listen = ArrayTot1[2].concat(ArrayTot2[2], ArrayTot3[2]);
+        ArrayAccordiMidiScelti_listen = ArrayTot1[3].concat(ArrayTot2[3], ArrayTot3[3]);
+    } else if(lev==2){
+        ArrayTot2 = CreateChords(lev);
+        lev++;
+        ArrayTot3 = CreateChords(lev);
+        //LISTEN
+        ArrayAccordiScelti_listen = ArrayTot2[2].concat(ArrayTot3[2]);
+        ArrayAccordiMidiScelti_listen = ArrayTot2[3].concat(ArrayTot3[3]);
+    } else if(lev==3){
+        ArrayTot3 = CreateChords(lev);
+        //LISTEN
+        ArrayAccordiScelti_listen = ArrayTot3[2];
+        ArrayAccordiMidiScelti_listen = ArrayTot3[3];
     }
+
+    //console.log("ARRAY TOT", ArrayAccordiScelti)
+    //console.log("ARRAY TOT MIDI", ArrayAccordiMidiScelti)
     
     // start block
-    startBlock = new collisionBlock(0, v);
+    startBlock = new collisionBlock(0);
     startBlock.position.x = (canvas.width - startBlock.width)/2;
     startBlock.position.y = canvas.height - startBlock.height*1.3;
     startBlock.velocity.y = 10;
@@ -183,52 +236,68 @@ function start(){
     player.position.x = (canvas.width - player.width)/2;
 
     //blocchi di partenza
-    const block1 = new collisionBlock(indexChords, v);
+    const block1 = new collisionBlock(indexChords);
     indexChords++;
     block1.position.x = 100;
-    block1.position.y = 500;
+    block1.position.y = 450;
 
-    const block2 = new collisionBlock(indexChords, v);
+    const block2 = new collisionBlock(indexChords);
     indexChords++;
     block2.position.x = 700;
-    block2.position.y = 300
+    block2.position.y = 250;
 
-    const block3 = new collisionBlock(indexChords, v);
+    const block3 = new collisionBlock(indexChords);
     indexChords++;
     block3.position.x = 100;
-    block3.position.y = 100;
+    block3.position.y = 50;
 
     chordBlockArray.push(block1);
     chordBlockArray.push(block2);
     chordBlockArray.push(block3);
 
+    //console.log("erMIDI", arMIDI);
+    //console.log("ArrayAccordiMidiScelti", ArrayAccordiMidiScelti)
     switch (choosenMode) {
 
         case 'listen':
-            blockInterval = 7000;
+
+            // distance btw 2 consecutive blocks is 262 pixels in the y axis
+            // blockInterval = 7000;
+            blockInterval = 262 * 16 / (v + 0.0001);
+
             arMIDI = ArrayAccordiMidiScelti_listen;
             arChord = ArrayAccordiScelti_listen;
             //devo passare dentro array MIDI del primo accordo
             fund=0
-            setTimeout(() => {listenSound(ArrayAccordiMidiScelti_listen[fund])}, 2000);
+            setTimeout(() => {listenSound(arMIDI[fund])}, 2000);
             break;
 
         case 'read':
-            blockInterval = 5000;
+
+            // distance btw 2 consecutive blocks is 187 pixels in the y axis
+            // blockInterval = 5000;
+            blockInterval = 187 * 16 / (v + 0.0001);
+
             arMIDI = ArrayAccordiMidiScelti;
             arChord = ArrayAccordiScelti;
             break;
     }
 
     
-    document.getElementById("level").innerHTML = "LEVEL: " + lev;
-    document.getElementById("mode").innerHTML = "MODE: " + choosenMode; 
+
+    
+    
+
+     
     if(choosenMode=='read') {
+        document.getElementById("mode").innerHTML = "READ MODE";
         document.getElementById("score").innerHTML = "SCORE: " + score +"/" + ArrayAccordiScelti.length;
     }
     if(choosenMode=='listen'){
+        document.getElementById("mode").innerHTML = "LISTEN MODE";
         document.getElementById("score").innerHTML = "SCORE: " + score +"/" + ArrayAccordiScelti_listen.length;
     } 
+    document.getElementById("level").innerHTML = "LEVEL: " + levInizialeScelto;
     
 }
 function starControl(){
@@ -266,9 +335,11 @@ let moltiplicator;
 let amount = 50;
 let streak;
 let lastCorrect;
+let text_levelUp = 'LEVEL UP';
+let alpha_level = 1.0;
 
 function plusScore(){
-    score += amount * lev * moltiplicator;
+    score += amount * levInizialeScelto * moltiplicator;
 }
 
 function checkStreak(){
@@ -296,4 +367,12 @@ function scorePipeline() {
     plusScore();
     lastCorrect = true;
     alpha = 1.0;
+}
+
+function levelUp() {
+    c.fillStyle = "rgba(255, 255, 0, " + alpha_level + ")";
+    c.font = "40px 'Press Start 2P'";
+    level_up_sound.play();
+    c.fillText(text_levelUp, -c.measureText(text_levelUp).width/2 + canvas.width/2, 200);
+    alpha_level = alpha_level - 0.008;
 }

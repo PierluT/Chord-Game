@@ -1,19 +1,16 @@
 class collisionBlock {
     //poi la dovrò settare random
-    constructor(i,v) {
+    constructor(i) {
         this.width = 200
         this.height = 90
         this.position = {
             x: (generateRandom() * (canvas.width - this.width)),
             y: 0,
         }
-
         this.velocity= {
             x:0,
-            //y:0.6,
             y:v,
         }
-        
         //booleano per collisione
         this.markedToCollision = false;
         if(choosenMode=='read'){
@@ -49,8 +46,10 @@ class collisionBlock {
     update() {
         //se io premo sulla tastiera i blocchi cominciano a scendere
         if(gameStarted == true) {
+            //velocità del knob
+            this.velocity.y = v;
             //comincia a scendere
-            this.position.y += this.velocity.y 
+            this.position.y += this.velocity.y;
               if(this.position.y > canvas.height + this.height ) {
                 //this.markedToDelete = true; 
                 chordBlockArray.shift()

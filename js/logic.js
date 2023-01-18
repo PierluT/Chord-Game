@@ -24,6 +24,7 @@ livello1Scelto.addEventListener('click', function() {
   /*var el = document.getElementById("livello1");
   el.classList.add("col_selected");*/
     lev = 1;
+    levInizialeScelto=lev;
   });
 
   //cliccato a mano,va settato con bottone
@@ -40,6 +41,7 @@ livello1Scelto.addEventListener('click', function() {
 
 livello2Scelto.addEventListener('click', function() {
     lev = 2;
+    levInizialeScelto=lev;
 });
 
 //cliccato a mano,va settato con bottone
@@ -55,6 +57,7 @@ livello2Scelto.onclick = function() {
 
 livello3Scelto.addEventListener('click', function() {
     lev = 3;
+    levInizialeScelto=lev;
 });
 
 //cliccato a mano,va settato con bottone
@@ -117,12 +120,10 @@ bach.addEventListener('click', function() {
 
 readChoosenMode.addEventListener('click', function(){
     choosenMode = 'read';
-    //console.log("ARRAY TEXT SU BLOCCHI: ", ArrayText);
 })
 
 listenChoosenMode.addEventListener('click',function() {
     choosenMode = 'listen';
-    //console.log("ARRAY TEXT SU BLOCCHI: ", ArrayText);
 })
 
 clickedButton.onclick = replace;

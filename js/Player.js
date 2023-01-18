@@ -8,7 +8,7 @@ let frameX = 0;
 let gameFrame = 0;
 // speed of the frames
 let staggerFrame = 7;
-const srcLooserPlayers = ['./img/Mozart/MozartPerso.gif', './img/Beethoven/BeethovenPerso.gif','./img/Bach/BachPerso.gif'];
+const srcLooserPlayers = ['./img/Mozart/MozartPerso_cut.gif', './img/Beethoven/BeethovenPerso_cut.gif','./img/Bach/BachPerso_cut.gif'];
 let looserImage = "";
 let defaultSrc= "";
 var alpha = 1.0;
@@ -182,18 +182,32 @@ class Player {
             // update indiceAr and update the score on the screen
             indiceAr++;
             fund++;
+
+
             if(choosenMode=='listen'){
-                listenSound(ArrayAccordiMidiScelti_listen[fund]);
-                if (indiceAr == ArrayAccordiMidiScelti_listen.length){
+               // listenSound(ArrayAccordiMidiScelti_listen[fund]);
+                if (indiceAr == arMIDI.length){
                     //jdialog vittoria
                     mostraDialog();
                 }
-            } else if( choosenMode=='read' && indiceAr == ArrayAccordiMidiScelti.length){
+            } else if( choosenMode=='read' && indiceAr == arMIDI.length){
                 //jdialog vittoria
                 mostraDialog();
             }
             
-            
+
+            //incremento di livello
+            if(levInizialeScelto == 1 && indiceAr == Math.floor((arChord.length)/3)){
+                levInizialeScelto++;
+            } else if (levInizialeScelto == 2 && indiceAr == 2*Math.floor((arChord.length)/3)){
+                levInizialeScelto++;
+            }
+            document.getElementById("level").innerHTML = "LEVEL: " + levInizialeScelto;
+
+            if(choosenMode=='listen'){
+                listenSound(arMIDI[fund]);
+            }
+
         } 
     }
     
@@ -208,7 +222,7 @@ class Player {
 
     scoreOnHead(){
 
-        let text = '+ ' + amount*lev*moltiplicator;
+        let text = '+ ' + amount*levInizialeScelto*moltiplicator;
        
         c.fillStyle = "rgba(255, 255, 35, " + alpha + ")";
         c.font = "40px 'Press Start 2P'";
