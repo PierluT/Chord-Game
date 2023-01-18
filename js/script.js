@@ -1,7 +1,7 @@
 const canvas = document.getElementById('gameSet');
 const c = canvas.getContext('2d');
 canvas.width = 1000;
-canvas.height = 700;
+canvas.height = 720;
 
 let preventDuplicate = true;
 
