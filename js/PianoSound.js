@@ -378,7 +378,9 @@ const game_started_sound = new Howl({
 
 
 function mostraDialog(){
+    document.getElementById("schermataGioco").style.opacity = 0.3;
     $( "#winner-dialog" ).dialog({
+        title: " CONGRATULATIONS, you're the CHORD MASTER!",
         modal: true,
                 draggable: true, 
                 resizable: false, 
@@ -387,13 +389,14 @@ function mostraDialog(){
                     at: "right top", 
                     of: "#schermataInziale"
                 },
-                height: 750,
-                width: "100%",
+                height: 730,
+                width: 900,
         buttons: {
           OK: function() {
             $(this).dialog("destroy");
                     lost.stop();
                     intro_music.play();
+                    gameStarted = false;
                     choosenAvatar = "";
                     choosenMode= "";
                     composerToAnimate = "";

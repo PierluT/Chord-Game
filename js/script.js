@@ -1,9 +1,7 @@
 const canvas = document.getElementById('gameSet');
 const c = canvas.getContext('2d');
-// percentage of the window width that will be occupied by the canvas
-let width_perc = 0.65;
-canvas.width = width_perc*window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = 1000;
+canvas.height = 700;
 
 let preventDuplicate = true;
 
@@ -15,18 +13,17 @@ let startBlock;
 
 let checkGravity = true;
 
-//const colorGreen = 'rgba(75,192,192,1)';
-//c.font = "italic bolder 50px Arial";
-
 // initialize the background
 init();
 
 // START THE MUSIC
 //intro_music.play();
 
+
 //const scrImages = ['./img/assets/block1_cut.png','./img/assets/block2_cut.png'];
 const scrImages = ['./img/assets/block1.png','./img/assets/block2.png'];
 //const srcLooserPlayers = ['./img/Mozart/MozartPerso.gif', './img/Beethoven/BeethovenPerso.gif'];
+
 //blocchi che verranno disegnati dopo 
 var chordBlockArray;
 
@@ -62,10 +59,8 @@ var lastBlockPositionY;
 function animate (timestamp) {
     c.clearRect(0,0,canvas.width,canvas.height)
     deltaTime = timestamp - lastBlockTime;
-    lastBlockTime = timestamp;
-    timeToNextBlock += deltaTime; 
+    lastBlockTime = timestamp; 
     starControl();
-    //scoreOnHead()
 
     //backGroundloop();
     player.update();
@@ -84,20 +79,19 @@ function animate (timestamp) {
     }*/
 
     if (gameStarted == true) {
-        //console.log("indiceAr", indiceAr)
-        //console.log("array", arChord)
-        if (indexChords < arChord.length) {
+
+        timeToNextBlock += deltaTime;
+        //if (indexChords < arChord.length) {
             if(timeToNextBlock > blockInterval) {
                 chordBlockArray.push(new collisionBlock(indexChords));
                 indexChords++;
                 timeToNextBlock = 0;     
             }
-            //console.log("indexChord", indexChords)
-        } else if (indiceAr == arChord.length){
+       /* } else if (indiceAr == arChord.length){
             if (lev==3){
                 console.log("VITTORIA")
             }
-        }
+        }*/
 
 
         if (player.position.y + player.height >= canvas.height && gameOver == false) {
@@ -106,9 +100,10 @@ function animate (timestamp) {
                 lost.play();
                 ConteggioVite = 0;
                 controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);}, 1000);
-        }
-    
+        }        
+        
         [...chordBlockArray].forEach(block => block.update());
+        startBlock.velocity.y = 10;
     }
 
     [...chordBlockArray].forEach(block => block.draw());
@@ -244,17 +239,17 @@ function start(){
     const block1 = new collisionBlock(indexChords);
     indexChords++;
     block1.position.x = 100;
-    block1.position.y = 500;
+    block1.position.y = 450;
 
     const block2 = new collisionBlock(indexChords);
     indexChords++;
     block2.position.x = 700;
-    block2.position.y = 300
+    block2.position.y = 250;
 
     const block3 = new collisionBlock(indexChords);
     indexChords++;
     block3.position.x = 100;
-    block3.position.y = 100;
+    block3.position.y = 50;
 
     chordBlockArray.push(block1);
     chordBlockArray.push(block2);
@@ -265,7 +260,11 @@ function start(){
     switch (choosenMode) {
 
         case 'listen':
-            blockInterval = 7000/(1+v);
+
+            // distance btw 2 consecutive blocks is 262 pixels in the y axis
+            // blockInterval = 7000;
+            blockInterval = 262 * 16 / (v + 0.0001);
+
             arMIDI = ArrayAccordiMidiScelti_listen;
             arChord = ArrayAccordiScelti_listen;
             //devo passare dentro array MIDI del primo accordo
@@ -274,7 +273,11 @@ function start(){
             break;
 
         case 'read':
-            blockInterval = 5000/(1+v);
+
+            // distance btw 2 consecutive blocks is 187 pixels in the y axis
+            // blockInterval = 5000;
+            blockInterval = 187 * 16 / (v + 0.0001);
+
             arMIDI = ArrayAccordiMidiScelti;
             arChord = ArrayAccordiScelti;
             break;
@@ -332,6 +335,8 @@ let moltiplicator;
 let amount = 50;
 let streak;
 let lastCorrect;
+let text_levelUp = 'LEVEL UP';
+let alpha_level = 1.0;
 
 function plusScore(){
     score += amount * levInizialeScelto * moltiplicator;
@@ -348,7 +353,7 @@ function checkStreak(){
 
 function checkMoltiplicator(){
     // MAX moltiplicator is 5
-    if(streak % 5 == 0 && streak > 0 && moltiplicator <= 5) { 
+    if(streak % 5 == 0 && streak > 0 && moltiplicator < 5) { 
         moltiplicator++;
     }
     else if(streak == 0 && moltiplicator <= 5){
@@ -362,4 +367,12 @@ function scorePipeline() {
     plusScore();
     lastCorrect = true;
     alpha = 1.0;
+}
+
+function levelUp() {
+    c.fillStyle = "rgba(255, 255, 0, " + alpha_level + ")";
+    c.font = "40px 'Press Start 2P'";
+    level_up_sound.play();
+    c.fillText(text_levelUp, -c.measureText(text_levelUp).width/2 + canvas.width/2, 200);
+    alpha_level = alpha_level - 0.008;
 }

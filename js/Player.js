@@ -8,7 +8,7 @@ let frameX = 0;
 let gameFrame = 0;
 // speed of the frames
 let staggerFrame = 7;
-const srcLooserPlayers = ['./img/Mozart/MozartPerso.gif', './img/Beethoven/BeethovenPerso.gif','./img/Bach/BachPerso.gif'];
+const srcLooserPlayers = ['./img/Mozart/MozartPerso_cut.gif', './img/Beethoven/BeethovenPerso_cut.gif','./img/Bach/BachPerso_cut.gif'];
 let looserImage = "";
 let defaultSrc= "";
 var alpha = 1.0;
