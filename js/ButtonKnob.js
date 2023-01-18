@@ -10,6 +10,7 @@ var ArrayAccordiMidiScelti = [];
 var ArrayAccordiScelti_listen = [];
 var ArrayAccordiMidiScelti_listen = [];
 
+
 //LEVEL BUTTONS
 function setLevel(input){
     var porta1 = input.data[0];
@@ -19,17 +20,25 @@ function setLevel(input){
     if (porta1 == 144){
         switch (porta2) {
             case 64: //su
-            if(lev<3){
+            if(posizioneLiv < 3){
+                /*
                 levInizialeScelto=lev;
                 lev++;
-                console.log("Level: ", lev)
+                */
+                posizioneLiv++;
+                console.log("posizione livello: ", posizioneLiv)
+                changeLevel();
             }
             break;
             case 65: //giu
-            if(lev>1){
+            if(posizioneLiv > 1){
+                /*
                 levInizialeScelto=lev;
                 lev--;
-                console.log("Level: ", lev)
+                */
+                posizioneLiv--;
+                console.log("Level: ", posizioneLiv)
+                changeLevel();
             }
             break;
         } 

@@ -9,6 +9,7 @@ var mozart = document.querySelector('#mozart');
 var beethoven = document.querySelector('#beethoven');
 var bach = document.querySelector('#bach');
 
+var posizioneLiv = 0;
 var livello1Scelto = document.querySelector('#livello1');
 var livello2Scelto = document.querySelector('#livello2');
 var livello3Scelto = document.querySelector('#livello3');
@@ -28,7 +29,7 @@ var originalStyleListenMode = window.getComputedStyle(document.getElementById("l
 var originalStyleBach = window.getComputedStyle(document.getElementById("bach"), null);
 var originalStyleMozart = window.getComputedStyle(document.getElementById("mozart"), null);
 var originalStyleBeethoven = window.getComputedStyle(document.getElementById("beethoven"), null);
-
+/*
 //cliccato a mano,va settato con bottone
 livello1Scelto.onclick = function() {
     lev = 1;
@@ -66,6 +67,46 @@ livello3Scelto.onclick = function() {
     this.style.fontSize = (currentSize * 1.08) + 'px';
     document.getElementById("livello2").style.cssText = originalStyleLivello2.cssText;
     document.getElementById("livello1").style.cssText = originalStyleLivello1.cssText;
+}
+*/
+function changeLevel(){
+    switch (posizioneLiv){
+        case 1:
+            lev = 1;
+            levInizialeScelto=lev;
+            console.log("LIVELLO SCELTO", levInizialeScelto);
+            livello1Scelto.style.color = "white";
+            var currentSize = window.getComputedStyle(livello1Scelto, null).getPropertyValue('font-size');
+            var currentSize = parseFloat(currentSize);
+            livello1Scelto.style.fontSize = (currentSize * 1.08) + 'px';
+            document.getElementById("livello2").style.cssText = originalStyleLivello2.cssText;
+            document.getElementById("livello3").style.cssText = originalStyleLivello3.cssText;
+            break;
+
+        case 2:
+            lev = 2;
+            levInizialeScelto=lev;
+            console.log("LIVELLO SCELTO", levInizialeScelto);
+            livello2Scelto.style.color = "white";
+            var currentSize = window.getComputedStyle(livello2Scelto, null).getPropertyValue('font-size');
+            var currentSize = parseFloat(currentSize);
+            livello2Scelto.style.fontSize = (currentSize * 1.08) + 'px';
+            document.getElementById("livello1").style.cssText = originalStyleLivello1.cssText;
+            document.getElementById("livello3").style.cssText = originalStyleLivello3.cssText;
+            break;
+
+        case 3:
+            lev = 3;
+            levInizialeScelto=lev;
+            console.log("LIVELLO SCELTO", levInizialeScelto);
+            livello3Scelto.style.color = "white";
+            var currentSize = window.getComputedStyle(livello3Scelto, null).getPropertyValue('font-size');
+            var currentSize = parseFloat(currentSize);
+            livello3Scelto.style.fontSize = (currentSize * 1.08) + 'px';
+            document.getElementById("livello2").style.cssText = originalStyleLivello2.cssText;
+            document.getElementById("livello1").style.cssText = originalStyleLivello1.cssText;
+            break;
+    }
 }
 
 // Aggiungi l'animation-name 'myAnimation' all'elemento
