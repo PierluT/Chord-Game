@@ -94,11 +94,11 @@ function animate (timestamp) {
 
 
         if (player.position.y + player.height >= canvas.height && gameOver == false) {
-            /*gameOver = true;
+            gameOver = true;
             setTimeout(() => {
                 lost.play();
                 ConteggioVite = 0;
-                controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);}, 1000);*/
+                controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);}, 1000);
         }        
         [...chordBlockArray].forEach(block => block.update());
     }
@@ -187,8 +187,6 @@ function start(){
     arChord=[];
     arMIDI=[];
     
-    console.log("LIVELLO ERMIDI", lev);
-    
     if(lev==1){
         //console.log(ArrayAccordiScelti)
         //console.log(ArrayAccordiMIDIScelti)
@@ -218,8 +216,10 @@ function start(){
         ArrayAccordiMidiScelti_listen = ArrayTot3[3];
     }
 
-    //console.log("ARRAY TOT", ArrayAccordiScelti)
-    //console.log("ARRAY TOT MIDI", ArrayAccordiMidiScelti)
+    console.log("ARRAY ACCORDI: ", ArrayAccordiScelti)
+    console.log("ARRAY ACCORDI MIDI", ArrayAccordiMidiScelti)
+    console.log("ARRAY ACCORDI LISTEN: ", ArrayAccordiScelti_listen)
+    console.log("ARRAY ACCORDI MIDI LISTEN", ArrayAccordiMidiScelti_listen)
     
     // start block
     startBlock = new collisionBlock(0);

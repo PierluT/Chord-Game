@@ -295,6 +295,7 @@ function handleInput(input) {
 
         // errori
         if(preventDuplicate){
+            console.log("errore", errori);
             if(controllo == true){
                 ConteggioVite--;
                 controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr);
@@ -305,7 +306,7 @@ function handleInput(input) {
                 preventDuplicate = false;
                 //indiceAr++; //messo in function automaticJump in Player.js (così prima di atterrare non conta errore se si ripetono note)
             }
-            console.log(preventDuplicate)
+            //console.log(preventDuplicate)
         }         
         break;
 
