@@ -12,17 +12,19 @@ var livello2Scelto = document.querySelector('#livello2');
 var livello3Scelto = document.querySelector('#livello3');
 
 //variabili css originale elementi HTML
+//livelli style
 var originalStyleLivello1 = window.getComputedStyle(document.getElementById("livello1"), null);
 var originalStyleLivello2 = window.getComputedStyle(document.getElementById("livello2"), null);
 var originalStyleLivello3 = window.getComputedStyle(document.getElementById("livello3"), null);
-
-//variabili css originale elementi CSS
+//mode style
 var originalStyleReadMode = window.getComputedStyle(document.getElementById("readMode"), null);
 var originalStyleListenMode = window.getComputedStyle(document.getElementById("listenMode"), null);
+//avatar style
+var originalStyleBach = window.getComputedStyle(document.getElementById("bach"), null);
+var originalStyleMozart = window.getComputedStyle(document.getElementById("mozart"), null);
+var originalStyleBeethoven = window.getComputedStyle(document.getElementById("beethoven"), null);
 
 livello1Scelto.addEventListener('click', function() {
-  /*var el = document.getElementById("livello1");
-  el.classList.add("col_selected");*/
     lev = 1;
     levInizialeScelto=lev;
   });
@@ -98,6 +100,25 @@ listenChoosenMode.onclick = function() {
     document.getElementById("readMode").style.cssText = originalStyleReadMode.cssText;
 }
 
+mozart.onclick = function(){
+    $(mozart).css('border','2px solid green');
+    document.getElementById("bach").style.cssText = originalStyleBach.cssText;
+    document.getElementById("beethoven").style.cssText = originalStyleBeethoven.cssText;
+}
+
+bach.onclick = function(){
+    $(bach).css('border','2px solid green');
+    document.getElementById("mozart").style.cssText = originalStyleMozart.cssText;
+    document.getElementById("beethoven").style.cssText = originalStyleBeethoven.cssText;
+    
+}
+
+beethoven.onclick = function(){
+    $(beethoven).css('border','2px solid green');
+    document.getElementById("bach").style.cssText = originalStyleBach.cssText;
+    document.getElementById("mozart").style.cssText = originalStyleMozart.cssText;
+}
+
 mozart.addEventListener('click', function() {
   composerAnimation.style.animationName = 'mozart';
   choosenAvatar = 'mozart';
@@ -129,28 +150,33 @@ listenChoosenMode.addEventListener('click',function() {
 clickedButton.onclick = replace;
 
 function replace () {
-    if(choosenMode == "" || choosenAvatar == "" || lev==0) {
+    if(choosenMode == "" || choosenAvatar == "" || levInizialeScelto == 0) {
         alert("Choose a character, modality and level.")
         choosenMode = "";
         choosenAvatar= "";
         composerToAnimate= "";
-        //srcPlayer = "";
+        ripristinoGraficaIniziale();
     }else{
         //display schermata di gioco
         document.getElementById("schermataIniziale").style.display= "none";
         document.getElementById("schermataGioco").style.display = "inline";
-
-        //ripristino grafica iniziale
-        document.getElementById("livello1").style.cssText = originalStyleLivello1.cssText;
-        document.getElementById("livello2").style.cssText = originalStyleLivello2.cssText;
-        document.getElementById("livello3").style.cssText = originalStyleLivello3.cssText;
-        document.getElementById("readMode").style.cssText = originalStyleReadMode.cssText;
-        document.getElementById("listenMode").style.cssText = originalStyleListenMode.cssText;
+        ripristinoGraficaIniziale();
         intro_music.stop();
         start();
         animate(0);
 
     } 
+}
+
+function ripristinoGraficaIniziale(){
+        document.getElementById("mozart").style.cssText = originalStyleMozart.cssText;
+        document.getElementById("beethoven").style.cssText = originalStyleBeethoven.cssText;
+        document.getElementById("bach").style.cssText = originalStyleBach.cssText;
+        document.getElementById("livello1").style.cssText = originalStyleLivello1.cssText;
+        document.getElementById("livello2").style.cssText = originalStyleLivello2.cssText;
+        document.getElementById("livello3").style.cssText = originalStyleLivello3.cssText;
+        document.getElementById("readMode").style.cssText = originalStyleReadMode.cssText;
+        document.getElementById("listenMode").style.cssText = originalStyleListenMode.cssText;
 }
 
 
