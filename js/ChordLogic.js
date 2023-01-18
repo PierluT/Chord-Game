@@ -135,7 +135,7 @@ function createSequenceListen(Livello_scelto){
     var ArrayTempChord = [];
     var ArrayTempMIDI = [];
 
-    for (let i=0; i<4; i++){
+    for (let i=0; i<80; i++){
         if (i<33) { //note naturali
             var indexNoteW = Math.floor(Math.random() * WhiteNotes.length);
             var randomNoteW = WhiteNotes[indexNoteW];
