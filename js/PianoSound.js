@@ -37,8 +37,6 @@ const soundChord = {
     }
 }
 
-
-
 //check to MIDI
 if(navigator.requestMIDIAccess){
     navigator.requestMIDIAccess().then(success, failure);
@@ -60,16 +58,12 @@ function success(midiAccess) {
 
 }
 
-
 function updateDevices(event) {
     console.log('Name:', event.port.name, 'Brand:', event.port.manufacturer, 'State:', event.port.state, 'Type:', event.port.type);
 }
 function failure() {
     console.log('Could not connect MIDI');
 }
-
-
-
 
 //CONTEGGIO VITE e MORTE
 var ConteggioVite = 3;
@@ -146,12 +140,12 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                 draggable: true, 
                 resizable: false, 
                 position: {
-                    my: "center", 
-                    at: "center", 
-                    of: window
+                    my: "left top", 
+                    at: "right top", 
+                    of: "#schermataInziale"
                 },
-                height: 600,
-                width: 500,
+                height: 700,
+                width: 660,
                 buttons: {
                 Restart: function() {
                     lev=levInizialeScelto;
@@ -169,7 +163,6 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                     start();
                     document.getElementById("schermataGioco").style.opacity = 1;
                     $(this).dialog("destroy");
-                    //$( this ).dialog( "close" );
                     },
                 Reset : function(){
                     $(this).dialog("destroy");
@@ -191,7 +184,6 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
                     document.getElementById("schermataIniziale").style.display = "inline";
                     document.getElementById("schermataGioco").style.display = "none";
                     document.getElementById("schermataGioco").style.opacity = 1;
-
                 },
                 }
             });
@@ -312,8 +304,6 @@ function handleInput(input) {
     }
   
 }
-
-
 
 var fund = 0;
 
