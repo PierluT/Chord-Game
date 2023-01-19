@@ -90,7 +90,7 @@ the chord is played, you will lose one life. Lose all lives, the game ends and y
 If the avatar reaches the ground before you have played the next chord, you will directly lose all three lives or those remaining.  
 If you lose (Game Over), in any case, a message appears with the list of the 3 errors you did and the right solutions. You can restart the game clicking on the Restart Button. To change the avatar, the modality and/or the level you have to return to Homepage clicking on the Reset button.
 
-<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/GameOver.png?token=GHSAT0AAAAAAB43V2LULN47O77W2IQ7LGMKY6I667Q" width="250"/>
+<img src="https://user-images.githubusercontent.com/93535281/213394443-b29c67d1-bcfd-43c5-a254-222ae160b841.png" width="250"/>
 
 ## 7. Winner
 
