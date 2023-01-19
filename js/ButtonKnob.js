@@ -59,22 +59,17 @@ function setReset(input){
     var porta2 = input.data[1];
     var porta3 = input.data[2];
     if (porta1 == 144){
+        
         switch (porta2) {
-            case 81: //restart
-            //DA VEDERE
-                //replace();
-            break;
-            case 98: //reset
-            //DA VEDERE
-                /*lost.stop();
-                intro_music.play();
-                choosenAvatar = "";
-                choosenMode= "";
-                composerToAnimate = "";
-                azzeraValori();
-                document.getElementById("schermataIniziale").style.display = "inline";
-                document.getElementById("schermataGioco").style.display = "none";
-                document.getElementById("schermataGioco").style.opacity = 1;*/
+            case 81: 
+            //bottone reset
+            /*
+            console.log("bottone 81 sono qui");
+            azzeraValori();
+            document.getElementById("schermataIniziale").style.display= "none";
+            document.getElementById("schermataGioco").style.display = "inline";
+            ripristinoGraficaIniziale();
+            */
             break;
         } 
     }

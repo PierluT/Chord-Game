@@ -1,5 +1,4 @@
 class collisionBlock {
-    //poi la dovrò settare random
     constructor(i) {
         this.width = 200
         this.height = 90
@@ -29,9 +28,8 @@ class collisionBlock {
         }
     }
 
-    draw(){
+    draw() {
         c.beginPath()
-        //serve?
         //c.strokeRect(this.position.x,this.position.y,this.width,this.height)
         c.drawImage(this.image,this.position.x,this.position.y,this.width,this.height)
         //inserico la sigla sopra al blocco
@@ -58,13 +56,12 @@ class collisionBlock {
             //comincia a scendere
             this.position.y += this.velocity.y;
               if(this.position.y > canvas.height + this.height ) {
-                //this.markedToDelete = true; 
                 chordBlockArray.shift()
             }  
         }
     }
 
-    disappearChord(){
+    disappearChord() {
         this.chord = "";
         this.chordFund = "";
     }

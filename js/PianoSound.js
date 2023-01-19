@@ -148,7 +148,7 @@ function controlloPerdita(lastNoteReceived, arChord, arMIDI, indiceAr) {
             document.getElementById("terzoErrore").innerHTML = ArrayAccordiErrori[2] + " -> " + ArrayMIDIErrori[2] + "(<s>" + errori[2] + "</s>)";
         }
 
-        
+        //finestra game over
         $( function() {
             $( "#dialog" ).dialog({
                 modal: true,
@@ -206,21 +206,18 @@ function controlloGiusto(){
         case xDistance > 0:
             playerNamePlusState = "";
             playerState = "-salto-dx";
-            playerNamePlusState = choosenAvatar + playerState;
-            //player.updateIndexes(playerNamePlusState);                    
+            playerNamePlusState = choosenAvatar + playerState;                  
             break;
 
         case xDistance < 0:
             playerNamePlusState = "";
             playerState = "-salto-sx";
             playerNamePlusState = choosenAvatar + playerState;
-            //player.updateIndexes(playerNamePlusState);
             break;
     }
         
     vox_MODIFIER = V0X_MAX*(xDistance/canvas.width);
     voy_MODIEFIER = V0Y_MAX*(0.5 + 0.5*((yDistance + 100)/canvas.height));
-    //console.log(yDistance/canvas.height)
 
     rispostaGiusta = true;
     //attivo questo commento se do 3 possibilità per accordo e non 3 totali
@@ -277,7 +274,6 @@ function handleInput(input) {
                 }
                 if (!found) {
                     arrayComparaMIDI.push(lastNoteReceived);
-                    //console.log(arrayComparaMIDI);
                 }
 
                 controllo = false;
