@@ -21,6 +21,8 @@ a computer. You can use different features of the keyboard:
 - **Shift Left** and **Shift Right** to choose the Game Mode (Read or Listen)
 - **Knob** on top-right to control the velocity of the Game page
 
+<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/MIDIkeyboard.png?token=GHSAT0AAAAAAB43V2LVVVR3YFKQ2B4HDJWWY6I6XYQ" width="500"/>
+
 To choose Avatar, Game Mode and Game Level you can use also the mouse click (or touch-
 board click) of your computer. Remember to turn on the speakers of your computer!
 
@@ -29,6 +31,8 @@ board click) of your computer. Remember to turn on the speakers of your computer
 In the Homepage you have to choose your favourite musician Avatar (**Beethoven**, **Mozart** or **Bach**).  
 Then, you can train with two different modalities. If you want to become better at recognizing sight-reading chord music you select the **READ mode**. Instead, in you want to improve your perfect pitch, you select the **LISTEN mode**.  
 Finally, according to your skills, you has to select the difficulty level (from 1 to 3).
+
+<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/Homepage.png?token=GHSAT0AAAAAAB43V2LUHIAR6XQW2FAENKA2Y6I67QQ" width="1000"/>
 
 ## 4. Gamepage
 
@@ -69,6 +73,10 @@ In the second level there are also major and minor chords , as well as diminishe
 augmented chords (with equal proportion 25%). While in the third level, only seventh
 chords will need to be recognized among all seven kind of sevenths.
 
+<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/1.png?token=GHSAT0AAAAAAB43V2LUX5MRG4KGNEWNREZ4Y6I62MQ" width="1000"/>
+<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/2.png?token=GHSAT0AAAAAAB43V2LV77NQLC3XLJYJHRPCY6I66DQ" width="1000"/>
+<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/3.png?token=GHSAT0AAAAAAB43V2LVE3QDRRUZS7DEVWRCY6I66RQ" width="1000"/>
+
 ## 5. Statistics
 
 In the sidebar of the Gamepage you can view statistics: modality, level, lives left, score and a multiplicator.  
@@ -82,9 +90,13 @@ the chord is played, you will lose one life. Lose all lives, the game ends and y
 If the avatar reaches the ground before you have played the next chord, you will directly lose all three lives or those remaining.  
 If you lose (Game Over), in any case, a message appears with the list of the 3 errors you did and the right solutions. You can restart the game clicking on the Restart Button. To change the avatar, the modality and/or the level you have to return to Homepage clicking on the Reset button.
 
+<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/GameOver.png?token=GHSAT0AAAAAAB43V2LULN47O77W2IQ7LGMKY6I667Q" width="250"/>
+
 ## 7. Winner
 
 If you will complete all the jumps of the current level, you automatically switch to the next level. This is a checkpoint because, if you loose, you can restart from the current level in which you arrive. And if you complete all 3 levels you win and you become the "Chord Master".
+
+<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/Win.png?token=GHSAT0AAAAAAB43V2LVGRVOT2K7AW3AL7TEY6I7AGA" width="250"/>
 
 ## 8. Chord Notation & Music Theory
 
@@ -133,6 +145,8 @@ e.g. *Cm9 ⇒ C−Eb−G−Bb−D*
 
 In music there is a duality between chords and scales. For each major key (we used
 for the chords’ succession in our game logic) we can recognize different types of chords on each degree of the scale. The following table presents which chords can be created on each degree of theCmajor scale (or key):
+
+<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/MIDIkeyboard.png?token=GHSAT0AAAAAAB43V2LVVVR3YFKQ2B4HDJWWY6I6XYQ" width="500"/>
 
 ```
 C key Triad Seventh Ninth
