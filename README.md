@@ -80,7 +80,7 @@ chords will need to be recognized among all seven kind of sevenths.
 ## 5. Statistics
 
 In the sidebar of the Gamepage you can view statistics: modality, level, lives left, score and a multiplicator.  
-Each jump you can do, you get some points and you increment your score. In the first level you get +50 point for each jump, in the second +100 and in the third +150. Additionally you can get a bonus in you can do 5 jumps without errors.  
+Each jump you can do, you get some points and you increment your score. In the first level you get +50 point for each jump, in the second +100 and in the third +150. Additionally you can get a bonus with a moltiplicator that increments untill 5, whenever the player plays 5 chords without errors.  
 You can automatically pass the level to the next one, if you complete all the sequence of chords. This is a checkpoint: in fact if you loose you can restart from the beginning of that level.
 
 ## 6. Errors and Game Over
