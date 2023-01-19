@@ -74,8 +74,8 @@ augmented chords (with equal proportion 25%). While in the third level, only sev
 chords will need to be recognized among all seven kind of sevenths.
 
 <img src="https://user-images.githubusercontent.com/93535281/213393894-77e36c98-4714-422b-ace0-066ce4b772d3.png" width="1000"/>
-<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/2.png?token=GHSAT0AAAAAAB43V2LV77NQLC3XLJYJHRPCY6I66DQ" width="1000"/>
-<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/3.png?token=GHSAT0AAAAAAB43V2LVE3QDRRUZS7DEVWRCY6I66RQ" width="1000"/>
+<img src="https://user-images.githubusercontent.com/93535281/213394200-ce60ac6e-25de-48d2-8f49-19d2edf7d697.png" width="1000"/>
+<img src="https://user-images.githubusercontent.com/93535281/213394638-a05229b0-a5a7-41bf-92ca-2d994b1f555f.png" width="1000"/>
 
 ## 5. Statistics
 
@@ -146,7 +146,7 @@ e.g. *Cm9 ⇒ C−Eb−G−Bb−D*
 In music there is a duality between chords and scales. For each major key (we used
 for the chords’ succession in our game logic) we can recognize different types of chords on each degree of the scale. The following table presents which chords can be created on each degree of theCmajor scale (or key):
 
-<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/Chord-scale%20table.png?token=GHSAT0AAAAAAB43V2LUFWRJKMWWJYJJYUEMY6I7J4A" width="750"/>
+<img src="https://user-images.githubusercontent.com/93535281/213394752-4a7189fb-fd9f-45e5-9a3d-c5a4929dbc8e.png" width="750"/>
 
 **SECONDARY DOMINANTS & SUBSTITUTE DOMINANT**
 
