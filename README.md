@@ -96,7 +96,7 @@ If you lose (Game Over), in any case, a message appears with the list of the 3 e
 
 If you will complete all the jumps of the current level, you automatically switch to the next level. This is a checkpoint because, if you loose, you can restart from the current level in which you arrive. And if you complete all 3 levels you win and you become the "Chord Master".
 
-<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/Win.png?token=GHSAT0AAAAAAB43V2LVGRVOT2K7AW3AL7TEY6I7AGA" width="250"/>
+<img src="https://user-images.githubusercontent.com/93535281/213416038-baf42835-2f01-4f23-90ba-c130fb4f8f36.png" width="250"/>
 
 ## 8. Chord Notation & Music Theory
 
