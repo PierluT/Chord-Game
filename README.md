@@ -164,7 +164,7 @@ For example for each grade of the *C major key* we have:
 
 E.g. *D7* and *Ab7* are respectively the secondary and the substitute dominants of *G* (*V* grade of *C*).
 
-##9. Tools & Coding
+## 9. Tools & Coding
 
 To develop the project we used mainly **Javascript**, **HTML** and **CSS**; we implemented also **jQuery** to customize the "Winner" and "Game Over" dialogs.
 
