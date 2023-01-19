@@ -32,7 +32,7 @@ In the Homepage you have to choose your favourite musician Avatar (**Beethoven**
 Then, you can train with two different modalities. If you want to become better at recognizing sight-reading chord music you select the **READ mode**. Instead, in you want to improve your perfect pitch, you select the **LISTEN mode**.  
 Finally, according to your skills, you has to select the difficulty level (from 1 to 3).
 
-<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/Homepage.png?token=GHSAT0AAAAAAB43V2LUHIAR6XQW2FAENKA2Y6I67QQ" width="1000"/>
+<img src="https://user-images.githubusercontent.com/93535281/213393608-ca3ebe7f-d50a-463f-bf2d-5506e210ebc5.png" width="1000"/>
 
 ## 4. Gamepage
 
