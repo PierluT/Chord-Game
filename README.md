@@ -73,7 +73,7 @@ In the second level there are also major and minor chords , as well as diminishe
 augmented chords (with equal proportion 25%). While in the third level, only seventh
 chords will need to be recognized among all seven kind of sevenths.
 
-<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/1.png?token=GHSAT0AAAAAAB43V2LUX5MRG4KGNEWNREZ4Y6I62MQ" width="1000"/>
+<img src="https://user-images.githubusercontent.com/93535281/213393894-77e36c98-4714-422b-ace0-066ce4b772d3.png" width="1000"/>
 <img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/2.png?token=GHSAT0AAAAAAB43V2LV77NQLC3XLJYJHRPCY6I66DQ" width="1000"/>
 <img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/3.png?token=GHSAT0AAAAAAB43V2LVE3QDRRUZS7DEVWRCY6I66RQ" width="1000"/>
 
