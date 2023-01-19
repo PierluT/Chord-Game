@@ -21,7 +21,7 @@ a computer. You can use different features of the keyboard:
 - **Shift Left** and **Shift Right** to choose the Game Mode (Read or Listen)
 - **Knob** on top-right to control the velocity of the Game page
 
-<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/MIDIkeyboard.png?token=GHSAT0AAAAAAB43V2LVVVR3YFKQ2B4HDJWWY6I6XYQ" width="500"/>
+<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/MIDIkeyboard.png?token=GHSAT0AAAAAAB43V2LUWGVQY3A2BOKI5JZEY6I7GQQ" width="500"/>
 
 To choose Avatar, Game Mode and Game Level you can use also the mouse click (or touch-
 board click) of your computer. Remember to turn on the speakers of your computer!
