@@ -21,7 +21,7 @@ a computer. You can use different features of the keyboard:
 - **Shift Left** and **Shift Right** to choose the Game Mode (Read or Listen)
 - **Knob** on top-right to control the velocity of the Game page
 
-<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/MIDIkeyboard.png?token=GHSAT0AAAAAAB43V2LVVVR3YFKQ2B4HDJWWY6I6XYQ" width="500"/>
+<img src="https://user-images.githubusercontent.com/93535281/213390662-5c726349-5ba6-45f8-9132-628b0cb8372d.png" width="500"/>
 
 To choose Avatar, Game Mode and Game Level you can use also the mouse click (or touch-
 board click) of your computer. Remember to turn on the speakers of your computer!
@@ -146,32 +146,8 @@ e.g. *Cm9 ⇒ C−Eb−G−Bb−D*
 In music there is a duality between chords and scales. For each major key (we used
 for the chords’ succession in our game logic) we can recognize different types of chords on each degree of the scale. The following table presents which chords can be created on each degree of theCmajor scale (or key):
 
-<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/MIDIkeyboard.png?token=GHSAT0AAAAAAB43V2LVVVR3YFKQ2B4HDJWWY6I6XYQ" width="500"/>
+<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/Chord-scale%20table.png?token=GHSAT0AAAAAAB43V2LUFWRJKMWWJYJJYUEMY6I7J4A" width="750"/>
 
-```
-C key Triad Seventh Ninth
-```
-```
-I (C) major (C) major (Cmaj7) major (Cmaj9)
-```
-```
-II (D) minor (Dm) minor (Dm7) minor (Dm9)
-III (E) minor (Em) minor (Em7) - - - - - -
-```
-```
-IV (F) major (F) major (F maj7) major (F maj9)
-```
-```
-dominant (G9)
-```
-```
-V (G) major (G) dominant (G7) dominant minor (G 7 b9)
-dominant major (G7#9)
-```
-```
-V I (A) minor (Am) minor (Am7) minor (Am9)
-V II (B) diminished (Bdim) half-diminished (Bm 7 b5) - - - - - -
-```
 **SECONDARY DOMINANTS & SUBSTITUTE DOMINANT**
 
 The Dominant chords in music are used to extend and embellish the harmony in a chord
@@ -188,7 +164,7 @@ For example for each grade of the *C major key* we have:
 
 E.g. *D7* and *Ab7* are respectively the secondary and the substitute dominants of *G* (*V* grade of *C*).
 
-##9. Tools & Coding
+## 9. Tools & Coding
 
 To develop the project we used mainly **Javascript**, **HTML** and **CSS**; we implemented also **jQuery** to customize the "Winner" and "Game Over" dialogs.
 
