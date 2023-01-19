@@ -146,32 +146,8 @@ e.g. *Cm9 ⇒ C−Eb−G−Bb−D*
 In music there is a duality between chords and scales. For each major key (we used
 for the chords’ succession in our game logic) we can recognize different types of chords on each degree of the scale. The following table presents which chords can be created on each degree of theCmajor scale (or key):
 
-<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/MIDIkeyboard.png?token=GHSAT0AAAAAAB43V2LVVVR3YFKQ2B4HDJWWY6I6XYQ" width="500"/>
+<img src="https://raw.githubusercontent.com/PierluT/Chord-Game/main/images/Chord-scale%20table.png?token=GHSAT0AAAAAAB43V2LUFWRJKMWWJYJJYUEMY6I7J4A" width="750"/>
 
-```
-C key Triad Seventh Ninth
-```
-```
-I (C) major (C) major (Cmaj7) major (Cmaj9)
-```
-```
-II (D) minor (Dm) minor (Dm7) minor (Dm9)
-III (E) minor (Em) minor (Em7) - - - - - -
-```
-```
-IV (F) major (F) major (F maj7) major (F maj9)
-```
-```
-dominant (G9)
-```
-```
-V (G) major (G) dominant (G7) dominant minor (G 7 b9)
-dominant major (G7#9)
-```
-```
-V I (A) minor (Am) minor (Am7) minor (Am9)
-V II (B) diminished (Bdim) half-diminished (Bm 7 b5) - - - - - -
-```
 **SECONDARY DOMINANTS & SUBSTITUTE DOMINANT**
 
 The Dominant chords in music are used to extend and embellish the harmony in a chord
