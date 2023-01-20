@@ -3,14 +3,14 @@
 *Authors*: Riccardo Kubler, Riccardo Martinelli, Pierluigi
 Tartabini
 
-### 0. Initial note
+### 0. Initial notes
 
-Without a MIDI keyboard, it is possible to simulate "right chord" or "wrong chord" with the letters 'l' and 'g' of the computer keyboard, respectively.
+- Without a MIDI keyboard, it is possible to simulate "right chord" or "wrong chord" with the letters 'l' and 'g' of the computer keyboard, respectively.  
+- In Demo version, only 8 chords per level are set. It is possible to increment them as you want. 
 
 ## 1. Introduction
 
-Chord Game is a Vertical Platform & Music Game. It is created to train chord recogni-
-tion skills through a MIDI piano keyboard. The game is suitable for all music lovers and all ages (from 0 to 99+).  
+Chord Game is a Vertical Platform & Music Game. It is created to train chord recognition skills through a MIDI piano keyboard. The game is suitable for all music lovers and all ages (from 0 to 99+).  
 If you are a beginner you can learn and practice to recognize chords and play them on the keyboard from the simplest to the most complex ones. The degree of difficulty gradually increases as you go through the levels and increase the speed of play.  
 If, on the other hand, you are a professional pianist musician, you can start with the more difficult levels and modalities.
 
