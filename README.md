@@ -3,6 +3,10 @@
 *Authors*: Riccardo Kubler, Riccardo Martinelli, Pierluigi
 Tartabini
 
+### 0. To test Game without MIDI Keyboard
+
+Without a MIDI keyboard, it is possible to simulate "right chord" or "wrong chord" with the letters 'l' and 'g' of the computer keyboard, respectively.
+
 ## 1. Introduction
 
 Chord Game is a Vertical Platform & Music Game. It is created to train chord recogni-
