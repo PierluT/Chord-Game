@@ -349,6 +349,7 @@ const error = new Howl({
 const lost = new Howl({
     src: ['dist/mp3/game_over.mp3'],
 });
+lost.volume(0.7);
 
 // INTRO MUSIC
 const intro_music = new Howl({
@@ -371,7 +372,7 @@ game_started_sound.volume(0.95);
 const victory_sound = new Howl({
     src: ['dist/mp3/victory.mp3'],
 });
-victory_sound.volume(0.7);
+victory_sound.volume(0.3);
 
 function mostraDialogVittoria(){
     victory_sound.play();
