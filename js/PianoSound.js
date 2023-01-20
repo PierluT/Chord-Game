@@ -369,6 +369,7 @@ const game_started_sound = new Howl({
 const victory_sound = new Howl({
     src: ['dist/mp3/victory.mp3'],
 });
+victory_sound.volume() = 0.7;
 
 function mostraDialogVittoria(){
     victory_sound.play();
