@@ -354,6 +354,7 @@ const lost = new Howl({
 const intro_music = new Howl({
     src: ['dist/mp3/intro_music.mp3'],
 });
+intro_music.volume(0.9);
 
 // LEVEL UP
 const level_up_sound = new Howl({
@@ -364,12 +365,13 @@ const level_up_sound = new Howl({
 const game_started_sound = new Howl({
     src: ['dist/mp3/game_started.mp3'],
 });
+game_started_sound.volume(0.95);
 
 // VICTORY
 const victory_sound = new Howl({
     src: ['dist/mp3/victory.mp3'],
 });
-victory_sound.volume() = 0.7;
+victory_sound.volume(0.7);
 
 function mostraDialogVittoria(){
     victory_sound.play();
