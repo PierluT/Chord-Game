@@ -42,12 +42,12 @@ canvas {
 
 #dialog{
     display: none;
-    background-image: "../img/assets/lost.png";
+    background-image: url("../img/assets/lost.png");
 }
 
 #winner-dialog{
     display: none;
-    background-image: "../img/assets/win.png" ;
+    background-image: url("../img/assets/win.png");
   }
 
 .stringGameOver{
