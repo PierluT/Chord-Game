@@ -3,7 +3,7 @@
 *Authors*: Riccardo Kubler, Riccardo Martinelli, Pierluigi
 Tartabini
 
-### 0. Initial notes
+### Initial notes
 
 - Without a MIDI keyboard, it is possible to simulate "right chord" or "wrong chord" with the letters 'l' and 'g' of the computer keyboard, respectively.  
 - In Demo version, only 8 chords per level are set. It is possible to increment them as you want. 
