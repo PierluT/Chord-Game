@@ -254,7 +254,7 @@ function handleInput(input) {
 
     switch (command) {
 
-        case 145:
+        case 145 || 144:
 
         var notaMIDI = note.toString();
         soundEngine.init(notaMIDI);
